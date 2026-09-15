@@ -36,7 +36,7 @@
   }
   img,svg{max-width:100%;display:block;}
   a{color:inherit;}
-  h1,h2,p,ul,ol{margin:0;}
+  h1,h2,p,ul,ol,figure{margin:0;}
   ul,ol{padding:0;list-style:none;}
 
   .wrap{max-width:var(--max);margin-inline:auto;}
@@ -52,15 +52,12 @@
 
   /* ---------- HERO ---------- */
   .hero{
-    height:100vh;
-    height:100svh;
-    max-height:100vh;
-    max-height:100svh;
-    overflow:hidden;
+    min-height:100vh;
+    min-height:100svh;
     width:100vw;
     margin-inline:calc(50% - 50vw);
     padding-inline:var(--gutter);
-    padding-block:clamp(1.1rem,2.4vw,1.6rem) 0;
+    padding-block:clamp(1.1rem,2.4vw,1.6rem) clamp(2rem,6vw,4rem);
     display:flex;
     flex-direction:column;
     align-items:center;
@@ -162,11 +159,26 @@
     margin-inline:calc(50% - 50vw);
     padding-inline:var(--gutter);
   }
+  .about-heading{
+    font-family:var(--script);
+    font-size:clamp(2.6rem,5vw,4rem);
+    font-weight:400;
+    margin-bottom:clamp(1.5rem,3vw,2.2rem);
+  }
   .about-grid{
     display:grid;
     grid-template-columns:1fr;
-    gap:1.6rem;
-    max-width:46rem;
+    gap:clamp(2.5rem,6vw,4rem);
+    align-items:start;
+  }
+  @media (min-width:900px){
+    .about-grid{grid-template-columns:1.15fr 0.85fr;}
+  }
+  .about-text{
+    display:flex;
+    flex-direction:column;
+    gap:1.4rem;
+    max-width:34rem;
   }
   .about-lead{
     font-size:clamp(1.3rem,2.6vw,1.9rem);
@@ -177,14 +189,57 @@
     font-size:1rem;
     line-height:1.7;
     color:var(--muted);
-    max-width:38rem;
   }
-  .about-signature{
-    font-family:var(--script);
-    font-size:clamp(1.1rem,2vw,1.4rem);
+  .about-cta{
+    align-self:flex-start;
+    margin-top:0.4rem;
+    padding:0.9rem 1.8rem;
+    border:1px solid var(--fg);
     color:var(--fg);
-    margin-top:-0.4rem;
+    text-decoration:none;
+    font-size:0.85rem;
+    letter-spacing:0.02em;
+    transition:background 0.2s ease, color 0.2s ease;
   }
+  .about-cta:hover{background:var(--fg);color:var(--accent);}
+  .about-contact{
+    margin-top:0.6rem;
+    font-size:0.9rem;
+  }
+  .about-contact-label{color:var(--muted);}
+  .about-contact a{
+    display:block;
+    color:var(--fg);
+    text-decoration:underline;
+    text-decoration-color:var(--line);
+    text-underline-offset:0.15em;
+  }
+  .about-contact a:hover{text-decoration-color:var(--fg);}
+  .about-photo{
+    position:relative;
+    width:100%;
+    aspect-ratio:3173/4766;
+    overflow:hidden;
+    background:var(--line);
+  }
+  .about-photo img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+  }
+  .about-photo-caption{
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+    gap:1rem;
+    margin-top:0.9rem;
+    font-size:0.85rem;
+  }
+  .about-photo-name{display:flex;flex-direction:column;gap:0.15rem;}
+  .about-photo-name strong{font-weight:600;color:var(--fg);}
+  .about-photo-role{color:var(--muted);}
+  .about-photo-credit{color:var(--muted);font-size:0.75rem;white-space:nowrap;}
   .palette{
     display:flex;
     align-items:center;
@@ -355,17 +410,35 @@
 
 <section class="about" id="about">
   <div class="wrap">
-    <p class="section-tag">sobre</p>
+    <h2 class="about-heading">Sobre</h2>
     <div class="about-grid">
-      <p class="about-lead">O Studio de Lá é um estúdio de design remoto dedicado a marcas com história — negócios que já têm alma, mas precisam de uma nova forma de se mostrar ao mundo.</p>
-      <p class="about-body">Foi fundado por Leví de Paula, designer nascido em São Caetano do Sul, Brasil, com mais de uma década de experiência entre identidade visual, audiovisual, gastronomia e redes sociais. É esse olhar, formado entre a criatividade brasileira e a tradição portuguesa, que define cada projeto do estúdio.</p>
-      <p class="about-signature">— Leví de Paula, CEO do Studio de Lá</p>
-      <div class="palette" aria-label="Paleta de cores do Studio de Lá">
-        <span class="swatch"><span class="swatch-dot" style="background:#150a0e"></span><code>#150A0E</code></span>
-        <span class="swatch"><span class="swatch-dot" style="background:#e8dcd3"></span><code>#E8DCD3</code></span>
-        <span class="swatch"><span class="swatch-dot" style="background:#003da0"></span><code>#003DA0</code></span>
-        <span class="swatch"><span class="swatch-dot" style="background:#f3f3f3"></span><code>#F3F3F3</code></span>
+      <div class="about-text">
+        <p class="about-lead">O Studio de Lá é um estúdio de design remoto dedicado a marcas com história — negócios que já têm alma, mas precisam de uma nova forma de se mostrar ao mundo.</p>
+        <p class="about-body">Foi fundado por Leví de Paula, designer nascido em São Caetano do Sul, Brasil, com mais de uma década de experiência entre identidade visual, audiovisual, gastronomia e redes sociais. É esse olhar, formado entre a criatividade brasileira e a tradição portuguesa, que define cada projeto do estúdio.</p>
+        <a class="about-cta" href="#contato">Fale com a gente</a>
+        <div class="about-contact">
+          <span class="about-contact-label">Contato</span>
+          <a href="mailto:dipaulacontato@hotmail.com">dipaulacontato@hotmail.com</a>
+        </div>
+        <div class="palette" aria-label="Paleta de cores do Studio de Lá">
+          <span class="swatch"><span class="swatch-dot" style="background:#150a0e"></span><code>#150A0E</code></span>
+          <span class="swatch"><span class="swatch-dot" style="background:#e8dcd3"></span><code>#E8DCD3</code></span>
+          <span class="swatch"><span class="swatch-dot" style="background:#003da0"></span><code>#003DA0</code></span>
+          <span class="swatch"><span class="swatch-dot" style="background:#f3f3f3"></span><code>#F3F3F3</code></span>
+        </div>
       </div>
+      <figure class="about-photo-wrap">
+        <div class="about-photo">
+          <img src="https://i-p.rmcdn.net/6980c56b812f128bb12c2f83/6365643/image-8c1e00bc-9fa7-42d1-a7f6-c3c64eac9b4c.jpg?w=1200&amp;e=webp&amp;cX=64&amp;cY=1&amp;cW=3173&amp;cH=4766" alt="Retrato de Leví de Paula">
+        </div>
+        <figcaption class="about-photo-caption">
+          <span class="about-photo-name">
+            <strong>Leví de Paula</strong>
+            <span class="about-photo-role">CEO do Studio de Lá</span>
+          </span>
+          <span class="about-photo-credit">Photo: Gustavo Caetano</span>
+        </figcaption>
+      </figure>
     </div>
   </div>
 </section>
