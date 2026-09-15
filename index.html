@@ -1011,13 +1011,22 @@
   if(imgZoomClose) imgZoomClose.addEventListener('click', closeImgZoom);
   if(imgZoom) imgZoom.addEventListener('click', function(e){ if(e.target === imgZoom) closeImgZoom(); });
   document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeImgZoom(); });
+  function scrollCardIntoView(card, smooth){
+    var cRect = card.getBoundingClientRect();
+    var trackRect = carousel.getBoundingClientRect();
+    var delta = (cRect.left + cRect.width/2) - (trackRect.left + trackRect.width/2);
+    var target = carousel.scrollLeft + delta;
+    if(smooth === false){ carousel.scrollLeft = target; }
+    else { carousel.scrollTo({left: target, behavior: 'smooth'}); }
+  }
+
   cards.forEach(function(card){
     var key = card.getAttribute('data-project');
     var trigger = card.querySelector('.carousel-trigger');
     if(trigger && key){
       trigger.addEventListener('click', function(e){
         e.preventDefault();
-        card.scrollIntoView({behavior:'smooth', inline:'center', block:'nearest'});
+        scrollCardIntoView(card);
         update();
       });
     }
@@ -1030,7 +1039,7 @@
     dot.setAttribute('aria-label', 'Ir para o projeto ' + (i+1));
     dot.addEventListener('click', function(){
       stopAuto();
-      card.scrollIntoView({behavior:'smooth', inline:'center', block:'nearest'});
+      scrollCardIntoView(card);
     });
     dotsWrap.appendChild(dot);
   });
@@ -1114,7 +1123,7 @@
 
   window.addEventListener('resize', update);
   requestAnimationFrame(function(){
-    cards[0].scrollIntoView({inline:'center', block:'nearest'});
+    scrollCardIntoView(cards[0], false);
     update();
   });
 
@@ -1124,7 +1133,7 @@
     autoTimer = setInterval(function(){
       var idx = update();
       var next = (idx + 1) % cards.length;
-      cards[next].scrollIntoView({behavior:'smooth', inline:'center', block:'nearest'});
+      scrollCardIntoView(cards[next]);
     }, 4200);
   }
   function stopAuto(){
