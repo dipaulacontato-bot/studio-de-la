@@ -1,0 +1,408 @@
+<!doctype html>
+<title>Studio de Lá</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500&family=Grand+Hotel&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#040403;
+    --bg-raise:#e8dcd3;
+    --fg:#ffffff;
+    --cream:#e8dcd3;
+    --accent:#003da0;
+    --fg-on-raise:#040403;
+    --muted:#8f8a7d;
+    --muted-on-raise:#6b6558;
+    --line:rgba(232,220,211,0.16);
+    --line-on-raise:rgba(4,4,3,0.14);
+
+    --script:'Grand Hotel', 'Segoe Script', cursive;
+    --sans:'Archivo', 'Helvetica Neue', Arial, sans-serif;
+
+    --gutter:clamp(20px, 5vw, 64px);
+    --max:1180px;
+  }
+
+  *{box-sizing:border-box;}
+  html{background:var(--bg);scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--fg);
+    font-family:var(--sans);
+    -webkit-font-smoothing:antialiased;
+    padding-inline:var(--gutter);
+    overflow-x:hidden;
+  }
+  img,svg{max-width:100%;display:block;}
+  a{color:inherit;}
+  h1,h2,p,ul,ol{margin:0;}
+  ul,ol{padding:0;list-style:none;}
+
+  .wrap{max-width:var(--max);margin-inline:auto;}
+
+  .section-tag{
+    font-family:var(--script);
+    font-size:clamp(1.35rem, 1rem + 1.4vw, 1.9rem);
+    font-weight:400;
+    color:var(--fg);
+    margin-bottom:clamp(2.2rem, 3vw, 3.5rem);
+  }
+  .services .section-tag{color:var(--fg-on-raise);}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    height:100vh;
+    height:100svh;
+    max-height:100vh;
+    max-height:100svh;
+    overflow:hidden;
+    padding-block:clamp(1.1rem,2.4vw,1.6rem) 0;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    text-align:center;
+  }
+  .hero-top{
+    width:100%;
+    max-width:var(--max);
+    display:flex;
+    justify-content:flex-start;
+    flex:none;
+  }
+  .tag{
+    font-size:0.62rem;
+    letter-spacing:0.22em;
+    text-transform:uppercase;
+    color:var(--muted);
+  }
+  .eyebrow{
+    margin-top:clamp(1.6rem,5vw,3rem);
+    font-size:0.66rem;
+    letter-spacing:0.24em;
+    text-transform:uppercase;
+    color:var(--muted);
+    flex:none;
+  }
+  .wordmark{
+    margin-top:clamp(0.9rem,2.4vw,1.4rem);
+    width:clamp(240px, 38vw, 640px);
+    color:var(--fg);
+    flex:none;
+  }
+  .wordmark svg{width:100%;height:auto;display:block;}
+
+  .headline{
+    margin-top:clamp(0.6rem,2vw,1.2rem);
+    display:flex;
+    flex-wrap:nowrap;
+    align-items:flex-start;
+    justify-content:center;
+    column-gap:clamp(0.2rem,1vw,0.6rem);
+    width:100%;
+    flex:none;
+  }
+  .headline img{
+    height:clamp(4.4rem, 29vw, 40rem);
+    width:auto;
+    max-width:none;
+    display:block;
+    flex:none;
+  }
+
+  .marquee{
+    width:100vw;
+    margin-inline:calc(50% - 50vw);
+    overflow:hidden;
+    padding-block:0.85rem;
+  }
+  .marquee-track{
+    display:flex;
+    width:max-content;
+    animation:scroll-left 26s linear infinite;
+  }
+  .marquee-track span{
+    font-size:clamp(0.78rem,1.4vw,0.98rem);
+    letter-spacing:0.16em;
+    text-transform:uppercase;
+    white-space:nowrap;
+    padding-inline:1.1em;
+  }
+  .marquee-track .dot{
+    color:var(--accent);
+    letter-spacing:0;
+    padding-inline:0.4em;
+    font-size:0.7rem;
+  }
+  @keyframes scroll-left{
+    from{transform:translateX(0);}
+    to{transform:translateX(-50%);}
+  }
+
+  /* ---------- SECTIONS shared ---------- */
+  section, .contact{
+    padding-block:clamp(4.5rem,10vw,7.5rem);
+    border-top:1px solid var(--line);
+  }
+  .services{border-top:none;}
+
+  /* ---------- ABOUT ---------- */
+  .about-grid{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:1.6rem;
+    max-width:46rem;
+  }
+  .about-lead{
+    font-size:clamp(1.3rem,2.6vw,1.9rem);
+    line-height:1.35;
+    font-weight:500;
+  }
+  .about-body{
+    font-size:1rem;
+    line-height:1.7;
+    color:var(--muted);
+    max-width:38rem;
+  }
+  .about-signature{
+    font-family:var(--script);
+    font-size:clamp(1.1rem,2vw,1.4rem);
+    color:var(--fg);
+    margin-top:-0.4rem;
+  }
+  .palette{
+    display:flex;
+    align-items:center;
+    gap:clamp(1.1rem,2.5vw,1.6rem);
+    margin-top:clamp(0.8rem,2vw,1.4rem);
+    flex-wrap:wrap;
+  }
+  .swatch{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:0.5rem;
+  }
+  .swatch-dot{
+    width:1.7rem;
+    height:1.7rem;
+    border-radius:50%;
+    border:1px solid var(--line);
+  }
+  .swatch code{
+    font-family:var(--sans);
+    font-size:0.68rem;
+    color:var(--muted);
+    letter-spacing:0.02em;
+  }
+
+  /* ---------- SERVICES (inverted) ---------- */
+  .services{
+    background:var(--bg-raise);
+    color:var(--fg-on-raise);
+    margin-inline:calc(-1 * var(--gutter));
+    padding-inline:var(--gutter);
+  }
+  .services-list li{
+    display:flex;
+    align-items:baseline;
+    gap:clamp(1rem,3vw,2.4rem);
+    padding-block:clamp(1.2rem,2.6vw,1.8rem);
+    border-top:1px solid var(--line-on-raise);
+  }
+  .services-list li:last-child{border-bottom:1px solid var(--line-on-raise);}
+  .services-list .num{
+    font-variant-numeric:tabular-nums;
+    font-size:0.85rem;
+    color:var(--muted-on-raise);
+    width:2ch;
+    flex:none;
+  }
+  .services-list .service-name{
+    font-size:clamp(1.2rem,2.4vw,1.6rem);
+    font-weight:700;
+    flex:none;
+    width:min(46%,14rem);
+  }
+  .services-list .service-desc{
+    font-size:0.95rem;
+    line-height:1.5;
+    color:var(--muted-on-raise);
+  }
+
+  /* ---------- CONTACT ---------- */
+  .contact{
+    display:flex;
+    flex-direction:column;
+    align-items:flex-start;
+    gap:clamp(1.8rem,4vw,2.6rem);
+  }
+  .contact-cta{
+    font-family:var(--script);
+    font-weight:400;
+    font-size:clamp(2.6rem,7vw,5.4rem);
+    line-height:0.95;
+    text-wrap:balance;
+  }
+  .contact-email{
+    font-size:clamp(1.3rem,3vw,1.9rem);
+    font-weight:600;
+    text-decoration:underline;
+    text-underline-offset:0.15em;
+    text-decoration-color:var(--line);
+    word-break:break-word;
+  }
+  .contact-email:hover{text-decoration-color:var(--accent);}
+  .contact-email:focus-visible,
+  a:focus-visible{outline:2px solid var(--fg);outline-offset:3px;}
+  .socials{
+    display:flex;
+    gap:1.6rem;
+    flex-wrap:wrap;
+  }
+  .socials a{
+    font-size:0.85rem;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    text-decoration:none;
+    color:var(--muted);
+    border-bottom:1px solid transparent;
+    padding-bottom:2px;
+  }
+  .socials a:hover{color:var(--fg);border-color:var(--line);}
+  .legal{
+    width:100%;
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:0.8rem;
+    margin-top:clamp(1.5rem,4vw,2.6rem);
+    padding-top:1.6rem;
+    border-top:1px solid var(--line);
+    font-size:0.78rem;
+    color:var(--muted);
+  }
+  .legal a{text-decoration:none;color:var(--muted);}
+  .legal a:hover{color:var(--fg);}
+  .footer-mark{
+    width:clamp(90px,14vw,120px);
+    color:var(--cream);
+    opacity:0.85;
+  }
+  .footer-mark svg{width:100%;height:auto;display:block;}
+
+  @media (prefers-reduced-motion: reduce){
+    .marquee-track{animation:none;}
+    html{scroll-behavior:auto;}
+  }
+</style>
+
+<a id="top"></a>
+
+<header class="hero">
+  <div class="hero-top wrap">
+    <span class="tag">Studio de Lá</span>
+  </div>
+  <p class="eyebrow">Di Paula Designer</p>
+  <p class="wordmark" role="img" aria-label="Studio de Lá">
+    <svg viewBox="0 0 695.87 134.05" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" fill="currentColor">
+      <path d="M56.02,87.84c-4.11-1.71-9.74-3.45-16.92-5.2-.48-.16-1-.28-1.56-.36h-.24c-4.3-1.03-7.61-2.01-9.92-2.93-2.31-.91-4.07-2.05-5.26-3.41-1.2-1.35-1.79-3.15-1.79-5.38,0-3.11,1.2-5.32,3.59-6.63,2.39-1.32,5.66-1.97,9.8-1.97,5.02,0,8.89,1,11.6,2.99,2.71,1.99,4.06,4.74,4.06,8.25h17.1c0-4.94-1.14-9.31-3.41-13.09-2.27-3.79-5.82-6.75-10.64-8.91-4.82-2.15-10.86-3.23-18.11-3.23-9.49,0-17.1,1.91-22.84,5.74-5.74,3.83-8.61,9.53-8.61,17.1,0,5.1,1.12,9.25,3.35,12.44,2.23,3.19,5.3,5.66,9.21,7.41,3.9,1.75,9.13,3.43,15.66,5.02,1.03.32,1.95.56,2.75.72,4.7,1.2,8.29,2.29,10.76,3.29,2.47,1,4.32,2.25,5.56,3.77,1.23,1.51,1.85,3.47,1.85,5.86,0,3.59-1.36,6.26-4.06,8.01-2.71,1.75-6.66,2.63-11.84,2.63-5.66,0-10.16-1.23-13.51-3.71-3.35-2.47-5.02-6.3-5.02-11.48H0c0,9.25,2.97,16.44,8.91,21.58,5.94,5.14,14.77,7.71,26.48,7.71,10.92,0,19.33-2.35,25.23-7.05,5.9-4.7,8.85-11.12,8.85-19.25,0-5.34-1.22-9.56-3.65-12.67-2.43-3.11-5.7-5.52-9.8-7.23Z"/>
+      <polygon points="70.3 64.34 93.86 64.34 93.86 132.85 110.83 132.85 110.83 64.34 134.15 64.34 134.15 49.16 70.3 49.16 70.3 64.34"/>
+      <path d="M193.71,97.34c0,4.46-.56,8.31-1.67,11.54-1.12,3.23-3.01,5.76-5.68,7.59-2.67,1.83-6.32,2.75-10.94,2.75s-8.27-.92-10.94-2.75c-2.67-1.83-4.56-4.36-5.68-7.59-1.12-3.23-1.67-7.07-1.67-11.54v-48.19h-16.98v49.02c0,7.01,1.08,13.15,3.23,18.41,2.15,5.26,5.84,9.49,11.06,12.67,5.22,3.19,12.21,4.78,20.98,4.78s15.76-1.59,20.98-4.78c5.22-3.19,8.91-7.41,11.06-12.67,2.15-5.26,3.23-11.4,3.23-18.41v-49.02h-16.98v48.19Z"/>
+      <path d="M266.12,53.04c-7.37-2.59-15.29-3.89-23.73-3.89h-25.71v83.7h25.71c8.53,0,16.46-1.24,23.79-3.71,7.33-2.47,13.39-6.81,18.17-13.03s7.17-14.63,7.17-25.23-2.39-18.41-7.17-24.63c-4.78-6.22-10.86-10.62-18.23-13.21ZM269.76,107.38c-2.95,3.91-6.58,6.6-10.88,8.07-4.3,1.48-8.85,2.21-13.63,2.21h-11.6v-53.33h11.6c4.7,0,9.21.78,13.51,2.33,4.31,1.56,7.95,4.35,10.94,8.37,2.99,4.03,4.48,9.43,4.48,16.2s-1.48,12.24-4.42,16.14Z"/>
+      <polygon points="297.26 63.62 297.26 118.39 297.26 132.85 314.24 132.85 314.24 118.39 314.24 63.62 314.24 49.16 297.26 49.16 297.26 63.62"/>
+      <path d="M386.43,53.37c-6.5-3.63-14.13-5.44-22.9-5.44s-16.32,1.81-22.9,5.44c-6.58,3.63-11.66,8.69-15.25,15.19-3.59,6.5-5.38,13.93-5.38,22.3s1.79,15.92,5.38,22.42c3.59,6.5,8.67,11.58,15.25,15.25,6.58,3.67,14.21,5.5,22.9,5.5s16.4-1.81,22.9-5.44c6.49-3.63,11.5-8.71,15-15.24,3.51-6.54,5.26-14.03,5.26-22.48s-1.75-15.8-5.26-22.3c-3.51-6.5-8.51-11.56-15-15.19ZM386.25,105.92c-2.07,4.15-5.02,7.28-8.85,9.39-3.83,2.11-8.45,3.17-13.87,3.17s-9.98-1.08-13.93-3.23c-3.95-2.15-6.97-5.28-9.09-9.39-2.11-4.1-3.17-9.03-3.17-14.77s1.06-10.7,3.17-14.89c2.11-4.19,5.14-7.35,9.09-9.51,3.95-2.15,8.59-3.23,13.93-3.23s10.04,1.08,13.87,3.23c3.83,2.15,6.77,5.32,8.85,9.51,2.07,4.18,3.11,9.15,3.11,14.89s-1.04,10.68-3.11,14.83Z"/>
+      <path d="M466.66,82.66h-19.14l-.3,1.37h4.68l-10.78,48.63h-4.68l-.3,1.37h18.1c21.57,0,35.68-12.82,35.7-32.73,0-12.23-7.99-18.63-23.27-18.63ZM454.79,132.65h-7.29l10.78-48.63h7.18c11.59,0,17.45,5.6,17.45,16.32,0,16.97-10.63,32.31-28.12,32.31Z"/>
+      <polygon points="500.79 84.28 505.46 84.28 494.72 132.68 490.06 132.68 489.76 134.04 516.62 134.04 519.38 121.58 518.25 121.58 511.8 132.68 501.07 132.68 506.38 108.75 514.42 108.75 515.23 116.34 516.33 116.34 519.99 99.83 518.86 99.83 514.68 107.39 506.68 107.39 511.8 84.28 521.01 84.28 522.89 94.31 523.99 94.31 526.51 82.92 501.09 82.92 500.79 84.28"/>
+      <polygon points="617.24 105.1 601.22 131.22 581.59 131.22 603.82 30.92 613.86 30.92 614.48 28.11 581.63 28.11 581 30.92 590.66 30.92 568.43 131.22 558.77 131.22 558.14 134.04 613.17 134.04 619.59 105.1 617.24 105.1"/>
+      <path d="M695.87,12.3l-3.95-12.3c-8.69,8.67-17.26,13.77-25.76,18l.48,2.78c9.36-1.3,19.25-3.83,29.24-8.47Z"/>
+      <path d="M681.48,28.72h-13.33l-.03,6.01-42.53,96.5h-5.46l-.62,2.8h20.55l.62-2.8h-11.84l14.62-33.16h24.35l-.16,33.16h-9.23l-.62,2.8h28.16l.62-2.8h-5.51l.41-102.52ZM667.83,95.28h-23.13l23.39-53.05-.26,53.05Z"/>
+    </svg>
+  </p>
+  <h1 class="headline" aria-label="Graphic Design Branding">
+    <img src="assets/graphic.png" alt="Graphic" fetchpriority="high">
+    <img src="assets/design.png" alt="Design">
+    <img src="assets/branding.png" alt="Branding">
+  </h1>
+</header>
+
+<div class="marquee">
+  <div class="marquee-track">
+    <span>Landing Pages</span><span class="dot">✦</span>
+    <span>Branding</span><span class="dot">✦</span>
+    <span>About Us</span><span class="dot">✦</span>
+    <span>Landing Pages</span><span class="dot">✦</span>
+    <span>Branding</span><span class="dot">✦</span>
+    <span>About Us</span><span class="dot">✦</span>
+  </div>
+</div>
+
+<section class="about wrap" id="about">
+  <p class="section-tag">sobre</p>
+  <div class="about-grid">
+    <p class="about-lead">O Studio de Lá é um estúdio de design remoto dedicado a marcas com história — negócios que já têm alma, mas precisam de uma nova forma de se mostrar ao mundo.</p>
+    <p class="about-body">Foi fundado por Leví de Paula, designer nascido em São Caetano do Sul, Brasil, com mais de uma década de experiência entre identidade visual, audiovisual, gastronomia e redes sociais. É esse olhar, formado entre a criatividade brasileira e a tradição portuguesa, que define cada projeto do estúdio.</p>
+    <p class="about-signature">— Leví de Paula, CEO do Studio de Lá</p>
+    <div class="palette" aria-label="Paleta de cores do Studio de Lá">
+      <span class="swatch"><span class="swatch-dot" style="background:#150a0e"></span><code>#150A0E</code></span>
+      <span class="swatch"><span class="swatch-dot" style="background:#e8dcd3"></span><code>#E8DCD3</code></span>
+      <span class="swatch"><span class="swatch-dot" style="background:#003da0"></span><code>#003DA0</code></span>
+      <span class="swatch"><span class="swatch-dot" style="background:#f3f3f3"></span><code>#F3F3F3</code></span>
+    </div>
+  </div>
+</section>
+
+<section class="services" id="services">
+  <div class="wrap">
+    <p class="section-tag">serviços</p>
+    <ol class="services-list">
+      <li>
+        <span class="num">01</span>
+        <span class="service-name">Identidade Visual</span>
+        <span class="service-desc">Sistema de marca completo — símbolo, tipografia, cor e as regras que mantêm tudo coerente.</span>
+      </li>
+      <li>
+        <span class="num">02</span>
+        <span class="service-name">Branding</span>
+        <span class="service-desc">Posicionamento, tom de voz e direção estratégica para marcas que estão nascendo ou se reinventando.</span>
+      </li>
+      <li>
+        <span class="num">03</span>
+        <span class="service-name">Landing Pages</span>
+        <span class="service-desc">Páginas desenhadas para converter sem abrir mão da personalidade da marca.</span>
+      </li>
+      <li>
+        <span class="num">04</span>
+        <span class="service-name">Redes Sociais</span>
+        <span class="service-desc">Direção de arte para o dia a dia da marca — o que sustenta a identidade entre um projeto grande e outro.</span>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<footer class="contact wrap" id="contato">
+  <p class="section-tag">contato</p>
+  <p class="contact-cta">A sua marca tem história.<br>Damos-lhe nova forma.</p>
+  <a class="contact-email" href="mailto:dipaulacontato@hotmail.com">dipaulacontato@hotmail.com</a>
+  <nav class="socials" aria-label="Redes sociais">
+    <a href="https://instagram.com/studio.de.la" target="_blank" rel="noopener">@studio.de.la</a>
+  </nav>
+  <p class="footer-mark" role="img" aria-label="Studio de Lá">
+    <svg viewBox="0 0 182.16 35.64" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" fill="currentColor">
+      <path d="M2.33,33.62c-1.55-1.34-2.33-3.22-2.33-5.64h4.59c0,1.35.44,2.35,1.31,3,.87.65,2.05.97,3.53.97,1.35,0,2.38-.23,3.09-.69.71-.46,1.06-1.16,1.06-2.09,0-.62-.16-1.13-.48-1.53-.32-.4-.81-.72-1.45-.98-.65-.26-1.58-.55-2.81-.86-.21-.04-.45-.1-.72-.19-1.71-.42-3.07-.85-4.09-1.31-1.02-.46-1.82-1.1-2.4-1.94-.58-.83-.87-1.92-.87-3.25,0-1.98.75-3.47,2.25-4.47s3.49-1.5,5.97-1.5c1.89,0,3.47.28,4.73.84,1.26.56,2.19,1.34,2.78,2.33.59.99.89,2.13.89,3.42h-4.47c0-.92-.35-1.63-1.06-2.15-.71-.52-1.72-.78-3.03-.78-1.08,0-1.94.17-2.56.52-.62.34-.94.92-.94,1.73,0,.58.16,1.05.47,1.41.31.35.77.65,1.37.89.6.24,1.47.5,2.59.77h.06c.15.02.28.05.41.09,1.87.46,3.35.91,4.42,1.36,1.07.45,1.93,1.08,2.56,1.89.64.81.95,1.92.95,3.31,0,2.12-.77,3.8-2.31,5.03-1.54,1.23-3.74,1.84-6.59,1.84-3.06,0-5.37-.67-6.92-2.01Z"/>
+      <path d="M23.42,17.43h-6.15v-3.97h16.68v3.97h-6.09v17.9h-4.43v-17.9Z"/>
+      <path d="M37.99,34.39c-1.36-.83-2.33-1.94-2.89-3.31s-.84-2.98-.84-4.81v-12.81h4.44v12.59c0,1.17.15,2.17.44,3.01.29.84.79,1.5,1.48,1.98.7.48,1.65.72,2.86.72s2.16-.24,2.86-.72c.7-.48,1.19-1.14,1.48-1.98.29-.84.44-1.85.44-3.01v-12.59h4.44v12.81c0,1.83-.28,3.44-.84,4.81s-1.53,2.48-2.89,3.31c-1.36.83-3.19,1.25-5.48,1.25s-4.12-.42-5.48-1.25Z"/>
+      <path d="M54.69,13.46h6.72c2.21,0,4.27.34,6.2,1.02,1.93.68,3.51,1.83,4.76,3.45s1.87,3.77,1.87,6.43-.62,4.97-1.87,6.59-2.83,2.76-4.75,3.4c-1.92.65-3.99.97-6.22.97h-6.72V13.46ZM65.71,30.78c1.12-.39,2.07-1.09,2.84-2.11.77-1.02,1.16-2.43,1.16-4.22s-.39-3.18-1.17-4.23c-.78-1.05-1.73-1.78-2.86-2.19-1.12-.41-2.3-.61-3.53-.61h-3.03v13.93h3.03c1.25,0,2.44-.19,3.56-.58Z"/>
+      <path d="M75.74,13.46h4.43v21.86h-4.43V13.46ZM75.74,13.46h4.43v3.78h-4.43v-3.78ZM75.74,31.54h4.43v3.78h-4.43v-3.78Z"/>
+      <path d="M87.06,34.2c-1.72-.96-3.05-2.29-3.98-3.98-.94-1.7-1.41-3.65-1.41-5.86s.47-4.13,1.41-5.82c.94-1.7,2.26-3.02,3.98-3.97,1.72-.95,3.71-1.42,5.98-1.42s4.28.47,5.98,1.42c1.7.95,3,2.27,3.92,3.97.92,1.7,1.37,3.64,1.37,5.82s-.46,4.16-1.37,5.87c-.92,1.71-2.22,3.03-3.92,3.98-1.7.95-3.69,1.42-5.98,1.42s-4.26-.48-5.98-1.44ZM96.66,30.75c1-.55,1.77-1.37,2.31-2.45.54-1.08.81-2.37.81-3.87s-.27-2.8-.81-3.89c-.54-1.09-1.31-1.92-2.31-2.48s-2.21-.84-3.62-.84-2.61.28-3.64.84-1.82,1.39-2.37,2.48c-.55,1.09-.83,2.39-.83,3.89s.28,2.78.83,3.86c.55,1.07,1.34,1.89,2.37,2.45s2.24.84,3.64.84,2.62-.28,3.62-.83Z"/>
+      <path d="M116.44,24.83l.06-.29h4.02c3.21,0,4.88,1.34,4.88,3.91,0,4.18-2.96,6.87-7.49,6.87h-3.8l.06-.29h.98l2.26-10.2h-.98ZM118.03,35.04c3.67,0,5.9-3.22,5.9-6.78,0-2.25-1.23-3.42-3.66-3.42h-1.51l-2.26,10.2h1.53Z"/>
+      <path d="M131.44,32.66h.24l-.58,2.61h-5.63l.06-.29h.98l2.25-10.15h-.98l.06-.29h5.33l-.53,2.39h-.23l-.39-2.1h-1.93l-1.07,4.85h1.68l.88-1.59h.24l-.77,3.46h-.23l-.17-1.59h-1.69l-1.11,5.02h2.25l1.35-2.33Z"/>
+      <path d="M161.6,27.76h.61l-1.68,7.56h-14.38l.16-.74h2.52l5.81-26.2h-2.52l.16-.74h8.58l-.16.74h-2.62l-5.81,26.2h5.13l4.18-6.82Z"/>
+      <path d="M178.29,34.28h1.44l-.16.73h-7.35l.16-.73h2.41l.04-8.66h-6.36l-3.82,8.66h3.09l-.16.73h-5.37l.16-.73h1.43l11.11-25.21v-1.57h3.49l-.11,26.78ZM174.84,24.89l.07-13.86-6.11,13.86h6.04ZM174.52,5.43l-.13-.73c2.22-1.1,4.46-2.44,6.73-4.7l1.03,3.21c-2.61,1.21-5.19,1.87-7.64,2.21Z"/>
+    </svg>
+  </p>
+  <div class="legal">
+    <span>© 2026 Studio de Lá — São Caetano do Sul, Brasil, para Portugal e o mundo</span>
+    <a href="#top">Voltar ao topo</a>
+  </div>
+</footer>
