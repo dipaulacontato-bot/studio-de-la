@@ -407,27 +407,32 @@
   }
   .carousel-card{
     flex:none;
-    width:clamp(180px,22vw,260px);
-    aspect-ratio:4/5;
+    width:clamp(280px,38vw,440px);
+    aspect-ratio:16/9;
     scroll-snap-align:center;
     position:relative;
+    border-radius:10px;
+    overflow:hidden;
     transition:transform 0.35s ease, opacity 0.35s ease;
     transform:scale(0.85);
     opacity:0.55;
   }
-  .carousel-card a{
+  .carousel-trigger{
     display:block;
     width:100%;
     height:100%;
     position:relative;
     overflow:hidden;
     background:#0d0d0c;
-    text-decoration:none;
+    border:0;
+    padding:0;
+    cursor:pointer;
+    text-align:left;
   }
   .carousel-card img{
     width:100%;
     height:100%;
-    object-fit:contain;
+    object-fit:cover;
     display:block;
     pointer-events:none;
   }
@@ -465,96 +470,53 @@
   }
   .carousel-dot.is-active{background:var(--accent);}
 
-  .carousel-card--video{
-    width:clamp(220px,30vw,340px);
-    aspect-ratio:16/9;
-  }
-  .carousel-media{
-    display:block;
-    width:100%;
-    height:100%;
-    padding:0;
-    border:0;
-    background:#0d0d0c;
-    cursor:pointer;
-    position:relative;
-  }
-  .carousel-media img{width:100%;height:100%;object-fit:cover;pointer-events:none;}
-  .carousel-media::after{
-    content:"";
-    position:absolute;
-    inset:0;
-    margin:auto;
-    width:44px;
-    height:44px;
-    border-radius:50%;
-    background:rgba(4,4,3,0.55) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='white' d='M8 5v14l11-7z'/%3E%3C/svg%3E") center/16px no-repeat;
-    opacity:0.9;
-  }
-  .carousel-card--video.is-active{
-    transform:scale(1.32) !important;
-    opacity:1 !important;
-    z-index:2;
-  }
-
-  /* ---------- LIGHTBOX ---------- */
-  .lightbox{
-    position:fixed;
-    inset:0;
-    z-index:200;
-    display:flex;
-    background:rgba(4,4,3,0.94);
+  /* ---------- WORK REVEAL (editorial) ---------- */
+  .work-reveal{
+    max-height:0;
     opacity:0;
-    pointer-events:none;
-    transition:opacity 0.3s ease;
-    padding:clamp(1rem,4vw,3rem);
-    overflow-y:auto;
+    overflow:hidden;
+    transition:max-height 0.5s ease, opacity 0.4s ease, margin-top 0.4s ease;
   }
-  .lightbox.is-open{opacity:1;pointer-events:auto;}
-  .lightbox-inner{
-    max-width:960px;
-    width:100%;
+  .work-reveal.is-open{
+    max-height:2400px;
+    opacity:1;
+    margin-top:clamp(2rem,5vw,3rem);
+  }
+  .reveal-head{
     display:flex;
-    flex-direction:column;
-    gap:1.2rem;
-    margin-block:auto;
+    align-items:baseline;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:0.6rem 1.2rem;
+    margin-bottom:1.2rem;
   }
-  .lightbox-close{
-    position:fixed;
-    top:clamp(1rem,3vw,1.5rem);
-    right:clamp(1rem,3vw,1.5rem);
+  .reveal-title{font-size:clamp(1.3rem,3vw,1.8rem);font-weight:700;}
+  .reveal-cat{color:var(--muted);font-size:0.9rem;}
+  .reveal-close{
     background:none;
     border:1px solid var(--line);
     color:#fff;
-    width:40px;
-    height:40px;
+    width:36px;
+    height:36px;
     border-radius:50%;
-    font-size:1.3rem;
+    font-size:1.2rem;
     line-height:1;
     cursor:pointer;
-    z-index:5;
+    flex:none;
   }
-  .lightbox-video{
-    width:100%;
-    aspect-ratio:16/9;
-    background:#000;
-  }
-  .lightbox-video iframe{width:100%;height:100%;border:0;display:block;}
-  .lightbox-gallery{
+  .reveal-video{width:100%;aspect-ratio:16/9;background:#000;margin-bottom:1rem;}
+  .reveal-video iframe{width:100%;height:100%;border:0;display:block;}
+  .reveal-hero{width:100%;aspect-ratio:16/9;object-fit:cover;display:block;margin-bottom:1rem;background:#0d0d0c;}
+  .reveal-grid{
     display:grid;
     grid-template-columns:repeat(3,1fr);
-    gap:0.6rem;
+    gap:0.7rem;
+    margin-bottom:1.2rem;
   }
-  .lightbox-gallery img{width:100%;aspect-ratio:16/10;object-fit:cover;display:block;}
-  .lightbox-behance{
-    align-self:flex-start;
-    color:#fff;
-    font-size:0.85rem;
-    text-decoration:underline;
-    text-underline-offset:0.15em;
-  }
+  .reveal-grid img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block;background:#0d0d0c;}
+  .reveal-link{color:#fff;font-size:0.85rem;text-decoration:underline;text-underline-offset:0.15em;}
   @media (max-width:640px){
-    .lightbox-gallery{grid-template-columns:repeat(2,1fr);}
+    .reveal-grid{grid-template-columns:repeat(2,1fr);}
   }
 
   /* ---------- CONTACT ---------- */
@@ -725,100 +687,84 @@
   </div>
   <div class="carousel" id="workCarousel">
     <ul class="carousel-track" id="workTrack">
-      <li class="carousel-card carousel-card--video">
-        <button type="button" class="carousel-media" id="evandroTrigger" aria-label="Assistir Evandro Okàn – Com Alma no Verbo">
+      <li class="carousel-card" data-project="evandro">
+        <button type="button" class="carousel-trigger" aria-label="Ver projeto Evandro Okàn">
           <img src="assets/work/evandro-okan.jpg" alt="Evandro Okàn – Com Alma no Verbo" loading="lazy">
+          <span class="carousel-overlay">
+            <span class="carousel-name">Evandro Okàn</span>
+            <span class="carousel-cat">Com Alma no Verbo</span>
+          </span>
         </button>
-        <span class="carousel-overlay">
-          <span class="carousel-name">Evandro Okàn</span>
-          <span class="carousel-cat">Com Alma no Verbo</span>
-        </span>
       </li>
-      <li class="carousel-card">
-        <a href="https://www.behance.net/gallery/253997697/STEREO" target="_blank" rel="noopener">
+      <li class="carousel-card" data-project="stereo">
+        <button type="button" class="carousel-trigger" aria-label="Ver projeto STEREO">
           <img src="assets/work/stereo.jpg" alt="STEREO" loading="lazy">
           <span class="carousel-overlay">
             <span class="carousel-name">STEREO</span>
             <span class="carousel-cat">Identidade de Marca</span>
           </span>
-        </a>
+        </button>
       </li>
-      <li class="carousel-card">
-        <a href="https://www.behance.net/gallery/253997117/KAIN-TRACKLIST-INVERSO-VOL2" target="_blank" rel="noopener">
+      <li class="carousel-card" data-project="kain">
+        <button type="button" class="carousel-trigger" aria-label="Ver projeto Kain">
           <img src="assets/work/kain-tracklist.jpg" alt="Kain — Tracklist Inverso Vol.2" loading="lazy">
           <span class="carousel-overlay">
             <span class="carousel-name">Kain</span>
             <span class="carousel-cat">Tracklist Inverso Vol. 2</span>
           </span>
-        </a>
+        </button>
       </li>
-      <li class="carousel-card">
-        <a href="https://www.behance.net/gallery/245208685/Multiforme-Design" target="_blank" rel="noopener">
+      <li class="carousel-card" data-project="multiforme">
+        <button type="button" class="carousel-trigger" aria-label="Ver projeto Multiforme">
           <img src="assets/work/multiforme.png" alt="Multiforme - Design" loading="lazy">
           <span class="carousel-overlay">
             <span class="carousel-name">Multiforme</span>
             <span class="carousel-cat">Design</span>
           </span>
-        </a>
+        </button>
       </li>
-      <li class="carousel-card">
-        <a href="https://www.behance.net/gallery/253991417/Lettering-Ecos-Independentes" target="_blank" rel="noopener">
+      <li class="carousel-card" data-project="ecos">
+        <button type="button" class="carousel-trigger" aria-label="Ver projeto Ecos Independentes">
           <img src="assets/work/lettering-ecos.jpg" alt="Lettering Ecos Independentes" loading="lazy">
           <span class="carousel-overlay">
             <span class="carousel-name">Ecos Independentes</span>
             <span class="carousel-cat">Lettering</span>
           </span>
-        </a>
+        </button>
       </li>
-      <li class="carousel-card">
-        <a href="https://www.behance.net/gallery/136115143/Social-Media-Headphones-Portfolio" target="_blank" rel="noopener">
+      <li class="carousel-card" data-project="headphones">
+        <button type="button" class="carousel-trigger" aria-label="Ver projeto Headphones">
           <img src="assets/work/social-media-headphones.png" alt="Social Media Headphones - Portfólio" loading="lazy">
           <span class="carousel-overlay">
             <span class="carousel-name">Headphones</span>
             <span class="carousel-cat">Social Media</span>
           </span>
-        </a>
+        </button>
       </li>
-      <li class="carousel-card">
-        <a href="https://www.behance.net/gallery/143462293/Moutinho-Cardoso-Identidade-Visual" target="_blank" rel="noopener">
+      <li class="carousel-card" data-project="moutinho">
+        <button type="button" class="carousel-trigger" aria-label="Ver projeto Moutinho Cardoso">
           <img src="assets/work/moutinho-cardoso.png" alt="Moutinho Cardoso - Identidade Visual" loading="lazy">
           <span class="carousel-overlay">
             <span class="carousel-name">Moutinho Cardoso</span>
             <span class="carousel-cat">Identidade Visual</span>
           </span>
-        </a>
+        </button>
       </li>
-      <li class="carousel-card">
-        <a href="#services">
+      <li class="carousel-card" data-project="amago">
+        <button type="button" class="carousel-trigger" aria-label="Ver projeto Âmago Clothing">
           <img src="assets/amago-case.jpg" alt="Âmago Clothing - Identidade Visual" loading="lazy">
           <span class="carousel-overlay">
             <span class="carousel-name">Âmago Clothing</span>
             <span class="carousel-cat">Identidade Visual</span>
           </span>
-        </a>
+        </button>
       </li>
     </ul>
   </div>
   <div class="carousel-dots" id="workDots"></div>
-</section>
 
-<div class="lightbox" id="lightbox" aria-hidden="true">
-  <button type="button" class="lightbox-close" id="lightboxClose" aria-label="Fechar">×</button>
-  <div class="lightbox-inner">
-    <div class="lightbox-video">
-      <iframe id="lightboxVideo" src="" title="Evandro Okàn – Com Alma no Verbo" allow="autoplay; fullscreen" allowfullscreen loading="lazy"></iframe>
-    </div>
-    <div class="lightbox-gallery">
-      <img src="assets/work/evandro-gallery/gallery-1.jpg" alt="Evandro Okàn – still 1" loading="lazy">
-      <img src="assets/work/evandro-gallery/gallery-2.jpg" alt="Evandro Okàn – still 2" loading="lazy">
-      <img src="assets/work/evandro-gallery/gallery-3.jpg" alt="Evandro Okàn – still 3" loading="lazy">
-      <img src="assets/work/evandro-gallery/gallery-4.jpg" alt="Evandro Okàn – still 4" loading="lazy">
-      <img src="assets/work/evandro-gallery/gallery-5.jpg" alt="Evandro Okàn – still 5" loading="lazy">
-      <img src="assets/work/evandro-gallery/gallery-6.jpg" alt="Evandro Okàn – still 6" loading="lazy">
-    </div>
-    <a class="lightbox-behance" href="https://www.behance.net/gallery/245210287/Evandro-Okan-Com-Alma-no-Verbo" target="_blank" rel="noopener">Ver projeto completo no Behance ↗</a>
-  </div>
-</div>
+  <div class="work-reveal" id="workReveal" aria-live="polite"></div>
+</section>
 
 <section class="about" id="about">
   <div class="wrap">
@@ -881,8 +827,134 @@
   var carousel = document.getElementById('workCarousel');
   var track = document.getElementById('workTrack');
   var dotsWrap = document.getElementById('workDots');
+  var reveal = document.getElementById('workReveal');
   if(!carousel || !track) return;
   var cards = Array.prototype.slice.call(track.children);
+
+  var PROJECTS = {
+    evandro: {
+      name: 'Evandro Okàn',
+      cat: 'Com Alma no Verbo',
+      video: 'https://www-ccv.adobe.io/v1/player/ccv/5Aq5QYP3n__/embed?api_key=behance1&bgcolor=%23191919',
+      images: [
+        'assets/work/evandro-gallery/gallery-1.jpg',
+        'assets/work/evandro-gallery/gallery-2.jpg',
+        'assets/work/evandro-gallery/gallery-3.jpg',
+        'assets/work/evandro-gallery/gallery-4.jpg',
+        'assets/work/evandro-gallery/gallery-5.jpg',
+        'assets/work/evandro-gallery/gallery-6.jpg'
+      ],
+      behance: 'https://www.behance.net/gallery/245210287/Evandro-Okan-Com-Alma-no-Verbo'
+    },
+    stereo: {
+      name: 'STEREO', cat: 'Identidade de Marca',
+      images: [
+        'assets/work/stereo-gallery/img-1.jpg',
+        'assets/work/stereo-gallery/img-2.jpg',
+        'assets/work/stereo-gallery/img-3.jpg',
+        'assets/work/stereo-gallery/img-4.png'
+      ],
+      behance: 'https://www.behance.net/gallery/253997697/STEREO'
+    },
+    kain: {
+      name: 'Kain', cat: 'Tracklist Inverso Vol. 2',
+      images: [
+        'assets/work/kain-gallery/img-1.jpg',
+        'assets/work/kain-gallery/img-2.jpg',
+        'assets/work/kain-gallery/img-3.jpg'
+      ],
+      behance: 'https://www.behance.net/gallery/253997117/KAIN-TRACKLIST-INVERSO-VOL2'
+    },
+    multiforme: {
+      name: 'Multiforme', cat: 'Design',
+      video: 'https://www-ccv.adobe.io/v1/player/ccv/7vWfd97WMq9/embed?api_key=behance1&bgcolor=%23191919',
+      images: [
+        'assets/work/multiforme-gallery/img-1.png',
+        'assets/work/multiforme-gallery/img-2.png'
+      ],
+      behance: 'https://www.behance.net/gallery/245208685/Multiforme-Design'
+    },
+    ecos: {
+      name: 'Ecos Independentes', cat: 'Lettering',
+      video: 'https://www-ccv.adobe.io/v1/player/ccv/AgsnSte_iHq/embed?api_key=behance1&bgcolor=%23191919',
+      images: [
+        'assets/work/ecos-gallery/img-1.jpg',
+        'assets/work/ecos-gallery/img-2.jpg',
+        'assets/work/ecos-gallery/img-3.jpg',
+        'assets/work/ecos-gallery/img-4.jpg'
+      ],
+      behance: 'https://www.behance.net/gallery/253991417/Lettering-Ecos-Independentes'
+    },
+    headphones: {
+      name: 'Headphones', cat: 'Social Media',
+      images: [
+        'assets/work/headphones-gallery/img-1.png',
+        'assets/work/headphones-gallery/img-2.png',
+        'assets/work/headphones-gallery/img-3.png',
+        'assets/work/headphones-gallery/img-4.png'
+      ],
+      behance: 'https://www.behance.net/gallery/136115143/Social-Media-Headphones-Portfolio'
+    },
+    moutinho: {
+      name: 'Moutinho Cardoso', cat: 'Identidade Visual',
+      images: [
+        'assets/work/moutinho-gallery/img-1.png',
+        'assets/work/moutinho-gallery/img-2.png',
+        'assets/work/moutinho-gallery/img-3.png',
+        'assets/work/moutinho-gallery/img-4.png'
+      ],
+      behance: 'https://www.behance.net/gallery/143462293/Moutinho-Cardoso-Identidade-Visual'
+    },
+    amago: {
+      name: 'Âmago Clothing', cat: 'Identidade Visual',
+      images: ['assets/amago-case.jpg', 'assets/amago-magazine.jpg', 'assets/amago-website.jpg']
+    }
+  };
+
+  function esc(s){ return s.replace(/&/g,'&amp;').replace(/</g,'&lt;'); }
+
+  function renderReveal(key){
+    var p = PROJECTS[key];
+    if(!p || !reveal) return;
+    var html = '<div class="wrap"><div class="reveal-head">';
+    html += '<div><p class="reveal-title">' + esc(p.name) + '</p><p class="reveal-cat">' + esc(p.cat) + '</p></div>';
+    html += '<button type="button" class="reveal-close" id="revealClose" aria-label="Fechar">×</button>';
+    html += '</div>';
+    if(p.video){
+      html += '<div class="reveal-video"><iframe src="' + p.video + '" title="' + esc(p.name) + '" allow="autoplay; fullscreen" allowfullscreen loading="lazy"></iframe></div>';
+    } else if(p.hero){
+      html += '<img class="reveal-hero" src="' + p.hero + '" alt="' + esc(p.name) + '" loading="lazy">';
+    }
+    if(p.images && p.images.length){
+      html += '<div class="reveal-grid">';
+      p.images.forEach(function(src){ html += '<img src="' + src + '" alt="' + esc(p.name) + '" loading="lazy">'; });
+      html += '</div>';
+    }
+    if(p.behance){
+      html += '<a class="reveal-link" href="' + p.behance + '" target="_blank" rel="noopener">Ver projeto completo no Behance ↗</a>';
+    }
+    html += '</div>';
+    reveal.innerHTML = html;
+    reveal.classList.add('is-open');
+    var closeBtn = document.getElementById('revealClose');
+    if(closeBtn) closeBtn.addEventListener('click', closeReveal);
+    reveal.scrollIntoView({behavior:'smooth', block:'nearest'});
+  }
+  function closeReveal(){
+    reveal.classList.remove('is-open');
+    setTimeout(function(){ reveal.innerHTML = ''; }, 400);
+  }
+
+  cards.forEach(function(card){
+    var key = card.getAttribute('data-project');
+    var trigger = card.querySelector('.carousel-trigger');
+    if(trigger && key){
+      trigger.addEventListener('click', function(e){
+        e.preventDefault();
+        renderReveal(key);
+      });
+    }
+  });
 
   cards.forEach(function(card, i){
     var dot = document.createElement('button');
@@ -890,6 +962,7 @@
     dot.className = 'carousel-dot';
     dot.setAttribute('aria-label', 'Ir para o projeto ' + (i+1));
     dot.addEventListener('click', function(){
+      stopAuto();
       card.scrollIntoView({behavior:'smooth', inline:'center', block:'nearest'});
     });
     dotsWrap.appendChild(dot);
@@ -913,6 +986,7 @@
     });
     cards.forEach(function(c,i){ c.classList.toggle('is-active', i===closest); });
     dots.forEach(function(d,i){ d.classList.toggle('is-active', i===closest); });
+    return closest;
   }
 
   var ticking = false;
@@ -929,6 +1003,7 @@
     dragged = false;
     startX = e.pageX;
     startScroll = carousel.scrollLeft;
+    stopAuto();
   });
   window.addEventListener('mouseup', function(){ isDown = false; });
   carousel.addEventListener('mouseleave', function(){ isDown = false; });
@@ -942,6 +1017,8 @@
   carousel.addEventListener('click', function(e){
     if(dragged){ e.preventDefault(); e.stopPropagation(); }
   }, true);
+  carousel.addEventListener('touchstart', stopAuto, {passive:true});
+  carousel.addEventListener('wheel', stopAuto, {passive:true});
 
   window.addEventListener('resize', update);
   requestAnimationFrame(function(){
@@ -949,28 +1026,18 @@
     update();
   });
 
-  var lightbox = document.getElementById('lightbox');
-  var lightboxVideo = document.getElementById('lightboxVideo');
-  var lightboxClose = document.getElementById('lightboxClose');
-  var evandroTrigger = document.getElementById('evandroTrigger');
-  var videoEmbedSrc = 'https://www-ccv.adobe.io/v1/player/ccv/5Aq5QYP3n__/embed?api_key=behance1&bgcolor=%23191919&autoplay=true&muted=true';
-
-  function openLightbox(){
-    lightboxVideo.src = videoEmbedSrc;
-    lightbox.classList.add('is-open');
-    lightbox.setAttribute('aria-hidden','false');
-    document.body.style.overflow = 'hidden';
+  var autoTimer = null;
+  function startAuto(){
+    autoTimer = setInterval(function(){
+      var idx = update();
+      var next = (idx + 1) % cards.length;
+      cards[next].scrollIntoView({behavior:'smooth', inline:'center', block:'nearest'});
+    }, 4200);
   }
-  function closeLightbox(){
-    lightbox.classList.remove('is-open');
-    lightbox.setAttribute('aria-hidden','true');
-    lightboxVideo.src = '';
-    document.body.style.overflow = '';
+  function stopAuto(){
+    if(autoTimer){ clearInterval(autoTimer); autoTimer = null; }
   }
-  if(evandroTrigger) evandroTrigger.addEventListener('click', openLightbox);
-  if(lightboxClose) lightboxClose.addEventListener('click', closeLightbox);
-  if(lightbox) lightbox.addEventListener('click', function(e){ if(e.target === lightbox) closeLightbox(); });
-  document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeLightbox(); });
+  startAuto();
 
   var slideshow = document.getElementById('caseSlideshow');
   var caseDots = document.getElementById('caseDots');
