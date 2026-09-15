@@ -361,6 +361,10 @@
     object-fit:cover;
     display:block;
   }
+  .slideshow-slide--logo img{
+    object-fit:contain;
+    padding:8%;
+  }
   .slideshow-caption{
     position:absolute;
     left:1rem;
@@ -520,19 +524,23 @@
     cursor:pointer;
     flex:none;
   }
-  .reveal-video{width:100%;aspect-ratio:16/9;background:#000;margin-bottom:1rem;}
-  .reveal-video iframe{width:100%;height:100%;border:0;display:block;}
   .reveal-hero{width:100%;aspect-ratio:16/9;object-fit:cover;display:block;margin-bottom:1rem;background:#0d0d0c;}
   .reveal-grid{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:0.7rem;
+    column-count:3;
+    column-gap:0.7rem;
     margin-bottom:1.2rem;
   }
-  .reveal-grid img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block;background:#0d0d0c;}
+  .reveal-grid img{
+    width:100%;
+    height:auto;
+    display:block;
+    background:#0d0d0c;
+    margin-bottom:0.7rem;
+    break-inside:avoid;
+  }
   .reveal-link{color:#fff;font-size:0.85rem;text-decoration:underline;text-underline-offset:0.15em;}
   @media (max-width:640px){
-    .reveal-grid{grid-template-columns:repeat(2,1fr);}
+    .reveal-grid{column-count:2;}
   }
 
   /* ---------- CONTACT ---------- */
@@ -661,8 +669,8 @@
     <div class="case-slideshow" aria-label="Case Âmago Clothing">
       <p class="case-tag">case — Âmago Clothing: elevando o estilo e redefinindo a elegância feminina</p>
       <div class="slideshow" id="caseSlideshow">
-        <div class="slideshow-slide is-active">
-          <img src="assets/amago-case.jpg" alt="Logotipo Âmago Clothing" loading="lazy">
+        <div class="slideshow-slide slideshow-slide--logo is-active">
+          <img src="assets/amago-logo.png" alt="Logotipo Âmago Clothing" loading="lazy">
           <span class="slideshow-caption">Logo</span>
         </div>
         <div class="slideshow-slide">
@@ -731,18 +739,20 @@
           </span>
         </button>
       </li>
-      <li class="carousel-card" data-project="multiforme">
+      <li class="carousel-card" data-project="multiforme" data-video="https://www-ccv.adobe.io/v1/player/ccv/7vWfd97WMq9/embed?api_key=behance1&amp;bgcolor=%23191919&amp;autoplay=true&amp;muted=true">
         <button type="button" class="carousel-trigger" aria-label="Ver projeto Multiforme">
           <img src="assets/work/multiforme.png" alt="Multiforme - Design" loading="lazy">
+          <span class="carousel-inline-video"></span>
           <span class="carousel-overlay">
             <span class="carousel-name">Multiforme</span>
             <span class="carousel-cat">Design</span>
           </span>
         </button>
       </li>
-      <li class="carousel-card" data-project="ecos">
+      <li class="carousel-card" data-project="ecos" data-video="https://www-ccv.adobe.io/v1/player/ccv/AgsnSte_iHq/embed?api_key=behance1&amp;bgcolor=%23191919&amp;autoplay=true&amp;muted=true">
         <button type="button" class="carousel-trigger" aria-label="Ver projeto Ecos Independentes">
           <img src="assets/work/lettering-ecos.jpg" alt="Lettering Ecos Independentes" loading="lazy">
+          <span class="carousel-inline-video"></span>
           <span class="carousel-overlay">
             <span class="carousel-name">Ecos Independentes</span>
             <span class="carousel-cat">Lettering</span>
@@ -937,9 +947,7 @@
     html += '<div><p class="reveal-title">' + esc(p.name) + '</p><p class="reveal-cat">' + esc(p.cat) + '</p></div>';
     html += '<button type="button" class="reveal-close" id="revealClose" aria-label="Fechar">×</button>';
     html += '</div>';
-    if(p.video){
-      html += '<div class="reveal-video"><iframe src="' + p.video + '" title="' + esc(p.name) + '" allow="autoplay; fullscreen" allowfullscreen loading="lazy"></iframe></div>';
-    } else if(p.hero){
+    if(p.hero){
       html += '<img class="reveal-hero" src="' + p.hero + '" alt="' + esc(p.name) + '" loading="lazy">';
     }
     if(p.images && p.images.length){
