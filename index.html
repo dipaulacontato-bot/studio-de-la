@@ -336,11 +336,14 @@
   }
   .slideshow{
     position:relative;
-    width:100%;
-    max-width:26rem;
-    aspect-ratio:1/1;
+    width:100vw;
+    margin-inline:calc(50% - 50vw);
+    aspect-ratio:21/9;
     background:#0d0d0c;
     overflow:hidden;
+  }
+  @media (max-width:760px){
+    .slideshow{aspect-ratio:4/5;}
   }
   .slideshow-slide{
     position:absolute;
