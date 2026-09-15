@@ -716,7 +716,7 @@
     <ul class="carousel-track" id="workTrack">
       <li class="carousel-card" data-project="evandro" data-video="https://www-ccv.adobe.io/v1/player/ccv/5Aq5QYP3n__/embed?api_key=behance1&amp;bgcolor=%23191919&amp;autoplay=true&amp;muted=true">
         <button type="button" class="carousel-trigger" aria-label="Ver projeto Evandro Okàn">
-          <img src="assets/work/evandro-okan.jpg" alt="Evandro Okàn – Com Alma no Verbo" loading="lazy">
+          <img src="assets/work/evandro-gallery/gallery-2.jpg" alt="Evandro Okàn – Com Alma no Verbo" loading="lazy">
           <span class="carousel-inline-video"></span>
           <span class="carousel-overlay">
             <span class="carousel-name">Evandro Okàn</span>
@@ -793,7 +793,7 @@
   </div>
   <div class="carousel-dots" id="workDots"></div>
 
-  <div class="work-reveal" id="workReveal" aria-live="polite"></div>
+  <div class="work-reveal is-open" id="workReveal" aria-live="polite"></div>
 </section>
 
 <div class="img-zoom" id="imgZoom" aria-hidden="true">
@@ -951,12 +951,13 @@
 
   function esc(s){ return s.replace(/&/g,'&amp;').replace(/</g,'&lt;'); }
 
+  var revealCurrentKey = null;
   function renderReveal(key){
     var p = PROJECTS[key];
-    if(!p || !reveal) return;
+    if(!p || !reveal || key === revealCurrentKey) return;
+    revealCurrentKey = key;
     var html = '<div class="wrap"><div class="reveal-head">';
     html += '<div><p class="reveal-title">' + esc(p.name) + '</p><p class="reveal-cat">' + esc(p.cat) + '</p></div>';
-    html += '<button type="button" class="reveal-close" id="revealClose" aria-label="Fechar">×</button>';
     html += '</div>';
     if(p.hero){
       html += '<img class="reveal-hero" src="' + p.hero + '" alt="' + esc(p.name) + '" loading="lazy">';
@@ -968,14 +969,10 @@
     }
     html += '</div>';
     reveal.innerHTML = html;
-    reveal.classList.add('is-open');
-    var closeBtn = document.getElementById('revealClose');
-    if(closeBtn) closeBtn.addEventListener('click', closeReveal);
     var gridImgs = reveal.querySelectorAll('.reveal-grid img, .reveal-hero');
     Array.prototype.forEach.call(gridImgs, function(im){
       im.addEventListener('click', function(){ openImgZoom(im.src, im.alt); });
     });
-    reveal.scrollIntoView({behavior:'smooth', block:'nearest'});
   }
   var imgZoom = document.getElementById('imgZoom');
   var imgZoomPic = document.getElementById('imgZoomPic');
@@ -994,22 +991,14 @@
   if(imgZoomClose) imgZoomClose.addEventListener('click', closeImgZoom);
   if(imgZoom) imgZoom.addEventListener('click', function(e){ if(e.target === imgZoom) closeImgZoom(); });
   document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeImgZoom(); });
-  function closeReveal(){
-    reveal.classList.remove('is-open');
-    setTimeout(function(){ reveal.innerHTML = ''; }, 400);
-    startAuto();
-  }
-
   cards.forEach(function(card){
     var key = card.getAttribute('data-project');
     var trigger = card.querySelector('.carousel-trigger');
     if(trigger && key){
       trigger.addEventListener('click', function(e){
         e.preventDefault();
-        stopAuto();
         card.scrollIntoView({behavior:'smooth', inline:'center', block:'nearest'});
         update();
-        renderReveal(key);
       });
     }
   });
@@ -1045,6 +1034,8 @@
     cards.forEach(function(c,i){ c.classList.toggle('is-active', i===closest); });
     dots.forEach(function(d,i){ d.classList.toggle('is-active', i===closest); });
     syncInlineVideo(cards[closest]);
+    var activeKey = cards[closest].getAttribute('data-project');
+    if(activeKey) renderReveal(activeKey);
     return closest;
   }
 
