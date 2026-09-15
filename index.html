@@ -115,7 +115,7 @@
   }
   .eyebrow{
     margin-top:clamp(1.6rem,5vw,3rem);
-    font-size:clamp(0.8rem,1.6vw,0.95rem);
+    font-size:12px;
     letter-spacing:0.22em;
     text-transform:uppercase;
     color:var(--muted);
@@ -134,10 +134,12 @@
     from{opacity:0;transform:translateY(10px);}
     to{opacity:1;transform:translateY(0);}
   }
-  .wordmark svg{width:100%;height:auto;display:block;}
+  .wordmark svg{width:100%;height:auto;display:block;padding-top:320px;}
 
   .headline{
-    margin-top:clamp(2.5rem,7vw,4.5rem);
+    margin-top:-70px;
+    padding-top:286px;
+    margin-bottom:2px;
     display:flex;
     flex-wrap:nowrap;
     align-items:flex-start;
@@ -159,6 +161,8 @@
     margin-inline:calc(50% - 50vw);
     overflow:hidden;
     padding-block:0.85rem;
+    padding-left:320px;
+    padding-right:0px;
     margin-top:clamp(2.5rem,6vw,4rem);
   }
   .marquee-track{
@@ -566,7 +570,7 @@
   .contact-cta{
     font-family:var(--sans);
     font-weight:700;
-    font-size:clamp(2.2rem,6vw,4.6rem);
+    font-size:46px;
     line-height:1;
     letter-spacing:-0.01em;
     text-wrap:balance;
