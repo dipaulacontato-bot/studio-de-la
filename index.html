@@ -973,6 +973,9 @@
     if(trigger && key){
       trigger.addEventListener('click', function(e){
         e.preventDefault();
+        stopAuto();
+        card.scrollIntoView({behavior:'smooth', inline:'center', block:'nearest'});
+        update();
         renderReveal(key);
       });
     }
