@@ -104,8 +104,6 @@
 
   /* ---------- HERO ---------- */
   .hero{
-    min-height:100vh;
-    min-height:100svh;
     width:100vw;
     margin-inline:calc(50% - 50vw);
     padding-inline:var(--gutter);
@@ -114,9 +112,6 @@
     flex-direction:column;
     align-items:center;
     text-align:center;
-  }
-  @media (max-width:760px){
-    .hero{min-height:0;}
   }
   .eyebrow{
     margin-top:clamp(1.6rem,5vw,3rem);
@@ -336,8 +331,7 @@
   }
   .slideshow{
     position:relative;
-    width:100vw;
-    margin-inline:calc(50% - 50vw);
+    width:100%;
     aspect-ratio:21/9;
     background:#0d0d0c;
     overflow:hidden;
@@ -678,7 +672,7 @@
           <span class="slideshow-caption">Branding</span>
         </div>
         <div class="slideshow-slide">
-          <img src="assets/amago-website.jpg" alt="Site Âmago Clothing" loading="lazy">
+          <img src="assets/amago-website.jpg" alt="Site Âmago Clothing" loading="lazy" style="object-position:top">
           <span class="slideshow-caption">Site</span>
         </div>
       </div>
