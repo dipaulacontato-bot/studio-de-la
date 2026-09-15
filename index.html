@@ -353,6 +353,72 @@
     color:#fff;
   }
 
+  /* ---------- WORK ---------- */
+  .work-row{
+    display:flex;
+    gap:clamp(0.4rem,1vw,0.7rem);
+    align-items:stretch;
+  }
+  .work-card{
+    flex:1 1 0;
+    min-width:0;
+    transition:flex 0.45s cubic-bezier(.22,.68,0,1);
+  }
+  .work-card a{
+    display:flex;
+    flex-direction:column;
+    height:100%;
+    text-decoration:none;
+    color:var(--fg);
+  }
+  .work-num{
+    font-size:0.7rem;
+    color:var(--muted);
+    margin-bottom:0.6rem;
+    font-variant-numeric:tabular-nums;
+  }
+  .work-thumb{
+    display:block;
+    width:100%;
+    aspect-ratio:3/4;
+    overflow:hidden;
+    background:var(--line);
+  }
+  .work-thumb img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+    transition:transform 0.6s ease;
+  }
+  .work-info{
+    max-height:0;
+    opacity:0;
+    overflow:hidden;
+    transition:max-height 0.4s ease, opacity 0.3s ease, margin-top 0.4s ease;
+    display:flex;
+    flex-direction:column;
+    gap:0.1rem;
+  }
+  .work-name{font-weight:700;font-size:0.95rem;white-space:nowrap;}
+  .work-cat{font-size:0.8rem;color:var(--muted);white-space:nowrap;}
+  @media (hover:hover){
+    .work-card:hover{flex:2.4 1 0;}
+    .work-card:hover .work-thumb img{transform:scale(1.05);}
+    .work-card:hover .work-info{max-height:4rem;opacity:1;margin-top:0.7rem;}
+    .work-card:focus-within{flex:2.4 1 0;}
+    .work-card:focus-within .work-info{max-height:4rem;opacity:1;margin-top:0.7rem;}
+  }
+  @media (hover:none){
+    .work-row{flex-wrap:wrap;}
+    .work-card{flex:1 1 calc(50% - 0.5rem);}
+    .work-info{max-height:4rem;opacity:1;margin-top:0.7rem;}
+    .work-name{white-space:normal;}
+  }
+  @media (max-width:600px){
+    .work-card{flex-basis:100%;}
+  }
+
   /* ---------- CONTACT ---------- */
   .contact{
     display:flex;
@@ -476,6 +542,112 @@
   </div>
 </div>
 
+<section class="services" id="services">
+  <div class="wrap">
+    <p class="section-tag">serviços</p>
+    <ol class="services-list">
+      <li>
+        <span class="num">01</span>
+        <span class="service-name">Identidade Visual</span>
+        <span class="service-desc">Sistema de marca completo: símbolo, tipografia, cor e as regras que mantêm tudo coerente.</span>
+      </li>
+      <li>
+        <span class="num">02</span>
+        <span class="service-name">Branding</span>
+        <span class="service-desc">Posicionamento, tom de voz e direção estratégica para marcas que estão nascendo ou se reinventando.</span>
+      </li>
+      <li>
+        <span class="num">03</span>
+        <span class="service-name">Landing Pages</span>
+        <span class="service-desc">Páginas desenhadas para converter sem abrir mão da personalidade da marca.</span>
+      </li>
+      <li>
+        <span class="num">04</span>
+        <span class="service-name">Redes Sociais</span>
+        <span class="service-desc">Direção de arte para o dia a dia da marca, o que sustenta a identidade entre um projeto grande e outro.</span>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<section class="work" id="trabalhos">
+  <div class="wrap">
+    <p class="section-tag">trabalhos</p>
+    <ul class="work-row">
+      <li class="work-card">
+        <a href="https://www.behance.net/gallery/245210287/Evandro-Okan-Com-Alma-no-Verbo" target="_blank" rel="noopener">
+          <span class="work-num">01</span>
+          <span class="work-thumb"><img src="assets/work/evandro-okan.jpg" alt="Evandro Okàn – Com Alma no Verbo" loading="lazy"></span>
+          <span class="work-info">
+            <span class="work-name">Evandro Okàn</span>
+            <span class="work-cat">Com Alma no Verbo</span>
+          </span>
+        </a>
+      </li>
+      <li class="work-card">
+        <a href="https://www.behance.net/gallery/253997697/STEREO" target="_blank" rel="noopener">
+          <span class="work-num">02</span>
+          <span class="work-thumb"><img src="assets/work/stereo.jpg" alt="STEREO" loading="lazy"></span>
+          <span class="work-info">
+            <span class="work-name">STEREO</span>
+            <span class="work-cat">Identidade de Marca</span>
+          </span>
+        </a>
+      </li>
+      <li class="work-card">
+        <a href="https://www.behance.net/gallery/253997117/KAIN-TRACKLIST-INVERSO-VOL2" target="_blank" rel="noopener">
+          <span class="work-num">03</span>
+          <span class="work-thumb"><img src="assets/work/kain-tracklist.jpg" alt="Kain — Tracklist Inverso Vol.2" loading="lazy"></span>
+          <span class="work-info">
+            <span class="work-name">Kain</span>
+            <span class="work-cat">Tracklist Inverso Vol. 2</span>
+          </span>
+        </a>
+      </li>
+      <li class="work-card">
+        <a href="https://www.behance.net/gallery/245208685/Multiforme-Design" target="_blank" rel="noopener">
+          <span class="work-num">04</span>
+          <span class="work-thumb"><img src="assets/work/multiforme.png" alt="Multiforme - Design" loading="lazy"></span>
+          <span class="work-info">
+            <span class="work-name">Multiforme</span>
+            <span class="work-cat">Design</span>
+          </span>
+        </a>
+      </li>
+      <li class="work-card">
+        <a href="https://www.behance.net/gallery/253991417/Lettering-Ecos-Independentes" target="_blank" rel="noopener">
+          <span class="work-num">05</span>
+          <span class="work-thumb"><img src="assets/work/lettering-ecos.jpg" alt="Lettering Ecos Independentes" loading="lazy"></span>
+          <span class="work-info">
+            <span class="work-name">Ecos Independentes</span>
+            <span class="work-cat">Lettering</span>
+          </span>
+        </a>
+      </li>
+      <li class="work-card">
+        <a href="https://www.behance.net/gallery/136115143/Social-Media-Headphones-Portfolio" target="_blank" rel="noopener">
+          <span class="work-num">06</span>
+          <span class="work-thumb"><img src="assets/work/social-media-headphones.png" alt="Social Media Headphones - Portfólio" loading="lazy"></span>
+          <span class="work-info">
+            <span class="work-name">Headphones</span>
+            <span class="work-cat">Social Media</span>
+          </span>
+        </a>
+      </li>
+      <li class="work-card">
+        <a href="https://www.behance.net/gallery/143462293/Moutinho-Cardoso-Identidade-Visual" target="_blank" rel="noopener">
+          <span class="work-num">07</span>
+          <span class="work-thumb"><img src="assets/work/moutinho-cardoso.png" alt="Moutinho Cardoso - Identidade Visual" loading="lazy"></span>
+          <span class="work-info">
+            <span class="work-name">Moutinho Cardoso</span>
+            <span class="work-cat">Identidade Visual</span>
+          </span>
+        </a>
+      </li>
+    </ul>
+  </div>
+</section>
+
 <section class="about" id="about">
   <div class="wrap">
     <p class="section-tag">sobre</p>
@@ -508,34 +680,6 @@
         </div>
       </div>
     </div>
-  </div>
-</section>
-
-<section class="services" id="services">
-  <div class="wrap">
-    <p class="section-tag">serviços</p>
-    <ol class="services-list">
-      <li>
-        <span class="num">01</span>
-        <span class="service-name">Identidade Visual</span>
-        <span class="service-desc">Sistema de marca completo: símbolo, tipografia, cor e as regras que mantêm tudo coerente.</span>
-      </li>
-      <li>
-        <span class="num">02</span>
-        <span class="service-name">Branding</span>
-        <span class="service-desc">Posicionamento, tom de voz e direção estratégica para marcas que estão nascendo ou se reinventando.</span>
-      </li>
-      <li>
-        <span class="num">03</span>
-        <span class="service-name">Landing Pages</span>
-        <span class="service-desc">Páginas desenhadas para converter sem abrir mão da personalidade da marca.</span>
-      </li>
-      <li>
-        <span class="num">04</span>
-        <span class="service-name">Redes Sociais</span>
-        <span class="service-desc">Direção de arte para o dia a dia da marca, o que sustenta a identidade entre um projeto grande e outro.</span>
-      </li>
-    </ol>
   </div>
 </section>
 
