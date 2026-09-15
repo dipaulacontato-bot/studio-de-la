@@ -327,96 +327,237 @@
     line-height:1.5;
     color:#fff;
   }
-  .service-case{
-    align-self:center;
-    margin-left:auto;
-    flex:none;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    gap:0.4rem;
+  .case-tag{
+    margin-top:clamp(3rem,7vw,4.5rem);
+    margin-bottom:clamp(1.2rem,3vw,1.8rem);
+    font-family:var(--mono);
+    font-size:0.8rem;
+    color:var(--muted);
   }
-  .service-case img{
-    width:84px;
-    height:60px;
-    object-fit:cover;
-  }
-  .service-case-label{
-    font-size:0.65rem;
-    color:rgba(255,255,255,0.65);
-    white-space:nowrap;
-  }
-  @media (max-width:640px){
-    .service-case{display:none;}
-  }
-
-  /* ---------- WORK ---------- */
-  .work-row{
+  .case-row{
     display:flex;
     gap:clamp(0.4rem,1vw,0.7rem);
     align-items:stretch;
+    max-width:32rem;
   }
-  .work-card{
+  .case-card{
     flex:1 1 0;
     min-width:0;
+    cursor:default;
     transition:flex 0.45s cubic-bezier(.22,.68,0,1);
+    outline:none;
   }
-  .work-card a{
-    display:flex;
-    flex-direction:column;
-    height:100%;
-    text-decoration:none;
-    color:var(--fg);
-  }
-  .work-num{
+  .case-num{
+    display:block;
     font-size:0.7rem;
     color:var(--muted);
-    margin-bottom:0.6rem;
+    margin-bottom:0.5rem;
     font-variant-numeric:tabular-nums;
   }
-  .work-thumb{
-    display:block;
+  .case-thumb{
+    display:flex;
+    align-items:center;
+    justify-content:center;
     width:100%;
     aspect-ratio:1/1;
     overflow:hidden;
     background:#0d0d0c;
-    display:flex;
-    align-items:center;
-    justify-content:center;
   }
-  .work-thumb img{
+  .case-thumb img{
     width:100%;
     height:100%;
     object-fit:contain;
     display:block;
-    transition:transform 0.6s ease;
   }
-  .work-info{
+  .case-info{
     max-height:0;
     opacity:0;
     overflow:hidden;
     transition:max-height 0.4s ease, opacity 0.3s ease, margin-top 0.4s ease;
-    display:flex;
-    flex-direction:column;
-    gap:0.1rem;
+    display:block;
   }
-  .work-name{font-weight:700;font-size:0.95rem;white-space:nowrap;}
-  .work-cat{font-size:0.8rem;color:var(--muted);white-space:nowrap;}
+  .case-name{font-weight:700;font-size:0.9rem;white-space:nowrap;}
   @media (hover:hover){
-    .work-card:hover{flex:2.4 1 0;}
-    .work-card:hover .work-thumb img{transform:scale(1.05);}
-    .work-card:hover .work-info{max-height:4rem;opacity:1;margin-top:0.7rem;}
-    .work-card:focus-within{flex:2.4 1 0;}
-    .work-card:focus-within .work-info{max-height:4rem;opacity:1;margin-top:0.7rem;}
+    .case-card:hover, .case-card:focus{flex:2.2 1 0;}
+    .case-card:hover .case-info, .case-card:focus .case-info{max-height:3rem;opacity:1;margin-top:0.6rem;}
   }
   @media (hover:none){
-    .work-row{flex-wrap:wrap;}
-    .work-card{flex:1 1 calc(50% - 0.5rem);}
-    .work-info{max-height:4rem;opacity:1;margin-top:0.7rem;}
-    .work-name{white-space:normal;}
+    .case-info{max-height:3rem;opacity:1;margin-top:0.6rem;}
   }
-  @media (max-width:600px){
-    .work-card{flex-basis:100%;}
+
+  /* ---------- WORK (carousel) ---------- */
+  .carousel{
+    width:100vw;
+    margin-inline:calc(50% - 50vw);
+    overflow-x:auto;
+    overflow-y:hidden;
+    scroll-snap-type:x mandatory;
+    -webkit-overflow-scrolling:touch;
+    scrollbar-width:none;
+    padding-block:clamp(1.5rem,4vw,2.5rem);
+    cursor:grab;
+    user-select:none;
+  }
+  .carousel::-webkit-scrollbar{display:none;}
+  .carousel:active{cursor:grabbing;}
+  .carousel-track{
+    display:flex;
+    align-items:center;
+    gap:clamp(0.9rem,2vw,1.6rem);
+    padding-inline:calc(50vw - clamp(90px,11vw,130px));
+    list-style:none;
+    margin:0;
+  }
+  .carousel-card{
+    flex:none;
+    width:clamp(180px,22vw,260px);
+    aspect-ratio:4/5;
+    scroll-snap-align:center;
+    position:relative;
+    transition:transform 0.35s ease, opacity 0.35s ease;
+    transform:scale(0.85);
+    opacity:0.55;
+  }
+  .carousel-card a{
+    display:block;
+    width:100%;
+    height:100%;
+    position:relative;
+    overflow:hidden;
+    background:#0d0d0c;
+    text-decoration:none;
+  }
+  .carousel-card img{
+    width:100%;
+    height:100%;
+    object-fit:contain;
+    display:block;
+    pointer-events:none;
+  }
+  .carousel-overlay{
+    position:absolute;
+    left:0;
+    right:0;
+    bottom:0;
+    padding:1.1rem 1rem 0.9rem;
+    background:linear-gradient(to top, rgba(0,0,0,0.85), rgba(0,0,0,0));
+    display:flex;
+    flex-direction:column;
+    gap:0.15rem;
+    opacity:0;
+    transition:opacity 0.3s ease;
+    pointer-events:none;
+  }
+  .carousel-card.is-active .carousel-overlay{opacity:1;}
+  .carousel-name{font-weight:700;color:#fff;font-size:0.95rem;}
+  .carousel-cat{color:rgba(255,255,255,0.75);font-size:0.78rem;}
+  .carousel-dots{
+    display:flex;
+    justify-content:center;
+    gap:0.5rem;
+    margin-top:0.5rem;
+  }
+  .carousel-dot{
+    width:7px;
+    height:7px;
+    border-radius:50%;
+    background:var(--line);
+    border:none;
+    padding:0;
+    cursor:pointer;
+  }
+  .carousel-dot.is-active{background:var(--accent);}
+
+  .carousel-card--video{
+    width:clamp(220px,30vw,340px);
+    aspect-ratio:16/9;
+  }
+  .carousel-media{
+    display:block;
+    width:100%;
+    height:100%;
+    padding:0;
+    border:0;
+    background:#0d0d0c;
+    cursor:pointer;
+    position:relative;
+  }
+  .carousel-media img{width:100%;height:100%;object-fit:cover;pointer-events:none;}
+  .carousel-media::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    margin:auto;
+    width:44px;
+    height:44px;
+    border-radius:50%;
+    background:rgba(4,4,3,0.55) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='white' d='M8 5v14l11-7z'/%3E%3C/svg%3E") center/16px no-repeat;
+    opacity:0.9;
+  }
+  .carousel-card--video.is-active{
+    transform:scale(1.32) !important;
+    opacity:1 !important;
+    z-index:2;
+  }
+
+  /* ---------- LIGHTBOX ---------- */
+  .lightbox{
+    position:fixed;
+    inset:0;
+    z-index:200;
+    display:flex;
+    background:rgba(4,4,3,0.94);
+    opacity:0;
+    pointer-events:none;
+    transition:opacity 0.3s ease;
+    padding:clamp(1rem,4vw,3rem);
+    overflow-y:auto;
+  }
+  .lightbox.is-open{opacity:1;pointer-events:auto;}
+  .lightbox-inner{
+    max-width:960px;
+    width:100%;
+    display:flex;
+    flex-direction:column;
+    gap:1.2rem;
+    margin-block:auto;
+  }
+  .lightbox-close{
+    position:fixed;
+    top:clamp(1rem,3vw,1.5rem);
+    right:clamp(1rem,3vw,1.5rem);
+    background:none;
+    border:1px solid var(--line);
+    color:#fff;
+    width:40px;
+    height:40px;
+    border-radius:50%;
+    font-size:1.3rem;
+    line-height:1;
+    cursor:pointer;
+    z-index:5;
+  }
+  .lightbox-video{
+    width:100%;
+    aspect-ratio:16/9;
+    background:#000;
+  }
+  .lightbox-video iframe{width:100%;height:100%;border:0;display:block;}
+  .lightbox-gallery{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:0.6rem;
+  }
+  .lightbox-gallery img{width:100%;aspect-ratio:16/10;object-fit:cover;display:block;}
+  .lightbox-behance{
+    align-self:flex-start;
+    color:#fff;
+    font-size:0.85rem;
+    text-decoration:underline;
+    text-underline-offset:0.15em;
+  }
+  @media (max-width:640px){
+    .lightbox-gallery{grid-template-columns:repeat(2,1fr);}
   }
 
   /* ---------- CONTACT ---------- */
@@ -546,10 +687,6 @@
         <span class="num">01</span>
         <span class="service-name">Identidade Visual</span>
         <span class="service-desc">Sistema de marca completo: símbolo, tipografia, cor e as regras que mantêm tudo coerente.</span>
-        <span class="service-case">
-          <img src="assets/amago-case.jpg" alt="Identidade visual da marca Âmago Clothing" loading="lazy">
-          <span class="service-case-label">Âmago Clothing</span>
-        </span>
       </li>
       <li>
         <span class="num">02</span>
@@ -561,102 +698,135 @@
         <span class="service-name">Landing Pages</span>
         <span class="service-desc">Páginas desenhadas para converter sem abrir mão da personalidade da marca.</span>
       </li>
-      <li>
-        <span class="num">04</span>
-        <span class="service-name">Redes Sociais</span>
-        <span class="service-desc">Direção de arte para o dia a dia da marca, o que sustenta a identidade entre um projeto grande e outro.</span>
-      </li>
     </ol>
+
+    <p class="case-tag">case — Âmago Clothing: elevando o estilo e redefinindo a elegância feminina</p>
+    <ul class="case-row">
+      <li class="case-card" tabindex="0">
+        <span class="case-num">1</span>
+        <span class="case-thumb"><img src="assets/amago-case.jpg" alt="Logotipo Âmago Clothing" loading="lazy"></span>
+        <span class="case-info">
+          <span class="case-name">Logo</span>
+        </span>
+      </li>
+      <li class="case-card" tabindex="0">
+        <span class="case-num">2</span>
+        <span class="case-thumb"><img src="assets/amago-magazine.jpg" alt="Revista Âmago Style" loading="lazy"></span>
+        <span class="case-info">
+          <span class="case-name">Branding</span>
+        </span>
+      </li>
+      <li class="case-card" tabindex="0">
+        <span class="case-num">3</span>
+        <span class="case-thumb"><img src="assets/amago-website.jpg" alt="Site Âmago Clothing" loading="lazy"></span>
+        <span class="case-info">
+          <span class="case-name">Site</span>
+        </span>
+      </li>
+    </ul>
   </div>
 </section>
 
 <section class="work" id="trabalhos">
   <div class="wrap">
     <p class="section-tag">trabalhos</p>
-    <ul class="work-row">
-      <li class="work-card">
-        <a href="https://www.behance.net/gallery/245210287/Evandro-Okan-Com-Alma-no-Verbo" target="_blank" rel="noopener">
-          <span class="work-num">01</span>
-          <span class="work-thumb"><img src="assets/work/evandro-okan.jpg" alt="Evandro Okàn – Com Alma no Verbo" loading="lazy"></span>
-          <span class="work-info">
-            <span class="work-name">Evandro Okàn</span>
-            <span class="work-cat">Com Alma no Verbo</span>
-          </span>
-        </a>
+  </div>
+  <div class="carousel" id="workCarousel">
+    <ul class="carousel-track" id="workTrack">
+      <li class="carousel-card carousel-card--video">
+        <button type="button" class="carousel-media" id="evandroTrigger" aria-label="Assistir Evandro Okàn – Com Alma no Verbo">
+          <img src="assets/work/evandro-okan.jpg" alt="Evandro Okàn – Com Alma no Verbo" loading="lazy">
+        </button>
+        <span class="carousel-overlay">
+          <span class="carousel-name">Evandro Okàn</span>
+          <span class="carousel-cat">Com Alma no Verbo</span>
+        </span>
       </li>
-      <li class="work-card">
+      <li class="carousel-card">
         <a href="https://www.behance.net/gallery/253997697/STEREO" target="_blank" rel="noopener">
-          <span class="work-num">02</span>
-          <span class="work-thumb"><img src="assets/work/stereo.jpg" alt="STEREO" loading="lazy"></span>
-          <span class="work-info">
-            <span class="work-name">STEREO</span>
-            <span class="work-cat">Identidade de Marca</span>
+          <img src="assets/work/stereo.jpg" alt="STEREO" loading="lazy">
+          <span class="carousel-overlay">
+            <span class="carousel-name">STEREO</span>
+            <span class="carousel-cat">Identidade de Marca</span>
           </span>
         </a>
       </li>
-      <li class="work-card">
+      <li class="carousel-card">
         <a href="https://www.behance.net/gallery/253997117/KAIN-TRACKLIST-INVERSO-VOL2" target="_blank" rel="noopener">
-          <span class="work-num">03</span>
-          <span class="work-thumb"><img src="assets/work/kain-tracklist.jpg" alt="Kain — Tracklist Inverso Vol.2" loading="lazy"></span>
-          <span class="work-info">
-            <span class="work-name">Kain</span>
-            <span class="work-cat">Tracklist Inverso Vol. 2</span>
+          <img src="assets/work/kain-tracklist.jpg" alt="Kain — Tracklist Inverso Vol.2" loading="lazy">
+          <span class="carousel-overlay">
+            <span class="carousel-name">Kain</span>
+            <span class="carousel-cat">Tracklist Inverso Vol. 2</span>
           </span>
         </a>
       </li>
-      <li class="work-card">
+      <li class="carousel-card">
         <a href="https://www.behance.net/gallery/245208685/Multiforme-Design" target="_blank" rel="noopener">
-          <span class="work-num">04</span>
-          <span class="work-thumb"><img src="assets/work/multiforme.png" alt="Multiforme - Design" loading="lazy"></span>
-          <span class="work-info">
-            <span class="work-name">Multiforme</span>
-            <span class="work-cat">Design</span>
+          <img src="assets/work/multiforme.png" alt="Multiforme - Design" loading="lazy">
+          <span class="carousel-overlay">
+            <span class="carousel-name">Multiforme</span>
+            <span class="carousel-cat">Design</span>
           </span>
         </a>
       </li>
-      <li class="work-card">
+      <li class="carousel-card">
         <a href="https://www.behance.net/gallery/253991417/Lettering-Ecos-Independentes" target="_blank" rel="noopener">
-          <span class="work-num">05</span>
-          <span class="work-thumb"><img src="assets/work/lettering-ecos.jpg" alt="Lettering Ecos Independentes" loading="lazy"></span>
-          <span class="work-info">
-            <span class="work-name">Ecos Independentes</span>
-            <span class="work-cat">Lettering</span>
+          <img src="assets/work/lettering-ecos.jpg" alt="Lettering Ecos Independentes" loading="lazy">
+          <span class="carousel-overlay">
+            <span class="carousel-name">Ecos Independentes</span>
+            <span class="carousel-cat">Lettering</span>
           </span>
         </a>
       </li>
-      <li class="work-card">
+      <li class="carousel-card">
         <a href="https://www.behance.net/gallery/136115143/Social-Media-Headphones-Portfolio" target="_blank" rel="noopener">
-          <span class="work-num">06</span>
-          <span class="work-thumb"><img src="assets/work/social-media-headphones.png" alt="Social Media Headphones - Portfólio" loading="lazy"></span>
-          <span class="work-info">
-            <span class="work-name">Headphones</span>
-            <span class="work-cat">Social Media</span>
+          <img src="assets/work/social-media-headphones.png" alt="Social Media Headphones - Portfólio" loading="lazy">
+          <span class="carousel-overlay">
+            <span class="carousel-name">Headphones</span>
+            <span class="carousel-cat">Social Media</span>
           </span>
         </a>
       </li>
-      <li class="work-card">
+      <li class="carousel-card">
         <a href="https://www.behance.net/gallery/143462293/Moutinho-Cardoso-Identidade-Visual" target="_blank" rel="noopener">
-          <span class="work-num">07</span>
-          <span class="work-thumb"><img src="assets/work/moutinho-cardoso.png" alt="Moutinho Cardoso - Identidade Visual" loading="lazy"></span>
-          <span class="work-info">
-            <span class="work-name">Moutinho Cardoso</span>
-            <span class="work-cat">Identidade Visual</span>
+          <img src="assets/work/moutinho-cardoso.png" alt="Moutinho Cardoso - Identidade Visual" loading="lazy">
+          <span class="carousel-overlay">
+            <span class="carousel-name">Moutinho Cardoso</span>
+            <span class="carousel-cat">Identidade Visual</span>
           </span>
         </a>
       </li>
-      <li class="work-card">
+      <li class="carousel-card">
         <a href="#services">
-          <span class="work-num">08</span>
-          <span class="work-thumb"><img src="assets/amago-case.jpg" alt="Âmago Clothing - Identidade Visual" loading="lazy"></span>
-          <span class="work-info">
-            <span class="work-name">Âmago Clothing</span>
-            <span class="work-cat">Identidade Visual</span>
+          <img src="assets/amago-case.jpg" alt="Âmago Clothing - Identidade Visual" loading="lazy">
+          <span class="carousel-overlay">
+            <span class="carousel-name">Âmago Clothing</span>
+            <span class="carousel-cat">Identidade Visual</span>
           </span>
         </a>
       </li>
     </ul>
   </div>
+  <div class="carousel-dots" id="workDots"></div>
 </section>
+
+<div class="lightbox" id="lightbox" aria-hidden="true">
+  <button type="button" class="lightbox-close" id="lightboxClose" aria-label="Fechar">×</button>
+  <div class="lightbox-inner">
+    <div class="lightbox-video">
+      <iframe id="lightboxVideo" src="" title="Evandro Okàn – Com Alma no Verbo" allow="autoplay; fullscreen" allowfullscreen loading="lazy"></iframe>
+    </div>
+    <div class="lightbox-gallery">
+      <img src="assets/work/evandro-gallery/gallery-1.jpg" alt="Evandro Okàn – still 1" loading="lazy">
+      <img src="assets/work/evandro-gallery/gallery-2.jpg" alt="Evandro Okàn – still 2" loading="lazy">
+      <img src="assets/work/evandro-gallery/gallery-3.jpg" alt="Evandro Okàn – still 3" loading="lazy">
+      <img src="assets/work/evandro-gallery/gallery-4.jpg" alt="Evandro Okàn – still 4" loading="lazy">
+      <img src="assets/work/evandro-gallery/gallery-5.jpg" alt="Evandro Okàn – still 5" loading="lazy">
+      <img src="assets/work/evandro-gallery/gallery-6.jpg" alt="Evandro Okàn – still 6" loading="lazy">
+    </div>
+    <a class="lightbox-behance" href="https://www.behance.net/gallery/245210287/Evandro-Okan-Com-Alma-no-Verbo" target="_blank" rel="noopener">Ver projeto completo no Behance ↗</a>
+  </div>
+</div>
 
 <section class="about" id="about">
   <div class="wrap">
@@ -713,3 +883,101 @@
     <a href="#top">Voltar ao topo</a>
   </div>
 </footer>
+
+<script>
+(function(){
+  var carousel = document.getElementById('workCarousel');
+  var track = document.getElementById('workTrack');
+  var dotsWrap = document.getElementById('workDots');
+  if(!carousel || !track) return;
+  var cards = Array.prototype.slice.call(track.children);
+
+  cards.forEach(function(card, i){
+    var dot = document.createElement('button');
+    dot.type = 'button';
+    dot.className = 'carousel-dot';
+    dot.setAttribute('aria-label', 'Ir para o projeto ' + (i+1));
+    dot.addEventListener('click', function(){
+      card.scrollIntoView({behavior:'smooth', inline:'center', block:'nearest'});
+    });
+    dotsWrap.appendChild(dot);
+  });
+  var dots = Array.prototype.slice.call(dotsWrap.children);
+
+  function update(){
+    var rect = carousel.getBoundingClientRect();
+    var center = rect.left + rect.width/2;
+    var closest = 0, closestDist = Infinity;
+    cards.forEach(function(card, i){
+      var cRect = card.getBoundingClientRect();
+      var cCenter = cRect.left + cRect.width/2;
+      var dist = Math.abs(cCenter - center);
+      var norm = Math.min(dist / (rect.width/2), 1);
+      var scale = 1.08 - norm*0.28;
+      var opacity = 1 - norm*0.55;
+      card.style.transform = 'scale(' + scale.toFixed(3) + ')';
+      card.style.opacity = opacity.toFixed(3);
+      if(dist < closestDist){ closestDist = dist; closest = i; }
+    });
+    cards.forEach(function(c,i){ c.classList.toggle('is-active', i===closest); });
+    dots.forEach(function(d,i){ d.classList.toggle('is-active', i===closest); });
+  }
+
+  var ticking = false;
+  carousel.addEventListener('scroll', function(){
+    if(!ticking){
+      requestAnimationFrame(function(){ update(); ticking = false; });
+      ticking = true;
+    }
+  }, {passive:true});
+
+  var isDown = false, startX, startScroll, dragged;
+  carousel.addEventListener('mousedown', function(e){
+    isDown = true;
+    dragged = false;
+    startX = e.pageX;
+    startScroll = carousel.scrollLeft;
+  });
+  window.addEventListener('mouseup', function(){ isDown = false; });
+  carousel.addEventListener('mouseleave', function(){ isDown = false; });
+  carousel.addEventListener('mousemove', function(e){
+    if(!isDown) return;
+    e.preventDefault();
+    var dx = e.pageX - startX;
+    if(Math.abs(dx) > 4) dragged = true;
+    carousel.scrollLeft = startScroll - dx;
+  });
+  carousel.addEventListener('click', function(e){
+    if(dragged){ e.preventDefault(); e.stopPropagation(); }
+  }, true);
+
+  window.addEventListener('resize', update);
+  requestAnimationFrame(function(){
+    cards[0].scrollIntoView({inline:'center', block:'nearest'});
+    update();
+  });
+
+  var lightbox = document.getElementById('lightbox');
+  var lightboxVideo = document.getElementById('lightboxVideo');
+  var lightboxClose = document.getElementById('lightboxClose');
+  var evandroTrigger = document.getElementById('evandroTrigger');
+  var videoEmbedSrc = 'https://www-ccv.adobe.io/v1/player/ccv/5Aq5QYP3n__/embed?api_key=behance1&bgcolor=%23191919&autoplay=true&muted=true';
+
+  function openLightbox(){
+    lightboxVideo.src = videoEmbedSrc;
+    lightbox.classList.add('is-open');
+    lightbox.setAttribute('aria-hidden','false');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeLightbox(){
+    lightbox.classList.remove('is-open');
+    lightbox.setAttribute('aria-hidden','true');
+    lightboxVideo.src = '';
+    document.body.style.overflow = '';
+  }
+  if(evandroTrigger) evandroTrigger.addEventListener('click', openLightbox);
+  if(lightboxClose) lightboxClose.addEventListener('click', closeLightbox);
+  if(lightbox) lightbox.addEventListener('click', function(e){ if(e.target === lightbox) closeLightbox(); });
+  document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeLightbox(); });
+})();
+</script>
