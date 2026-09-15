@@ -2,7 +2,7 @@
 <title>Studio de Lá</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
   :root{
     --bg:#040403;
@@ -17,9 +17,11 @@
     --line-on-raise:rgba(4,4,3,0.14);
 
     --sans:'Archivo', 'Helvetica Neue', Arial, sans-serif;
+    --mono:'Space Mono', 'SFMono-Regular', Consolas, monospace;
 
     --gutter:clamp(20px, 5vw, 64px);
     --max:1180px;
+    --topbar-h:44px;
   }
 
   *{box-sizing:border-box;}
@@ -31,6 +33,7 @@
     font-family:var(--sans);
     -webkit-font-smoothing:antialiased;
     padding-inline:var(--gutter);
+    padding-top:var(--topbar-h);
     overflow-x:hidden;
   }
   img,svg{max-width:100%;display:block;}
@@ -39,6 +42,54 @@
   ul,ol{padding:0;list-style:none;}
 
   .wrap{max-width:var(--max);margin-inline:auto;}
+
+  /* ---------- TOPBAR ---------- */
+  .topbar{
+    position:fixed;
+    top:0;
+    left:0;
+    right:0;
+    z-index:50;
+    height:var(--topbar-h);
+    display:flex;
+    align-items:center;
+    gap:clamp(1.5rem,4vw,3rem);
+    padding-inline:var(--gutter);
+    background:rgba(4,4,3,0.92);
+    -webkit-backdrop-filter:blur(6px);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line-on-raise);
+    font-family:var(--mono);
+    font-size:0.7rem;
+    letter-spacing:0.02em;
+  }
+  .topbar-col{
+    display:flex;
+    align-items:baseline;
+    gap:0.6rem;
+    min-width:0;
+  }
+  .topbar-col-end{margin-left:auto;}
+  .topbar-name{font-weight:700;color:var(--fg);white-space:nowrap;}
+  .topbar-label{color:var(--muted);white-space:nowrap;}
+  .topbar-value{
+    color:var(--fg);
+    text-decoration:none;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+  }
+  .topbar-value:hover{text-decoration:underline;text-underline-offset:0.15em;}
+  .topbar-cta{
+    color:var(--fg);
+    font-weight:700;
+    text-decoration:none;
+    white-space:nowrap;
+  }
+  .topbar-cta:hover{text-decoration:underline;text-underline-offset:0.15em;}
+  @media (max-width:760px){
+    .topbar-col-mid{display:none;}
+  }
 
   .section-tag{
     font-family:var(--sans);
@@ -65,19 +116,6 @@
     text-align:center;
     background-color:#003da0;
     color:#003da0;
-  }
-  .hero-top{
-    width:100%;
-    max-width:var(--max);
-    display:flex;
-    justify-content:flex-start;
-    flex:none;
-  }
-  .tag{
-    font-size:0.62rem;
-    letter-spacing:0.22em;
-    text-transform:uppercase;
-    color:var(--muted);
   }
   .eyebrow{
     margin-top:clamp(1.6rem,5vw,3rem);
@@ -224,7 +262,7 @@
   .about-photo{
     position:relative;
     width:100%;
-    aspect-ratio:3173/4766;
+    aspect-ratio:4/5;
     overflow:hidden;
     background:var(--line);
   }
@@ -232,6 +270,7 @@
     width:100%;
     height:100%;
     object-fit:cover;
+    object-position:50% 22%;
     display:block;
   }
   .about-photo-caption{
@@ -378,10 +417,23 @@
 
 <a id="top"></a>
 
-<header class="hero">
-  <div class="hero-top wrap">
-    <span class="tag">Studio de Lá</span>
+<div class="topbar">
+  <div class="topbar-col">
+    <span class="topbar-name">Studio de Lá</span>
   </div>
+  <div class="topbar-col topbar-col-mid">
+    <span class="topbar-label">Estúdio Remoto</span>
+  </div>
+  <div class="topbar-col topbar-col-mid">
+    <span class="topbar-label">Contato</span>
+    <a class="topbar-value" href="mailto:dipaulacontato@hotmail.com">dipaulacontato@hotmail.com</a>
+  </div>
+  <div class="topbar-col topbar-col-end">
+    <a class="topbar-cta" href="https://wa.me/5511910892122" target="_blank" rel="noopener">Contato</a>
+  </div>
+</div>
+
+<header class="hero">
   <p class="eyebrow">Di Paula Designer</p>
   <p class="wordmark" role="img" aria-label="Studio de Lá">
     <svg viewBox="0 0 695.87 134.05" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" fill="currentColor">
@@ -423,7 +475,7 @@
     <div class="about-grid">
       <figure class="about-photo-wrap">
         <div class="about-photo">
-          <img src="assets/founder.webp" alt="Retrato de Leví de Paula">
+          <img src="assets/founder.jpg" alt="Retrato de Leví de Paula">
         </div>
         <figcaption class="about-photo-caption">
           <span class="about-photo-name">
