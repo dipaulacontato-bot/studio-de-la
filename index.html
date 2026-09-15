@@ -58,7 +58,7 @@
     background:rgba(4,4,3,0.92);
     -webkit-backdrop-filter:blur(6px);
     backdrop-filter:blur(6px);
-    border-bottom:1px solid var(--line-on-raise);
+    border-bottom:1px solid var(--line);
     font-family:var(--mono);
     font-size:0.7rem;
     letter-spacing:0.02em;
@@ -69,7 +69,7 @@
     gap:0.6rem;
     min-width:0;
   }
-  .topbar-col-end{margin-left:auto;}
+  .topbar-col-end{margin-left:auto;gap:clamp(1.2rem,3vw,2rem);}
   .topbar-name{font-weight:700;color:var(--fg);white-space:nowrap;}
   .topbar-label{color:var(--muted);white-space:nowrap;}
   .topbar-value{
@@ -114,8 +114,6 @@
     flex-direction:column;
     align-items:center;
     text-align:center;
-    background-color:#003da0;
-    color:#003da0;
   }
   @media (max-width:760px){
     .hero{min-height:0;}
@@ -200,7 +198,6 @@
 
   /* ---------- ABOUT ---------- */
   .about{
-    background-color:#003da0;
     width:100vw;
     margin-inline:calc(50% - 50vw);
     padding-inline:var(--gutter);
@@ -318,10 +315,8 @@
     letter-spacing:0.02em;
   }
 
-  /* ---------- SERVICES (inverted) ---------- */
+  /* ---------- SERVICES ---------- */
   .services{
-    background:#003da0;
-    color:var(--fg-on-raise);
     margin-inline:calc(-1 * var(--gutter));
     padding-inline:var(--gutter);
   }
@@ -330,9 +325,9 @@
     align-items:baseline;
     gap:clamp(1rem,3vw,2.4rem);
     padding-block:clamp(1.2rem,2.6vw,1.8rem);
-    border-top:1px solid var(--line-on-raise);
+    border-top:1px solid var(--line);
   }
-  .services-list li:last-child{border-bottom:1px solid var(--line-on-raise);}
+  .services-list li:last-child{border-bottom:1px solid var(--line);}
   .services-list .num{
     font-variant-numeric:tabular-nums;
     font-size:0.85rem;
@@ -404,12 +399,15 @@
     width:100%;
     aspect-ratio:3/4;
     overflow:hidden;
-    background:var(--line);
+    background:#0d0d0c;
+    display:flex;
+    align-items:center;
+    justify-content:center;
   }
   .work-thumb img{
     width:100%;
     height:100%;
-    object-fit:cover;
+    object-fit:contain;
     display:block;
     transition:transform 0.6s ease;
   }
@@ -518,10 +516,6 @@
   </div>
   <div class="topbar-col topbar-col-mid">
     <span class="topbar-label">Estúdio Remoto</span>
-  </div>
-  <div class="topbar-col topbar-col-mid">
-    <span class="topbar-label">Contato</span>
-    <a class="topbar-value" href="mailto:dipaulacontato@hotmail.com">dipaulacontato@hotmail.com</a>
   </div>
   <div class="topbar-col topbar-col-end">
     <a class="topbar-value" href="https://www.instagram.com/studio.de.la/" target="_blank" rel="noopener">Instagram</a>
@@ -666,6 +660,16 @@
           <span class="work-thumb"><img src="assets/work/moutinho-cardoso.png" alt="Moutinho Cardoso - Identidade Visual" loading="lazy"></span>
           <span class="work-info">
             <span class="work-name">Moutinho Cardoso</span>
+            <span class="work-cat">Identidade Visual</span>
+          </span>
+        </a>
+      </li>
+      <li class="work-card">
+        <a href="#services">
+          <span class="work-num">08</span>
+          <span class="work-thumb"><img src="assets/amago-case.jpg" alt="Âmago Clothing - Identidade Visual" loading="lazy"></span>
+          <span class="work-info">
+            <span class="work-name">Âmago Clothing</span>
             <span class="work-cat">Identidade Visual</span>
           </span>
         </a>
