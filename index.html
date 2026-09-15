@@ -352,6 +352,28 @@
     line-height:1.5;
     color:#fff;
   }
+  .service-case{
+    align-self:center;
+    margin-left:auto;
+    flex:none;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:0.4rem;
+  }
+  .service-case img{
+    width:84px;
+    height:60px;
+    object-fit:cover;
+  }
+  .service-case-label{
+    font-size:0.65rem;
+    color:rgba(255,255,255,0.65);
+    white-space:nowrap;
+  }
+  @media (max-width:640px){
+    .service-case{display:none;}
+  }
 
   /* ---------- WORK ---------- */
   .work-row{
@@ -550,6 +572,10 @@
         <span class="num">01</span>
         <span class="service-name">Identidade Visual</span>
         <span class="service-desc">Sistema de marca completo: símbolo, tipografia, cor e as regras que mantêm tudo coerente.</span>
+        <span class="service-case">
+          <img src="assets/amago-case.jpg" alt="Identidade visual da marca Âmago Clothing" loading="lazy">
+          <span class="service-case-label">Âmago Clothing</span>
+        </span>
       </li>
       <li>
         <span class="num">02</span>
