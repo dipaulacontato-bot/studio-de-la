@@ -297,12 +297,31 @@
   }
   .services-list li{
     display:flex;
-    align-items:baseline;
+    align-items:center;
     gap:clamp(1rem,3vw,2.4rem);
     padding-block:clamp(1.2rem,2.6vw,1.8rem);
     border-top:1px solid var(--line);
+    cursor:pointer;
   }
   .services-list li:last-child{border-bottom:1px solid var(--line);}
+  .service-thumb{
+    flex:0 0 auto;
+    width:0;
+    aspect-ratio:4/5;
+    overflow:hidden;
+    opacity:0;
+    background:#0d0d0c;
+    transition:width 0.6s cubic-bezier(.22,.68,0,1), opacity 0.4s ease;
+  }
+  .services-list li.is-active .service-thumb{
+    width:clamp(90px,12vw,160px);
+    opacity:1;
+  }
+  .service-thumb img{width:100%;height:100%;object-fit:cover;display:block;}
+  .service-thumb--logo img{object-fit:contain;padding:10%;}
+  @media (max-width:640px){
+    .services-list li.is-active .service-thumb{width:76px;}
+  }
   .services-list .num{
     font-variant-numeric:tabular-nums;
     font-size:0.85rem;
@@ -321,69 +340,15 @@
     font-size:0.95rem;
     line-height:1.5;
     color:#fff;
+    opacity:0;
+    transition:opacity 0.4s ease;
   }
-  .case-slideshow{margin-bottom:clamp(3rem,7vw,4.5rem);}
+  .services-list li.is-active .service-desc{opacity:1;}
   .case-tag{
     margin-bottom:clamp(1.2rem,3vw,1.8rem);
     font-family:var(--mono);
     font-size:0.8rem;
     color:var(--muted);
-  }
-  .case-steps{
-    display:flex;
-    align-items:flex-end;
-    gap:clamp(0.7rem,1.6vw,1.2rem);
-  }
-  .case-step{
-    flex:0 0 auto;
-    width:clamp(64px,7vw,92px);
-    cursor:pointer;
-    transition:width 0.6s cubic-bezier(.22,.68,0,1);
-  }
-  .case-step.is-active{
-    width:clamp(280px,36vw,480px);
-  }
-  .case-step-num{
-    display:block;
-    font-size:0.7rem;
-    color:var(--muted);
-    margin-bottom:0.5rem;
-    font-variant-numeric:tabular-nums;
-  }
-  .case-step-thumb{
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    width:100%;
-    aspect-ratio:4/5;
-    overflow:hidden;
-    background:#0d0d0c;
-  }
-  .case-step-thumb img{
-    width:100%;
-    height:100%;
-    object-fit:cover;
-    display:block;
-  }
-  .case-step-thumb--logo img{
-    object-fit:contain;
-    padding:10%;
-  }
-  .case-step-info{
-    max-height:0;
-    opacity:0;
-    overflow:hidden;
-    transition:max-height 0.4s ease, opacity 0.3s ease, margin-top 0.4s ease;
-  }
-  .case-step.is-active .case-step-info{
-    max-height:3rem;
-    opacity:1;
-    margin-top:0.6rem;
-  }
-  .case-step-name{font-weight:700;font-size:1rem;}
-  @media (max-width:640px){
-    .case-step{width:52px;}
-    .case-step.is-active{width:min(70vw,340px);}
   }
 
   /* ---------- WORK (carousel) ---------- */
@@ -664,39 +629,23 @@
   <div class="wrap">
     <p class="section-tag">serviços</p>
 
-    <div class="case-slideshow" aria-label="Case Âmago Clothing">
-      <p class="case-tag">case — Âmago Clothing: elevando o estilo e redefinindo a elegância feminina</p>
-      <ul class="case-steps" id="caseSteps">
-        <li class="case-step is-active">
-          <span class="case-step-num">1</span>
-          <span class="case-step-thumb case-step-thumb--logo"><img src="assets/amago-logo.png" alt="Logotipo Âmago Clothing" loading="lazy"></span>
-          <span class="case-step-info"><span class="case-step-name">Logo</span></span>
-        </li>
-        <li class="case-step">
-          <span class="case-step-num">2</span>
-          <span class="case-step-thumb"><img src="assets/amago-magazine.jpg" alt="Revista Âmago Style" loading="lazy"></span>
-          <span class="case-step-info"><span class="case-step-name">Branding</span></span>
-        </li>
-        <li class="case-step">
-          <span class="case-step-num">3</span>
-          <span class="case-step-thumb"><img src="assets/amago-website.jpg" alt="Site Âmago Clothing" loading="lazy" style="object-position:top"></span>
-          <span class="case-step-info"><span class="case-step-name">Site</span></span>
-        </li>
-      </ul>
-    </div>
+    <p class="case-tag">case — Âmago Clothing: elevando o estilo e redefinindo a elegância feminina</p>
 
-    <ol class="services-list">
-      <li>
+    <ol class="services-list" id="servicesList">
+      <li class="is-active">
+        <span class="service-thumb service-thumb--logo"><img src="assets/amago-logo.png" alt="Logotipo Âmago Clothing" loading="lazy"></span>
         <span class="num">01</span>
         <span class="service-name">Identidade Visual</span>
         <span class="service-desc">Sistema de marca completo: símbolo, tipografia, cor e as regras que mantêm tudo coerente.</span>
       </li>
       <li>
+        <span class="service-thumb"><img src="assets/amago-magazine.jpg" alt="Revista Âmago Style" loading="lazy"></span>
         <span class="num">02</span>
         <span class="service-name">Branding</span>
         <span class="service-desc">Posicionamento, tom de voz e direção estratégica para marcas que estão nascendo ou se reinventando.</span>
       </li>
       <li>
+        <span class="service-thumb"><img src="assets/amago-website.jpg" alt="Site Âmago Clothing" loading="lazy" style="object-position:top"></span>
         <span class="num">03</span>
         <span class="service-name">Landing Pages</span>
         <span class="service-desc">Páginas desenhadas para converter sem abrir mão da personalidade da marca.</span>
@@ -1089,21 +1038,21 @@
   }
   startAuto();
 
-  var caseSteps = document.getElementById('caseSteps');
-  if(caseSteps){
-    var steps = Array.prototype.slice.call(caseSteps.children);
-    var stepCurrent = 0;
-    steps.forEach(function(step, i){
-      step.addEventListener('click', function(){ stepGoTo(i); });
+  var servicesList = document.getElementById('servicesList');
+  if(servicesList){
+    var svcItems = Array.prototype.slice.call(servicesList.children);
+    var svcCurrent = 0;
+    svcItems.forEach(function(item, i){
+      item.addEventListener('click', function(){ svcGoTo(i); });
     });
-    function stepGoTo(i){
-      steps[stepCurrent].classList.remove('is-active');
-      stepCurrent = i;
-      steps[stepCurrent].classList.add('is-active');
+    function svcGoTo(i){
+      svcItems[svcCurrent].classList.remove('is-active');
+      svcCurrent = i;
+      svcItems[svcCurrent].classList.add('is-active');
     }
-    var stepTimer = setInterval(function(){ stepGoTo((stepCurrent + 1) % steps.length); }, 3400);
-    caseSteps.addEventListener('mouseenter', function(){ clearInterval(stepTimer); });
-    caseSteps.addEventListener('mouseleave', function(){ stepTimer = setInterval(function(){ stepGoTo((stepCurrent + 1) % steps.length); }, 3400); });
+    var svcTimer = setInterval(function(){ svcGoTo((svcCurrent + 1) % svcItems.length); }, 3400);
+    servicesList.addEventListener('mouseenter', function(){ clearInterval(svcTimer); });
+    servicesList.addEventListener('mouseleave', function(){ svcTimer = setInterval(function(){ svcGoTo((svcCurrent + 1) % svcItems.length); }, 3400); });
   }
 })();
 </script>
