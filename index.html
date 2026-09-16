@@ -186,7 +186,7 @@
   .headline-hint{
     position:absolute;
     left:50%;
-    bottom:-1.6rem;
+    top:calc(286px - 1.9rem);
     transform:translateX(-50%);
     font-family:'Space Mono',monospace;
     font-size:0.62rem;
@@ -1445,7 +1445,6 @@
     canvas.addEventListener('pointerdown', function(e){
       isDown = true;
       lastX = e.clientX; lastY = e.clientY;
-      velX = 0; velY = 0;
       canvas.setPointerCapture(e.pointerId);
     });
     canvas.addEventListener('pointermove', function(e){
@@ -1454,21 +1453,21 @@
       var dy = e.clientY - lastY;
       lastX = e.clientX; lastY = e.clientY;
       if(Math.abs(dx) > 2 || Math.abs(dy) > 2) headline.classList.add('is-dragged');
-      velY = dx * 0.006;
-      velX = dy * 0.006;
-      rotY += velY;
-      rotX = Math.max(-0.6, Math.min(0.6, rotX + velX));
+      var targetVelY = dx * 0.0028;
+      var targetVelX = dy * 0.0028;
+      velY += (targetVelY - velY) * 0.35;
+      velX += (targetVelX - velX) * 0.35;
     });
     window.addEventListener('pointerup', function(){ isDown = false; });
   }
 
   function animate(){
     raf = requestAnimationFrame(animate);
+    rotY += velY;
+    rotX += velX;
     if(!isDown){
-      rotY += velY;
-      rotX = Math.max(-0.6, Math.min(0.6, rotX + velX));
-      velX *= 0.94;
-      velY *= 0.94;
+      velX *= 0.965;
+      velY *= 0.965;
     }
     points.rotation.y = rotY;
     points.rotation.x = rotX;
