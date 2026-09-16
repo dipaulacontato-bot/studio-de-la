@@ -160,6 +160,7 @@
     column-gap:clamp(0.2rem,1vw,0.6rem);
     width:100%;
     flex:none;
+    position:relative;
   }
   .headline img{
     height:clamp(4.4rem, 29vw, 40rem);
@@ -168,6 +169,37 @@
     display:block;
     flex:none;
   }
+  .headline.particles-on img{
+    opacity:0;
+  }
+  .headline-particles{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    display:none;
+    touch-action:none;
+    cursor:grab;
+  }
+  .headline-particles.is-ready{display:block;}
+  .headline-particles:active{cursor:grabbing;}
+  .headline-hint{
+    position:absolute;
+    left:50%;
+    bottom:-1.6rem;
+    transform:translateX(-50%);
+    font-family:'Space Mono',monospace;
+    font-size:0.62rem;
+    letter-spacing:0.16em;
+    text-transform:uppercase;
+    color:var(--muted);
+    opacity:0;
+    transition:opacity 0.4s ease;
+    pointer-events:none;
+    white-space:nowrap;
+  }
+  .headline.particles-on .headline-hint{opacity:0.6;}
+  .headline.particles-on.is-dragged .headline-hint{opacity:0;}
 
   .marquee{
     width:100vw;
@@ -680,10 +712,12 @@
       <path d="M681.48,28.72h-13.33l-.03,6.01-42.53,96.5h-5.46l-.62,2.8h20.55l.62-2.8h-11.84l14.62-33.16h24.35l-.16,33.16h-9.23l-.62,2.8h28.16l.62-2.8h-5.51l.41-102.52ZM667.83,95.28h-23.13l23.39-53.05-.26,53.05Z"/>
     </svg>
   </p>
-  <h1 class="headline" aria-label="Graphic Design Branding">
+  <h1 class="headline" id="headline" aria-label="Graphic Design Branding">
     <img src="assets/graphic.png" alt="Graphic" fetchpriority="high">
     <img src="assets/design.png" alt="Design">
     <img src="assets/branding.png" alt="Branding">
+    <canvas class="headline-particles" id="headlineParticles" aria-hidden="true"></canvas>
+    <span class="headline-hint">Arraste para girar</span>
   </h1>
 </header>
 
@@ -1262,5 +1296,194 @@
     requestAnimationFrame(frame);
   }
   requestAnimationFrame(frame);
+})();
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/three@0.160.1/build/three.min.js"></script>
+<script>
+(function(){
+  var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(reduceMotion) return;
+  if(typeof THREE === 'undefined') return;
+
+  var headline = document.getElementById('headline');
+  var canvas = document.getElementById('headlineParticles');
+  if(!headline || !canvas) return;
+  var imgs = Array.prototype.slice.call(headline.querySelectorAll('img'));
+  if(!imgs.length) return;
+
+  function whenLoaded(img){
+    if(img.complete && img.naturalWidth) return Promise.resolve();
+    return new Promise(function(resolve){
+      img.addEventListener('load', resolve, {once:true});
+      img.addEventListener('error', resolve, {once:true});
+    });
+  }
+
+  var renderer, scene, camera, points, raf;
+  var rotX = 0, rotY = 0, velX = 0, velY = 0;
+  var isDown = false, lastX = 0, lastY = 0;
+  var baseW = 0, baseH = 0;
+
+  function sampleParticles(){
+    var rect = headline.getBoundingClientRect();
+    var w = Math.max(1, Math.round(rect.width));
+    var h = Math.max(1, Math.round(rect.height));
+    if(w < 10 || h < 10) return null;
+    var isMobile = window.innerWidth < 720;
+    var sampleScale = isMobile ? 0.6 : 1;
+    var cw = Math.max(1, Math.round(w * sampleScale));
+    var ch = Math.max(1, Math.round(h * sampleScale));
+    var off = document.createElement('canvas');
+    off.width = cw; off.height = ch;
+    var octx = off.getContext('2d');
+    imgs.forEach(function(img){
+      var r = img.getBoundingClientRect();
+      var x = (r.left - rect.left) * sampleScale;
+      var y = (r.top - rect.top) * sampleScale;
+      var iw = r.width * sampleScale;
+      var ih = r.height * sampleScale;
+      octx.drawImage(img, x, y, iw, ih);
+    });
+    var data;
+    try{ data = octx.getImageData(0, 0, cw, ch).data; }
+    catch(e){ return null; }
+    var stride = isMobile ? 3 : 2;
+    var positions = [];
+    var colors = [];
+    var depth = Math.max(w, h) * 0.12;
+    for(var y = 0; y < ch; y += stride){
+      for(var x = 0; x < cw; x += stride){
+        var idx = (y * cw + x) * 4;
+        var a = data[idx+3];
+        if(a < 120) continue;
+        var px = (x / sampleScale) - w/2;
+        var py = -((y / sampleScale) - h/2);
+        var pz = (Math.random() - 0.5) * depth;
+        positions.push(px, py, pz);
+        colors.push(data[idx]/255, data[idx+1]/255, data[idx+2]/255);
+      }
+    }
+    if(!positions.length) return null;
+    return {positions: positions, colors: colors, w: w, h: h};
+  }
+
+  function makeDotTexture(){
+    var c = document.createElement('canvas');
+    c.width = 32; c.height = 32;
+    var ctx = c.getContext('2d');
+    var g = ctx.createRadialGradient(16,16,0,16,16,16);
+    g.addColorStop(0, 'rgba(255,255,255,1)');
+    g.addColorStop(0.5, 'rgba(255,255,255,0.85)');
+    g.addColorStop(1, 'rgba(255,255,255,0)');
+    ctx.fillStyle = g;
+    ctx.fillRect(0,0,32,32);
+    return new THREE.CanvasTexture(c);
+  }
+
+  function bindInteraction(){
+    canvas.addEventListener('pointerdown', function(e){
+      isDown = true;
+      lastX = e.clientX; lastY = e.clientY;
+      velX = 0; velY = 0;
+      canvas.setPointerCapture(e.pointerId);
+    });
+    canvas.addEventListener('pointermove', function(e){
+      if(!isDown) return;
+      var dx = e.clientX - lastX;
+      var dy = e.clientY - lastY;
+      lastX = e.clientX; lastY = e.clientY;
+      if(Math.abs(dx) > 2 || Math.abs(dy) > 2) headline.classList.add('is-dragged');
+      velY = dx * 0.006;
+      velX = dy * 0.006;
+      rotY += velY;
+      rotX = Math.max(-0.6, Math.min(0.6, rotX + velX));
+    });
+    window.addEventListener('pointerup', function(){ isDown = false; });
+  }
+
+  function animate(){
+    raf = requestAnimationFrame(animate);
+    if(!isDown){
+      rotY += velY;
+      rotX = Math.max(-0.6, Math.min(0.6, rotX + velX));
+      velX *= 0.94;
+      velY *= 0.94;
+    }
+    points.rotation.y = rotY;
+    points.rotation.x = rotX;
+    renderer.render(scene, camera);
+  }
+
+  function rebuild(){
+    var sample = sampleParticles();
+    if(!sample) return;
+    baseW = sample.w; baseH = sample.h;
+    points.geometry.setAttribute('position', new THREE.Float32BufferAttribute(sample.positions, 3));
+    points.geometry.setAttribute('color', new THREE.Float32BufferAttribute(sample.colors, 3));
+    camera.left = -baseW/2; camera.right = baseW/2;
+    camera.top = baseH/2; camera.bottom = -baseH/2;
+    camera.updateProjectionMatrix();
+    renderer.setSize(baseW, baseH, false);
+  }
+
+  function init(){
+    var sample = sampleParticles();
+    if(!sample || sample.positions.length < 30) return;
+    baseW = sample.w; baseH = sample.h;
+
+    renderer = new THREE.WebGLRenderer({canvas: canvas, alpha:true, antialias:true});
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio||1, 2));
+    renderer.setSize(baseW, baseH, false);
+
+    scene = new THREE.Scene();
+    camera = new THREE.OrthographicCamera(-baseW/2, baseW/2, baseH/2, -baseH/2, 1, 3000);
+    camera.position.z = 1000;
+
+    var geometry = new THREE.BufferGeometry();
+    geometry.setAttribute('position', new THREE.Float32BufferAttribute(sample.positions, 3));
+    geometry.setAttribute('color', new THREE.Float32BufferAttribute(sample.colors, 3));
+
+    var isMobile = window.innerWidth < 720;
+    var material = new THREE.PointsMaterial({
+      size: isMobile ? 2.2 : 2.6,
+      map: makeDotTexture(),
+      vertexColors: true,
+      transparent: true,
+      depthWrite: false,
+      alphaTest: 0.02,
+      sizeAttenuation: true
+    });
+
+    points = new THREE.Points(geometry, material);
+    scene.add(points);
+
+    headline.classList.add('particles-on');
+    canvas.classList.add('is-ready');
+
+    bindInteraction();
+    if(raf) cancelAnimationFrame(raf);
+    animate();
+
+    var resizeTimer;
+    window.addEventListener('resize', function(){
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(rebuild, 200);
+    });
+  }
+
+  var initialized = false;
+  function tryInit(){
+    if(initialized || document.hidden) return;
+    initialized = true;
+    init();
+  }
+
+  Promise.all(imgs.map(whenLoaded)).then(function(){
+    requestAnimationFrame(function(){ requestAnimationFrame(tryInit); });
+    document.addEventListener('visibilitychange', function(){
+      if(!document.hidden) requestAnimationFrame(function(){ requestAnimationFrame(tryInit); });
+    });
+  });
 })();
 </script>
