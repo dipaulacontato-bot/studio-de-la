@@ -516,6 +516,38 @@
   }
   .carousel-dot.is-active{background:var(--accent);}
 
+  @media (min-width:900px){
+    .carousel{
+      overflow:visible;
+      cursor:default;
+      padding-block:0;
+    }
+    .carousel-track{
+      display:flex;
+      align-items:stretch;
+      gap:8px;
+      padding-inline:0;
+      height:clamp(320px,38vw,560px);
+    }
+    .carousel-card{
+      flex:1 1 0%;
+      width:auto;
+      height:100%;
+      aspect-ratio:auto;
+      scroll-snap-align:none;
+      transform:none !important;
+      opacity:1 !important;
+      transition:flex 0.7s cubic-bezier(.19,1,.22,1);
+    }
+    .carousel-card.is-active{
+      flex:7 1 0%;
+    }
+    .carousel-overlay{
+      padding:1.4rem 1.3rem 1.1rem;
+    }
+    .carousel-dots{display:none;}
+  }
+
   /* ---------- WORK REVEAL (editorial) ---------- */
   .work-reveal{
     max-height:0;
@@ -1077,16 +1109,39 @@
     else { carousel.scrollTo({left: target, behavior: 'smooth'}); }
   }
 
-  cards.forEach(function(card){
+  function isFanMode(){
+    return window.matchMedia('(min-width:900px)').matches;
+  }
+
+  var activeIndex = 0;
+  function applyActive(i){
+    activeIndex = i;
+    cards.forEach(function(c, idx){ c.classList.toggle('is-active', idx === i); });
+    dots.forEach(function(d, idx){ d.classList.toggle('is-active', idx === i); });
+    syncInlineVideo(cards[i]);
+    var key = cards[i].getAttribute('data-project');
+    if(key) renderReveal(key);
+  }
+
+  cards.forEach(function(card, i){
     var key = card.getAttribute('data-project');
     var trigger = card.querySelector('.carousel-trigger');
     if(trigger && key){
       trigger.addEventListener('click', function(e){
         e.preventDefault();
-        scrollCardIntoView(card);
-        update();
+        if(isFanMode()){ applyActive(i); }
+        else { scrollCardIntoView(card); update(); }
       });
     }
+    card.addEventListener('mouseenter', function(){
+      if(!isFanMode()) return;
+      stopAuto();
+      applyActive(i);
+    });
+  });
+  track.addEventListener('mouseleave', function(){
+    if(!isFanMode()) return;
+    startAuto();
   });
 
   cards.forEach(function(card, i){
@@ -1096,13 +1151,18 @@
     dot.setAttribute('aria-label', 'Ir para o projeto ' + (i+1));
     dot.addEventListener('click', function(){
       stopAuto();
-      scrollCardIntoView(card);
+      if(isFanMode()){ applyActive(i); }
+      else { scrollCardIntoView(card); }
     });
     dotsWrap.appendChild(dot);
   });
   var dots = Array.prototype.slice.call(dotsWrap.children);
 
   function update(){
+    if(isFanMode()){
+      applyActive(activeIndex);
+      return activeIndex;
+    }
     var rect = carousel.getBoundingClientRect();
     var center = rect.left + rect.width/2;
     var closest = 0, closestDist = Infinity;
@@ -1117,11 +1177,7 @@
       card.style.opacity = opacity.toFixed(3);
       if(dist < closestDist){ closestDist = dist; closest = i; }
     });
-    cards.forEach(function(c,i){ c.classList.toggle('is-active', i===closest); });
-    dots.forEach(function(d,i){ d.classList.toggle('is-active', i===closest); });
-    syncInlineVideo(cards[closest]);
-    var activeKey = cards[closest].getAttribute('data-project');
-    if(activeKey) renderReveal(activeKey);
+    applyActive(closest);
     return closest;
   }
 
@@ -1188,9 +1244,13 @@
   function startAuto(){
     stopAuto();
     autoTimer = setInterval(function(){
-      var idx = update();
-      var next = (idx + 1) % cards.length;
-      scrollCardIntoView(cards[next]);
+      if(isFanMode()){
+        applyActive((activeIndex + 1) % cards.length);
+      } else {
+        var idx = update();
+        var next = (idx + 1) % cards.length;
+        scrollCardIntoView(cards[next]);
+      }
     }, 4200);
   }
   function stopAuto(){
