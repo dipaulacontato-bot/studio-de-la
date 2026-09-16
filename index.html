@@ -169,14 +169,22 @@
     display:block;
     flex:none;
   }
+  @media (max-width:600px){
+    .headline img{height:clamp(3.2rem, 24vw, 40rem);}
+  }
+  @media (max-width:400px){
+    .headline img{height:clamp(2.7rem, 21vw, 40rem);}
+  }
   .headline.particles-on img{
     opacity:0;
   }
   .headline-particles{
     position:absolute;
-    inset:0;
-    width:100%;
-    height:100%;
+    left:50%;
+    top:50%;
+    transform:translate(-50%,-50%);
+    width:135%;
+    height:135%;
     display:none;
     touch-action:none;
     cursor:grab;
@@ -434,13 +442,13 @@
     display:flex;
     align-items:center;
     gap:clamp(0.9rem,2vw,1.6rem);
-    padding-inline:calc(50vw - min(36vw,550px));
+    padding-inline:max(24px, calc(50vw - min(36vw,550px)));
     list-style:none;
     margin:0;
   }
   .carousel-card{
     flex:none;
-    width:clamp(300px,72vw,1100px);
+    width:clamp(260px,72vw,1100px);
     aspect-ratio:16/9;
     scroll-snap-align:center;
     position:relative;
@@ -1171,7 +1179,7 @@
       var cCenter = cRect.left + cRect.width/2;
       var dist = Math.abs(cCenter - center);
       var norm = Math.min(dist / (rect.width/2), 1);
-      var scale = 1.08 - norm*0.28;
+      var scale = 1.0 - norm*0.2;
       var opacity = 1 - norm*0.55;
       card.style.transform = 'scale(' + scale.toFixed(3) + ')';
       card.style.opacity = opacity.toFixed(3);
@@ -1380,6 +1388,7 @@
     });
   }
 
+  var MARGIN_FACTOR = 1.35;
   var renderer, scene, camera, points, raf;
   var rotX = 0, rotY = 0, velX = 0, velY = 0;
   var isDown = false, lastX = 0, lastY = 0;
@@ -1391,7 +1400,7 @@
     var h = Math.max(1, Math.round(rect.height));
     if(w < 10 || h < 10) return null;
     var isMobile = window.innerWidth < 720;
-    var sampleScale = isMobile ? 0.6 : 1;
+    var sampleScale = isMobile ? 1.6 : 1;
     var cw = Math.max(1, Math.round(w * sampleScale));
     var ch = Math.max(1, Math.round(h * sampleScale));
     var off = document.createElement('canvas');
@@ -1408,7 +1417,7 @@
     var data;
     try{ data = octx.getImageData(0, 0, cw, ch).data; }
     catch(e){ return null; }
-    var stride = isMobile ? 3 : 2;
+    var stride = isMobile ? 1 : 2;
     var positions = [];
     var colors = [];
     var depth = Math.max(w, h) * 0.12;
@@ -1480,23 +1489,25 @@
     baseW = sample.w; baseH = sample.h;
     points.geometry.setAttribute('position', new THREE.Float32BufferAttribute(sample.positions, 3));
     points.geometry.setAttribute('color', new THREE.Float32BufferAttribute(sample.colors, 3));
-    camera.left = -baseW/2; camera.right = baseW/2;
-    camera.top = baseH/2; camera.bottom = -baseH/2;
+    var cw = baseW * MARGIN_FACTOR, ch = baseH * MARGIN_FACTOR;
+    camera.left = -cw/2; camera.right = cw/2;
+    camera.top = ch/2; camera.bottom = -ch/2;
     camera.updateProjectionMatrix();
-    renderer.setSize(baseW, baseH, false);
+    renderer.setSize(cw, ch, false);
   }
 
   function init(){
     var sample = sampleParticles();
     if(!sample || sample.positions.length < 30) return;
     baseW = sample.w; baseH = sample.h;
+    var cw = baseW * MARGIN_FACTOR, ch = baseH * MARGIN_FACTOR;
 
     renderer = new THREE.WebGLRenderer({canvas: canvas, alpha:true, antialias:true});
     renderer.setPixelRatio(Math.min(window.devicePixelRatio||1, 2));
-    renderer.setSize(baseW, baseH, false);
+    renderer.setSize(cw, ch, false);
 
     scene = new THREE.Scene();
-    camera = new THREE.OrthographicCamera(-baseW/2, baseW/2, baseH/2, -baseH/2, 1, 3000);
+    camera = new THREE.OrthographicCamera(-cw/2, cw/2, ch/2, -ch/2, 1, 3000);
     camera.position.z = 1000;
 
     var geometry = new THREE.BufferGeometry();
@@ -1505,7 +1516,7 @@
 
     var isMobile = window.innerWidth < 720;
     var material = new THREE.PointsMaterial({
-      size: isMobile ? 2.2 : 2.6,
+      size: isMobile ? 2.4 : 2.6,
       map: makeDotTexture(),
       vertexColors: true,
       transparent: true,
