@@ -180,11 +180,6 @@
   }
   .headline-particles{
     position:absolute;
-    left:50%;
-    top:50%;
-    transform:translate(-50%,-50%);
-    width:135%;
-    height:135%;
     display:none;
     touch-action:none;
     cursor:grab;
@@ -194,10 +189,10 @@
   .headline-hint{
     position:absolute;
     left:50%;
-    top:calc(286px - 1.9rem);
+    top:calc(286px - 2.3rem);
     transform:translateX(-50%);
     font-family:'Space Mono',monospace;
-    font-size:0.62rem;
+    font-size:0.85rem;
     letter-spacing:0.16em;
     text-transform:uppercase;
     color:var(--muted);
@@ -206,8 +201,12 @@
     pointer-events:none;
     white-space:nowrap;
   }
-  .headline.particles-on .headline-hint{opacity:0.6;}
-  .headline.particles-on.is-dragged .headline-hint{opacity:0;}
+  @keyframes hint-pulse{
+    0%,100%{opacity:0.32;}
+    50%{opacity:0.85;}
+  }
+  .headline.particles-on .headline-hint{animation:hint-pulse 2.6s ease-in-out infinite;}
+  .headline.particles-on.is-dragged .headline-hint{opacity:0;animation:none;}
 
   .marquee{
     width:100vw;
@@ -1483,6 +1482,13 @@
     renderer.render(scene, camera);
   }
 
+  function positionCanvas(baseWv, baseHv, cw, ch){
+    canvas.style.left = ((baseWv - cw)/2) + 'px';
+    canvas.style.top = ((baseHv - ch)/2) + 'px';
+    canvas.style.width = cw + 'px';
+    canvas.style.height = ch + 'px';
+  }
+
   function rebuild(){
     var sample = sampleParticles();
     if(!sample) return;
@@ -1493,6 +1499,7 @@
     camera.left = -cw/2; camera.right = cw/2;
     camera.top = ch/2; camera.bottom = -ch/2;
     camera.updateProjectionMatrix();
+    positionCanvas(baseW, baseH, cw, ch);
     renderer.setSize(cw, ch, false);
   }
 
@@ -1501,6 +1508,7 @@
     if(!sample || sample.positions.length < 30) return;
     baseW = sample.w; baseH = sample.h;
     var cw = baseW * MARGIN_FACTOR, ch = baseH * MARGIN_FACTOR;
+    positionCanvas(baseW, baseH, cw, ch);
 
     renderer = new THREE.WebGLRenderer({canvas: canvas, alpha:true, antialias:true});
     renderer.setPixelRatio(Math.min(window.devicePixelRatio||1, 2));
