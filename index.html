@@ -467,6 +467,8 @@
   }
   .work-tile.is-wide{grid-column:1 / -1;}
   .work-tile.is-wide .work-tile-frame{aspect-ratio:1400/788;}
+  .work-tile.is-tall .work-tile-frame{aspect-ratio:600/1067;}
+  .work-tile.is-exact .work-tile-media{top:0;height:100%;}
   .work-tile-media{
     position:absolute;
     left:0;
@@ -792,7 +794,7 @@
     <p class="work-lead">Uma coleção de identidades, sistemas visuais e direções criativas construídas com cuidado, verbo e imagem.</p>
   </div>
   <div class="work-grid" id="workGrid">
-    <a class="work-tile is-wide" data-project="evandro" data-speed="0.07" href="#workReveal">
+    <a class="work-tile is-wide is-exact" data-project="evandro" data-speed="0.07" href="#workReveal">
       <span class="work-tile-frame"><img class="work-tile-media" src="assets/work/evandro-gallery/gallery-2.jpg" alt="Evandro Okàn – Com Alma no Verbo" loading="lazy"></span>
       <span class="work-tile-cap"><span class="work-tile-name">Evandro Okàn</span><span class="work-tile-cat">Com Alma no Verbo</span></span>
     </a>
@@ -801,14 +803,14 @@
       <span class="work-tile-cap"><span class="work-tile-name">STEREO</span><span class="work-tile-cat">Identidade de Marca</span></span>
     </a>
     <a class="work-tile" data-project="kain" data-speed="0.06" href="#workReveal">
-      <span class="work-tile-frame"><img class="work-tile-media" src="assets/work/kain-tracklist.jpg" alt="Kain — Tracklist Inverso Vol.2" loading="lazy"></span>
+      <span class="work-tile-frame"><img class="work-tile-media" src="assets/work/kain-gallery/img-1.jpg" alt="Kain — Tracklist Inverso Vol.2" loading="lazy"></span>
       <span class="work-tile-cap"><span class="work-tile-name">Kain</span><span class="work-tile-cat">Tracklist Inverso Vol. 2</span></span>
     </a>
     <a class="work-tile" data-project="multiforme" data-speed="-0.06" href="#workReveal">
       <span class="work-tile-frame"><iframe src="https://www-ccv.adobe.io/v1/player/ccv/7vWfd97WMq9/embed?api_key=behance1&amp;bgcolor=%23191919&amp;autoplay=true&amp;muted=true&amp;loop=true" title="Multiforme" allow="autoplay" loading="lazy"></iframe></span>
       <span class="work-tile-cap"><span class="work-tile-name">Multiforme</span><span class="work-tile-cat">Design</span></span>
     </a>
-    <a class="work-tile" data-project="headphones" data-speed="0.08" href="#workReveal">
+    <a class="work-tile is-tall is-exact" data-project="headphones" data-speed="0.08" href="#workReveal">
       <span class="work-tile-frame"><img class="work-tile-media" src="assets/work/headphones-gallery/beats.gif" alt="Social Media Headphones - Portfólio" loading="lazy"></span>
       <span class="work-tile-cap"><span class="work-tile-name">Headphones</span><span class="work-tile-cat">Social Media</span></span>
     </a>
@@ -924,7 +926,7 @@
     },
     kain: {
       name: 'Kain', cat: 'Tracklist Inverso Vol. 2',
-      hero: 'assets/work/kain-tracklist.jpg',
+      hero: 'assets/work/kain-gallery/img-3.jpg',
       behance: 'https://www.behance.net/gallery/253997117/KAIN-TRACKLIST-INVERSO-VOL2'
     },
     multiforme: {
