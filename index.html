@@ -275,9 +275,8 @@
   }
   .about-intro{
     display:flex;
-    gap:clamp(1.5rem,4vw,3rem);
-    align-items:flex-start;
-    flex-wrap:wrap;
+    flex-direction:column;
+    gap:clamp(1rem,3vw,1.6rem);
   }
   .about-lead{
     min-height:184px;
@@ -293,13 +292,9 @@
     flex:1 1 320px;
   }
   .about-tote{
-    width:clamp(140px,16vw,220px);
+    width:clamp(140px,16vw,200px);
     height:auto;
-    flex:none;
     display:block;
-  }
-  @media (max-width:700px){
-    .about-tote{width:150px;margin-inline:auto;}
   }
   .about-body{
     font-size:1rem;
@@ -471,7 +466,7 @@
     aspect-ratio:1/1.02;
   }
   .work-tile.is-wide{grid-column:1 / -1;}
-  .work-tile.is-wide .work-tile-frame{aspect-ratio:21/9;}
+  .work-tile.is-wide .work-tile-frame{aspect-ratio:1400/788;}
   .work-tile-media{
     position:absolute;
     left:0;
@@ -550,41 +545,28 @@
     cursor:pointer;
     flex:none;
   }
-  .reveal-hero{width:100%;aspect-ratio:16/9;object-fit:cover;display:block;margin-bottom:1rem;background:#0d0d0c;}
+  .reveal-hero{width:100%;height:auto;max-height:70vh;object-fit:contain;display:block;margin-bottom:1rem;background:#0d0d0c;}
   .reveal-video{width:100%;aspect-ratio:16/9;margin-bottom:1rem;background:#0d0d0c;}
   .reveal-video iframe{width:100%;height:100%;border:0;display:block;}
   .reveal-grid{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:0.7rem;
+    display:block;
+    column-count:3;
+    column-gap:0.7rem;
     margin-bottom:1.2rem;
   }
   .reveal-grid img{
     width:100%;
-    height:100%;
-    aspect-ratio:4/3;
-    object-fit:cover;
+    height:auto;
+    object-fit:contain;
     display:block;
     background:#0d0d0c;
-  }
-  .reveal-link{color:#fff;font-size:0.85rem;text-decoration:underline;text-underline-offset:0.15em;}
-  .reveal-grid img{cursor:zoom-in;}
-  .reveal-grid.is-natural{
-    display:block;
-    column-count:2;
-    column-gap:0.7rem;
-  }
-  .reveal-grid.is-natural img{
-    width:100%;
-    height:auto;
-    aspect-ratio:auto;
-    object-fit:contain;
-    background:#141412;
     margin-bottom:0.7rem;
     break-inside:avoid;
+    cursor:zoom-in;
   }
+  .reveal-link{color:#fff;font-size:0.85rem;text-decoration:underline;text-underline-offset:0.15em;}
   @media (max-width:640px){
-    .reveal-grid.is-natural{column-count:1;}
+    .reveal-grid{column-count:2;}
   }
 
   .img-zoom{
@@ -827,7 +809,7 @@
       <span class="work-tile-cap"><span class="work-tile-name">Multiforme</span><span class="work-tile-cat">Design</span></span>
     </a>
     <a class="work-tile" data-project="headphones" data-speed="0.08" href="#workReveal">
-      <span class="work-tile-frame"><img class="work-tile-media" src="assets/work/social-media-headphones.png" alt="Social Media Headphones - Portfólio" loading="lazy"></span>
+      <span class="work-tile-frame"><img class="work-tile-media" src="assets/work/headphones-gallery/beats.gif" alt="Social Media Headphones - Portfólio" loading="lazy"></span>
       <span class="work-tile-cap"><span class="work-tile-name">Headphones</span><span class="work-tile-cat">Social Media</span></span>
     </a>
     <a class="work-tile" data-project="ecos" data-speed="-0.05" href="#workReveal">
@@ -841,10 +823,6 @@
     <a class="work-tile" data-project="amago" data-speed="-0.06" href="#workReveal">
       <span class="work-tile-frame"><img class="work-tile-media" src="assets/amago-case.jpg" alt="Âmago Clothing - Identidade Visual" loading="lazy"></span>
       <span class="work-tile-cap"><span class="work-tile-name">Âmago Clothing</span><span class="work-tile-cat">Identidade Visual</span></span>
-    </a>
-    <a class="work-tile" data-project="bautista" data-speed="0.07" href="#workReveal">
-      <span class="work-tile-frame"><img class="work-tile-media" src="assets/work/bautista-gallery/logo-central-azul.png" alt="Bautista Advocacia - Identidade Visual" loading="lazy"></span>
-      <span class="work-tile-cap"><span class="work-tile-name">Bautista Advocacia</span><span class="work-tile-cat">Identidade Visual</span></span>
     </a>
   </div>
 
@@ -860,8 +838,8 @@
   <div class="wrap">
     <p class="section-tag">sobre</p>
     <div class="about-intro">
-      <p class="about-lead">O Studio de Lá é um estúdio de design remoto dedicado a marcas com história. São negócios que já têm alma, mas precisam de uma nova forma de se mostrar ao mundo.</p>
       <img class="about-tote" src="assets/about-totebag.jpg" alt="Tote bag Studio de Lá">
+      <p class="about-lead">O Studio de Lá é um estúdio de design remoto dedicado a marcas com história. São negócios que já têm alma, mas precisam de uma nova forma de se mostrar ao mundo.</p>
     </div>
     <div class="about-grid">
       <figure class="about-photo-wrap">
@@ -871,7 +849,7 @@
         <figcaption class="about-photo-caption">
           <span class="about-photo-name">
             <strong>Leví de Paula</strong>
-            <span class="about-photo-role">CEO do Studio de Lá</span>
+            <span class="about-photo-role">Diretor Criativo e Designer</span>
           </span>
           <span class="about-photo-credit">Photo: Gustavo Caetano</span>
         </figcaption>
@@ -941,22 +919,12 @@
     },
     stereo: {
       name: 'STEREO', cat: 'Identidade de Marca',
-      images: [
-        'assets/work/stereo-gallery/img-3.jpg',
-        'assets/work/stereo-gallery/img-1.jpg',
-        'assets/work/stereo-gallery/img-2.jpg',
-        'assets/work/stereo-gallery/img-4.png'
-      ],
+      hero: 'assets/work/stereo.jpg',
       behance: 'https://www.behance.net/gallery/253997697/STEREO'
     },
     kain: {
       name: 'Kain', cat: 'Tracklist Inverso Vol. 2',
-      layout: 'natural',
-      images: [
-        'assets/work/kain-gallery/img-2.jpg',
-        'assets/work/kain-gallery/img-3.jpg',
-        'assets/work/kain-gallery/img-1.jpg'
-      ],
+      hero: 'assets/work/kain-tracklist.jpg',
       behance: 'https://www.behance.net/gallery/253997117/KAIN-TRACKLIST-INVERSO-VOL2'
     },
     multiforme: {
@@ -974,44 +942,23 @@
       images: [
         'assets/work/ecos-gallery/img-1.jpg',
         'assets/work/ecos-gallery/img-2.jpg',
-        'assets/work/ecos-gallery/img-3.jpg',
-        'assets/work/ecos-gallery/img-4.jpg'
+        'assets/work/ecos-gallery/img-3.jpg'
       ],
       behance: 'https://www.behance.net/gallery/253991417/Lettering-Ecos-Independentes'
     },
     headphones: {
       name: 'Headphones', cat: 'Social Media',
-      images: [
-        'assets/work/headphones-gallery/img-1.png',
-        'assets/work/headphones-gallery/img-2.png',
-        'assets/work/headphones-gallery/img-3.png',
-        'assets/work/headphones-gallery/img-4.png'
-      ],
+      hero: 'assets/work/headphones-gallery/beats.gif',
       behance: 'https://www.behance.net/gallery/136115143/Social-Media-Headphones-Portfolio'
     },
     moutinho: {
       name: 'Moutinho Cardoso', cat: 'Identidade Visual',
-      images: [
-        'assets/work/moutinho-gallery/img-1.png',
-        'assets/work/moutinho-gallery/img-2.png',
-        'assets/work/moutinho-gallery/img-3.png',
-        'assets/work/moutinho-gallery/img-4.png'
-      ],
+      hero: 'assets/work/moutinho-cardoso.png',
       behance: 'https://www.behance.net/gallery/143462293/Moutinho-Cardoso-Identidade-Visual'
     },
     amago: {
       name: 'Âmago Clothing', cat: 'Identidade Visual',
-      images: ['assets/amago-case.jpg', 'assets/amago-magazine.jpg', 'assets/amago-website.jpg']
-    },
-    bautista: {
-      name: 'Bautista Advocacia', cat: 'Identidade Visual',
-      layout: 'natural',
-      images: [
-        'assets/work/bautista-gallery/logo-horizontal-azul.png',
-        'assets/work/bautista-gallery/logo-horizontal-dourada.png',
-        'assets/work/bautista-gallery/logo-central-azul.png',
-        'assets/work/bautista-gallery/logo-central-dourada.png'
-      ]
+      hero: 'assets/amago-case.jpg'
     }
   };
 
@@ -1031,7 +978,7 @@
       html += '<img class="reveal-hero" src="' + p.hero + '" alt="' + esc(p.name) + '" loading="lazy">';
     }
     if(p.images && p.images.length){
-      html += '<div class="reveal-grid' + (p.layout === 'natural' ? ' is-natural' : '') + '">';
+      html += '<div class="reveal-grid">';
       p.images.forEach(function(src){ html += '<img src="' + src + '" alt="' + esc(p.name) + '" loading="lazy">'; });
       html += '</div>';
     }
