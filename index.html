@@ -434,28 +434,26 @@
     display:grid;
     grid-template-columns:1fr 1fr;
     column-gap:clamp(1.2rem,3vw,2.6rem);
-    row-gap:clamp(2.2rem,5vw,3.4rem);
+    row-gap:clamp(2.6rem,6vw,4rem);
     padding-inline:var(--gutter);
+    padding-top:clamp(2rem,5vw,3rem);
     max-width:var(--max);
     margin-inline:auto;
     margin-top:clamp(2.5rem,6vw,4rem);
+    border-top:1px solid var(--line);
   }
   .work-tile{
     display:block;
     text-decoration:none;
     color:inherit;
   }
-  .work-tile:nth-child(even){
-    margin-top:clamp(2rem,6vw,4rem);
-  }
   .work-tile-frame{
     display:block;
     position:relative;
     overflow:hidden;
     background:#0d0d0c;
+    aspect-ratio:1/1.02;
   }
-  .work-tile.ar-tall .work-tile-frame{aspect-ratio:4/5;}
-  .work-tile.ar-wide .work-tile-frame{aspect-ratio:16/11;}
   .work-tile-media{
     position:absolute;
     left:0;
@@ -467,10 +465,11 @@
     will-change:transform;
   }
   .work-tile-cap{
-    margin-top:1rem;
+    margin-top:1.1rem;
     display:flex;
-    flex-direction:column;
-    gap:0.2rem;
+    justify-content:space-between;
+    align-items:baseline;
+    gap:1rem;
   }
   .work-tile-name{
     font-weight:700;
@@ -480,11 +479,11 @@
   .work-tile-cat{
     color:var(--muted);
     font-size:0.85rem;
+    white-space:nowrap;
   }
   .work-tile:hover .work-tile-name{opacity:0.65;}
   @media (max-width:760px){
     .work-grid{grid-template-columns:1fr;row-gap:2.4rem;}
-    .work-tile:nth-child(even){margin-top:0;}
   }
   @media (prefers-reduced-motion: reduce){
     .work-tile-media{top:0;height:100%;}
@@ -767,35 +766,35 @@
     <p class="work-lead">Uma coleção de identidades, sistemas visuais e direções criativas construídas com cuidado, verbo e imagem.</p>
   </div>
   <div class="work-grid" id="workGrid">
-    <a class="work-tile ar-wide" data-project="evandro" data-speed="0.07" href="#workReveal">
+    <a class="work-tile" data-project="evandro" data-speed="0.07" href="#workReveal">
       <span class="work-tile-frame"><img class="work-tile-media" src="assets/work/evandro-gallery/gallery-2.jpg" alt="Evandro Okàn – Com Alma no Verbo" loading="lazy"></span>
       <span class="work-tile-cap"><span class="work-tile-name">Evandro Okàn</span><span class="work-tile-cat">Com Alma no Verbo</span></span>
     </a>
-    <a class="work-tile ar-tall" data-project="stereo" data-speed="-0.05" href="#workReveal">
+    <a class="work-tile" data-project="stereo" data-speed="-0.05" href="#workReveal">
       <span class="work-tile-frame"><img class="work-tile-media" src="assets/work/stereo.jpg" alt="STEREO" loading="lazy"></span>
       <span class="work-tile-cap"><span class="work-tile-name">STEREO</span><span class="work-tile-cat">Identidade de Marca</span></span>
     </a>
-    <a class="work-tile ar-tall" data-project="kain" data-speed="0.06" href="#workReveal">
+    <a class="work-tile" data-project="kain" data-speed="0.06" href="#workReveal">
       <span class="work-tile-frame"><img class="work-tile-media" src="assets/work/kain-tracklist.jpg" alt="Kain — Tracklist Inverso Vol.2" loading="lazy"></span>
       <span class="work-tile-cap"><span class="work-tile-name">Kain</span><span class="work-tile-cat">Tracklist Inverso Vol. 2</span></span>
     </a>
-    <a class="work-tile ar-wide" data-project="multiforme" data-speed="-0.06" href="#workReveal">
+    <a class="work-tile" data-project="multiforme" data-speed="-0.06" href="#workReveal">
       <span class="work-tile-frame"><img class="work-tile-media" src="assets/work/multiforme.png" alt="Multiforme - Design" loading="lazy"></span>
       <span class="work-tile-cap"><span class="work-tile-name">Multiforme</span><span class="work-tile-cat">Design</span></span>
     </a>
-    <a class="work-tile ar-wide" data-project="headphones" data-speed="0.08" href="#workReveal">
+    <a class="work-tile" data-project="headphones" data-speed="0.08" href="#workReveal">
       <span class="work-tile-frame"><img class="work-tile-media" src="assets/work/social-media-headphones.png" alt="Social Media Headphones - Portfólio" loading="lazy"></span>
       <span class="work-tile-cap"><span class="work-tile-name">Headphones</span><span class="work-tile-cat">Social Media</span></span>
     </a>
-    <a class="work-tile ar-tall" data-project="ecos" data-speed="-0.05" href="#workReveal">
+    <a class="work-tile" data-project="ecos" data-speed="-0.05" href="#workReveal">
       <span class="work-tile-frame"><img class="work-tile-media" src="assets/work/lettering-ecos.jpg" alt="Lettering Ecos Independentes" loading="lazy"></span>
       <span class="work-tile-cap"><span class="work-tile-name">Ecos Independentes</span><span class="work-tile-cat">Lettering</span></span>
     </a>
-    <a class="work-tile ar-tall" data-project="moutinho" data-speed="0.06" href="#workReveal">
+    <a class="work-tile" data-project="moutinho" data-speed="0.06" href="#workReveal">
       <span class="work-tile-frame"><img class="work-tile-media" src="assets/work/moutinho-cardoso.png" alt="Moutinho Cardoso - Identidade Visual" loading="lazy"></span>
       <span class="work-tile-cap"><span class="work-tile-name">Moutinho Cardoso</span><span class="work-tile-cat">Identidade Visual</span></span>
     </a>
-    <a class="work-tile ar-wide" data-project="amago" data-speed="-0.06" href="#workReveal">
+    <a class="work-tile" data-project="amago" data-speed="-0.06" href="#workReveal">
       <span class="work-tile-frame"><img class="work-tile-media" src="assets/amago-case.jpg" alt="Âmago Clothing - Identidade Visual" loading="lazy"></span>
       <span class="work-tile-cap"><span class="work-tile-name">Âmago Clothing</span><span class="work-tile-cat">Identidade Visual</span></span>
     </a>
