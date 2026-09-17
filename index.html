@@ -273,6 +273,12 @@
     gap:1.4rem;
     max-width:34rem;
   }
+  .about-intro{
+    display:flex;
+    gap:clamp(1.5rem,4vw,3rem);
+    align-items:flex-start;
+    flex-wrap:wrap;
+  }
   .about-lead{
     min-height:184px;
     margin-top:2px;
@@ -284,6 +290,16 @@
     text-wrap:balance;
     position:relative;
     z-index:2;
+    flex:1 1 320px;
+  }
+  .about-tote{
+    width:clamp(140px,16vw,220px);
+    height:auto;
+    flex:none;
+    display:block;
+  }
+  @media (max-width:700px){
+    .about-tote{width:150px;margin-inline:auto;}
   }
   .about-body{
     font-size:1rem;
@@ -454,6 +470,8 @@
     background:#0d0d0c;
     aspect-ratio:1/1.02;
   }
+  .work-tile.is-wide{grid-column:1 / -1;}
+  .work-tile.is-wide .work-tile-frame{aspect-ratio:21/9;}
   .work-tile-media{
     position:absolute;
     left:0;
@@ -463,6 +481,15 @@
     object-fit:cover;
     display:block;
     will-change:transform;
+  }
+  .work-tile-frame iframe{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    border:0;
+    display:block;
+    pointer-events:none;
   }
   .work-tile-cap{
     margin-top:1.1rem;
@@ -542,6 +569,23 @@
   }
   .reveal-link{color:#fff;font-size:0.85rem;text-decoration:underline;text-underline-offset:0.15em;}
   .reveal-grid img{cursor:zoom-in;}
+  .reveal-grid.is-natural{
+    display:block;
+    column-count:2;
+    column-gap:0.7rem;
+  }
+  .reveal-grid.is-natural img{
+    width:100%;
+    height:auto;
+    aspect-ratio:auto;
+    object-fit:contain;
+    background:#141412;
+    margin-bottom:0.7rem;
+    break-inside:avoid;
+  }
+  @media (max-width:640px){
+    .reveal-grid.is-natural{column-count:1;}
+  }
 
   .img-zoom{
     position:fixed;
@@ -766,7 +810,7 @@
     <p class="work-lead">Uma coleção de identidades, sistemas visuais e direções criativas construídas com cuidado, verbo e imagem.</p>
   </div>
   <div class="work-grid" id="workGrid">
-    <a class="work-tile" data-project="evandro" data-speed="0.07" href="#workReveal">
+    <a class="work-tile is-wide" data-project="evandro" data-speed="0.07" href="#workReveal">
       <span class="work-tile-frame"><img class="work-tile-media" src="assets/work/evandro-gallery/gallery-2.jpg" alt="Evandro Okàn – Com Alma no Verbo" loading="lazy"></span>
       <span class="work-tile-cap"><span class="work-tile-name">Evandro Okàn</span><span class="work-tile-cat">Com Alma no Verbo</span></span>
     </a>
@@ -779,7 +823,7 @@
       <span class="work-tile-cap"><span class="work-tile-name">Kain</span><span class="work-tile-cat">Tracklist Inverso Vol. 2</span></span>
     </a>
     <a class="work-tile" data-project="multiforme" data-speed="-0.06" href="#workReveal">
-      <span class="work-tile-frame"><img class="work-tile-media" src="assets/work/multiforme.png" alt="Multiforme - Design" loading="lazy"></span>
+      <span class="work-tile-frame"><iframe src="https://www-ccv.adobe.io/v1/player/ccv/7vWfd97WMq9/embed?api_key=behance1&amp;bgcolor=%23191919&amp;autoplay=true&amp;muted=true&amp;loop=true" title="Multiforme" allow="autoplay" loading="lazy"></iframe></span>
       <span class="work-tile-cap"><span class="work-tile-name">Multiforme</span><span class="work-tile-cat">Design</span></span>
     </a>
     <a class="work-tile" data-project="headphones" data-speed="0.08" href="#workReveal">
@@ -798,13 +842,9 @@
       <span class="work-tile-frame"><img class="work-tile-media" src="assets/amago-case.jpg" alt="Âmago Clothing - Identidade Visual" loading="lazy"></span>
       <span class="work-tile-cap"><span class="work-tile-name">Âmago Clothing</span><span class="work-tile-cat">Identidade Visual</span></span>
     </a>
-    <a class="work-tile" data-project="duo" data-speed="0.07" href="#workReveal">
-      <span class="work-tile-frame"><img class="work-tile-media" src="assets/work/duo-gallery/page-26.png" alt="Duo Agency - Identidade Visual" loading="lazy"></span>
-      <span class="work-tile-cap"><span class="work-tile-name">Duo Agency</span><span class="work-tile-cat">Identidade Visual</span></span>
-    </a>
-    <a class="work-tile" data-project="broom" data-speed="-0.05" href="#workReveal">
-      <span class="work-tile-frame"><img class="work-tile-media" src="assets/work/broom-gallery/page-2.png" alt="Broom - Design de App" loading="lazy"></span>
-      <span class="work-tile-cap"><span class="work-tile-name">Broom</span><span class="work-tile-cat">Design de App</span></span>
+    <a class="work-tile" data-project="bautista" data-speed="0.07" href="#workReveal">
+      <span class="work-tile-frame"><img class="work-tile-media" src="assets/work/bautista-gallery/logo-central-azul.png" alt="Bautista Advocacia - Identidade Visual" loading="lazy"></span>
+      <span class="work-tile-cap"><span class="work-tile-name">Bautista Advocacia</span><span class="work-tile-cat">Identidade Visual</span></span>
     </a>
   </div>
 
@@ -819,7 +859,10 @@
 <section class="about" id="about">
   <div class="wrap">
     <p class="section-tag">sobre</p>
-    <p class="about-lead">O Studio de Lá é um estúdio de design remoto dedicado a marcas com história. São negócios que já têm alma, mas precisam de uma nova forma de se mostrar ao mundo.</p>
+    <div class="about-intro">
+      <p class="about-lead">O Studio de Lá é um estúdio de design remoto dedicado a marcas com história. São negócios que já têm alma, mas precisam de uma nova forma de se mostrar ao mundo.</p>
+      <img class="about-tote" src="assets/about-totebag.jpg" alt="Tote bag Studio de Lá">
+    </div>
     <div class="about-grid">
       <figure class="about-photo-wrap">
         <div class="about-photo">
@@ -908,10 +951,11 @@
     },
     kain: {
       name: 'Kain', cat: 'Tracklist Inverso Vol. 2',
+      layout: 'natural',
       images: [
-        'assets/work/kain-gallery/img-1.jpg',
         'assets/work/kain-gallery/img-2.jpg',
-        'assets/work/kain-gallery/img-3.jpg'
+        'assets/work/kain-gallery/img-3.jpg',
+        'assets/work/kain-gallery/img-1.jpg'
       ],
       behance: 'https://www.behance.net/gallery/253997117/KAIN-TRACKLIST-INVERSO-VOL2'
     },
@@ -959,27 +1003,14 @@
       name: 'Âmago Clothing', cat: 'Identidade Visual',
       images: ['assets/amago-case.jpg', 'assets/amago-magazine.jpg', 'assets/amago-website.jpg']
     },
-    duo: {
-      name: 'Duo Agency', cat: 'Identidade Visual',
-      hero: 'assets/work/duo-gallery/page-26.png',
+    bautista: {
+      name: 'Bautista Advocacia', cat: 'Identidade Visual',
+      layout: 'natural',
       images: [
-        'assets/work/duo-gallery/page-1.png',
-        'assets/work/duo-gallery/page-19.png',
-        'assets/work/duo-gallery/page-21.png',
-        'assets/work/duo-gallery/page-28.png',
-        'assets/work/duo-gallery/page-29.png',
-        'assets/work/duo-gallery/page-30.png'
-      ]
-    },
-    broom: {
-      name: 'Broom', cat: 'Design de App',
-      hero: 'assets/work/broom-gallery/page-2.png',
-      images: [
-        'assets/work/broom-gallery/page-3.png',
-        'assets/work/broom-gallery/page-4.png',
-        'assets/work/broom-gallery/page-5.png',
-        'assets/work/broom-gallery/page-6.png',
-        'assets/work/broom-gallery/page-7.png'
+        'assets/work/bautista-gallery/logo-horizontal-azul.png',
+        'assets/work/bautista-gallery/logo-horizontal-dourada.png',
+        'assets/work/bautista-gallery/logo-central-azul.png',
+        'assets/work/bautista-gallery/logo-central-dourada.png'
       ]
     }
   };
@@ -1000,7 +1031,7 @@
       html += '<img class="reveal-hero" src="' + p.hero + '" alt="' + esc(p.name) + '" loading="lazy">';
     }
     if(p.images && p.images.length){
-      html += '<div class="reveal-grid">';
+      html += '<div class="reveal-grid' + (p.layout === 'natural' ? ' is-natural' : '') + '">';
       p.images.forEach(function(src){ html += '<img src="' + src + '" alt="' + esc(p.name) + '" loading="lazy">'; });
       html += '</div>';
     }
@@ -1048,7 +1079,7 @@
         el: tile.querySelector('.work-tile-media'),
         speed: parseFloat(tile.getAttribute('data-speed')) || 0.06
       };
-    });
+    }).filter(function(m){ return m.el; });
     var parallaxTicking = false;
     function updateParallax(){
       var vh = window.innerHeight;
@@ -1274,6 +1305,7 @@
     window.addEventListener('pointerup', function(){ isDown = false; });
   }
 
+  var IDLE_SPIN = 0.0009;
   function animate(){
     raf = requestAnimationFrame(animate);
     rotY += velY;
@@ -1281,6 +1313,7 @@
     if(!isDown){
       velX *= 0.965;
       velY *= 0.965;
+      rotY += IDLE_SPIN;
     }
     points.rotation.y = rotY;
     points.rotation.x = rotX;
