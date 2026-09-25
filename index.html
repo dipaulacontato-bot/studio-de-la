@@ -181,7 +181,7 @@
   .headline-particles{
     position:absolute;
     display:none;
-    touch-action:none;
+    touch-action:pan-y;
     cursor:grab;
   }
   .headline-particles.is-ready{display:block;}
@@ -400,7 +400,7 @@
     margin-top:1.2rem;
   }
   .service-thumb img{width:100%;height:100%;object-fit:cover;display:block;}
-  .service-thumb--logo img{object-fit:contain;padding:10%;}
+  .service-thumb--logo img{object-fit:contain;padding:32%;}
   @media (max-width:640px){
     .services-list li.is-active .service-thumb{width:100%;}
   }
@@ -441,77 +441,93 @@
     font-size:0.95rem;
     line-height:1.6;
   }
-  .work-grid{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    column-gap:clamp(1.2rem,3vw,2.6rem);
-    row-gap:clamp(2.6rem,6vw,4rem);
-    padding-inline:var(--gutter);
-    padding-top:clamp(2rem,5vw,3rem);
-    max-width:var(--max);
-    margin-inline:auto;
-    margin-top:clamp(2.5rem,6vw,4rem);
-    border-top:1px solid var(--line);
+  .carousel{
+    width:100vw;
+    margin-inline:calc(50% - 50vw);
+    overflow-x:auto;
+    overflow-y:hidden;
+    scroll-snap-type:x mandatory;
+    -webkit-overflow-scrolling:touch;
+    scrollbar-width:none;
+    padding-block:clamp(1.5rem,4vw,2.5rem);
+    margin-top:clamp(1.5rem,4vw,2.5rem);
+    cursor:grab;
+    user-select:none;
   }
-  .work-tile{
-    display:block;
-    text-decoration:none;
-    color:inherit;
+  .carousel::-webkit-scrollbar{display:none;}
+  .carousel:active{cursor:grabbing;}
+  .carousel-track{
+    display:flex;
+    align-items:center;
+    gap:clamp(0.9rem,2vw,1.6rem);
+    padding-inline:max(24px, calc(50vw - min(36vw,550px)));
+    list-style:none;
+    margin:0;
   }
-  .work-tile-frame{
+  .carousel-card{
+    flex:none;
+    width:clamp(260px,72vw,1100px);
+    aspect-ratio:16/9;
+    scroll-snap-align:center;
+    position:relative;
+    border-radius:10px;
+    overflow:hidden;
+    transition:transform 0.35s ease, opacity 0.35s ease;
+    transform:scale(0.85);
+    opacity:0.55;
+  }
+  .carousel-trigger{
     display:block;
+    width:100%;
+    height:100%;
     position:relative;
     overflow:hidden;
     background:#0d0d0c;
-    aspect-ratio:1/1.02;
+    border:0;
+    padding:0;
+    cursor:pointer;
+    text-align:left;
   }
-  .work-tile.is-wide{grid-column:1 / -1;}
-  .work-tile.is-wide .work-tile-frame{aspect-ratio:1400/788;}
-  .work-tile.is-tall .work-tile-frame{aspect-ratio:600/1067;}
-  .work-tile.is-exact .work-tile-media{top:0;height:100%;}
-  .work-tile-media{
-    position:absolute;
-    left:0;
-    top:-12%;
-    width:100%;
-    height:124%;
-    object-fit:cover;
-    display:block;
-    will-change:transform;
-  }
-  .work-tile-frame iframe{
-    position:absolute;
-    inset:0;
+  .carousel-card img{
     width:100%;
     height:100%;
-    border:0;
+    object-fit:cover;
     display:block;
     pointer-events:none;
   }
-  .work-tile-cap{
-    margin-top:1.1rem;
+  .carousel-overlay{
+    position:absolute;
+    left:0;
+    right:0;
+    bottom:0;
+    padding:1.1rem 1rem 0.9rem;
+    background:linear-gradient(to top, rgba(0,0,0,0.85), rgba(0,0,0,0));
     display:flex;
-    justify-content:space-between;
-    align-items:baseline;
-    gap:1rem;
+    flex-direction:column;
+    gap:0.15rem;
+    opacity:0;
+    transition:opacity 0.3s ease;
+    pointer-events:none;
   }
-  .work-tile-name{
-    font-weight:700;
-    font-size:clamp(1.05rem,1.8vw,1.35rem);
-    transition:opacity 0.2s ease;
+  .carousel-card.is-active .carousel-overlay{opacity:1;}
+  .carousel-name{font-weight:700;color:#fff;font-size:0.95rem;}
+  .carousel-cat{color:rgba(255,255,255,0.75);font-size:0.78rem;}
+  .carousel-dots{
+    display:flex;
+    justify-content:center;
+    gap:0.5rem;
+    margin-top:0.5rem;
   }
-  .work-tile-cat{
-    color:var(--muted);
-    font-size:0.85rem;
-    white-space:nowrap;
+  .carousel-dot{
+    width:7px;
+    height:7px;
+    border-radius:50%;
+    background:var(--line);
+    border:none;
+    padding:0;
+    cursor:pointer;
   }
-  .work-tile:hover .work-tile-name{opacity:0.65;}
-  @media (max-width:760px){
-    .work-grid{grid-template-columns:1fr;row-gap:2.4rem;}
-  }
-  @media (prefers-reduced-motion: reduce){
-    .work-tile-media{top:0;height:100%;}
-  }
+  .carousel-dot.is-active{background:var(--accent);}
 
   /* ---------- WORK REVEAL (editorial) ---------- */
   .work-reveal{
@@ -793,40 +809,83 @@
     <p class="section-tag">trabalhos</p>
     <p class="work-lead">Uma coleção de identidades, sistemas visuais e direções criativas construídas com cuidado, verbo e imagem.</p>
   </div>
-  <div class="work-grid" id="workGrid">
-    <a class="work-tile is-wide is-exact" data-project="evandro" data-speed="0.07" href="#workReveal">
-      <span class="work-tile-frame"><img class="work-tile-media" src="assets/work/evandro-gallery/gallery-2.jpg" alt="Evandro Okàn – Com Alma no Verbo" loading="lazy"></span>
-      <span class="work-tile-cap"><span class="work-tile-name">Evandro Okàn</span><span class="work-tile-cat">Com Alma no Verbo</span></span>
-    </a>
-    <a class="work-tile" data-project="stereo" data-speed="-0.05" href="#workReveal">
-      <span class="work-tile-frame"><img class="work-tile-media" src="assets/work/stereo.jpg" alt="STEREO" loading="lazy"></span>
-      <span class="work-tile-cap"><span class="work-tile-name">STEREO</span><span class="work-tile-cat">Identidade de Marca</span></span>
-    </a>
-    <a class="work-tile" data-project="kain" data-speed="0.06" href="#workReveal">
-      <span class="work-tile-frame"><img class="work-tile-media" src="assets/work/kain-gallery/img-1.jpg" alt="Kain — Tracklist Inverso Vol.2" loading="lazy"></span>
-      <span class="work-tile-cap"><span class="work-tile-name">Kain</span><span class="work-tile-cat">Tracklist Inverso Vol. 2</span></span>
-    </a>
-    <a class="work-tile" data-project="multiforme" data-speed="-0.06" href="#workReveal">
-      <span class="work-tile-frame"><iframe src="https://www-ccv.adobe.io/v1/player/ccv/7vWfd97WMq9/embed?api_key=behance1&amp;bgcolor=%23191919&amp;autoplay=true&amp;muted=true&amp;loop=true" title="Multiforme" allow="autoplay" loading="lazy"></iframe></span>
-      <span class="work-tile-cap"><span class="work-tile-name">Multiforme</span><span class="work-tile-cat">Design</span></span>
-    </a>
-    <a class="work-tile is-tall is-exact" data-project="headphones" data-speed="0.08" href="#workReveal">
-      <span class="work-tile-frame"><img class="work-tile-media" src="assets/work/headphones-gallery/beats.gif" alt="Social Media Headphones - Portfólio" loading="lazy"></span>
-      <span class="work-tile-cap"><span class="work-tile-name">Headphones</span><span class="work-tile-cat">Social Media</span></span>
-    </a>
-    <a class="work-tile" data-project="ecos" data-speed="-0.05" href="#workReveal">
-      <span class="work-tile-frame"><img class="work-tile-media" src="assets/work/lettering-ecos.jpg" alt="Lettering Ecos Independentes" loading="lazy"></span>
-      <span class="work-tile-cap"><span class="work-tile-name">Ecos Independentes</span><span class="work-tile-cat">Lettering</span></span>
-    </a>
-    <a class="work-tile" data-project="moutinho" data-speed="0.06" href="#workReveal">
-      <span class="work-tile-frame"><img class="work-tile-media" src="assets/work/moutinho-cardoso.png" alt="Moutinho Cardoso - Identidade Visual" loading="lazy"></span>
-      <span class="work-tile-cap"><span class="work-tile-name">Moutinho Cardoso</span><span class="work-tile-cat">Identidade Visual</span></span>
-    </a>
-    <a class="work-tile" data-project="amago" data-speed="-0.06" href="#workReveal">
-      <span class="work-tile-frame"><img class="work-tile-media" src="assets/amago-case.jpg" alt="Âmago Clothing - Identidade Visual" loading="lazy"></span>
-      <span class="work-tile-cap"><span class="work-tile-name">Âmago Clothing</span><span class="work-tile-cat">Identidade Visual</span></span>
-    </a>
+  <div class="carousel" id="workCarousel">
+    <ul class="carousel-track" id="workTrack">
+      <li class="carousel-card" data-project="evandro">
+        <button type="button" class="carousel-trigger" aria-label="Ver projeto Evandro Okàn">
+          <img src="assets/work/evandro-gallery/gallery-2.jpg" alt="Evandro Okàn – Com Alma no Verbo" loading="lazy">
+          <span class="carousel-overlay">
+            <span class="carousel-name">Evandro Okàn</span>
+            <span class="carousel-cat">Com Alma no Verbo</span>
+          </span>
+        </button>
+      </li>
+      <li class="carousel-card" data-project="stereo">
+        <button type="button" class="carousel-trigger" aria-label="Ver projeto STEREO">
+          <img src="assets/work/stereo.jpg" alt="STEREO" loading="lazy">
+          <span class="carousel-overlay">
+            <span class="carousel-name">STEREO</span>
+            <span class="carousel-cat">Identidade de Marca</span>
+          </span>
+        </button>
+      </li>
+      <li class="carousel-card" data-project="kain">
+        <button type="button" class="carousel-trigger" aria-label="Ver projeto Kain">
+          <img src="assets/work/kain-gallery/img-1.jpg" alt="Kain — Tracklist Inverso Vol.2" loading="lazy">
+          <span class="carousel-overlay">
+            <span class="carousel-name">Kain</span>
+            <span class="carousel-cat">Tracklist Inverso Vol. 2</span>
+          </span>
+        </button>
+      </li>
+      <li class="carousel-card" data-project="multiforme">
+        <button type="button" class="carousel-trigger" aria-label="Ver projeto Multiforme">
+          <img src="assets/work/multiforme.png" alt="Multiforme - Design" loading="lazy">
+          <span class="carousel-overlay">
+            <span class="carousel-name">Multiforme</span>
+            <span class="carousel-cat">Design</span>
+          </span>
+        </button>
+      </li>
+      <li class="carousel-card" data-project="headphones">
+        <button type="button" class="carousel-trigger" aria-label="Ver projeto Headphones">
+          <img src="assets/work/headphones-gallery/beats.gif" alt="Social Media Headphones - Portfólio" loading="lazy">
+          <span class="carousel-overlay">
+            <span class="carousel-name">Headphones</span>
+            <span class="carousel-cat">Social Media</span>
+          </span>
+        </button>
+      </li>
+      <li class="carousel-card" data-project="ecos">
+        <button type="button" class="carousel-trigger" aria-label="Ver projeto Ecos Independentes">
+          <img src="assets/work/lettering-ecos.jpg" alt="Lettering Ecos Independentes" loading="lazy">
+          <span class="carousel-overlay">
+            <span class="carousel-name">Ecos Independentes</span>
+            <span class="carousel-cat">Lettering</span>
+          </span>
+        </button>
+      </li>
+      <li class="carousel-card" data-project="moutinho">
+        <button type="button" class="carousel-trigger" aria-label="Ver projeto Moutinho Cardoso">
+          <img src="assets/work/moutinho-cardoso.png" alt="Moutinho Cardoso - Identidade Visual" loading="lazy">
+          <span class="carousel-overlay">
+            <span class="carousel-name">Moutinho Cardoso</span>
+            <span class="carousel-cat">Identidade Visual</span>
+          </span>
+        </button>
+      </li>
+      <li class="carousel-card" data-project="amago">
+        <button type="button" class="carousel-trigger" aria-label="Ver projeto Âmago Clothing">
+          <img src="assets/amago-case.jpg" alt="Âmago Clothing - Identidade Visual" loading="lazy">
+          <span class="carousel-overlay">
+            <span class="carousel-name">Âmago Clothing</span>
+            <span class="carousel-cat">Identidade Visual</span>
+          </span>
+        </button>
+      </li>
+    </ul>
   </div>
+  <div class="carousel-dots" id="workDots"></div>
 
   <div class="work-reveal is-open" id="workReveal" aria-live="polite"></div>
 </section>
@@ -900,9 +959,12 @@
 
 <script>
 (function(){
-  var grid = document.getElementById('workGrid');
+  var carousel = document.getElementById('workCarousel');
+  var track = document.getElementById('workTrack');
+  var dotsWrap = document.getElementById('workDots');
   var reveal = document.getElementById('workReveal');
-  if(!grid || !reveal) return;
+  if(!carousel || !track || !reveal) return;
+  var cards = Array.prototype.slice.call(track.children);
 
   var PROJECTS = {
     evandro: {
@@ -1008,47 +1070,112 @@
   if(imgZoomClose) imgZoomClose.addEventListener('click', closeImgZoom);
   if(imgZoom) imgZoom.addEventListener('click', function(e){ if(e.target === imgZoom) closeImgZoom(); });
   document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeImgZoom(); });
-  var tiles = Array.prototype.slice.call(grid.children);
+  function scrollCardIntoView(card, smooth){
+    var cRect = card.getBoundingClientRect();
+    var trackRect = carousel.getBoundingClientRect();
+    var delta = (cRect.left + cRect.width/2) - (trackRect.left + trackRect.width/2);
+    var target = carousel.scrollLeft + delta;
+    if(smooth === false){ carousel.scrollLeft = target; }
+    else { carousel.scrollTo({left: target, behavior: 'smooth'}); }
+  }
 
-  tiles.forEach(function(tile){
-    var key = tile.getAttribute('data-project');
-    tile.addEventListener('click', function(e){
-      e.preventDefault();
-      if(key) renderReveal(key);
-      reveal.scrollIntoView({behavior:'smooth', block:'start'});
-    });
+  cards.forEach(function(card){
+    var key = card.getAttribute('data-project');
+    var trigger = card.querySelector('.carousel-trigger');
+    if(trigger && key){
+      trigger.addEventListener('click', function(e){
+        e.preventDefault();
+        scrollCardIntoView(card);
+        update();
+      });
+    }
   });
 
-  if(tiles.length) renderReveal(tiles[0].getAttribute('data-project'));
+  cards.forEach(function(card, i){
+    var dot = document.createElement('button');
+    dot.type = 'button';
+    dot.className = 'carousel-dot';
+    dot.setAttribute('aria-label', 'Ir para o projeto ' + (i+1));
+    dot.addEventListener('click', function(){
+      stopAuto();
+      scrollCardIntoView(card);
+    });
+    dotsWrap.appendChild(dot);
+  });
+  var dots = Array.prototype.slice.call(dotsWrap.children);
 
-  var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if(!reduceMotion){
-    var medias = tiles.map(function(tile){
-      return {
-        el: tile.querySelector('.work-tile-media'),
-        speed: parseFloat(tile.getAttribute('data-speed')) || 0.06
-      };
-    }).filter(function(m){ return m.el; });
-    var parallaxTicking = false;
-    function updateParallax(){
-      var vh = window.innerHeight;
-      medias.forEach(function(m){
-        var rect = m.el.parentElement.getBoundingClientRect();
-        var centerOffset = (rect.top + rect.height/2) - vh/2;
-        var y = -centerOffset * m.speed;
-        m.el.style.transform = 'translateY(' + y.toFixed(1) + 'px)';
-      });
-      parallaxTicking = false;
-    }
-    window.addEventListener('scroll', function(){
-      if(!parallaxTicking){
-        requestAnimationFrame(updateParallax);
-        parallaxTicking = true;
-      }
-    }, {passive:true});
-    window.addEventListener('resize', updateParallax);
-    updateParallax();
+  function update(){
+    var rect = carousel.getBoundingClientRect();
+    var center = rect.left + rect.width/2;
+    var closest = 0, closestDist = Infinity;
+    cards.forEach(function(card, i){
+      var cRect = card.getBoundingClientRect();
+      var cCenter = cRect.left + cRect.width/2;
+      var dist = Math.abs(cCenter - center);
+      var norm = Math.min(dist / (rect.width/2), 1);
+      var scale = 1.08 - norm*0.28;
+      var opacity = 1 - norm*0.55;
+      card.style.transform = 'scale(' + scale.toFixed(3) + ')';
+      card.style.opacity = opacity.toFixed(3);
+      if(dist < closestDist){ closestDist = dist; closest = i; }
+    });
+    cards.forEach(function(c,i){ c.classList.toggle('is-active', i===closest); });
+    dots.forEach(function(d,i){ d.classList.toggle('is-active', i===closest); });
+    var activeKey = cards[closest].getAttribute('data-project');
+    if(activeKey) renderReveal(activeKey);
+    return closest;
   }
+
+  var ticking = false;
+  carousel.addEventListener('scroll', function(){
+    if(!ticking){
+      requestAnimationFrame(function(){ update(); ticking = false; });
+      ticking = true;
+    }
+  }, {passive:true});
+
+  var isDown = false, startX, startScroll, dragged;
+  carousel.addEventListener('mousedown', function(e){
+    isDown = true;
+    dragged = false;
+    startX = e.pageX;
+    startScroll = carousel.scrollLeft;
+    stopAuto();
+  });
+  window.addEventListener('mouseup', function(){ isDown = false; });
+  carousel.addEventListener('mouseleave', function(){ isDown = false; });
+  carousel.addEventListener('mousemove', function(e){
+    if(!isDown) return;
+    e.preventDefault();
+    var dx = e.pageX - startX;
+    if(Math.abs(dx) > 4) dragged = true;
+    carousel.scrollLeft = startScroll - dx;
+  });
+  carousel.addEventListener('click', function(e){
+    if(dragged){ e.preventDefault(); e.stopPropagation(); }
+  }, true);
+  carousel.addEventListener('touchstart', stopAuto, {passive:true});
+  carousel.addEventListener('wheel', stopAuto, {passive:true});
+
+  window.addEventListener('resize', update);
+  requestAnimationFrame(function(){
+    scrollCardIntoView(cards[0], false);
+    update();
+  });
+
+  var autoTimer = null;
+  function startAuto(){
+    stopAuto();
+    autoTimer = setInterval(function(){
+      var idx = update();
+      var next = (idx + 1) % cards.length;
+      scrollCardIntoView(cards[next]);
+    }, 4200);
+  }
+  function stopAuto(){
+    if(autoTimer){ clearInterval(autoTimer); autoTimer = null; }
+  }
+  startAuto();
 
   var servicesList = document.getElementById('servicesList');
   if(servicesList){
@@ -1174,7 +1301,7 @@
 
   var MARGIN_FACTOR = 1.35;
   var renderer, scene, camera, points, raf;
-  var rotX = 0, rotY = 0, velX = 0, velY = 0;
+  var rotY = 0, velY = 0;
   var isDown = false, lastX = 0, lastY = 0;
   var baseW = 0, baseH = 0;
 
@@ -1204,7 +1331,7 @@
     var stride = isMobile ? 1 : 2;
     var positions = [];
     var colors = [];
-    var depth = Math.max(w, h) * 0.12;
+    var depth = Math.max(w, h) * 0.03;
     for(var y = 0; y < ch; y += stride){
       for(var x = 0; x < cw; x += stride){
         var idx = (y * cw + x) * 4;
@@ -1243,29 +1370,23 @@
     canvas.addEventListener('pointermove', function(e){
       if(!isDown) return;
       var dx = e.clientX - lastX;
-      var dy = e.clientY - lastY;
       lastX = e.clientX; lastY = e.clientY;
-      if(Math.abs(dx) > 2 || Math.abs(dy) > 2) headline.classList.add('is-dragged');
-      var targetVelY = dx * 0.0028;
-      var targetVelX = dy * 0.0028;
+      if(Math.abs(dx) > 2) headline.classList.add('is-dragged');
+      var targetVelY = dx * 0.0016;
       velY += (targetVelY - velY) * 0.35;
-      velX += (targetVelX - velX) * 0.35;
     });
     window.addEventListener('pointerup', function(){ isDown = false; });
   }
 
-  var IDLE_SPIN = 0.0009;
+  var IDLE_SPIN = 0.00012;
   function animate(){
     raf = requestAnimationFrame(animate);
     rotY += velY;
-    rotX += velX;
     if(!isDown){
-      velX *= 0.965;
       velY *= 0.965;
       rotY += IDLE_SPIN;
     }
     points.rotation.y = rotY;
-    points.rotation.x = rotX;
     renderer.render(scene, camera);
   }
 
