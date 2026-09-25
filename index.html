@@ -217,6 +217,69 @@
   }
   .services{border-top:none;}
 
+  /* ---------- FEATURE (destaque) ---------- */
+  .feature{
+    width:100vw;
+    margin-inline:calc(50% - 50vw);
+    padding-block:clamp(3rem,7vw,5rem) 0;
+    border-top:none;
+  }
+  .feature-item + .feature-item{
+    margin-top:clamp(3rem,7vw,5rem);
+  }
+  .feature-head{
+    display:flex;
+    flex-wrap:wrap;
+    align-items:baseline;
+    justify-content:space-between;
+    gap:0.8rem 2rem;
+    margin-bottom:clamp(1.5rem,4vw,2.5rem);
+  }
+  .feature-name{
+    font-size:clamp(1.6rem,4vw,2.6rem);
+    font-weight:700;
+  }
+  .feature-desc{
+    max-width:32rem;
+    color:var(--muted);
+    font-size:0.95rem;
+    line-height:1.6;
+  }
+  .feature-frame{
+    position:relative;
+    width:100%;
+    height:clamp(420px,82vh,900px);
+    overflow:hidden;
+    background:#0d0d0c;
+  }
+  .feature-frame img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+  }
+  .feature-cta{
+    position:absolute;
+    right:1.2rem;
+    bottom:1.2rem;
+    padding:0.6rem 1.15rem;
+    background:rgba(255,255,255,0.12);
+    backdrop-filter:blur(12px) saturate(1.4);
+    -webkit-backdrop-filter:blur(12px) saturate(1.4);
+    border:1px solid rgba(255,255,255,0.28);
+    border-radius:999px;
+    color:#fff;
+    font-size:0.78rem;
+    letter-spacing:0.02em;
+    text-decoration:none;
+    transition:background 0.2s ease, transform 0.2s ease;
+  }
+  .feature-cta:hover{background:rgba(255,255,255,0.22);transform:translateY(-1px);}
+  @media (max-width:700px){
+    .feature-frame{height:clamp(320px,60vh,600px);}
+    .feature-cta{font-size:0.72rem;padding:0.5rem 0.9rem;}
+  }
+
   /* ---------- ABOUT ---------- */
   .about{
     width:100vw;
@@ -734,6 +797,36 @@
     <span>About Us</span><span class="dot">✦</span>
   </div>
 </div>
+
+<section class="feature" id="destaque">
+  <div class="wrap">
+    <p class="section-tag">projetos em destaque</p>
+  </div>
+  <div class="feature-item">
+    <div class="wrap">
+      <div class="feature-head">
+        <h3 class="feature-name">Masseira</h3>
+        <p class="feature-desc">Identidade visual completa para uma padaria artesanal: símbolo, tipografia, embalagens e o mundo visual que carrega o cheiro de pão fresco.</p>
+      </div>
+    </div>
+    <div class="feature-frame">
+      <img src="assets/work/masseira-gallery/masseira-matchcut.gif" alt="Masseira — Identidade Visual" loading="lazy">
+      <a class="feature-cta" href="#contato">Pedir orçamento</a>
+    </div>
+  </div>
+  <div class="feature-item">
+    <div class="wrap">
+      <div class="feature-head">
+        <h3 class="feature-name">Âmago Clothing</h3>
+        <p class="feature-desc">Sistema de marca completo: símbolo, tipografia, cor e as regras que mantêm tudo coerente, aplicado do logotipo às peças reais.</p>
+      </div>
+    </div>
+    <div class="feature-frame">
+      <img src="assets/work/amago-gallery/amago-matchcut.gif" alt="Âmago Clothing — Identidade Visual" loading="lazy">
+      <a class="feature-cta" href="#contato">Pedir orçamento</a>
+    </div>
+  </div>
+</section>
 
 <section class="services" id="services">
   <div class="wrap">
