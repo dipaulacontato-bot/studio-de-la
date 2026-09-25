@@ -255,7 +255,7 @@
   .feature-frame img{
     width:100%;
     height:100%;
-    object-fit:contain;
+    object-fit:cover;
     display:block;
   }
   .feature-cta{
@@ -861,66 +861,21 @@
   </div>
   <div class="carousel" id="workCarousel">
     <ul class="carousel-track" id="workTrack">
+      <li class="carousel-card" data-project="masseira">
+        <button type="button" class="carousel-trigger" aria-label="Ver projeto Masseira">
+          <img src="assets/work/masseira-gallery/masseira-matchcut.gif" alt="Masseira - Identidade Visual" loading="lazy">
+          <span class="carousel-overlay">
+            <span class="carousel-name">Masseira</span>
+            <span class="carousel-cat">Identidade Visual</span>
+          </span>
+        </button>
+      </li>
       <li class="carousel-card" data-project="evandro">
         <button type="button" class="carousel-trigger" aria-label="Ver projeto Evandro Okàn">
           <img src="assets/work/evandro-gallery/gallery-2.jpg" alt="Evandro Okàn – Com Alma no Verbo" loading="lazy">
           <span class="carousel-overlay">
             <span class="carousel-name">Evandro Okàn</span>
             <span class="carousel-cat">Com Alma no Verbo</span>
-          </span>
-        </button>
-      </li>
-      <li class="carousel-card" data-project="stereo">
-        <button type="button" class="carousel-trigger" aria-label="Ver projeto STEREO">
-          <img src="assets/work/stereo.jpg" alt="STEREO" loading="lazy">
-          <span class="carousel-overlay">
-            <span class="carousel-name">STEREO</span>
-            <span class="carousel-cat">Identidade de Marca</span>
-          </span>
-        </button>
-      </li>
-      <li class="carousel-card" data-project="kain">
-        <button type="button" class="carousel-trigger" aria-label="Ver projeto Kain">
-          <img src="assets/work/kain-gallery/img-1.jpg" alt="Kain — Tracklist Inverso Vol.2" loading="lazy">
-          <span class="carousel-overlay">
-            <span class="carousel-name">Kain</span>
-            <span class="carousel-cat">Tracklist Inverso Vol. 2</span>
-          </span>
-        </button>
-      </li>
-      <li class="carousel-card" data-project="multiforme">
-        <button type="button" class="carousel-trigger" aria-label="Ver projeto Multiforme">
-          <img src="assets/work/multiforme.png" alt="Multiforme - Design" loading="lazy">
-          <span class="carousel-overlay">
-            <span class="carousel-name">Multiforme</span>
-            <span class="carousel-cat">Design</span>
-          </span>
-        </button>
-      </li>
-      <li class="carousel-card" data-project="headphones">
-        <button type="button" class="carousel-trigger" aria-label="Ver projeto Headphones">
-          <img src="assets/work/headphones-gallery/beats.gif" alt="Social Media Headphones - Portfólio" loading="lazy">
-          <span class="carousel-overlay">
-            <span class="carousel-name">Headphones</span>
-            <span class="carousel-cat">Social Media</span>
-          </span>
-        </button>
-      </li>
-      <li class="carousel-card" data-project="ecos">
-        <button type="button" class="carousel-trigger" aria-label="Ver projeto Ecos Independentes">
-          <img src="assets/work/lettering-ecos.jpg" alt="Lettering Ecos Independentes" loading="lazy">
-          <span class="carousel-overlay">
-            <span class="carousel-name">Ecos Independentes</span>
-            <span class="carousel-cat">Lettering</span>
-          </span>
-        </button>
-      </li>
-      <li class="carousel-card" data-project="moutinho">
-        <button type="button" class="carousel-trigger" aria-label="Ver projeto Moutinho Cardoso">
-          <img src="assets/work/moutinho-cardoso.png" alt="Moutinho Cardoso - Identidade Visual" loading="lazy">
-          <span class="carousel-overlay">
-            <span class="carousel-name">Moutinho Cardoso</span>
-            <span class="carousel-cat">Identidade Visual</span>
           </span>
         </button>
       </li>
@@ -933,11 +888,20 @@
           </span>
         </button>
       </li>
-      <li class="carousel-card" data-project="masseira">
-        <button type="button" class="carousel-trigger" aria-label="Ver projeto Masseira">
-          <img src="assets/work/masseira-gallery/masseira-matchcut.gif" alt="Masseira - Identidade Visual" loading="lazy">
+      <li class="carousel-card" data-project="kain">
+        <button type="button" class="carousel-trigger" aria-label="Ver projeto Kain">
+          <img src="assets/work/kain-gallery/img-1.jpg" alt="Kain — Tracklist Inverso Vol.2" loading="lazy">
           <span class="carousel-overlay">
-            <span class="carousel-name">Masseira</span>
+            <span class="carousel-name">Kain</span>
+            <span class="carousel-cat">Tracklist Inverso Vol. 2</span>
+          </span>
+        </button>
+      </li>
+      <li class="carousel-card" data-project="moutinho">
+        <button type="button" class="carousel-trigger" aria-label="Ver projeto Moutinho Cardoso">
+          <img src="assets/work/moutinho-cardoso.png" alt="Moutinho Cardoso - Identidade Visual" loading="lazy">
+          <span class="carousel-overlay">
+            <span class="carousel-name">Moutinho Cardoso</span>
             <span class="carousel-cat">Identidade Visual</span>
           </span>
         </button>
@@ -1040,39 +1004,10 @@
       ],
       behance: 'https://www.behance.net/gallery/245210287/Evandro-Okan-Com-Alma-no-Verbo'
     },
-    stereo: {
-      name: 'STEREO', cat: 'Identidade de Marca',
-      hero: 'assets/work/stereo.jpg',
-      behance: 'https://www.behance.net/gallery/253997697/STEREO'
-    },
     kain: {
       name: 'Kain', cat: 'Tracklist Inverso Vol. 2',
       hero: 'assets/work/kain-gallery/img-3.jpg',
       behance: 'https://www.behance.net/gallery/253997117/KAIN-TRACKLIST-INVERSO-VOL2'
-    },
-    multiforme: {
-      name: 'Multiforme', cat: 'Design',
-      video: 'https://www-ccv.adobe.io/v1/player/ccv/7vWfd97WMq9/embed?api_key=behance1&bgcolor=%23191919',
-      images: [
-        'assets/work/multiforme-gallery/img-1.png',
-        'assets/work/multiforme-gallery/img-2.png'
-      ],
-      behance: 'https://www.behance.net/gallery/245208685/Multiforme-Design'
-    },
-    ecos: {
-      name: 'Ecos Independentes', cat: 'Lettering',
-      video: 'https://www-ccv.adobe.io/v1/player/ccv/AgsnSte_iHq/embed?api_key=behance1&bgcolor=%23191919',
-      images: [
-        'assets/work/ecos-gallery/img-1.jpg',
-        'assets/work/ecos-gallery/img-2.jpg',
-        'assets/work/ecos-gallery/img-3.jpg'
-      ],
-      behance: 'https://www.behance.net/gallery/253991417/Lettering-Ecos-Independentes'
-    },
-    headphones: {
-      name: 'Headphones', cat: 'Social Media',
-      hero: 'assets/work/headphones-gallery/beats.gif',
-      behance: 'https://www.behance.net/gallery/136115143/Social-Media-Headphones-Portfolio'
     },
     moutinho: {
       name: 'Moutinho Cardoso', cat: 'Identidade Visual',
