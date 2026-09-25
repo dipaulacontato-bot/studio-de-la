@@ -245,12 +245,15 @@
     overflow:hidden;
     background:#0d0d0c;
   }
-  .feature-frame img{
+  .feature-frame img,
+  .feature-frame iframe{
     width:100%;
     height:100%;
     object-fit:cover;
     display:block;
+    border:0;
   }
+  .reveal-frame{margin-bottom:clamp(2rem,5vw,3rem);}
   .feature-cta{
     position:absolute;
     right:1.2rem;
@@ -497,7 +500,6 @@
     aspect-ratio:16/9;
     scroll-snap-align:center;
     position:relative;
-    border-radius:10px;
     overflow:hidden;
     transition:transform 0.35s ease, opacity 0.35s ease;
     transform:scale(0.85);
@@ -590,9 +592,6 @@
     cursor:pointer;
     flex:none;
   }
-  .reveal-hero{width:100%;height:auto;max-height:70vh;object-fit:contain;display:block;margin-bottom:1rem;background:#0d0d0c;}
-  .reveal-video{width:100%;aspect-ratio:16/9;margin-bottom:1rem;background:#0d0d0c;}
-  .reveal-video iframe{width:100%;height:100%;border:0;display:block;}
   .reveal-grid{
     display:block;
     column-count:3;
@@ -1049,18 +1048,17 @@
     revealCurrentKey = key;
     var html = '<div class="wrap"><div class="reveal-head">';
     html += '<div><p class="reveal-title">' + esc(p.name) + '</p><p class="reveal-cat">' + esc(p.cat) + '</p></div>';
-    html += '</div>';
+    html += '</div></div>';
     if(p.video){
-      html += '<div class="reveal-video"><iframe src="' + p.video + '&autoplay=true&muted=true" title="' + esc(p.name) + '" allow="autoplay; fullscreen" loading="lazy"></iframe></div>';
+      html += '<div class="feature-frame reveal-frame"><iframe src="' + p.video + '&autoplay=true&muted=true" title="' + esc(p.name) + '" allow="autoplay; fullscreen" loading="lazy"></iframe></div>';
     } else if(p.hero && p.revealHero !== false){
-      html += '<img class="reveal-hero" src="' + p.hero + '" alt="' + esc(p.name) + '" loading="lazy">';
+      html += '<div class="feature-frame reveal-frame"><img class="reveal-hero" src="' + p.hero + '" alt="' + esc(p.name) + '" loading="lazy"></div>';
     }
     if(p.images && p.images.length){
-      html += '<div class="reveal-grid">';
+      html += '<div class="wrap"><div class="reveal-grid">';
       p.images.forEach(function(src){ html += '<img src="' + src + '" alt="' + esc(p.name) + '" loading="lazy">'; });
-      html += '</div>';
+      html += '</div></div>';
     }
-    html += '</div>';
     reveal.innerHTML = html;
     var gridImgs = reveal.querySelectorAll('.reveal-grid img, .reveal-hero');
     Array.prototype.forEach.call(gridImgs, function(im){
