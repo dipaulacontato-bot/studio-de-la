@@ -213,8 +213,6 @@
 
   /* ---------- FEATURE (destaque) ---------- */
   .feature{
-    width:100vw;
-    margin-inline:calc(50% - 50vw);
     padding-block:clamp(3rem,7vw,5rem) 0;
     border-top:none;
   }
@@ -241,7 +239,8 @@
   }
   .feature-frame{
     position:relative;
-    width:100%;
+    width:100vw;
+    margin-inline:calc(50% - 50vw);
     height:clamp(420px,82vh,900px);
     overflow:hidden;
     background:#0d0d0c;
@@ -866,7 +865,7 @@
       </li>
       <li class="carousel-card" data-project="evandro">
         <button type="button" class="carousel-trigger" aria-label="Ver projeto Evandro Okàn">
-          <img src="assets/work/evandro-gallery/evandro-matchcut.gif" alt="Evandro Okàn – Com Alma no Verbo" loading="lazy">
+          <img src="assets/work/evandro-gallery/gallery-5.jpg" alt="Evandro Okàn – Com Alma no Verbo" loading="lazy">
           <span class="carousel-overlay">
             <span class="carousel-name">Evandro Okàn</span>
             <span class="carousel-cat">Com Alma no Verbo</span>
@@ -875,7 +874,7 @@
       </li>
       <li class="carousel-card" data-project="amago">
         <button type="button" class="carousel-trigger" aria-label="Ver projeto Âmago Clothing">
-          <img src="assets/work/amago-gallery/amago-matchcut.gif" alt="Âmago Clothing - Identidade Visual" loading="lazy">
+          <img src="assets/work/amago-gallery/cover-lifestyle.png" alt="Âmago Clothing - Identidade Visual" loading="lazy">
           <span class="carousel-overlay">
             <span class="carousel-name">Âmago Clothing</span>
             <span class="carousel-cat">Identidade Visual</span>
@@ -884,7 +883,7 @@
       </li>
       <li class="carousel-card" data-project="kain">
         <button type="button" class="carousel-trigger" aria-label="Ver projeto Kain">
-          <img src="assets/work/kain-gallery/kain-matchcut.gif" alt="Kain — Tracklist Inverso Vol.2" loading="lazy">
+          <img src="assets/work/kain-gallery/img-1.jpg" alt="Kain — Tracklist Inverso Vol.2" loading="lazy">
           <span class="carousel-overlay">
             <span class="carousel-name">Kain</span>
             <span class="carousel-cat">Tracklist Inverso Vol. 2</span>
@@ -1000,26 +999,44 @@
     },
     kain: {
       name: 'Kain', cat: 'Tracklist Inverso Vol. 2',
-      hero: 'assets/work/kain-gallery/kain-matchcut.gif',
+      hero: 'assets/work/kain-gallery/img-1.jpg',
+      images: [
+        'assets/work/kain-gallery/img-2.jpg',
+        'assets/work/kain-gallery/img-3.jpg'
+      ],
       behance: 'https://www.behance.net/gallery/253997117/KAIN-TRACKLIST-INVERSO-VOL2'
     },
     moutinho: {
       name: 'Moutinho Cardoso', cat: 'Identidade Visual',
       hero: 'assets/work/moutinho-gallery/moutinho-matchcut.gif',
+      images: [
+        'assets/work/moutinho-gallery/img-1.png',
+        'assets/work/moutinho-gallery/img-3.png',
+        'assets/work/moutinho-gallery/img-4.png'
+      ],
       behance: 'https://www.behance.net/gallery/143462293/Moutinho-Cardoso-Identidade-Visual'
     },
     amago: {
       name: 'Âmago Clothing', cat: 'Identidade Visual',
-      hero: 'assets/work/amago-gallery/amago-matchcut.gif',
+      hero: 'assets/work/amago-gallery/cover-lifestyle.png',
       images: [
         'assets/work/amago-gallery/logo-white.png',
-        'assets/work/amago-gallery/magazine.png',
-        'assets/amago-website.jpg'
+        'assets/work/amago-gallery/magazine.png'
       ]
     },
     masseira: {
       name: 'Masseira', cat: 'Identidade Visual',
-      hero: 'assets/work/masseira-gallery/masseira-matchcut.gif'
+      hero: 'assets/work/masseira-gallery/masseira-matchcut.gif',
+      revealHero: false,
+      images: [
+        'assets/work/masseira-gallery/photo-dough.jpg',
+        'assets/work/masseira-gallery/photo-bread.jpg',
+        'assets/work/masseira-gallery/photo-cacao.jpg',
+        'assets/work/masseira-gallery/mockup-fabric.jpg',
+        'assets/work/masseira-gallery/mockup-packaging.jpg',
+        'assets/work/masseira-gallery/pattern-black.jpg',
+        'assets/work/masseira-gallery/logo-orange.jpg'
+      ]
     }
   };
 
@@ -1035,7 +1052,7 @@
     html += '</div>';
     if(p.video){
       html += '<div class="reveal-video"><iframe src="' + p.video + '&autoplay=true&muted=true" title="' + esc(p.name) + '" allow="autoplay; fullscreen" loading="lazy"></iframe></div>';
-    } else if(p.hero){
+    } else if(p.hero && p.revealHero !== false){
       html += '<img class="reveal-hero" src="' + p.hero + '" alt="' + esc(p.name) + '" loading="lazy">';
     }
     if(p.images && p.images.length){
