@@ -169,12 +169,6 @@
     display:block;
     flex:none;
   }
-  @media (max-width:600px){
-    .headline img{height:clamp(3.2rem, 24vw, 40rem);}
-  }
-  @media (max-width:400px){
-    .headline img{height:clamp(2.7rem, 21vw, 40rem);}
-  }
   .marquee{
     width:100vw;
     margin-inline:calc(50% - 50vw);
@@ -832,7 +826,7 @@
           <span class="service-name">Identidade Visual</span>
           <span class="service-desc">Sistema de marca completo: símbolo, tipografia, cor e as regras que mantêm tudo coerente.</span>
         </span>
-        <span class="service-thumb service-thumb--logo"><img src="assets/amago-logo.png" alt="Logotipo Âmago Clothing" loading="lazy"></span>
+        <span class="service-thumb"><img src="assets/work/amago-gallery/cover-lifestyle.png" alt="Âmago Clothing - Identidade Visual" loading="lazy"></span>
       </li>
       <li>
         <span class="service-row">
@@ -840,7 +834,7 @@
           <span class="service-name">Branding</span>
           <span class="service-desc">Posicionamento, tom de voz e direção estratégica para marcas que estão nascendo ou se reinventando.</span>
         </span>
-        <span class="service-thumb"><img src="assets/amago-magazine.jpg" alt="Revista Âmago Style" loading="lazy"></span>
+        <span class="service-thumb"><img src="assets/work/amago-gallery/magazine.png" alt="Revista Âmago Style" loading="lazy"></span>
       </li>
       <li>
         <span class="service-row">
@@ -872,7 +866,7 @@
       </li>
       <li class="carousel-card" data-project="evandro">
         <button type="button" class="carousel-trigger" aria-label="Ver projeto Evandro Okàn">
-          <img src="assets/work/evandro-gallery/gallery-2.jpg" alt="Evandro Okàn – Com Alma no Verbo" loading="lazy">
+          <img src="assets/work/evandro-gallery/evandro-matchcut.gif" alt="Evandro Okàn – Com Alma no Verbo" loading="lazy">
           <span class="carousel-overlay">
             <span class="carousel-name">Evandro Okàn</span>
             <span class="carousel-cat">Com Alma no Verbo</span>
@@ -881,7 +875,7 @@
       </li>
       <li class="carousel-card" data-project="amago">
         <button type="button" class="carousel-trigger" aria-label="Ver projeto Âmago Clothing">
-          <img src="assets/amago-case.jpg" alt="Âmago Clothing - Identidade Visual" loading="lazy">
+          <img src="assets/work/amago-gallery/amago-matchcut.gif" alt="Âmago Clothing - Identidade Visual" loading="lazy">
           <span class="carousel-overlay">
             <span class="carousel-name">Âmago Clothing</span>
             <span class="carousel-cat">Identidade Visual</span>
@@ -890,7 +884,7 @@
       </li>
       <li class="carousel-card" data-project="kain">
         <button type="button" class="carousel-trigger" aria-label="Ver projeto Kain">
-          <img src="assets/work/kain-gallery/img-1.jpg" alt="Kain — Tracklist Inverso Vol.2" loading="lazy">
+          <img src="assets/work/kain-gallery/kain-matchcut.gif" alt="Kain — Tracklist Inverso Vol.2" loading="lazy">
           <span class="carousel-overlay">
             <span class="carousel-name">Kain</span>
             <span class="carousel-cat">Tracklist Inverso Vol. 2</span>
@@ -899,7 +893,7 @@
       </li>
       <li class="carousel-card" data-project="moutinho">
         <button type="button" class="carousel-trigger" aria-label="Ver projeto Moutinho Cardoso">
-          <img src="assets/work/moutinho-cardoso.png" alt="Moutinho Cardoso - Identidade Visual" loading="lazy">
+          <img src="assets/work/moutinho-gallery/moutinho-matchcut.gif" alt="Moutinho Cardoso - Identidade Visual" loading="lazy">
           <span class="carousel-overlay">
             <span class="carousel-name">Moutinho Cardoso</span>
             <span class="carousel-cat">Identidade Visual</span>
@@ -1006,17 +1000,22 @@
     },
     kain: {
       name: 'Kain', cat: 'Tracklist Inverso Vol. 2',
-      hero: 'assets/work/kain-gallery/img-3.jpg',
+      hero: 'assets/work/kain-gallery/kain-matchcut.gif',
       behance: 'https://www.behance.net/gallery/253997117/KAIN-TRACKLIST-INVERSO-VOL2'
     },
     moutinho: {
       name: 'Moutinho Cardoso', cat: 'Identidade Visual',
-      hero: 'assets/work/moutinho-cardoso.png',
+      hero: 'assets/work/moutinho-gallery/moutinho-matchcut.gif',
       behance: 'https://www.behance.net/gallery/143462293/Moutinho-Cardoso-Identidade-Visual'
     },
     amago: {
       name: 'Âmago Clothing', cat: 'Identidade Visual',
-      hero: 'assets/amago-case.jpg'
+      hero: 'assets/work/amago-gallery/amago-matchcut.gif',
+      images: [
+        'assets/work/amago-gallery/logo-white.png',
+        'assets/work/amago-gallery/magazine.png',
+        'assets/amago-website.jpg'
+      ]
     },
     masseira: {
       name: 'Masseira', cat: 'Identidade Visual',
