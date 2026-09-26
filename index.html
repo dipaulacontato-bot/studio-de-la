@@ -120,7 +120,7 @@
 
   /* ---------- HERO ---------- */
   .hero{
-    padding-block:clamp(1.1rem,2.4vw,1.6rem) clamp(2rem,6vw,4rem);
+    padding-block:clamp(1.1rem,2.4vw,1.6rem) 0;
     display:flex;
     flex-direction:column;
     align-items:center;
@@ -162,23 +162,24 @@
     from{opacity:0;transform:translateY(10px);}
     to{opacity:1;transform:translateY(0);}
   }
-  .wordmark svg{width:100%;height:auto;display:block;padding-top:clamp(40px,18vh,202px);padding-bottom:clamp(16px,6vh,74px);font-size:136px;font-weight:700;}
+  .wordmark svg{width:100%;height:auto;display:block;padding-top:0;padding-bottom:0;font-size:136px;font-weight:700;}
 
   .headline{
-    margin-top:clamp(-70px,-6vh,-20px);
-    padding-top:clamp(40px,16vh,286px);
-    margin-bottom:2px;
+    margin-top:clamp(0.5rem,2vh,1.6rem);
+    padding-top:0;
+    margin-bottom:0;
     display:flex;
     flex-wrap:nowrap;
     align-items:flex-start;
     justify-content:center;
     column-gap:clamp(0.2rem,1vw,0.6rem);
-    width:100%;
+    width:100vw;
+    margin-inline:calc(50% - 50vw);
     flex:none;
     position:relative;
   }
   .headline img{
-    height:clamp(3rem, min(24vw, 24vh), 30rem);
+    height:clamp(3rem, min(33vw, 58vh), 44rem);
     width:auto;
     max-width:none;
     display:block;
@@ -191,12 +192,12 @@
     padding-block:0.85rem;
     padding-left:320px;
     padding-right:0px;
-    margin-top:0;
+    margin-top:auto;
   }
   @media (max-width:760px){
     .marquee{
       padding-left:0;
-      margin-top:clamp(1.5rem,6vw,2.5rem);
+      margin-top:auto;
     }
   }
   /* Mobile: compact the hero so it doesn't waste a full screen of empty
@@ -252,11 +253,13 @@
     padding-block:clamp(3rem,7vw,5rem) 0;
     border-top:none;
   }
-  /* Content layer that scrolls up and overlaps the pinned hero */
+  /* Content layer that scrolls up and overlaps the pinned hero.
+     The drop shadow lifts it over the hero as it slides up. */
   .after-hero{
     position:relative;
     z-index:2;
     background:var(--bg);
+    box-shadow:0 -18px 44px -6px rgba(0,0,0,0.85);
   }
   .feature-item + .feature-item{
     margin-top:clamp(3rem,7vw,5rem);
@@ -864,10 +867,7 @@
     <img src="assets/design.png" alt="Design">
     <img src="assets/branding.png" alt="Branding">
   </h1>
-</header>
-
-<div class="after-hero">
-<div class="marquee">
+  <div class="marquee">
   <div class="marquee-track">
     <span>Landing Pages</span><span class="dot">✦</span>
     <span>Branding</span><span class="dot">✦</span>
@@ -894,8 +894,10 @@
     <span>Branding</span><span class="dot">✦</span>
     <span>About Us</span><span class="dot">✦</span>
   </div>
-</div>
+  </div>
+</header>
 
+<div class="after-hero">
 <section class="feature" id="destaque">
   <div class="wrap">
     <p class="section-tag">projeto em destaque</p>
