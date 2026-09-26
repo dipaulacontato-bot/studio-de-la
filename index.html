@@ -1303,3 +1303,66 @@
 })();
 </script>
 
+<script>
+/* Split-flap / scramble animation on the hero tagline — letters only, no cards. */
+(function(){
+  var el = document.getElementById('heroTagline') || document.querySelector('.hero-tagline');
+  if(!el) return;
+  var CHARS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789&%?!+;/$#';
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // Rebuild the tagline as per-character spans, preserving line breaks.
+  var lines = el.innerHTML.split(/<br\s*\/?>/i).map(function(s){
+    return s.replace(/<[^>]+>/g, '');
+  });
+  el.textContent = '';
+  var cells = [];
+  lines.forEach(function(line, li){
+    if(li > 0) el.appendChild(document.createElement('br'));
+    for(var i = 0; i < line.length; i++){
+      var ch = line[i];
+      var sp = document.createElement('span');
+      if(ch === ' '){ sp.innerHTML = '&nbsp;'; }
+      else { sp.textContent = ch; cells.push({el: sp, ch: ch}); }
+      el.appendChild(sp);
+    }
+  });
+
+  if(reduce) return;
+
+  function rand(){ return CHARS.charAt((Math.random() * CHARS.length) | 0); }
+
+  function play(){
+    var total = 1500;
+    cells.forEach(function(c, idx){
+      c.lock = 350 + (idx / cells.length) * total + Math.random() * 220;
+      c.next = 0;
+    });
+    var start = performance.now();
+    function frame(now){
+      var t = now - start, running = false;
+      for(var i = 0; i < cells.length; i++){
+        var c = cells[i];
+        if(t >= c.lock){ if(c.el.textContent !== c.ch) c.el.textContent = c.ch; }
+        else { running = true; if(t >= c.next){ c.el.textContent = rand(); c.next = t + 45; } }
+      }
+      if(running) requestAnimationFrame(frame);
+    }
+    requestAnimationFrame(frame);
+  }
+
+  // Play once on load, then again whenever it scrolls back into view.
+  var played = false;
+  if('IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){ play(); }
+      });
+    }, {threshold: 0.6});
+    io.observe(el);
+  } else {
+    play();
+  }
+})();
+</script>
+
