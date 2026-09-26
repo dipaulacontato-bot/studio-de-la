@@ -396,66 +396,56 @@
     margin-inline:calc(-1 * var(--gutter));
     padding-inline:var(--gutter);
   }
+  .services-headline{
+    font-size:clamp(1.7rem,4.2vw,3rem);
+    font-weight:700;
+    line-height:1.15;
+    max-width:46rem;
+    margin-top:0.8rem;
+    margin-bottom:clamp(2rem,5vw,3rem);
+  }
   .services-list li{
     display:flex;
-    flex-direction:column;
-    align-items:flex-start;
-    gap:0;
-    padding-block:clamp(1.2rem,2.6vw,1.8rem);
+    align-items:center;
+    gap:clamp(1rem,3vw,2.2rem);
+    padding-block:clamp(1.3rem,2.6vw,1.8rem);
     border-top:1px solid var(--line);
-    cursor:pointer;
   }
   .services-list li:last-child{border-bottom:1px solid var(--line);}
-  .services-list .service-row{
-    display:flex;
-    align-items:center;
-    gap:clamp(1rem,3vw,2.4rem);
-    width:100%;
+  .services-list .num{
+    font-variant-numeric:tabular-nums;
+    font-size:0.85rem;
+    color:var(--muted);
+    width:2ch;
+    flex:none;
   }
   .service-thumb{
-    width:0;
-    max-height:0;
-    aspect-ratio:16/9;
+    width:clamp(64px,8vw,104px);
+    aspect-ratio:1/1;
+    flex:none;
     overflow:hidden;
-    opacity:0;
     background:#0d0d0c;
-    align-self:flex-start;
-    transition:width 0.6s cubic-bezier(.22,.68,0,1), max-height 0.6s cubic-bezier(.22,.68,0,1), opacity 0.4s ease, margin-top 0.5s ease;
-  }
-  .services-list li.is-active .service-thumb{
-    width:75%;
-    max-height:2000px;
-    opacity:1;
-    margin-top:1.2rem;
   }
   .service-thumb img{width:100%;height:100%;object-fit:cover;display:block;}
   .service-thumb--logo{display:flex;align-items:center;justify-content:center;}
   .service-thumb--logo img{width:45%;height:45%;object-fit:contain;}
-  @media (max-width:640px){
-    .services-list li.is-active .service-thumb{width:100%;}
-  }
-  .services-list .num{
-    font-variant-numeric:tabular-nums;
-    font-size:0.85rem;
-    color:#fff;
-    width:2ch;
-    flex:none;
-  }
   .services-list .service-name{
-    font-size:clamp(1.2rem,2.4vw,1.6rem);
+    font-size:clamp(1.05rem,1.8vw,1.3rem);
     font-weight:700;
     color:#fff;
     flex:none;
-    width:min(46%,14rem);
+    width:min(28%,13rem);
   }
   .services-list .service-desc{
-    font-size:0.95rem;
-    line-height:1.5;
-    color:#fff;
-    opacity:0;
-    transition:opacity 0.4s ease;
+    font-size:0.9rem;
+    line-height:1.55;
+    color:var(--muted);
   }
-  .services-list li.is-active .service-desc{opacity:1;}
+  @media (max-width:700px){
+    .services-list li{flex-wrap:wrap;}
+    .services-list .service-name{width:auto;}
+    .services-list .service-desc{width:100%;order:1;margin-top:0.5rem;padding-left:calc(2ch + clamp(1rem,3vw,2.2rem));}
+  }
   .case-tag{
     margin-bottom:clamp(1.2rem,3vw,1.8rem);
     font-family:var(--mono);
@@ -684,6 +674,7 @@
     display:flex;
     gap:1.6rem;
     flex-wrap:wrap;
+    margin-top:clamp(1.5rem,4vw,2.5rem);
   }
   .socials a{
     font-size:0.85rem;
@@ -709,6 +700,27 @@
   }
   .legal a{text-decoration:none;color:var(--muted);}
   .legal a:hover{color:var(--fg);}
+  .footer-top{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:space-between;
+    align-items:flex-start;
+    gap:2rem;
+    margin-top:clamp(3rem,8vw,6rem);
+  }
+  .footer-nav{
+    display:flex;
+    flex-direction:column;
+    align-items:flex-end;
+    gap:0.5rem;
+  }
+  .footer-nav a{
+    font-weight:700;
+    font-size:0.95rem;
+    text-decoration:none;
+    color:var(--fg);
+  }
+  .footer-nav a:hover{color:var(--muted);}
   .footer-mark{
     width:clamp(90px,14vw,120px);
     color:var(--cream);
@@ -814,33 +826,27 @@
 <section class="services" id="services">
   <div class="wrap">
     <p class="section-tag">serviços</p>
-
+    <h3 class="services-headline">Visuais pensados com cuidado e experiências digitais estruturadas para a sua marca.</h3>
     <p class="case-tag">case — Âmago Clothing: elevando o estilo e redefinindo a elegância feminina</p>
 
     <ol class="services-list" id="servicesList">
-      <li class="is-active">
-        <span class="service-row">
-          <span class="num">01</span>
-          <span class="service-name">Identidade Visual</span>
-          <span class="service-desc">Sistema de marca completo: símbolo, tipografia, cor e as regras que mantêm tudo coerente.</span>
-        </span>
+      <li>
+        <span class="num">01</span>
         <span class="service-thumb"><img src="assets/work/amago-gallery/cover-lifestyle.png" alt="Âmago Clothing - Identidade Visual" loading="lazy"></span>
+        <span class="service-name">Identidade Visual</span>
+        <span class="service-desc">Sistema de marca completo: símbolo, tipografia, cor e as regras que mantêm tudo coerente.</span>
       </li>
       <li>
-        <span class="service-row">
-          <span class="num">02</span>
-          <span class="service-name">Branding</span>
-          <span class="service-desc">Posicionamento, tom de voz e direção estratégica para marcas que estão nascendo ou se reinventando.</span>
-        </span>
+        <span class="num">02</span>
         <span class="service-thumb"><img src="assets/work/amago-gallery/magazine.png" alt="Revista Âmago Style" loading="lazy"></span>
+        <span class="service-name">Branding</span>
+        <span class="service-desc">Posicionamento, tom de voz e direção estratégica para marcas que estão nascendo ou se reinventando.</span>
       </li>
       <li>
-        <span class="service-row">
-          <span class="num">03</span>
-          <span class="service-name">Landing Pages</span>
-          <span class="service-desc">Páginas desenhadas para converter sem abrir mão da personalidade da marca.</span>
-        </span>
+        <span class="num">03</span>
         <span class="service-thumb"><img src="assets/amago-website.jpg" alt="Site Âmago Clothing" loading="lazy" style="object-position:top"></span>
+        <span class="service-name">Landing Pages</span>
+        <span class="service-desc">Páginas desenhadas para converter sem abrir mão da personalidade da marca.</span>
       </li>
     </ol>
   </div>
@@ -946,13 +952,8 @@
   <p class="section-tag">contato</p>
   <p class="contact-cta">A sua marca tem história.<br>Damos-lhe nova forma.</p>
   <a class="contact-email" href="mailto:dipaulacontato@hotmail.com">dipaulacontato@hotmail.com</a>
-  <nav class="socials" aria-label="Redes sociais">
-    <a href="https://instagram.com/studio.de.la" target="_blank" rel="noopener">Instagram</a>
-    <a href="https://www.behance.net/StudiodeLa" target="_blank" rel="noopener">Behance</a>
-    <a href="https://wa.me/5511910892122" target="_blank" rel="noopener">WhatsApp</a>
-    <a href="tel:+5511910892122">Telemóvel: +55 11 91089-2122</a>
-  </nav>
-  <p class="footer-mark" role="img" aria-label="Studio de Lá">
+  <div class="footer-top">
+    <p class="footer-mark" role="img" aria-label="Studio de Lá">
     <svg viewBox="0 0 182.16 35.64" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" fill="currentColor">
       <path d="M2.33,33.62c-1.55-1.34-2.33-3.22-2.33-5.64h4.59c0,1.35.44,2.35,1.31,3,.87.65,2.05.97,3.53.97,1.35,0,2.38-.23,3.09-.69.71-.46,1.06-1.16,1.06-2.09,0-.62-.16-1.13-.48-1.53-.32-.4-.81-.72-1.45-.98-.65-.26-1.58-.55-2.81-.86-.21-.04-.45-.1-.72-.19-1.71-.42-3.07-.85-4.09-1.31-1.02-.46-1.82-1.1-2.4-1.94-.58-.83-.87-1.92-.87-3.25,0-1.98.75-3.47,2.25-4.47s3.49-1.5,5.97-1.5c1.89,0,3.47.28,4.73.84,1.26.56,2.19,1.34,2.78,2.33.59.99.89,2.13.89,3.42h-4.47c0-.92-.35-1.63-1.06-2.15-.71-.52-1.72-.78-3.03-.78-1.08,0-1.94.17-2.56.52-.62.34-.94.92-.94,1.73,0,.58.16,1.05.47,1.41.31.35.77.65,1.37.89.6.24,1.47.5,2.59.77h.06c.15.02.28.05.41.09,1.87.46,3.35.91,4.42,1.36,1.07.45,1.93,1.08,2.56,1.89.64.81.95,1.92.95,3.31,0,2.12-.77,3.8-2.31,5.03-1.54,1.23-3.74,1.84-6.59,1.84-3.06,0-5.37-.67-6.92-2.01Z"/>
       <path d="M23.42,17.43h-6.15v-3.97h16.68v3.97h-6.09v17.9h-4.43v-17.9Z"/>
@@ -965,10 +966,23 @@
       <path d="M161.6,27.76h.61l-1.68,7.56h-14.38l.16-.74h2.52l5.81-26.2h-2.52l.16-.74h8.58l-.16.74h-2.62l-5.81,26.2h5.13l4.18-6.82Z"/>
       <path d="M178.29,34.28h1.44l-.16.73h-7.35l.16-.73h2.41l.04-8.66h-6.36l-3.82,8.66h3.09l-.16.73h-5.37l.16-.73h1.43l11.11-25.21v-1.57h3.49l-.11,26.78ZM174.84,24.89l.07-13.86-6.11,13.86h6.04ZM174.52,5.43l-.13-.73c2.22-1.1,4.46-2.44,6.73-4.7l1.03,3.21c-2.61,1.21-5.19,1.87-7.64,2.21Z"/>
     </svg>
-  </p>
+    </p>
+    <nav class="footer-nav" aria-label="Navegação">
+      <a href="#top">Início</a>
+      <a href="#trabalhos">Trabalhos</a>
+      <a href="#about">Sobre</a>
+      <a href="#contato">Contato</a>
+    </nav>
+  </div>
+  <nav class="socials" aria-label="Redes sociais">
+    <a href="https://instagram.com/studio.de.la" target="_blank" rel="noopener">Instagram</a>
+    <a href="https://www.behance.net/StudiodeLa" target="_blank" rel="noopener">Behance</a>
+    <a href="https://wa.me/5511910892122" target="_blank" rel="noopener">WhatsApp</a>
+    <a href="tel:+5511910892122">Telemóvel: +55 11 91089-2122</a>
+  </nav>
   <div class="legal">
     <span>© 2026 Studio de Lá, São Caetano do Sul, Brasil, para Portugal e o mundo</span>
-    <a href="#top">Voltar ao topo</a>
+    <a href="#top">Voltar ao topo ↗</a>
   </div>
 </footer>
 
@@ -1188,23 +1202,6 @@
     if(autoTimer){ clearInterval(autoTimer); autoTimer = null; }
   }
   startAuto();
-
-  var servicesList = document.getElementById('servicesList');
-  if(servicesList){
-    var svcItems = Array.prototype.slice.call(servicesList.children);
-    var svcCurrent = 0;
-    svcItems.forEach(function(item, i){
-      item.addEventListener('click', function(){ svcGoTo(i); });
-    });
-    function svcGoTo(i){
-      svcItems[svcCurrent].classList.remove('is-active');
-      svcCurrent = i;
-      svcItems[svcCurrent].classList.add('is-active');
-    }
-    var svcTimer = setInterval(function(){ svcGoTo((svcCurrent + 1) % svcItems.length); }, 3400);
-    servicesList.addEventListener('mouseenter', function(){ clearInterval(svcTimer); });
-    servicesList.addEventListener('mouseleave', function(){ svcTimer = setInterval(function(){ svcGoTo((svcCurrent + 1) % svcItems.length); }, 3400); });
-  }
 })();
 </script>
 
