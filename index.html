@@ -296,9 +296,9 @@
   }
   .feature-frame{
     position:relative;
-    width:100vw;
-    margin-inline:calc(50% - 50vw);
-    height:clamp(320px,56vh,560px);
+    max-width:var(--max);
+    margin-inline:auto;
+    aspect-ratio:16/9;
     overflow:hidden;
     background:#0d0d0c;
   }
@@ -831,7 +831,6 @@
      peeking, not two), and bigger overlay buttons that stay on-screen. */
   @media (max-width:600px){
     .feature{padding-block:clamp(1.2rem,5vw,2rem) 0;}
-    .feature-frame{height:auto;aspect-ratio:4/5;}
     .feature-cta{right:1rem;bottom:1rem;font-size:0.84rem;padding:0.75rem 1.2rem;}
     .work-top{padding:1rem;}
     .work-pill{font-size:0.72rem;padding:0.5rem 0.9rem;}
