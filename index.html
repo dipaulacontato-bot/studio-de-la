@@ -151,8 +151,8 @@
   }
   .wordmark{
     margin-top:clamp(1.4rem,3.5vw,2.2rem);
-    width:clamp(240px, 38vw, 640px);
-    max-width:324px;
+    width:clamp(320px, 46vw, 760px);
+    max-width:520px;
     color:var(--fg);
     flex:none;
     opacity:0;
@@ -165,7 +165,7 @@
   .wordmark svg{width:100%;height:auto;display:block;padding-top:0;padding-bottom:0;font-size:136px;font-weight:700;}
 
   .headline{
-    margin-top:clamp(0.5rem,2vh,1.6rem);
+    margin-top:auto;
     padding-top:0;
     margin-bottom:0;
     display:flex;
@@ -177,6 +177,7 @@
     margin-inline:calc(50% - 50vw);
     flex:none;
     position:relative;
+    z-index:1;
   }
   .headline img{
     height:clamp(3rem, min(33vw, 58vh), 44rem);
@@ -192,7 +193,7 @@
     padding-block:0.85rem;
     padding-left:320px;
     padding-right:0px;
-    margin-top:auto;
+    margin-top:clamp(-2.6rem,-4vh,-1.2rem);
   }
   @media (max-width:760px){
     .marquee{
