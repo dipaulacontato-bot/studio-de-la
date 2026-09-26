@@ -230,11 +230,15 @@
     padding-block:clamp(3rem,7vw,5rem) 0;
     border-top:none;
   }
-  /* Content layer that scrolls up and overlaps the pinned hero */
+  /* Content layer that scrolls up and overlaps the pinned hero.
+     A gradient mask fades the top edge in, so the hero dissolves
+     smoothly under the rising content instead of a hard cut. */
   .after-hero{
     position:relative;
     z-index:2;
     background:var(--bg);
+    -webkit-mask-image:linear-gradient(to bottom, transparent 0, #000 clamp(90px,16vh,190px));
+    mask-image:linear-gradient(to bottom, transparent 0, #000 clamp(90px,16vh,190px));
   }
   .feature-item + .feature-item{
     margin-top:clamp(3rem,7vw,5rem);
