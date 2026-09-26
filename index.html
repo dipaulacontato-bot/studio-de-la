@@ -254,13 +254,24 @@
     padding-block:clamp(3rem,7vw,5rem) 0;
     border-top:none;
   }
-  /* Content layer that scrolls up and overlaps the pinned hero.
-     The drop shadow lifts it over the hero as it slides up. */
+  /* Content layer that scrolls up and overlaps the pinned hero. */
   .after-hero{
     position:relative;
     z-index:2;
     background:var(--bg);
-    box-shadow:0 -18px 44px -6px rgba(0,0,0,0.85);
+  }
+  /* Top-only drop shadow at the seam (full viewport width so the side
+     blur spills past the edges and is clipped — no side borders). */
+  .after-hero::before{
+    content:'';
+    position:absolute;
+    top:0;
+    left:50%;
+    transform:translateX(-50%);
+    width:100vw;
+    height:1px;
+    box-shadow:0 -10px 40px 6px rgba(0,0,0,0.9);
+    pointer-events:none;
   }
   .feature-item + .feature-item{
     margin-top:clamp(3rem,7vw,5rem);
@@ -287,7 +298,7 @@
     position:relative;
     width:100vw;
     margin-inline:calc(50% - 50vw);
-    height:clamp(420px,82vh,900px);
+    height:clamp(320px,56vh,560px);
     overflow:hidden;
     background:#0d0d0c;
   }
@@ -981,7 +992,7 @@
       </li>
       <li class="work-tile is-wide" data-project="amago">
         <button type="button" class="work-trigger" aria-label="Ver projeto Âmago Clothing">
-          <img src="assets/work/amago-gallery/cover-lifestyle.png" alt="Âmago Clothing - Identidade Visual" loading="lazy">
+          <img src="assets/work/amago-gallery/amago-field.png" alt="Âmago Clothing - Identidade Visual" loading="lazy">
           <span class="work-top">
             <span class="work-pills">
               <span class="work-pill work-pill--name">Âmago Clothing</span>
