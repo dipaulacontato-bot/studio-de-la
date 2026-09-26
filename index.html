@@ -34,7 +34,7 @@
     pointer-events:none;
     display:block;
   }
-  body > *:not(#bgTrail):not(.topbar):not(#imgZoom){
+  body > *:not(#bgTrail):not(.topbar):not(#imgZoom):not(.hero){
     position:relative;
     z-index:1;
   }
@@ -50,7 +50,6 @@
     -webkit-font-smoothing:antialiased;
     padding-inline:var(--gutter);
     padding-top:var(--topbar-h);
-    overflow-x:hidden;
   }
   img,svg{max-width:100%;display:block;}
   a{color:inherit;}
@@ -125,6 +124,15 @@
     flex-direction:column;
     align-items:center;
     text-align:center;
+    position:sticky;
+    bottom:0;
+    z-index:0;
+  }
+  /* Content layer that scrolls up and overlaps the pinned hero */
+  .after-hero{
+    position:relative;
+    z-index:2;
+    background:var(--bg);
   }
   .eyebrow{
     margin-top:clamp(1.6rem,5vw,3rem);
@@ -186,7 +194,7 @@
     padding-block:0.85rem;
     padding-left:320px;
     padding-right:0px;
-    margin-top:-120px;
+    margin-top:0;
   }
   @media (max-width:760px){
     .marquee{
@@ -789,6 +797,7 @@
   </h1>
 </header>
 
+<div class="after-hero">
 <div class="marquee">
   <div class="marquee-track">
     <span>Landing Pages</span><span class="dot">✦</span>
@@ -937,11 +946,6 @@
 
 </section>
 
-<div class="img-zoom" id="imgZoom" aria-hidden="true">
-  <button type="button" class="img-zoom-close" id="imgZoomClose" aria-label="Fechar">×</button>
-  <img id="imgZoomPic" src="" alt="">
-</div>
-
 <section class="about" id="about">
   <div class="wrap">
     <p class="section-tag">sobre</p>
@@ -1011,6 +1015,12 @@
     <a href="#top">Voltar ao topo ↗</a>
   </div>
 </footer>
+</div>
+
+<div class="img-zoom" id="imgZoom" aria-hidden="true">
+  <button type="button" class="img-zoom-close" id="imgZoomClose" aria-label="Fechar">×</button>
+  <img id="imgZoomPic" src="" alt="">
+</div>
 
 <script>
 (function(){
