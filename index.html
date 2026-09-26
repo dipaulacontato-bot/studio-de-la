@@ -161,11 +161,11 @@
     from{opacity:0;transform:translateY(10px);}
     to{opacity:1;transform:translateY(0);}
   }
-  .wordmark svg{width:100%;height:auto;display:block;padding-top:202px;padding-bottom:74px;font-size:136px;font-weight:700;}
+  .wordmark svg{width:100%;height:auto;display:block;padding-top:clamp(40px,18vh,202px);padding-bottom:clamp(16px,6vh,74px);font-size:136px;font-weight:700;}
 
   .headline{
-    margin-top:-70px;
-    padding-top:286px;
+    margin-top:clamp(-70px,-6vh,-20px);
+    padding-top:clamp(40px,16vh,286px);
     margin-bottom:2px;
     display:flex;
     flex-wrap:nowrap;
@@ -177,7 +177,7 @@
     position:relative;
   }
   .headline img{
-    height:clamp(4.4rem, 29vw, 40rem);
+    height:clamp(3rem, min(24vw, 24vh), 30rem);
     width:auto;
     max-width:none;
     display:block;
@@ -235,6 +235,17 @@
     position:relative;
     z-index:2;
     background:var(--bg);
+  }
+  /* Smooth gradient fade at the top edge, softening the hero -> content transition */
+  .after-hero::before{
+    content:'';
+    position:absolute;
+    left:0;
+    right:0;
+    top:-160px;
+    height:160px;
+    background:linear-gradient(to bottom, transparent, var(--bg));
+    pointer-events:none;
   }
   .feature-item + .feature-item{
     margin-top:clamp(3rem,7vw,5rem);
@@ -331,9 +342,8 @@
     gap:clamp(1rem,3vw,1.6rem);
   }
   .about-lead{
-    min-height:184px;
     margin-top:2px;
-    font-size:34px;
+    font-size:clamp(1.35rem, 5.2vw, 34px);
     font-weight:500;
     max-width:924px;
     line-height:1.3;
@@ -341,7 +351,6 @@
     text-wrap:balance;
     position:relative;
     z-index:2;
-    flex:1 1 320px;
   }
   .about-tote{
     width:clamp(140px,16vw,200px);
