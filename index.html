@@ -34,7 +34,7 @@
     pointer-events:none;
     display:block;
   }
-  body > *:not(#bgTrail):not(.topbar):not(#imgZoom):not(.hero){
+  body > *:not(#bgTrail):not(.topbar):not(#imgZoom):not(.feature){
     position:relative;
     z-index:1;
   }
@@ -124,15 +124,6 @@
     flex-direction:column;
     align-items:center;
     text-align:center;
-    position:sticky;
-    bottom:0;
-    z-index:0;
-  }
-  /* Content layer that scrolls up and overlaps the pinned hero */
-  .after-hero{
-    position:relative;
-    z-index:2;
-    background:var(--bg);
   }
   .eyebrow{
     margin-top:clamp(1.6rem,5vw,3rem);
@@ -194,7 +185,7 @@
     padding-block:0.85rem;
     padding-left:320px;
     padding-right:0px;
-    margin-top:0;
+    margin-top:-120px;
   }
   @media (max-width:760px){
     .marquee{
@@ -233,6 +224,15 @@
   .feature{
     padding-block:clamp(3rem,7vw,5rem) 0;
     border-top:none;
+    position:sticky;
+    bottom:0;
+    z-index:0;
+  }
+  /* Content layer that scrolls up and overlaps the pinned "projeto em destaque" */
+  .after-feature{
+    position:relative;
+    z-index:2;
+    background:var(--bg);
   }
   .feature-item + .feature-item{
     margin-top:clamp(3rem,7vw,5rem);
@@ -666,10 +666,43 @@
 
   /* ---------- CONTACT ---------- */
   .contact{
+    display:block;
+    padding-top:clamp(2.5rem,6vw,4rem);
+  }
+  .footer-cols{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:space-between;
+    gap:2rem 3rem;
+  }
+  .footer-info{
     display:flex;
     flex-direction:column;
-    align-items:flex-start;
-    gap:clamp(1.8rem,4vw,2.6rem);
+    gap:0.6rem;
+    font-size:0.98rem;
+    color:var(--fg);
+  }
+  .footer-info a{text-decoration:none;}
+  .footer-info a:hover{text-decoration:underline;text-underline-offset:0.15em;}
+  .footer-menus{display:flex;gap:clamp(2.5rem,6vw,5rem);}
+  .footer-menu{display:flex;flex-direction:column;gap:0.55rem;}
+  .footer-menu-label{
+    font-family:var(--mono);
+    font-size:0.72rem;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:var(--muted);
+    margin-bottom:0.3rem;
+  }
+  .footer-menu a{text-decoration:none;font-size:0.98rem;color:var(--fg);}
+  .footer-menu a:hover{color:var(--muted);}
+  .footer-wordmark{
+    margin-top:clamp(2.5rem,7vw,5rem);
+    color:var(--cream);
+  }
+  .footer-wordmark svg{width:100%;height:auto;display:block;}
+  @media (max-width:600px){
+    .footer-menus{gap:2.5rem;}
   }
   .contact-cta{
     font-family:var(--sans);
@@ -797,7 +830,6 @@
   </h1>
 </header>
 
-<div class="after-hero">
 <div class="marquee">
   <div class="marquee-track">
     <span>Landing Pages</span><span class="dot">✦</span>
@@ -845,6 +877,7 @@
   </div>
 </section>
 
+<div class="after-feature">
 <section class="services" id="services">
   <div class="wrap">
     <p class="section-tag">serviços</p>
@@ -980,10 +1013,29 @@
 
 <footer class="contact wrap" id="contato">
   <p class="section-tag">contato</p>
-  <p class="contact-cta">A sua marca tem história.<br>Damos-lhe nova forma.</p>
-  <a class="contact-email" href="mailto:dipaulacontato@hotmail.com">dipaulacontato@hotmail.com</a>
-  <div class="footer-top">
-    <p class="footer-mark" role="img" aria-label="Studio de Lá">
+  <div class="footer-cols">
+    <div class="footer-info">
+      <p>email: <a href="mailto:dipaulacontato@hotmail.com">dipaulacontato@hotmail.com</a></p>
+      <p>de: São Caetano do Sul, Brasil</p>
+      <p>para: Portugal e o mundo</p>
+      <p>disponível para novos projetos</p>
+    </div>
+    <div class="footer-menus">
+      <div class="footer-menu">
+        <span class="footer-menu-label">páginas</span>
+        <a href="#top">início</a>
+        <a href="#about">sobre</a>
+        <a href="#trabalhos">trabalhos</a>
+      </div>
+      <div class="footer-menu">
+        <span class="footer-menu-label">redes</span>
+        <a href="https://instagram.com/studio.de.la" target="_blank" rel="noopener">instagram</a>
+        <a href="https://www.behance.net/StudiodeLa" target="_blank" rel="noopener">behance</a>
+        <a href="https://wa.me/5511910892122" target="_blank" rel="noopener">whatsapp</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-wordmark" role="img" aria-label="Studio de Lá">
     <svg viewBox="0 0 182.16 35.64" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" fill="currentColor">
       <path d="M2.33,33.62c-1.55-1.34-2.33-3.22-2.33-5.64h4.59c0,1.35.44,2.35,1.31,3,.87.65,2.05.97,3.53.97,1.35,0,2.38-.23,3.09-.69.71-.46,1.06-1.16,1.06-2.09,0-.62-.16-1.13-.48-1.53-.32-.4-.81-.72-1.45-.98-.65-.26-1.58-.55-2.81-.86-.21-.04-.45-.1-.72-.19-1.71-.42-3.07-.85-4.09-1.31-1.02-.46-1.82-1.1-2.4-1.94-.58-.83-.87-1.92-.87-3.25,0-1.98.75-3.47,2.25-4.47s3.49-1.5,5.97-1.5c1.89,0,3.47.28,4.73.84,1.26.56,2.19,1.34,2.78,2.33.59.99.89,2.13.89,3.42h-4.47c0-.92-.35-1.63-1.06-2.15-.71-.52-1.72-.78-3.03-.78-1.08,0-1.94.17-2.56.52-.62.34-.94.92-.94,1.73,0,.58.16,1.05.47,1.41.31.35.77.65,1.37.89.6.24,1.47.5,2.59.77h.06c.15.02.28.05.41.09,1.87.46,3.35.91,4.42,1.36,1.07.45,1.93,1.08,2.56,1.89.64.81.95,1.92.95,3.31,0,2.12-.77,3.8-2.31,5.03-1.54,1.23-3.74,1.84-6.59,1.84-3.06,0-5.37-.67-6.92-2.01Z"/>
       <path d="M23.42,17.43h-6.15v-3.97h16.68v3.97h-6.09v17.9h-4.43v-17.9Z"/>
@@ -996,20 +1048,7 @@
       <path d="M161.6,27.76h.61l-1.68,7.56h-14.38l.16-.74h2.52l5.81-26.2h-2.52l.16-.74h8.58l-.16.74h-2.62l-5.81,26.2h5.13l4.18-6.82Z"/>
       <path d="M178.29,34.28h1.44l-.16.73h-7.35l.16-.73h2.41l.04-8.66h-6.36l-3.82,8.66h3.09l-.16.73h-5.37l.16-.73h1.43l11.11-25.21v-1.57h3.49l-.11,26.78ZM174.84,24.89l.07-13.86-6.11,13.86h6.04ZM174.52,5.43l-.13-.73c2.22-1.1,4.46-2.44,6.73-4.7l1.03,3.21c-2.61,1.21-5.19,1.87-7.64,2.21Z"/>
     </svg>
-    </p>
-    <nav class="footer-nav" aria-label="Navegação">
-      <a href="#top">Início</a>
-      <a href="#trabalhos">Trabalhos</a>
-      <a href="#about">Sobre</a>
-      <a href="#contato">Contato</a>
-    </nav>
   </div>
-  <nav class="socials" aria-label="Redes sociais">
-    <a href="https://instagram.com/studio.de.la" target="_blank" rel="noopener">Instagram</a>
-    <a href="https://www.behance.net/StudiodeLa" target="_blank" rel="noopener">Behance</a>
-    <a href="https://wa.me/5511910892122" target="_blank" rel="noopener">WhatsApp</a>
-    <a href="tel:+5511910892122">Telemóvel: +55 11 91089-2122</a>
-  </nav>
   <div class="legal">
     <span>© 2026 Studio de Lá, São Caetano do Sul, Brasil, para Portugal e o mundo</span>
     <a href="#top">Voltar ao topo ↗</a>
