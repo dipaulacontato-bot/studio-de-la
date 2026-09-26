@@ -1,0 +1,361 @@
+<!doctype html>
+<title>Projeto — Studio de Lá</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#040403;
+    --fg:#ffffff;
+    --cream:#e8dcd3;
+    --accent:#003da0;
+    --muted:#8f8a7d;
+    --line:rgba(232,220,211,0.16);
+    --sans:'Archivo', 'Helvetica Neue', Arial, sans-serif;
+    --mono:'Space Mono', 'SFMono-Regular', Consolas, monospace;
+    --gutter:clamp(20px, 5vw, 64px);
+    --max:1180px;
+    --topbar-h:44px;
+  }
+  *{box-sizing:border-box;}
+  html{background:var(--bg);scroll-behavior:smooth;overflow-x:hidden;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--fg);
+    font-family:var(--sans);
+    -webkit-font-smoothing:antialiased;
+    padding-inline:var(--gutter);
+    padding-top:var(--topbar-h);
+    overflow-x:hidden;
+  }
+  img,svg{max-width:100%;display:block;}
+  a{color:inherit;}
+  h1,h2,h3,p,ul,ol,dl,dd,figure{margin:0;}
+  ul,ol{padding:0;list-style:none;}
+  .wrap{max-width:var(--max);margin-inline:auto;}
+
+  /* ---------- TOPBAR ---------- */
+  .topbar{
+    position:fixed;top:0;left:0;right:0;z-index:50;height:var(--topbar-h);
+    display:flex;align-items:center;gap:clamp(1.5rem,4vw,3rem);
+    padding-inline:var(--gutter);
+    background:rgba(4,4,3,0.92);
+    -webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);
+    font-family:var(--mono);font-size:0.7rem;letter-spacing:0.02em;
+  }
+  .topbar-col{display:flex;align-items:baseline;gap:0.6rem;min-width:0;}
+  .topbar-col-end{margin-left:auto;gap:clamp(1.2rem,3vw,2rem);}
+  .topbar-name{font-weight:700;color:var(--fg);white-space:nowrap;text-decoration:none;}
+  .topbar-label{color:var(--muted);white-space:nowrap;}
+  .topbar-value{color:var(--fg);text-decoration:none;white-space:nowrap;}
+  .topbar-value:hover{text-decoration:underline;text-underline-offset:0.15em;}
+  .topbar-cta{color:var(--fg);font-weight:700;text-decoration:none;white-space:nowrap;}
+  .topbar-cta:hover{text-decoration:underline;text-underline-offset:0.15em;}
+  @media (max-width:760px){.topbar-col-mid{display:none;}}
+
+  /* ---------- PROJECT PAGE ---------- */
+  .pj-hero{
+    position:relative;width:100vw;margin-inline:calc(50% - 50vw);
+    height:clamp(58vh,80vh,900px);overflow:hidden;background:#0d0d0c;
+  }
+  .pj-hero img{width:100%;height:100%;object-fit:cover;display:block;}
+  .pj-title{padding-top:clamp(2rem,5vw,3.5rem);}
+  .pj-back{
+    display:inline-flex;align-items:center;gap:0.4rem;margin-bottom:1.4rem;
+    font-family:var(--mono);font-size:0.72rem;letter-spacing:0.08em;
+    text-transform:uppercase;color:var(--muted);text-decoration:none;
+  }
+  .pj-back:hover{color:var(--fg);}
+  .pj-name{font-size:clamp(2.2rem,7vw,5rem);font-weight:800;line-height:1.02;letter-spacing:-0.02em;}
+  .pj-cat{margin-top:0.6rem;font-family:var(--mono);font-size:0.8rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);}
+  .pj-overview{
+    display:grid;grid-template-columns:1.6fr 1fr;gap:clamp(2rem,6vw,5rem);
+    padding-block:clamp(2.5rem,6vw,4.5rem);
+    border-top:1px solid var(--line);margin-top:clamp(2.5rem,6vw,4rem);
+  }
+  .pj-overview-label,.pj-others-label{
+    font-family:var(--mono);font-size:0.75rem;letter-spacing:0.1em;
+    text-transform:uppercase;color:var(--muted);margin-bottom:1.2rem;
+  }
+  .pj-lead{font-size:clamp(1.15rem,2.4vw,1.7rem);line-height:1.5;font-weight:500;}
+  .pj-body{margin-top:1.4rem;color:var(--muted);font-size:1rem;line-height:1.7;max-width:44rem;}
+  .pj-body p + p{margin-top:1rem;}
+  .pj-meta{display:flex;flex-direction:column;gap:1.6rem;}
+  .pj-meta dt{font-family:var(--mono);font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-bottom:0.4rem;}
+  .pj-meta dd{font-size:0.98rem;line-height:1.5;}
+  .pj-meta dd a{color:#fff;text-decoration:underline;text-underline-offset:0.15em;}
+  @media (max-width:760px){.pj-overview{grid-template-columns:1fr;gap:2rem;}}
+  .pj-gallery{
+    padding-block:clamp(0.5rem,2vw,1.5rem) clamp(3rem,8vw,6rem);
+    display:flex;flex-direction:column;gap:clamp(0.8rem,2vw,1.6rem);
+  }
+  .pj-gallery img{width:100%;height:auto;display:block;background:#0d0d0c;cursor:zoom-in;}
+  .pj-video{position:relative;width:100%;aspect-ratio:16/9;background:#0d0d0c;}
+  .pj-video iframe{width:100%;height:100%;border:0;display:block;}
+  .pj-others{border-top:1px solid var(--line);padding-block:clamp(2.5rem,6vw,4rem);}
+  .pj-others-list a{
+    display:flex;align-items:baseline;justify-content:space-between;gap:1rem;
+    padding-block:clamp(1rem,2.5vw,1.6rem);border-top:1px solid var(--line);
+    text-decoration:none;color:var(--fg);
+  }
+  .pj-others-list a:last-child{border-bottom:1px solid var(--line);}
+  .pj-others-name{font-size:clamp(1.4rem,3.5vw,2.4rem);font-weight:700;transition:color .2s;}
+  .pj-others-list a:hover .pj-others-name{color:var(--muted);}
+  .pj-others-cat{font-family:var(--mono);font-size:0.72rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);white-space:nowrap;}
+
+  /* ---------- CONTACT / FOOTER ---------- */
+  .contact{display:flex;flex-direction:column;align-items:flex-start;gap:clamp(1.8rem,4vw,2.6rem);margin-top:clamp(2rem,5vw,3rem);}
+  .contact-cta{font-family:var(--sans);font-weight:700;font-size:31px;max-width:1160px;line-height:1;letter-spacing:-0.01em;text-wrap:balance;}
+  .contact-email{font-size:clamp(1.3rem,3vw,1.9rem);font-weight:600;text-decoration:underline;text-underline-offset:0.15em;text-decoration-color:var(--line);word-break:break-word;}
+  .contact-email:hover{text-decoration-color:var(--accent);}
+  .socials{display:flex;gap:1.6rem;flex-wrap:wrap;margin-top:clamp(1.5rem,4vw,2.5rem);}
+  .socials a{font-size:0.85rem;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;color:var(--muted);border-bottom:1px solid transparent;padding-bottom:2px;}
+  .socials a:hover{color:var(--fg);border-color:var(--line);}
+  .legal{width:100%;display:flex;justify-content:space-between;flex-wrap:wrap;gap:0.8rem;margin-top:clamp(1.5rem,4vw,2.6rem);padding-top:1.6rem;border-top:1px solid var(--line);font-size:0.78rem;color:var(--muted);}
+  .legal a{text-decoration:none;color:var(--muted);}
+  .legal a:hover{color:var(--fg);}
+  .footer-top{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-start;gap:2rem;margin-top:clamp(3rem,8vw,6rem);}
+  .footer-nav{display:flex;flex-direction:column;align-items:flex-end;gap:0.5rem;}
+  .footer-nav a{font-weight:700;font-size:0.95rem;text-decoration:none;color:var(--fg);}
+  .footer-nav a:hover{color:var(--muted);}
+  .footer-mark{width:clamp(90px,14vw,120px);color:var(--cream);opacity:0.85;}
+  .footer-mark svg{width:100%;height:auto;display:block;}
+  .section-tag{font-family:var(--sans);font-size:0.72rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--fg);margin-bottom:clamp(2.2rem,3vw,3.5rem);}
+
+  /* ---------- IMG ZOOM ---------- */
+  .img-zoom{position:fixed;inset:0;z-index:300;display:flex;align-items:center;justify-content:center;background:rgba(4,4,3,0.96);opacity:0;pointer-events:none;transition:opacity 0.3s ease;padding:clamp(1rem,4vw,3rem);}
+  .img-zoom.is-open{opacity:1;pointer-events:auto;}
+  .img-zoom img{max-width:88%;max-height:88%;width:auto;height:auto;display:block;}
+  .img-zoom-close{position:fixed;top:clamp(1rem,3vw,1.5rem);right:clamp(1rem,3vw,1.5rem);background:none;border:1px solid var(--line);color:#fff;width:40px;height:40px;border-radius:50%;font-size:1.3rem;line-height:1;cursor:pointer;z-index:5;}
+  @media (prefers-reduced-motion: reduce){html{scroll-behavior:auto;}}
+</style>
+
+<div class="topbar">
+  <div class="topbar-col">
+    <a class="topbar-name" href="index.html">Studio de Lá</a>
+  </div>
+  <div class="topbar-col topbar-col-mid">
+    <span class="topbar-label">Estúdio Remoto</span>
+  </div>
+  <div class="topbar-col topbar-col-end">
+    <a class="topbar-value" href="https://www.instagram.com/studio.de.la/" target="_blank" rel="noopener">Instagram</a>
+    <a class="topbar-value" href="https://wa.me/5511910892122" target="_blank" rel="noopener">WhatsApp</a>
+    <a class="topbar-cta" href="index.html#contato">Contato</a>
+  </div>
+</div>
+
+<main>
+  <section class="pj-hero" id="pjHero"></section>
+  <div class="wrap">
+    <div class="pj-title">
+      <a class="pj-back" href="index.html#trabalhos">← Trabalhos</a>
+      <h1 class="pj-name" id="pjName"></h1>
+      <p class="pj-cat" id="pjCat"></p>
+    </div>
+    <div class="pj-overview">
+      <div>
+        <p class="pj-overview-label">Visão geral</p>
+        <p class="pj-lead" id="pjLead"></p>
+        <div class="pj-body" id="pjBody"></div>
+      </div>
+      <dl class="pj-meta" id="pjMeta"></dl>
+    </div>
+  </div>
+  <div class="wrap">
+    <div class="pj-gallery" id="pjGallery"></div>
+  </div>
+  <div class="wrap">
+    <section class="pj-others">
+      <p class="pj-others-label">Outros projetos</p>
+      <div class="pj-others-list" id="pjOthers"></div>
+    </section>
+  </div>
+</main>
+
+<footer class="contact wrap" id="contato">
+  <p class="section-tag">contato</p>
+  <p class="contact-cta">A sua marca tem história.<br>Damos-lhe nova forma.</p>
+  <a class="contact-email" href="mailto:dipaulacontato@hotmail.com">dipaulacontato@hotmail.com</a>
+  <div class="footer-top">
+    <p class="footer-mark" role="img" aria-label="Studio de Lá">
+    <svg viewBox="0 0 182.16 35.64" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" fill="currentColor">
+      <path d="M2.33,33.62c-1.55-1.34-2.33-3.22-2.33-5.64h4.59c0,1.35.44,2.35,1.31,3,.87.65,2.05.97,3.53.97,1.35,0,2.38-.23,3.09-.69.71-.46,1.06-1.16,1.06-2.09,0-.62-.16-1.13-.48-1.53-.32-.4-.81-.72-1.45-.98-.65-.26-1.58-.55-2.81-.86-.21-.04-.45-.1-.72-.19-1.71-.42-3.07-.85-4.09-1.31-1.02-.46-1.82-1.1-2.4-1.94-.58-.83-.87-1.92-.87-3.25,0-1.98.75-3.47,2.25-4.47s3.49-1.5,5.97-1.5c1.89,0,3.47.28,4.73.84,1.26.56,2.19,1.34,2.78,2.33.59.99.89,2.13.89,3.42h-4.47c0-.92-.35-1.63-1.06-2.15-.71-.52-1.72-.78-3.03-.78-1.08,0-1.94.17-2.56.52-.62.34-.94.92-.94,1.73,0,.58.16,1.05.47,1.41.31.35.77.65,1.37.89.6.24,1.47.5,2.59.77h.06c.15.02.28.05.41.09,1.87.46,3.35.91,4.42,1.36,1.07.45,1.93,1.08,2.56,1.89.64.81.95,1.92.95,3.31,0,2.12-.77,3.8-2.31,5.03-1.54,1.23-3.74,1.84-6.59,1.84-3.06,0-5.37-.67-6.92-2.01Z"/>
+      <path d="M23.42,17.43h-6.15v-3.97h16.68v3.97h-6.09v17.9h-4.43v-17.9Z"/>
+      <path d="M37.99,34.39c-1.36-.83-2.33-1.94-2.89-3.31s-.84-2.98-.84-4.81v-12.81h4.44v12.59c0,1.17.15,2.17.44,3.01.29.84.79,1.5,1.48,1.98.7.48,1.65.72,2.86.72s2.16-.24,2.86-.72c.7-.48,1.19-1.14,1.48-1.98.29-.84.44-1.85.44-3.01v-12.59h4.44v12.81c0,1.83-.28,3.44-.84,4.81s-1.53,2.48-2.89,3.31c-1.36.83-3.19,1.25-5.48,1.25s-4.12-.42-5.48-1.25Z"/>
+      <path d="M54.69,13.46h6.72c2.21,0,4.27.34,6.2,1.02,1.93.68,3.51,1.83,4.76,3.45s1.87,3.77,1.87,6.43-.62,4.97-1.87,6.59-2.83,2.76-4.75,3.4c-1.92.65-3.99.97-6.22.97h-6.72V13.46ZM65.71,30.78c1.12-.39,2.07-1.09,2.84-2.11.77-1.02,1.16-2.43,1.16-4.22s-.39-3.18-1.17-4.23c-.78-1.05-1.73-1.78-2.86-2.19-1.12-.41-2.3-.61-3.53-.61h-3.03v13.93h3.03c1.25,0,2.44-.19,3.56-.58Z"/>
+      <path d="M75.74,13.46h4.43v21.86h-4.43V13.46ZM75.74,13.46h4.43v3.78h-4.43v-3.78ZM75.74,31.54h4.43v3.78h-4.43v-3.78Z"/>
+      <path d="M87.06,34.2c-1.72-.96-3.05-2.29-3.98-3.98-.94-1.7-1.41-3.65-1.41-5.86s.47-4.13,1.41-5.82c.94-1.7,2.26-3.02,3.98-3.97,1.72-.95,3.71-1.42,5.98-1.42s4.28.47,5.98,1.42c1.7.95,3,2.27,3.92,3.97.92,1.7,1.37,3.64,1.37,5.82s-.46,4.16-1.37,5.87c-.92,1.71-2.22,3.03-3.92,3.98-1.7.95-3.69,1.42-5.98,1.42s-4.26-.48-5.98-1.44ZM96.66,30.75c1-.55,1.77-1.37,2.31-2.45.54-1.08.81-2.37.81-3.87s-.27-2.8-.81-3.89c-.54-1.09-1.31-1.92-2.31-2.48s-2.21-.84-3.62-.84-2.61.28-3.64.84-1.82,1.39-2.37,2.48c-.55,1.09-.83,2.39-.83,3.89s.28,2.78.83,3.86c.55,1.07,1.34,1.89,2.37,2.45s2.24.84,3.64.84,2.62-.28,3.62-.83Z"/>
+      <path d="M116.44,24.83l.06-.29h4.02c3.21,0,4.88,1.34,4.88,3.91,0,4.18-2.96,6.87-7.49,6.87h-3.8l.06-.29h.98l2.26-10.2h-.98ZM118.03,35.04c3.67,0,5.9-3.22,5.9-6.78,0-2.25-1.23-3.42-3.66-3.42h-1.51l-2.26,10.2h1.53Z"/>
+      <path d="M131.44,32.66h.24l-.58,2.61h-5.63l.06-.29h.98l2.25-10.15h-.98l.06-.29h5.33l-.53,2.39h-.23l-.39-2.1h-1.93l-1.07,4.85h1.68l.88-1.59h.24l-.77,3.46h-.23l-.17-1.59h-1.69l-1.11,5.02h2.25l1.35-2.33Z"/>
+      <path d="M161.6,27.76h.61l-1.68,7.56h-14.38l.16-.74h2.52l5.81-26.2h-2.52l.16-.74h8.58l-.16.74h-2.62l-5.81,26.2h5.13l4.18-6.82Z"/>
+      <path d="M178.29,34.28h1.44l-.16.73h-7.35l.16-.73h2.41l.04-8.66h-6.36l-3.82,8.66h3.09l-.16.73h-5.37l.16-.73h1.43l11.11-25.21v-1.57h3.49l-.11,26.78ZM174.84,24.89l.07-13.86-6.11,13.86h6.04ZM174.52,5.43l-.13-.73c2.22-1.1,4.46-2.44,6.73-4.7l1.03,3.21c-2.61,1.21-5.19,1.87-7.64,2.21Z"/>
+    </svg>
+    </p>
+    <nav class="footer-nav" aria-label="Navegação">
+      <a href="index.html#top">Início</a>
+      <a href="index.html#trabalhos">Trabalhos</a>
+      <a href="index.html#about">Sobre</a>
+      <a href="index.html#contato">Contato</a>
+    </nav>
+  </div>
+  <nav class="socials" aria-label="Redes sociais">
+    <a href="https://instagram.com/studio.de.la" target="_blank" rel="noopener">Instagram</a>
+    <a href="https://www.behance.net/StudiodeLa" target="_blank" rel="noopener">Behance</a>
+    <a href="https://wa.me/5511910892122" target="_blank" rel="noopener">WhatsApp</a>
+    <a href="tel:+5511910892122">Telemóvel: +55 11 91089-2122</a>
+  </nav>
+  <div class="legal">
+    <span>© 2026 Studio de Lá, São Caetano do Sul, Brasil, para Portugal e o mundo</span>
+    <a href="index.html#top">Voltar ao topo ↗</a>
+  </div>
+</footer>
+
+<div class="img-zoom" id="imgZoom" aria-hidden="true">
+  <button class="img-zoom-close" id="imgZoomClose" aria-label="Fechar">×</button>
+  <img id="imgZoomPic" src="" alt="">
+</div>
+
+<script>
+(function(){
+  var ORDER = ['masseira','evandro','amago','kain','moutinho'];
+  var PROJECTS = {
+    masseira: {
+      name:'Masseira', cat:'Identidade Visual',
+      hero:'assets/work/masseira-gallery/photo-bread.jpg',
+      lead:'Identidade visual completa para uma padaria artesanal — símbolo, tipografia, embalagens e um mundo visual que carrega o cheiro de pão fresco.',
+      body:'<p>Do logótipo às embalagens, cada peça foi desenhada para traduzir o cuidado do trabalho manual e a calidez de uma marca feita para o dia a dia.</p>',
+      cliente:'Masseira',
+      entregaveis:['Identidade visual','Tipografia','Embalagens','Direção de arte'],
+      funcao:'Design e direção criativa',
+      images:[
+        'assets/work/masseira-gallery/photo-dough.jpg',
+        'assets/work/masseira-gallery/photo-cacao.jpg',
+        'assets/work/masseira-gallery/mockup-fabric.jpg',
+        'assets/work/masseira-gallery/mockup-packaging.jpg',
+        'assets/work/masseira-gallery/pattern-black.jpg',
+        'assets/work/masseira-gallery/logo-orange.jpg'
+      ]
+    },
+    evandro: {
+      name:'Evandro Okàn', cat:'Com Alma no Verbo',
+      hero:'assets/work/evandro-gallery/gallery-4.jpg',
+      video:'https://www-ccv.adobe.io/v1/player/ccv/5Aq5QYP3n__/embed?api_key=behance1&bgcolor=%23191919',
+      lead:'Direção criativa e identidade para o projeto “Com Alma no Verbo”, de Evandro Okàn.',
+      body:'<p>Um trabalho que une palavra e imagem, construindo uma linguagem visual com alma e intenção.</p>',
+      cliente:'Evandro Okàn',
+      entregaveis:['Direção criativa','Identidade','Audiovisual'],
+      funcao:'Direção criativa e design',
+      behance:'https://www.behance.net/gallery/245210287/Evandro-Okan-Com-Alma-no-Verbo',
+      images:[
+        'assets/work/evandro-gallery/gallery-2.jpg',
+        'assets/work/evandro-gallery/gallery-1.jpg',
+        'assets/work/evandro-gallery/gallery-3.jpg',
+        'assets/work/evandro-gallery/gallery-5.jpg',
+        'assets/work/evandro-gallery/gallery-6.jpg'
+      ]
+    },
+    amago: {
+      name:'Âmago Clothing', cat:'Identidade Visual',
+      hero:'assets/work/amago-gallery/cover-lifestyle.png',
+      lead:'Âmago Clothing — elevando o estilo e redefinindo a elegância feminina.',
+      body:'<p>Sistema de marca, editorial e presença digital pensados para uma moda que fala de sofisticação com personalidade.</p>',
+      cliente:'Âmago Clothing',
+      entregaveis:['Identidade visual','Branding','Landing page'],
+      funcao:'Design e direção criativa',
+      images:[
+        'assets/work/amago-gallery/logo-white.png',
+        'assets/work/amago-gallery/magazine.png'
+      ]
+    },
+    kain: {
+      name:'Kain', cat:'Tracklist Inverso Vol. 2',
+      hero:'assets/work/kain-gallery/img-1.jpg',
+      lead:'Direção de arte e identidade para “Tracklist Inverso Vol. 2”, de Kain.',
+      body:'<p>Uma capa e um universo visual construídos para acompanhar o som — gráfico, direto e com atitude.</p>',
+      cliente:'Kain',
+      entregaveis:['Direção de arte','Capa','Tracklist'],
+      funcao:'Design',
+      behance:'https://www.behance.net/gallery/253997117/KAIN-TRACKLIST-INVERSO-VOL2',
+      images:[
+        'assets/work/kain-gallery/img-2.jpg',
+        'assets/work/kain-gallery/img-3.jpg'
+      ]
+    },
+    moutinho: {
+      name:'Moutinho Cardoso', cat:'Identidade Visual',
+      hero:'assets/work/moutinho-gallery/img-1.png',
+      lead:'Identidade visual para Moutinho Cardoso.',
+      body:'<p>Um sistema de marca desenhado para transmitir consistência e presença em cada aplicação.</p>',
+      cliente:'Moutinho Cardoso',
+      entregaveis:['Identidade visual'],
+      funcao:'Design',
+      behance:'https://www.behance.net/gallery/143462293/Moutinho-Cardoso-Identidade-Visual',
+      images:[
+        'assets/work/moutinho-gallery/img-3.png',
+        'assets/work/moutinho-gallery/img-4.png'
+      ]
+    }
+  };
+
+  function esc(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/"/g,'&quot;'); }
+  function param(){
+    var m = location.search.match(/[?&]p=([^&]+)/);
+    return m ? decodeURIComponent(m[1]) : null;
+  }
+
+  var key = param();
+  if(!key || !PROJECTS[key]){ location.replace('index.html#trabalhos'); return; }
+  var p = PROJECTS[key];
+
+  document.title = p.name + ' — Studio de Lá';
+  document.getElementById('pjHero').innerHTML = '<img src="' + esc(p.hero) + '" alt="' + esc(p.name) + '">';
+  document.getElementById('pjName').textContent = p.name;
+  document.getElementById('pjCat').textContent = p.cat;
+  document.getElementById('pjLead').textContent = p.lead;
+  document.getElementById('pjBody').innerHTML = p.body || '';
+
+  var meta = '';
+  meta += '<div><dt>Cliente</dt><dd>' + esc(p.cliente) + '</dd></div>';
+  if(p.entregaveis && p.entregaveis.length){
+    meta += '<div><dt>Entregáveis</dt><dd>' + p.entregaveis.map(esc).join(' · ') + '</dd></div>';
+  }
+  if(p.funcao){ meta += '<div><dt>Função</dt><dd>' + esc(p.funcao) + '</dd></div>'; }
+  if(p.behance){ meta += '<div><dt>Behance</dt><dd><a href="' + esc(p.behance) + '" target="_blank" rel="noopener">Ver no Behance ↗</a></dd></div>'; }
+  document.getElementById('pjMeta').innerHTML = meta;
+
+  var gal = '';
+  if(p.video){
+    gal += '<div class="pj-video"><iframe src="' + esc(p.video) + '&autoplay=true&muted=true" title="' + esc(p.name) + '" allow="autoplay; fullscreen" loading="lazy"></iframe></div>';
+  }
+  (p.images || []).forEach(function(src){
+    gal += '<img src="' + esc(src) + '" alt="' + esc(p.name) + '" loading="lazy">';
+  });
+  document.getElementById('pjGallery').innerHTML = gal;
+
+  var others = '';
+  ORDER.forEach(function(k){
+    if(k === key) return;
+    var o = PROJECTS[k];
+    others += '<a href="projeto.html?p=' + k + '"><span class="pj-others-name">' + esc(o.name) + '</span><span class="pj-others-cat">' + esc(o.cat) + '</span></a>';
+  });
+  document.getElementById('pjOthers').innerHTML = others;
+
+  // image zoom
+  var imgZoom = document.getElementById('imgZoom');
+  var imgZoomPic = document.getElementById('imgZoomPic');
+  var imgZoomClose = document.getElementById('imgZoomClose');
+  function openZoom(src, alt){ imgZoomPic.src = src; imgZoomPic.alt = alt||''; imgZoom.classList.add('is-open'); imgZoom.setAttribute('aria-hidden','false'); }
+  function closeZoom(){ imgZoom.classList.remove('is-open'); imgZoom.setAttribute('aria-hidden','true'); imgZoomPic.src=''; }
+  document.getElementById('pjGallery').addEventListener('click', function(e){
+    if(e.target.tagName === 'IMG'){ openZoom(e.target.src, e.target.alt); }
+  });
+  imgZoomClose.addEventListener('click', closeZoom);
+  imgZoom.addEventListener('click', function(e){ if(e.target === imgZoom) closeZoom(); });
+  document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeZoom(); });
+
+  window.scrollTo(0,0);
+})();
+</script>
