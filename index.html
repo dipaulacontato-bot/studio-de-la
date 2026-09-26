@@ -50,6 +50,7 @@
     -webkit-font-smoothing:antialiased;
     padding-inline:var(--gutter);
     padding-top:var(--topbar-h);
+    overflow-x:clip;
   }
   img,svg{max-width:100%;display:block;}
   a{color:inherit;}
@@ -204,10 +205,20 @@
     .hero{
       min-height:0;
       justify-content:flex-start;
-      padding-block:clamp(1.5rem,7vw,2.5rem) clamp(1.5rem,6vw,2.5rem);
+      padding-block:clamp(1.5rem,7vw,2.5rem) 0;
     }
     .wordmark svg{padding-top:0;padding-bottom:0;}
-    .headline{margin-top:0;padding-top:clamp(1.5rem,7vw,2.5rem);}
+    .hero-tagline{margin-bottom:0;}
+    .headline{
+      width:100vw;
+      margin-inline:calc(50% - 50vw);
+      margin-top:0;
+      margin-bottom:0;
+      padding-top:clamp(1rem,5vw,1.6rem);
+      column-gap:0.1rem;
+    }
+    .headline img{height:33vw;}
+    .marquee{margin-top:0;}
   }
   .marquee-track{
     display:flex;
@@ -241,15 +252,11 @@
     padding-block:clamp(3rem,7vw,5rem) 0;
     border-top:none;
   }
-  /* Content layer that scrolls up and overlaps the pinned hero.
-     A gradient mask fades the top edge in, so the hero dissolves
-     smoothly under the rising content instead of a hard cut. */
+  /* Content layer that scrolls up and overlaps the pinned hero */
   .after-hero{
     position:relative;
     z-index:2;
     background:var(--bg);
-    -webkit-mask-image:linear-gradient(to bottom, transparent 0, #000 clamp(90px,16vh,190px));
-    mask-image:linear-gradient(to bottom, transparent 0, #000 clamp(90px,16vh,190px));
   }
   .feature-item + .feature-item{
     margin-top:clamp(3rem,7vw,5rem);
@@ -804,6 +811,17 @@
     .marquee-track{animation:none;}
     html{scroll-behavior:auto;}
     .wordmark{animation:none;opacity:1;}
+  }
+  /* Mobile: featured project taller so it's cut by the fold (one section
+     peeking, not two), and bigger overlay buttons that stay on-screen. */
+  @media (max-width:600px){
+    .feature{padding-block:clamp(1.2rem,5vw,2rem) 0;}
+    .feature-frame{height:auto;aspect-ratio:4/5;}
+    .feature-cta{right:1rem;bottom:1rem;font-size:0.84rem;padding:0.75rem 1.2rem;}
+    .work-top{padding:1rem;}
+    .work-pill{font-size:0.72rem;padding:0.5rem 0.9rem;}
+    .work-expand{width:42px;height:42px;}
+    .work-expand svg{width:18px;height:18px;}
   }
 </style>
 
