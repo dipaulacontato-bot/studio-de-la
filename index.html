@@ -510,24 +510,52 @@
     transition:transform 0.6s ease;
   }
   .work-trigger:hover img{transform:scale(1.04);}
-  .work-overlay{
+  .work-top{
     position:absolute;
     left:0;
     right:0;
-    bottom:0;
-    padding:1.2rem 1.2rem 1rem;
-    background:linear-gradient(to top, rgba(0,0,0,0.82), rgba(0,0,0,0));
+    top:0;
+    padding:clamp(0.8rem,1.8vw,1.15rem);
     display:flex;
-    flex-direction:column;
-    gap:0.15rem;
-    opacity:0;
-    transition:opacity 0.3s ease;
+    align-items:flex-start;
+    justify-content:space-between;
+    gap:0.6rem;
     pointer-events:none;
   }
-  .work-trigger:hover .work-overlay,
-  .work-tile.is-current .work-overlay{opacity:1;}
-  .work-name{font-weight:700;color:#fff;font-size:1rem;}
-  .work-cat{color:rgba(255,255,255,0.75);font-size:0.8rem;}
+  .work-pills{display:flex;flex-wrap:wrap;gap:0.4rem;}
+  .work-pill{
+    font-family:var(--mono);
+    font-size:0.68rem;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    padding:0.42rem 0.75rem;
+    border-radius:999px;
+    line-height:1;
+    white-space:nowrap;
+  }
+  .work-pill--name{background:var(--cream);color:#0a0a0a;font-weight:700;}
+  .work-pill--cat{
+    background:rgba(0,0,0,0.32);
+    color:rgba(255,255,255,0.85);
+    -webkit-backdrop-filter:blur(8px);
+    backdrop-filter:blur(8px);
+  }
+  .work-expand{
+    flex:none;
+    width:34px;
+    height:34px;
+    border-radius:999px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:rgba(0,0,0,0.32);
+    color:#fff;
+    -webkit-backdrop-filter:blur(8px);
+    backdrop-filter:blur(8px);
+    transition:background 0.25s ease;
+  }
+  .work-trigger:hover .work-expand{background:rgba(0,0,0,0.55);}
+  .work-expand svg{width:15px;height:15px;}
   @media (max-width:640px){
     .work-grid{grid-template-columns:1fr;}
     .work-tile.is-wide{grid-column:span 1;}
@@ -847,45 +875,60 @@
       <li class="work-tile is-wide" data-project="masseira">
         <button type="button" class="work-trigger" aria-label="Ver projeto Masseira">
           <img src="assets/work/masseira-gallery/masseira-matchcut.gif" alt="Masseira - Identidade Visual" loading="lazy">
-          <span class="work-overlay">
-            <span class="work-name">Masseira</span>
-            <span class="work-cat">Identidade Visual</span>
+          <span class="work-top">
+            <span class="work-pills">
+              <span class="work-pill work-pill--name">Masseira</span>
+              <span class="work-pill work-pill--cat">Identidade Visual</span>
+            </span>
+            <span class="work-expand" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg></span>
           </span>
         </button>
       </li>
       <li class="work-tile" data-project="evandro">
         <button type="button" class="work-trigger" aria-label="Ver projeto Evandro Okàn">
           <img src="assets/work/evandro-gallery/gallery-4.jpg" alt="Evandro Okàn – Com Alma no Verbo" loading="lazy">
-          <span class="work-overlay">
-            <span class="work-name">Evandro Okàn</span>
-            <span class="work-cat">Com Alma no Verbo</span>
+          <span class="work-top">
+            <span class="work-pills">
+              <span class="work-pill work-pill--name">Evandro Okàn</span>
+              <span class="work-pill work-pill--cat">Com Alma no Verbo</span>
+            </span>
+            <span class="work-expand" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg></span>
           </span>
         </button>
       </li>
       <li class="work-tile is-wide" data-project="amago">
         <button type="button" class="work-trigger" aria-label="Ver projeto Âmago Clothing">
           <img src="assets/work/amago-gallery/cover-lifestyle.png" alt="Âmago Clothing - Identidade Visual" loading="lazy">
-          <span class="work-overlay">
-            <span class="work-name">Âmago Clothing</span>
-            <span class="work-cat">Identidade Visual</span>
+          <span class="work-top">
+            <span class="work-pills">
+              <span class="work-pill work-pill--name">Âmago Clothing</span>
+              <span class="work-pill work-pill--cat">Identidade Visual</span>
+            </span>
+            <span class="work-expand" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg></span>
           </span>
         </button>
       </li>
       <li class="work-tile" data-project="kain">
         <button type="button" class="work-trigger" aria-label="Ver projeto Kain">
           <img src="assets/work/kain-gallery/img-1.jpg" alt="Kain — Tracklist Inverso Vol.2" loading="lazy">
-          <span class="work-overlay">
-            <span class="work-name">Kain</span>
-            <span class="work-cat">Tracklist Inverso Vol. 2</span>
+          <span class="work-top">
+            <span class="work-pills">
+              <span class="work-pill work-pill--name">Kain</span>
+              <span class="work-pill work-pill--cat">Tracklist Inverso Vol. 2</span>
+            </span>
+            <span class="work-expand" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg></span>
           </span>
         </button>
       </li>
       <li class="work-tile is-wide" data-project="moutinho">
         <button type="button" class="work-trigger" aria-label="Ver projeto Moutinho Cardoso">
           <img src="assets/work/moutinho-gallery/moutinho-matchcut.gif" alt="Moutinho Cardoso - Identidade Visual" loading="lazy">
-          <span class="work-overlay">
-            <span class="work-name">Moutinho Cardoso</span>
-            <span class="work-cat">Identidade Visual</span>
+          <span class="work-top">
+            <span class="work-pills">
+              <span class="work-pill work-pill--name">Moutinho Cardoso</span>
+              <span class="work-pill work-pill--cat">Identidade Visual</span>
+            </span>
+            <span class="work-expand" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg></span>
           </span>
         </button>
       </li>
