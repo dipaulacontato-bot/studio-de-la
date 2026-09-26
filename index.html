@@ -935,7 +935,6 @@
     </ul>
   </div>
 
-  <div class="work-reveal" id="workReveal" aria-live="polite"></div>
 </section>
 
 <div class="img-zoom" id="imgZoom" aria-hidden="true">
@@ -1016,8 +1015,7 @@
 <script>
 (function(){
   var grid = document.getElementById('workGrid');
-  var reveal = document.getElementById('workReveal');
-  if(!grid || !reveal) return;
+  if(!grid) return;
   var tiles = Array.prototype.slice.call(grid.children);
 
   var PROJECTS = {
@@ -1121,29 +1119,13 @@
   if(imgZoomClose) imgZoomClose.addEventListener('click', closeImgZoom);
   if(imgZoom) imgZoom.addEventListener('click', function(e){ if(e.target === imgZoom) closeImgZoom(); });
   document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeImgZoom(); });
-  function setCurrent(tile){
-    tiles.forEach(function(t){ t.classList.toggle('is-current', t === tile); });
-  }
-
   tiles.forEach(function(tile){
     var key = tile.getAttribute('data-project');
     var trigger = tile.querySelector('.work-trigger');
     if(trigger && key){
       trigger.addEventListener('click', function(e){
         e.preventDefault();
-        var alreadyOpen = tile.classList.contains('is-current') && reveal.classList.contains('is-open');
-        if(alreadyOpen){
-          reveal.classList.remove('is-open');
-          setCurrent(null);
-          return;
-        }
-        renderReveal(key);
-        reveal.classList.add('is-open');
-        setCurrent(tile);
-        requestAnimationFrame(function(){
-          var top = reveal.getBoundingClientRect().top + window.scrollY - 80;
-          window.scrollTo({top: top, behavior: 'smooth'});
-        });
+        window.location.href = 'projeto.html?p=' + key;
       });
     }
   });
