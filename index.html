@@ -198,6 +198,17 @@
       margin-top:clamp(1.5rem,6vw,2.5rem);
     }
   }
+  /* Mobile: compact the hero so it doesn't waste a full screen of empty
+     space, pulling the info up and letting the featured project peek in. */
+  @media (max-width:600px){
+    .hero{
+      min-height:0;
+      justify-content:flex-start;
+      padding-block:clamp(1.5rem,7vw,2.5rem) clamp(1.5rem,6vw,2.5rem);
+    }
+    .wordmark svg{padding-top:0;padding-bottom:0;}
+    .headline{margin-top:0;padding-top:clamp(1.5rem,7vw,2.5rem);}
+  }
   .marquee-track{
     display:flex;
     width:max-content;
