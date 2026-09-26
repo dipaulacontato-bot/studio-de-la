@@ -236,17 +236,6 @@
     z-index:2;
     background:var(--bg);
   }
-  /* Smooth gradient fade at the top edge, softening the hero -> content transition */
-  .after-hero::before{
-    content:'';
-    position:absolute;
-    left:0;
-    right:0;
-    top:-160px;
-    height:160px;
-    background:linear-gradient(to bottom, transparent, var(--bg));
-    pointer-events:none;
-  }
   .feature-item + .feature-item{
     margin-top:clamp(3rem,7vw,5rem);
   }
