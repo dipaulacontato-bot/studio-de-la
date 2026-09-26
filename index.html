@@ -477,44 +477,20 @@
     font-size:0.95rem;
     line-height:1.6;
   }
-  .carousel{
-    width:100vw;
-    margin-inline:calc(50% - 50vw);
-    overflow-x:auto;
-    overflow-y:hidden;
-    scroll-snap-type:x mandatory;
-    -webkit-overflow-scrolling:touch;
-    scrollbar-width:none;
-    padding-block:clamp(1.5rem,4vw,2.5rem);
-    margin-top:clamp(1.5rem,4vw,2.5rem);
-    cursor:grab;
-    user-select:none;
-  }
-  .carousel::-webkit-scrollbar{display:none;}
-  .carousel:active{cursor:grabbing;}
-  .carousel-track{
-    display:flex;
-    align-items:center;
-    gap:clamp(0.9rem,2vw,1.6rem);
-    padding-inline:max(24px, calc(50vw - min(36vw,550px)));
+  .work-grid{
     list-style:none;
-    margin:0;
+    margin:clamp(1.6rem,4vw,2.6rem) 0 0;
+    padding:0;
+    display:grid;
+    grid-template-columns:repeat(2, 1fr);
+    grid-auto-flow:dense;
+    gap:clamp(0.8rem,2vw,1.5rem);
   }
-  .carousel-card{
-    flex:none;
-    width:clamp(260px,72vw,1100px);
-    aspect-ratio:16/9;
-    scroll-snap-align:center;
-    position:relative;
-    overflow:hidden;
-    transition:transform 0.35s ease, opacity 0.35s ease;
-    transform:scale(0.85);
-    opacity:0.55;
-  }
-  .carousel-trigger{
+  .work-tile{position:relative;}
+  .work-tile.is-wide{grid-column:span 2;}
+  .work-trigger{
     display:block;
     width:100%;
-    height:100%;
     position:relative;
     overflow:hidden;
     background:#0d0d0c;
@@ -523,20 +499,24 @@
     cursor:pointer;
     text-align:left;
   }
-  .carousel-card img{
+  .work-tile.is-wide .work-trigger{aspect-ratio:16/9;}
+  .work-tile:not(.is-wide) .work-trigger{aspect-ratio:4/5;}
+  .work-trigger img{
     width:100%;
     height:100%;
     object-fit:cover;
     display:block;
     pointer-events:none;
+    transition:transform 0.6s ease;
   }
-  .carousel-overlay{
+  .work-trigger:hover img{transform:scale(1.04);}
+  .work-overlay{
     position:absolute;
     left:0;
     right:0;
     bottom:0;
-    padding:1.1rem 1rem 0.9rem;
-    background:linear-gradient(to top, rgba(0,0,0,0.85), rgba(0,0,0,0));
+    padding:1.2rem 1.2rem 1rem;
+    background:linear-gradient(to top, rgba(0,0,0,0.82), rgba(0,0,0,0));
     display:flex;
     flex-direction:column;
     gap:0.15rem;
@@ -544,25 +524,14 @@
     transition:opacity 0.3s ease;
     pointer-events:none;
   }
-  .carousel-card.is-active .carousel-overlay{opacity:1;}
-  .carousel-name{font-weight:700;color:#fff;font-size:0.95rem;}
-  .carousel-cat{color:rgba(255,255,255,0.75);font-size:0.78rem;}
-  .carousel-dots{
-    display:flex;
-    justify-content:center;
-    gap:0.5rem;
-    margin-top:0.5rem;
+  .work-trigger:hover .work-overlay,
+  .work-tile.is-current .work-overlay{opacity:1;}
+  .work-name{font-weight:700;color:#fff;font-size:1rem;}
+  .work-cat{color:rgba(255,255,255,0.75);font-size:0.8rem;}
+  @media (max-width:640px){
+    .work-grid{grid-template-columns:1fr;}
+    .work-tile.is-wide{grid-column:span 1;}
   }
-  .carousel-dot{
-    width:7px;
-    height:7px;
-    border-radius:50%;
-    background:var(--line);
-    border:none;
-    padding:0;
-    cursor:pointer;
-  }
-  .carousel-dot.is-active{background:var(--accent);}
 
   /* ---------- WORK REVEAL (editorial) ---------- */
   .work-reveal{
@@ -874,58 +843,57 @@
     <p class="section-tag">trabalhos</p>
     <p class="work-lead">Uma coleção de identidades, sistemas visuais e direções criativas construídas com cuidado, verbo e imagem.</p>
   </div>
-  <div class="carousel" id="workCarousel">
-    <ul class="carousel-track" id="workTrack">
-      <li class="carousel-card" data-project="masseira">
-        <button type="button" class="carousel-trigger" aria-label="Ver projeto Masseira">
+  <div class="wrap">
+    <ul class="work-grid" id="workGrid">
+      <li class="work-tile is-wide" data-project="masseira">
+        <button type="button" class="work-trigger" aria-label="Ver projeto Masseira">
           <img src="assets/work/masseira-gallery/masseira-matchcut.gif" alt="Masseira - Identidade Visual" loading="lazy">
-          <span class="carousel-overlay">
-            <span class="carousel-name">Masseira</span>
-            <span class="carousel-cat">Identidade Visual</span>
+          <span class="work-overlay">
+            <span class="work-name">Masseira</span>
+            <span class="work-cat">Identidade Visual</span>
           </span>
         </button>
       </li>
-      <li class="carousel-card" data-project="evandro">
-        <button type="button" class="carousel-trigger" aria-label="Ver projeto Evandro Okàn">
+      <li class="work-tile" data-project="evandro">
+        <button type="button" class="work-trigger" aria-label="Ver projeto Evandro Okàn">
           <img src="assets/work/evandro-gallery/gallery-4.jpg" alt="Evandro Okàn – Com Alma no Verbo" loading="lazy">
-          <span class="carousel-overlay">
-            <span class="carousel-name">Evandro Okàn</span>
-            <span class="carousel-cat">Com Alma no Verbo</span>
+          <span class="work-overlay">
+            <span class="work-name">Evandro Okàn</span>
+            <span class="work-cat">Com Alma no Verbo</span>
           </span>
         </button>
       </li>
-      <li class="carousel-card" data-project="amago">
-        <button type="button" class="carousel-trigger" aria-label="Ver projeto Âmago Clothing">
+      <li class="work-tile is-wide" data-project="amago">
+        <button type="button" class="work-trigger" aria-label="Ver projeto Âmago Clothing">
           <img src="assets/work/amago-gallery/cover-lifestyle.png" alt="Âmago Clothing - Identidade Visual" loading="lazy">
-          <span class="carousel-overlay">
-            <span class="carousel-name">Âmago Clothing</span>
-            <span class="carousel-cat">Identidade Visual</span>
+          <span class="work-overlay">
+            <span class="work-name">Âmago Clothing</span>
+            <span class="work-cat">Identidade Visual</span>
           </span>
         </button>
       </li>
-      <li class="carousel-card" data-project="kain">
-        <button type="button" class="carousel-trigger" aria-label="Ver projeto Kain">
+      <li class="work-tile" data-project="kain">
+        <button type="button" class="work-trigger" aria-label="Ver projeto Kain">
           <img src="assets/work/kain-gallery/img-1.jpg" alt="Kain — Tracklist Inverso Vol.2" loading="lazy">
-          <span class="carousel-overlay">
-            <span class="carousel-name">Kain</span>
-            <span class="carousel-cat">Tracklist Inverso Vol. 2</span>
+          <span class="work-overlay">
+            <span class="work-name">Kain</span>
+            <span class="work-cat">Tracklist Inverso Vol. 2</span>
           </span>
         </button>
       </li>
-      <li class="carousel-card" data-project="moutinho">
-        <button type="button" class="carousel-trigger" aria-label="Ver projeto Moutinho Cardoso">
+      <li class="work-tile is-wide" data-project="moutinho">
+        <button type="button" class="work-trigger" aria-label="Ver projeto Moutinho Cardoso">
           <img src="assets/work/moutinho-gallery/moutinho-matchcut.gif" alt="Moutinho Cardoso - Identidade Visual" loading="lazy">
-          <span class="carousel-overlay">
-            <span class="carousel-name">Moutinho Cardoso</span>
-            <span class="carousel-cat">Identidade Visual</span>
+          <span class="work-overlay">
+            <span class="work-name">Moutinho Cardoso</span>
+            <span class="work-cat">Identidade Visual</span>
           </span>
         </button>
       </li>
     </ul>
   </div>
-  <div class="carousel-dots" id="workDots"></div>
 
-  <div class="work-reveal is-open" id="workReveal" aria-live="polite"></div>
+  <div class="work-reveal" id="workReveal" aria-live="polite"></div>
 </section>
 
 <div class="img-zoom" id="imgZoom" aria-hidden="true">
@@ -1005,12 +973,10 @@
 
 <script>
 (function(){
-  var carousel = document.getElementById('workCarousel');
-  var track = document.getElementById('workTrack');
-  var dotsWrap = document.getElementById('workDots');
+  var grid = document.getElementById('workGrid');
   var reveal = document.getElementById('workReveal');
-  if(!carousel || !track || !reveal) return;
-  var cards = Array.prototype.slice.call(track.children);
+  if(!grid || !reveal) return;
+  var tiles = Array.prototype.slice.call(grid.children);
 
   var PROJECTS = {
     evandro: {
@@ -1113,112 +1079,32 @@
   if(imgZoomClose) imgZoomClose.addEventListener('click', closeImgZoom);
   if(imgZoom) imgZoom.addEventListener('click', function(e){ if(e.target === imgZoom) closeImgZoom(); });
   document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeImgZoom(); });
-  function scrollCardIntoView(card, smooth){
-    var cRect = card.getBoundingClientRect();
-    var trackRect = carousel.getBoundingClientRect();
-    var delta = (cRect.left + cRect.width/2) - (trackRect.left + trackRect.width/2);
-    var target = carousel.scrollLeft + delta;
-    if(smooth === false){ carousel.scrollLeft = target; }
-    else { carousel.scrollTo({left: target, behavior: 'smooth'}); }
+  function setCurrent(tile){
+    tiles.forEach(function(t){ t.classList.toggle('is-current', t === tile); });
   }
 
-  cards.forEach(function(card){
-    var key = card.getAttribute('data-project');
-    var trigger = card.querySelector('.carousel-trigger');
+  tiles.forEach(function(tile){
+    var key = tile.getAttribute('data-project');
+    var trigger = tile.querySelector('.work-trigger');
     if(trigger && key){
       trigger.addEventListener('click', function(e){
         e.preventDefault();
-        scrollCardIntoView(card);
-        update();
+        var alreadyOpen = tile.classList.contains('is-current') && reveal.classList.contains('is-open');
+        if(alreadyOpen){
+          reveal.classList.remove('is-open');
+          setCurrent(null);
+          return;
+        }
+        renderReveal(key);
+        reveal.classList.add('is-open');
+        setCurrent(tile);
+        requestAnimationFrame(function(){
+          var top = reveal.getBoundingClientRect().top + window.scrollY - 80;
+          window.scrollTo({top: top, behavior: 'smooth'});
+        });
       });
     }
   });
-
-  cards.forEach(function(card, i){
-    var dot = document.createElement('button');
-    dot.type = 'button';
-    dot.className = 'carousel-dot';
-    dot.setAttribute('aria-label', 'Ir para o projeto ' + (i+1));
-    dot.addEventListener('click', function(){
-      stopAuto();
-      scrollCardIntoView(card);
-    });
-    dotsWrap.appendChild(dot);
-  });
-  var dots = Array.prototype.slice.call(dotsWrap.children);
-
-  function update(){
-    var rect = carousel.getBoundingClientRect();
-    var center = rect.left + rect.width/2;
-    var closest = 0, closestDist = Infinity;
-    cards.forEach(function(card, i){
-      var cRect = card.getBoundingClientRect();
-      var cCenter = cRect.left + cRect.width/2;
-      var dist = Math.abs(cCenter - center);
-      var norm = Math.min(dist / (rect.width/2), 1);
-      var scale = 1.08 - norm*0.28;
-      var opacity = 1 - norm*0.55;
-      card.style.transform = 'scale(' + scale.toFixed(3) + ')';
-      card.style.opacity = opacity.toFixed(3);
-      if(dist < closestDist){ closestDist = dist; closest = i; }
-    });
-    cards.forEach(function(c,i){ c.classList.toggle('is-active', i===closest); });
-    dots.forEach(function(d,i){ d.classList.toggle('is-active', i===closest); });
-    var activeKey = cards[closest].getAttribute('data-project');
-    if(activeKey) renderReveal(activeKey);
-    return closest;
-  }
-
-  var ticking = false;
-  carousel.addEventListener('scroll', function(){
-    if(!ticking){
-      requestAnimationFrame(function(){ update(); ticking = false; });
-      ticking = true;
-    }
-  }, {passive:true});
-
-  var isDown = false, startX, startScroll, dragged;
-  carousel.addEventListener('mousedown', function(e){
-    isDown = true;
-    dragged = false;
-    startX = e.pageX;
-    startScroll = carousel.scrollLeft;
-    stopAuto();
-  });
-  window.addEventListener('mouseup', function(){ isDown = false; });
-  carousel.addEventListener('mouseleave', function(){ isDown = false; });
-  carousel.addEventListener('mousemove', function(e){
-    if(!isDown) return;
-    e.preventDefault();
-    var dx = e.pageX - startX;
-    if(Math.abs(dx) > 4) dragged = true;
-    carousel.scrollLeft = startScroll - dx;
-  });
-  carousel.addEventListener('click', function(e){
-    if(dragged){ e.preventDefault(); e.stopPropagation(); }
-  }, true);
-  carousel.addEventListener('touchstart', stopAuto, {passive:true});
-  carousel.addEventListener('wheel', stopAuto, {passive:true});
-
-  window.addEventListener('resize', update);
-  requestAnimationFrame(function(){
-    scrollCardIntoView(cards[0], false);
-    update();
-  });
-
-  var autoTimer = null;
-  function startAuto(){
-    stopAuto();
-    autoTimer = setInterval(function(){
-      var idx = update();
-      var next = (idx + 1) % cards.length;
-      scrollCardIntoView(cards[next]);
-    }, 4200);
-  }
-  function stopAuto(){
-    if(autoTimer){ clearInterval(autoTimer); autoTimer = null; }
-  }
-  startAuto();
 })();
 </script>
 
