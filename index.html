@@ -528,10 +528,23 @@
   }
   .services-list .service-cta:hover{background:#fff;color:#040403;border-color:#fff;}
   @media (max-width:700px){
-    .services-list li{flex-wrap:wrap;}
-    .services-list .service-name{flex:1 1 auto;}
-    .services-list .service-desc{flex:1 1 100%;max-width:none;order:1;margin-top:0.8rem;}
-    .services-list .service-cta{order:2;margin-top:0.4rem;}
+    .services-list li{
+      display:grid;
+      grid-template-columns:auto 1fr;
+      grid-template-areas:
+        "num name"
+        "thumb thumb"
+        "desc desc"
+        "cta cta";
+      align-items:center;
+      gap:0.6rem 1rem;
+      padding-block:clamp(2rem,7vw,2.8rem);
+    }
+    .services-list .num{grid-area:num;align-self:center;}
+    .services-list .service-name{grid-area:name;align-self:center;flex:none;font-size:clamp(1.5rem,7vw,2rem);}
+    .service-thumb{grid-area:thumb;width:100%;aspect-ratio:16/10;margin-top:0.6rem;}
+    .services-list .service-desc{grid-area:desc;flex:none;max-width:none;margin-top:0.4rem;}
+    .services-list .service-cta{grid-area:cta;justify-self:start;align-self:start;margin-top:0.6rem;}
   }
   .case-tag{
     margin-bottom:clamp(1.2rem,3vw,1.8rem);
