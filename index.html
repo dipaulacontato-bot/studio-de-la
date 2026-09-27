@@ -151,7 +151,7 @@
     flex:none;
   }
   .wordmark{
-    margin-top:clamp(1.4rem,3.5vw,2.2rem);
+    margin-top:auto;
     width:clamp(320px, 46vw, 760px);
     max-width:520px;
     color:var(--fg);
@@ -206,8 +206,8 @@
      space, pulling the info up and letting the featured project peek in. */
   @media (max-width:600px){
     .hero{
-      min-height:0;
-      justify-content:flex-start;
+      min-height:calc(100svh - var(--topbar-h));
+      justify-content:center;
       padding-block:clamp(1.5rem,7vw,2.5rem) 0;
     }
     .wordmark svg{padding-top:0;padding-bottom:0;}
@@ -215,9 +215,8 @@
     .headline{
       width:100vw;
       margin-inline:calc(50% - 50vw);
-      margin-top:0;
       margin-bottom:0;
-      padding-top:clamp(1rem,5vw,1.6rem);
+      padding-top:0;
       column-gap:0.1rem;
     }
     .headline img{height:33vw;}
