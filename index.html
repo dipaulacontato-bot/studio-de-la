@@ -254,11 +254,16 @@
     padding-block:clamp(3rem,7vw,5rem) 0;
     border-top:none;
   }
-  /* Content layer that scrolls up and overlaps the pinned hero. */
+  /* Content layer that scrolls up and overlaps the pinned hero.
+     Full viewport width (with the gutter re-added inside) so its
+     opaque background also covers the hero under the side gutters. */
   .after-hero{
     position:relative;
     z-index:2;
     background:var(--bg);
+    width:100vw;
+    margin-inline:calc(50% - 50vw);
+    padding-inline:var(--gutter);
   }
   /* Top-only drop shadow at the seam (full viewport width so the side
      blur spills past the edges and is clipped — no side borders). */
