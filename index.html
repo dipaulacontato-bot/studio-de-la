@@ -510,10 +510,26 @@
     max-width:320px;
     align-self:center;
   }
+  .services-list .service-cta{
+    align-self:center;
+    flex:none;
+    display:inline-block;
+    padding:0.75rem 1.4rem;
+    border:1px solid var(--line);
+    border-radius:999px;
+    color:#fff;
+    text-decoration:none;
+    font-size:0.82rem;
+    letter-spacing:0.02em;
+    white-space:nowrap;
+    transition:background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+  }
+  .services-list .service-cta:hover{background:#fff;color:#040403;border-color:#fff;}
   @media (max-width:700px){
     .services-list li{flex-wrap:wrap;}
     .services-list .service-name{flex:1 1 auto;}
     .services-list .service-desc{flex:1 1 100%;max-width:none;order:1;margin-top:0.8rem;}
+    .services-list .service-cta{order:2;margin-top:0.4rem;}
   }
   .case-tag{
     margin-bottom:clamp(1.2rem,3vw,1.8rem);
@@ -946,18 +962,21 @@
         <span class="service-thumb"><img src="assets/work/amago-gallery/cover-lifestyle.png" alt="Âmago Clothing - Identidade Visual" loading="lazy"></span>
         <span class="service-name">Identidade Visual</span>
         <span class="service-desc">Sistema de marca completo: símbolo, tipografia, cor e as regras que mantêm tudo coerente.</span>
+        <a class="service-cta" href="#contato">Fazer um projeto</a>
       </li>
       <li>
         <span class="num">02</span>
         <span class="service-thumb"><img src="assets/work/amago-gallery/magazine.png" alt="Revista Âmago Style" loading="lazy"></span>
         <span class="service-name">Branding</span>
         <span class="service-desc">Posicionamento, tom de voz e direção estratégica para marcas que estão nascendo ou se reinventando.</span>
+        <a class="service-cta" href="#contato">Fazer um projeto</a>
       </li>
       <li>
         <span class="num">03</span>
         <span class="service-thumb"><img src="assets/amago-website.jpg" alt="Site Âmago Clothing" loading="lazy" style="object-position:top"></span>
         <span class="service-name">Landing Pages</span>
         <span class="service-desc">Páginas desenhadas para converter sem abrir mão da personalidade da marca.</span>
+        <a class="service-cta" href="#contato">Fazer um projeto</a>
       </li>
     </ol>
   </div>
