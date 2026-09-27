@@ -90,10 +90,17 @@
   @media (max-width:760px){.pj-overview{grid-template-columns:1fr;gap:2rem;}}
   .pj-gallery{
     padding-block:clamp(0.5rem,2vw,1.5rem) clamp(3rem,8vw,6rem);
-    display:flex;flex-direction:column;gap:clamp(0.8rem,2vw,1.6rem);
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    grid-auto-flow:dense;
+    gap:clamp(0.6rem,1.6vw,1.2rem);
   }
-  .pj-gallery img{width:100%;height:auto;display:block;background:#0d0d0c;cursor:zoom-in;}
-  .pj-video{position:relative;width:100%;aspect-ratio:16/9;background:#0d0d0c;}
+  .pj-gallery img{
+    width:100%;height:100%;object-fit:cover;display:block;
+    aspect-ratio:4/5;background:#0d0d0c;cursor:zoom-in;
+  }
+  .pj-gallery img.is-wide{grid-column:span 2;aspect-ratio:16/9;}
+  .pj-video{position:relative;grid-column:span 2;width:100%;aspect-ratio:16/9;background:#0d0d0c;}
   .pj-video iframe{width:100%;height:100%;border:0;display:block;}
   .pj-others{border-top:1px solid var(--line);padding-block:clamp(2.5rem,6vw,4rem);}
   .pj-others-list a{
@@ -281,6 +288,7 @@
         'assets/work/amago-gallery/amago-mockup-laptop.jpg',
         'assets/work/amago-gallery/amago-mockup-card.jpg',
         'assets/work/amago-gallery/amago-mockup-tablet.jpg',
+        'assets/work/amago-gallery/amago-box.jpg',
         'assets/work/amago-gallery/logo-white.png',
         'assets/work/amago-gallery/magazine.png'
       ]
@@ -349,6 +357,13 @@
     gal += '<img src="' + esc(src) + '" alt="' + esc(p.name) + '" loading="lazy">';
   });
   document.getElementById('pjGallery').innerHTML = gal;
+
+  // Landscape images span the full width; portrait/square ones pair side by side.
+  Array.prototype.forEach.call(document.querySelectorAll('#pjGallery img'), function(im){
+    function mark(){ if(im.naturalWidth / im.naturalHeight >= 1.3) im.classList.add('is-wide'); }
+    if(im.complete && im.naturalWidth){ mark(); }
+    else { im.addEventListener('load', mark); }
+  });
 
   var others = '';
   ORDER.forEach(function(k){
