@@ -1,8 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <text x="32" y="33" text-anchor="middle" dominant-baseline="central"
-        font-family="Georgia, 'Times New Roman', serif" font-style="italic" font-weight="600"
-        font-size="52" fill="#e8dcd3">L</text>
-  <text x="49" y="18" text-anchor="middle" dominant-baseline="central"
-        font-family="Georgia, 'Times New Roman', serif" font-style="italic" font-weight="600"
-        font-size="22" fill="#e8dcd3">&#180;</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="554 -4 148 142" fill="#e8dcd3">
+  <polygon points="617.24 105.1 601.22 131.22 581.59 131.22 603.82 30.92 613.86 30.92 614.48 28.11 581.63 28.11 581 30.92 590.66 30.92 568.43 131.22 558.77 131.22 558.14 134.04 613.17 134.04 619.59 105.1 617.24 105.1"/>
+  <path d="M695.87,12.3l-3.95-12.3c-8.69,8.67-17.26,13.77-25.76,18l.48,2.78c9.36-1.3,19.25-3.83,29.24-8.47Z"/>
+  <path d="M681.48,28.72h-13.33l-.03,6.01-42.53,96.5h-5.46l-.62,2.8h20.55l.62-2.8h-11.84l14.62-33.16h24.35l-.16,33.16h-9.23l-.62,2.8h28.16l.62-2.8h-5.51l.41-102.52ZM667.83,95.28h-23.13l23.39-53.05-.26,53.05Z"/>
 </svg>
