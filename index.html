@@ -1,4 +1,5 @@
 <!doctype html>
+<meta charset="utf-8">
 <title>Studio de Lá</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
@@ -951,20 +952,7 @@
   <div class="wrap">
     <p class="section-tag">projeto em destaque</p>
   </div>
-  <div class="feature-item">
-    <div class="feature-frame">
-      <a class="feature-open" href="projeto.html?p=amago" aria-label="Ver projeto Âmago Clothing"></a>
-      <img src="assets/work/amago-gallery/amago-matchcut.gif" alt="Âmago Clothing — Identidade Visual" loading="lazy">
-      <span class="work-top">
-        <span class="work-pills">
-          <span class="work-pill work-pill--name">Âmago Clothing</span>
-          <span class="work-pill work-pill--cat">Identidade Visual</span>
-        </span>
-        <span class="work-expand" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg></span>
-      </span>
-      <a class="feature-cta" href="#contato">Pedir orçamento</a>
-    </div>
-  </div>
+  <div class="feature-item" id="featureItem"></div>
 </section>
 
 <section class="services" id="services">
@@ -1005,68 +993,7 @@
     <p class="work-lead">Uma coleção de identidades, sistemas visuais e direções criativas construídas com cuidado, verbo e imagem.</p>
   </div>
   <div class="wrap">
-    <ul class="work-grid" id="workGrid">
-      <li class="work-tile is-wide" data-project="masseira">
-        <button type="button" class="work-trigger" aria-label="Ver projeto Masseira">
-          <img src="assets/work/masseira-gallery/masseira-matchcut.gif" alt="Masseira - Identidade Visual" loading="lazy">
-          <span class="work-top">
-            <span class="work-pills">
-              <span class="work-pill work-pill--name">Masseira</span>
-              <span class="work-pill work-pill--cat">Identidade Visual</span>
-            </span>
-            <span class="work-expand" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg></span>
-          </span>
-        </button>
-      </li>
-      <li class="work-tile" data-project="evandro">
-        <button type="button" class="work-trigger" aria-label="Ver projeto Evandro Okàn">
-          <img src="assets/work/evandro-gallery/gallery-4.jpg" alt="Evandro Okàn – Com Alma no Verbo" loading="lazy">
-          <span class="work-top">
-            <span class="work-pills">
-              <span class="work-pill work-pill--name">Evandro Okàn</span>
-              <span class="work-pill work-pill--cat">Com Alma no Verbo</span>
-            </span>
-            <span class="work-expand" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg></span>
-          </span>
-        </button>
-      </li>
-      <li class="work-tile is-wide" data-project="amago">
-        <button type="button" class="work-trigger" aria-label="Ver projeto Âmago Clothing">
-          <img src="assets/work/amago-gallery/amago-field.png" alt="Âmago Clothing - Identidade Visual" loading="lazy">
-          <span class="work-top">
-            <span class="work-pills">
-              <span class="work-pill work-pill--name">Âmago Clothing</span>
-              <span class="work-pill work-pill--cat">Identidade Visual</span>
-            </span>
-            <span class="work-expand" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg></span>
-          </span>
-        </button>
-      </li>
-      <li class="work-tile" data-project="kain">
-        <button type="button" class="work-trigger" aria-label="Ver projeto Kain">
-          <img src="assets/work/kain-gallery/img-1.jpg" alt="Kain — Tracklist Inverso Vol.2" loading="lazy">
-          <span class="work-top">
-            <span class="work-pills">
-              <span class="work-pill work-pill--name">Kain</span>
-              <span class="work-pill work-pill--cat">Tracklist Inverso Vol. 2</span>
-            </span>
-            <span class="work-expand" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg></span>
-          </span>
-        </button>
-      </li>
-      <li class="work-tile is-wide" data-project="moutinho">
-        <button type="button" class="work-trigger" aria-label="Ver projeto Moutinho Cardoso">
-          <img src="assets/work/moutinho-gallery/moutinho-matchcut.gif" alt="Moutinho Cardoso - Identidade Visual" loading="lazy">
-          <span class="work-top">
-            <span class="work-pills">
-              <span class="work-pill work-pill--name">Moutinho Cardoso</span>
-              <span class="work-pill work-pill--cat">Identidade Visual</span>
-            </span>
-            <span class="work-expand" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg></span>
-          </span>
-        </button>
-      </li>
-    </ul>
+    <ul class="work-grid" id="workGrid"></ul>
   </div>
 
 </section>
@@ -1153,123 +1080,54 @@
   <img id="imgZoomPic" src="" alt="">
 </div>
 
+<script src="data/projects.js"></script>
 <script>
+/* CONTROLLER — renders the work grid and the featured project from the model
+   (data/projects.js). Editing projects happens only in that data file. */
 (function(){
+  if(!window.STUDIO) return;
+  var S = window.STUDIO;
+  var EXPAND = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg>';
+  function esc(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/"/g,'&quot;'); }
+  function pills(p){
+    return '<span class="work-top"><span class="work-pills">'
+      + '<span class="work-pill work-pill--name">' + esc(p.name) + '</span>'
+      + '<span class="work-pill work-pill--cat">' + esc(p.cat) + '</span>'
+      + '</span><span class="work-expand" aria-hidden="true">' + EXPAND + '</span></span>';
+  }
+
+  // --- Grid de trabalhos ---
   var grid = document.getElementById('workGrid');
-  if(!grid) return;
-  var tiles = Array.prototype.slice.call(grid.children);
-
-  var PROJECTS = {
-    evandro: {
-      name: 'Evandro Okàn',
-      cat: 'Com Alma no Verbo',
-      video: 'https://www-ccv.adobe.io/v1/player/ccv/5Aq5QYP3n__/embed?api_key=behance1&bgcolor=%23191919',
-      images: [
-        'assets/work/evandro-gallery/gallery-2.jpg',
-        'assets/work/evandro-gallery/gallery-1.jpg',
-        'assets/work/evandro-gallery/gallery-3.jpg',
-        'assets/work/evandro-gallery/gallery-4.jpg',
-        'assets/work/evandro-gallery/gallery-5.jpg',
-        'assets/work/evandro-gallery/gallery-6.jpg'
-      ],
-      behance: 'https://www.behance.net/gallery/245210287/Evandro-Okan-Com-Alma-no-Verbo'
-    },
-    kain: {
-      name: 'Kain', cat: 'Tracklist Inverso Vol. 2',
-      hero: 'assets/work/kain-gallery/img-1.jpg',
-      images: [
-        'assets/work/kain-gallery/img-2.jpg',
-        'assets/work/kain-gallery/img-3.jpg'
-      ],
-      behance: 'https://www.behance.net/gallery/253997117/KAIN-TRACKLIST-INVERSO-VOL2'
-    },
-    moutinho: {
-      name: 'Moutinho Cardoso', cat: 'Identidade Visual',
-      hero: 'assets/work/moutinho-gallery/moutinho-matchcut.gif',
-      images: [
-        'assets/work/moutinho-gallery/img-1.png',
-        'assets/work/moutinho-gallery/img-3.png',
-        'assets/work/moutinho-gallery/img-4.png'
-      ],
-      behance: 'https://www.behance.net/gallery/143462293/Moutinho-Cardoso-Identidade-Visual'
-    },
-    amago: {
-      name: 'Âmago Clothing', cat: 'Identidade Visual',
-      hero: 'assets/work/amago-gallery/cover-lifestyle.png',
-      images: [
-        'assets/work/amago-gallery/logo-white.png',
-        'assets/work/amago-gallery/magazine.png'
-      ]
-    },
-    masseira: {
-      name: 'Masseira', cat: 'Identidade Visual',
-      hero: 'assets/work/masseira-gallery/masseira-matchcut.gif',
-      revealHero: false,
-      images: [
-        'assets/work/masseira-gallery/photo-dough.jpg',
-        'assets/work/masseira-gallery/photo-bread.jpg',
-        'assets/work/masseira-gallery/photo-cacao.jpg',
-        'assets/work/masseira-gallery/mockup-fabric.jpg',
-        'assets/work/masseira-gallery/mockup-packaging.jpg',
-        'assets/work/masseira-gallery/pattern-black.jpg',
-        'assets/work/masseira-gallery/logo-orange.jpg'
-      ]
-    }
-  };
-
-  function esc(s){ return s.replace(/&/g,'&amp;').replace(/</g,'&lt;'); }
-
-  var revealCurrentKey = null;
-  function renderReveal(key){
-    var p = PROJECTS[key];
-    if(!p || !reveal || key === revealCurrentKey) return;
-    revealCurrentKey = key;
-    var html = '<div class="wrap"><div class="reveal-head">';
-    html += '<div><p class="reveal-title">' + esc(p.name) + '</p><p class="reveal-cat">' + esc(p.cat) + '</p></div>';
-    html += '</div></div>';
-    if(p.video){
-      html += '<div class="feature-frame reveal-frame"><iframe src="' + p.video + '&autoplay=true&muted=true" title="' + esc(p.name) + '" allow="autoplay; fullscreen" loading="lazy"></iframe></div>';
-    } else if(p.hero && p.revealHero !== false){
-      html += '<div class="feature-frame reveal-frame"><img class="reveal-hero" src="' + p.hero + '" alt="' + esc(p.name) + '" loading="lazy"></div>';
-    }
-    if(p.images && p.images.length){
-      html += '<div class="wrap"><div class="reveal-grid">';
-      p.images.forEach(function(src){ html += '<img src="' + src + '" alt="' + esc(p.name) + '" loading="lazy">'; });
-      html += '</div></div>';
-    }
-    reveal.innerHTML = html;
-    var gridImgs = reveal.querySelectorAll('.reveal-grid img, .reveal-hero');
-    Array.prototype.forEach.call(gridImgs, function(im){
-      im.addEventListener('click', function(){ openImgZoom(im.src, im.alt); });
+  if(grid){
+    var html = '';
+    S.order.forEach(function(slug){
+      var p = S.projects[slug];
+      if(!p) return;
+      html += '<li class="work-tile' + (p.tileWide ? ' is-wide' : '') + '" data-project="' + slug + '">'
+        + '<button type="button" class="work-trigger" aria-label="Ver projeto ' + esc(p.name) + '">'
+        + '<img src="' + esc(p.tile) + '" alt="' + esc(p.name + ' - ' + p.cat) + '" loading="lazy">'
+        + pills(p) + '</button></li>';
     });
-  }
-  var imgZoom = document.getElementById('imgZoom');
-  var imgZoomPic = document.getElementById('imgZoomPic');
-  var imgZoomClose = document.getElementById('imgZoomClose');
-  function openImgZoom(src, alt){
-    imgZoomPic.src = src;
-    imgZoomPic.alt = alt || '';
-    imgZoom.classList.add('is-open');
-    imgZoom.setAttribute('aria-hidden', 'false');
-  }
-  function closeImgZoom(){
-    imgZoom.classList.remove('is-open');
-    imgZoom.setAttribute('aria-hidden', 'true');
-    imgZoomPic.src = '';
-  }
-  if(imgZoomClose) imgZoomClose.addEventListener('click', closeImgZoom);
-  if(imgZoom) imgZoom.addEventListener('click', function(e){ if(e.target === imgZoom) closeImgZoom(); });
-  document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeImgZoom(); });
-  tiles.forEach(function(tile){
-    var key = tile.getAttribute('data-project');
-    var trigger = tile.querySelector('.work-trigger');
-    if(trigger && key){
+    grid.innerHTML = html;
+    Array.prototype.forEach.call(grid.querySelectorAll('.work-trigger'), function(trigger){
       trigger.addEventListener('click', function(e){
         e.preventDefault();
-        window.location.href = 'projeto.html?p=' + key;
+        window.location.href = 'projeto.html?p=' + trigger.parentNode.getAttribute('data-project');
       });
-    }
-  });
+    });
+  }
+
+  // --- Projeto em destaque ---
+  var featItem = document.getElementById('featureItem');
+  if(featItem && S.featured && S.projects[S.featured.slug]){
+    var f = S.featured, fp = S.projects[f.slug];
+    featItem.innerHTML = '<div class="feature-frame">'
+      + '<a class="feature-open" href="projeto.html?p=' + f.slug + '" aria-label="Ver projeto ' + esc(fp.name) + '"></a>'
+      + '<img src="' + esc(f.media || fp.tile) + '" alt="' + esc(fp.name + ' — ' + fp.cat) + '" loading="lazy">'
+      + pills(fp)
+      + '<a class="feature-cta" href="#contato">Pedir orçamento</a>'
+      + '</div>';
+  }
 })();
 </script>
 
