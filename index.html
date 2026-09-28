@@ -374,11 +374,12 @@
   }
   .about-intro{
     display:flex;
-    flex-direction:column;
-    gap:clamp(1rem,3vw,1.6rem);
+    flex-direction:row;
+    align-items:center;
+    gap:clamp(1.5rem,4vw,3rem);
   }
   .about-lead{
-    margin-top:2px;
+    margin-top:0;
     font-size:clamp(1.35rem, 5.2vw, 34px);
     font-weight:500;
     max-width:924px;
@@ -387,11 +388,17 @@
     text-wrap:balance;
     position:relative;
     z-index:2;
+    flex:1;
   }
   .about-tote{
-    width:clamp(140px,16vw,200px);
+    width:clamp(140px,16vw,220px);
     height:auto;
     display:block;
+    flex:none;
+  }
+  @media (max-width:640px){
+    .about-intro{flex-direction:column;align-items:flex-start;}
+    .about-lead{flex:none;}
   }
   .about-body{
     font-size:1rem;
