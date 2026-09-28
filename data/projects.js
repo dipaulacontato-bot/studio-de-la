@@ -32,7 +32,7 @@ window.STUDIO = {
         'assets/work/masseira-gallery/masseira-bag.webp',
         'assets/work/masseira-gallery/photo-dough.jpg',
         'assets/work/masseira-gallery/masseira-cup.webp',
-        'assets/work/masseira-gallery/masseira-pattern-orange.webp',
+        'assets/work/masseira-gallery/masseira-stickers.webp',
         'assets/work/masseira-gallery/photo-cacao.jpg',
         'assets/work/masseira-gallery/mockup-fabric.jpg',
         'assets/work/masseira-gallery/pattern-black.jpg',
