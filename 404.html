@@ -1,0 +1,16 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>Studio de Lá</title>
+<script>
+// GitHub Pages não tem rewrites: traduz URLs limpas (/projeto/<slug>, /sobre)
+// para os arquivos reais. No Firebase este arquivo não é usado (há rewrites).
+(function(){
+  var base = location.hostname.indexOf('github.io') > -1 ? '/studio-de-la/' : '/';
+  var path = location.pathname;
+  var rest = path.indexOf(base) === 0 ? path.slice(base.length) : path.replace(/^\//, '');
+  var m = rest.match(/^projeto\/([^\/?#]+)/);
+  if(m){ location.replace(base + 'projeto.html?p=' + encodeURIComponent(m[1]) + location.hash); return; }
+  if(/^sobre\/?$/.test(rest)){ location.replace(base + 'index.html#about'); return; }
+  location.replace(base);
+})();
+</script>
