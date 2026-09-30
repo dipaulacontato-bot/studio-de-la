@@ -1123,7 +1123,7 @@
     Array.prototype.forEach.call(grid.querySelectorAll('.work-trigger'), function(trigger){
       trigger.addEventListener('click', function(e){
         e.preventDefault();
-        window.location.href = 'projeto.html?p=' + trigger.parentNode.getAttribute('data-project');
+        window.location.href = 'projeto/' + trigger.parentNode.getAttribute('data-project');
       });
     });
   }
@@ -1133,12 +1133,29 @@
   if(featItem && S.featured && S.projects[S.featured.slug]){
     var f = S.featured, fp = S.projects[f.slug];
     featItem.innerHTML = '<div class="feature-frame">'
-      + '<a class="feature-open" href="projeto.html?p=' + f.slug + '" aria-label="Ver projeto ' + esc(fp.name) + '"></a>'
+      + '<a class="feature-open" href="projeto/' + f.slug + '" aria-label="Ver projeto ' + esc(fp.name) + '"></a>'
       + '<img src="' + esc(f.media || fp.tile) + '" alt="' + esc(fp.name + ' — ' + fp.cat) + '" loading="lazy">'
       + pills(fp)
       + '<a class="feature-cta" href="#contato">Pedir orçamento</a>'
       + '</div>';
   }
+})();
+</script>
+
+<script>
+// Rota /sobre → mostra a seção "sobre" e ajusta o título da aba.
+(function(){
+  if(!/\/sobre\/?$/.test(location.pathname)) return;
+  document.title = 'Sobre — Studio de Lá';
+  function jump(){
+    var a = document.getElementById('about');
+    if(!a) return;
+    var prev = document.documentElement.style.scrollBehavior;
+    document.documentElement.style.scrollBehavior = 'auto';
+    window.scrollTo(0, a.getBoundingClientRect().top + window.pageYOffset);
+    document.documentElement.style.scrollBehavior = prev;
+  }
+  window.addEventListener('load', function(){ jump(); setTimeout(jump, 300); });
 })();
 </script>
 
