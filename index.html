@@ -91,6 +91,19 @@
   }
   .topbar-col-end{margin-left:auto;gap:clamp(1.2rem,3vw,2rem);}
   .topbar-name{font-weight:700;color:var(--fg);white-space:nowrap;}
+  /* Logo fixa que aparece na topbar quando o wordmark da hero sobe (crossfade).
+     Fica no centro da barra e persiste durante todo o scroll. */
+  .topbar-logo{
+    position:absolute;
+    left:50%;
+    top:50%;
+    transform:translate(-50%,-50%);
+    width:130px;
+    color:var(--fg);
+    opacity:0;
+    pointer-events:none;
+  }
+  .topbar-logo svg{width:100%;height:auto;display:block;fill:currentColor;}
   .topbar-label{color:var(--muted);white-space:nowrap;}
   .topbar-value{
     color:var(--fg);
@@ -153,26 +166,19 @@
     color:var(--cream);
     flex:none;
   }
+  /* Scroll-driven: ao rolar para baixo o wordmark sobe e encolhe, fazendo
+     crossfade com a logo fixa da topbar (.topbar-logo). O JS atualiza
+     --wm-rise (0→1) e a opacidade (fade out ao dockar). */
   .wordmark{
     margin-top:auto;
     width:clamp(320px, 46vw, 760px);
     max-width:520px;
     color:var(--fg);
     flex:none;
-    opacity:0;
-    animation:wm-fade 1s ease 0.15s forwards;
     transform-origin:center top;
-    will-change:transform;
-  }
-  @keyframes wm-fade{
-    from{opacity:0;}
-    to{opacity:1;}
-  }
-  /* Scroll-driven: ao rolar para baixo o wordmark sobe e encolhe até o topo.
-     A var --wm-rise é atualizada pelo JS (0 → 1). */
-  .wordmark{
+    will-change:transform, opacity;
     transform:translateY(calc(var(--wm-rise,0) * var(--wm-travel,0) * -1px))
-              scale(calc(1 - var(--wm-rise,0) * 0.45));
+              scale(calc(1 - var(--wm-rise,0) * 0.75));
   }
   .wordmark svg{width:100%;height:auto;display:block;padding-top:0;padding-bottom:0;font-size:136px;font-weight:700;}
 
@@ -908,6 +914,21 @@
     <a class="topbar-value" href="https://wa.me/5511910892122" target="_blank" rel="noopener">WhatsApp</a>
     <a class="topbar-cta" href="#contato">Contato</a>
   </div>
+  <a class="topbar-logo" href="#top" aria-label="Studio de Lá — topo">
+    <svg viewBox="0 0 695.87 134.05" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" fill="currentColor">
+      <path d="M56.02,87.84c-4.11-1.71-9.74-3.45-16.92-5.2-.48-.16-1-.28-1.56-.36h-.24c-4.3-1.03-7.61-2.01-9.92-2.93-2.31-.91-4.07-2.05-5.26-3.41-1.2-1.35-1.79-3.15-1.79-5.38,0-3.11,1.2-5.32,3.59-6.63,2.39-1.32,5.66-1.97,9.8-1.97,5.02,0,8.89,1,11.6,2.99,2.71,1.99,4.06,4.74,4.06,8.25h17.1c0-4.94-1.14-9.31-3.41-13.09-2.27-3.79-5.82-6.75-10.64-8.91-4.82-2.15-10.86-3.23-18.11-3.23-9.49,0-17.1,1.91-22.84,5.74-5.74,3.83-8.61,9.53-8.61,17.1,0,5.1,1.12,9.25,3.35,12.44,2.23,3.19,5.3,5.66,9.21,7.41,3.9,1.75,9.13,3.43,15.66,5.02,1.03.32,1.95.56,2.75.72,4.7,1.2,8.29,2.29,10.76,3.29,2.47,1,4.32,2.25,5.56,3.77,1.23,1.51,1.85,3.47,1.85,5.86,0,3.59-1.36,6.26-4.06,8.01-2.71,1.75-6.66,2.63-11.84,2.63-5.66,0-10.16-1.23-13.51-3.71-3.35-2.47-5.02-6.3-5.02-11.48H0c0,9.25,2.97,16.44,8.91,21.58,5.94,5.14,14.77,7.71,26.48,7.71,10.92,0,19.33-2.35,25.23-7.05,5.9-4.7,8.85-11.12,8.85-19.25,0-5.34-1.22-9.56-3.65-12.67-2.43-3.11-5.7-5.52-9.8-7.23Z"/>
+      <polygon points="70.3 64.34 93.86 64.34 93.86 132.85 110.83 132.85 110.83 64.34 134.15 64.34 134.15 49.16 70.3 49.16 70.3 64.34"/>
+      <path d="M193.71,97.34c0,4.46-.56,8.31-1.67,11.54-1.12,3.23-3.01,5.76-5.68,7.59-2.67,1.83-6.32,2.75-10.94,2.75s-8.27-.92-10.94-2.75c-2.67-1.83-4.56-4.36-5.68-7.59-1.12-3.23-1.67-7.07-1.67-11.54v-48.19h-16.98v49.02c0,7.01,1.08,13.15,3.23,18.41,2.15,5.26,5.84,9.49,11.06,12.67,5.22,3.19,12.21,4.78,20.98,4.78s15.76-1.59,20.98-4.78c5.22-3.19,8.91-7.41,11.06-12.67,2.15-5.26,3.23-11.4,3.23-18.41v-49.02h-16.98v48.19Z"/>
+      <path d="M266.12,53.04c-7.37-2.59-15.29-3.89-23.73-3.89h-25.71v83.7h25.71c8.53,0,16.46-1.24,23.79-3.71,7.33-2.47,13.39-6.81,18.17-13.03s7.17-14.63,7.17-25.23-2.39-18.41-7.17-24.63c-4.78-6.22-10.86-10.62-18.23-13.21ZM269.76,107.38c-2.95,3.91-6.58,6.6-10.88,8.07-4.3,1.48-8.85,2.21-13.63,2.21h-11.6v-53.33h11.6c4.7,0,9.21.78,13.51,2.33,4.31,1.56,7.95,4.35,10.94,8.37,2.99,4.03,4.48,9.43,4.48,16.2s-1.48,12.24-4.42,16.14Z"/>
+      <polygon points="297.26 63.62 297.26 118.39 297.26 132.85 314.24 132.85 314.24 118.39 314.24 63.62 314.24 49.16 297.26 49.16 297.26 63.62"/>
+      <path d="M386.43,53.37c-6.5-3.63-14.13-5.44-22.9-5.44s-16.32,1.81-22.9,5.44c-6.58,3.63-11.66,8.69-15.25,15.19-3.59,6.5-5.38,13.93-5.38,22.3s1.79,15.92,5.38,22.42c3.59,6.5,8.67,11.58,15.25,15.25,6.58,3.67,14.21,5.5,22.9,5.5s16.4-1.81,22.9-5.44c6.49-3.63,11.5-8.71,15-15.24,3.51-6.54,5.26-14.03,5.26-22.48s-1.75-15.8-5.26-22.3c-3.51-6.5-8.51-11.56-15-15.19ZM386.25,105.92c-2.07,4.15-5.02,7.28-8.85,9.39-3.83,2.11-8.45,3.17-13.87,3.17s-9.98-1.08-13.93-3.23c-3.95-2.15-6.97-5.28-9.09-9.39-2.11-4.1-3.17-9.03-3.17-14.77s1.06-10.7,3.17-14.89c2.11-4.19,5.14-7.35,9.09-9.51,3.95-2.15,8.59-3.23,13.93-3.23s10.04,1.08,13.87,3.23c3.83,2.15,6.77,5.32,8.85,9.51,2.07,4.18,3.11,9.15,3.11,14.89s-1.04,10.68-3.11,14.83Z"/>
+      <path d="M466.66,82.66h-19.14l-.3,1.37h4.68l-10.78,48.63h-4.68l-.3,1.37h18.1c21.57,0,35.68-12.82,35.7-32.73,0-12.23-7.99-18.63-23.27-18.63ZM454.79,132.65h-7.29l10.78-48.63h7.18c11.59,0,17.45,5.6,17.45,16.32,0,16.97-10.63,32.31-28.12,32.31Z"/>
+      <polygon points="500.79 84.28 505.46 84.28 494.72 132.68 490.06 132.68 489.76 134.04 516.62 134.04 519.38 121.58 518.25 121.58 511.8 132.68 501.07 132.68 506.38 108.75 514.42 108.75 515.23 116.34 516.33 116.34 519.99 99.83 518.86 99.83 514.68 107.39 506.68 107.39 511.8 84.28 521.01 84.28 522.89 94.31 523.99 94.31 526.51 82.92 501.09 82.92 500.79 84.28"/>
+      <polygon points="617.24 105.1 601.22 131.22 581.59 131.22 603.82 30.92 613.86 30.92 614.48 28.11 581.63 28.11 581 30.92 590.66 30.92 568.43 131.22 558.77 131.22 558.14 134.04 613.17 134.04 619.59 105.1 617.24 105.1"/>
+      <path d="M695.87,12.3l-3.95-12.3c-8.69,8.67-17.26,13.77-25.76,18l.48,2.78c9.36-1.3,19.25-3.83,29.24-8.47Z"/>
+      <path d="M681.48,28.72h-13.33l-.03,6.01-42.53,96.5h-5.46l-.62,2.8h20.55l.62-2.8h-11.84l14.62-33.16h24.35l-.16,33.16h-9.23l-.62,2.8h28.16l.62-2.8h-5.51l.41-102.52ZM667.83,95.28h-23.13l23.39-53.05-.26,53.05Z"/>
+    </svg>
+  </a>
 </div>
 
 <header class="hero">
@@ -1170,6 +1191,7 @@
   var wm = document.querySelector('.wordmark');
   var tag = document.querySelector('.hero-tagline');
   var hero = document.querySelector('.hero');
+  var tbl = document.querySelector('.topbar-logo');
   if(!wm || !hero) return;
   if(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
@@ -1179,8 +1201,8 @@
     var rise = parseFloat(getComputedStyle(wm).getPropertyValue('--wm-rise')) || 0;
     // transform-origin é center top, então o scale não muda o topo; só desfazemos o translate.
     var restTop = wm.getBoundingClientRect().top + rise * travel;
-    var topbar = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--topbar-h')) || 44;
-    travel = Math.max(restTop - (topbar + 8), 0);
+    // Dock dentro da barra (perto do topo), onde a .topbar-logo vive.
+    travel = Math.max(restTop - 7, 0);
     wm.style.setProperty('--wm-travel', travel);
     maxScroll = Math.max(hero.offsetHeight * 0.6, 1);
     update();
@@ -1190,6 +1212,11 @@
     var y = window.scrollY || window.pageYOffset || 0;
     var p = Math.min(Math.max(y / maxScroll, 0), 1);
     wm.style.setProperty('--wm-rise', p);
+    // Crossfade: o wordmark grande some na segunda metade da subida enquanto
+    // a logo fixa da topbar aparece e permanece.
+    var dock = Math.min(Math.max((p - 0.5) / 0.5, 0), 1);
+    wm.style.opacity = (1 - dock).toFixed(3);
+    if(tbl){ tbl.style.opacity = dock.toFixed(3); tbl.style.pointerEvents = dock > 0.5 ? 'auto' : 'none'; }
     if(tag) tag.style.opacity = (1 - Math.min(p * 1.4, 1)).toFixed(3);
   }
   function onScroll(){ if(!ticking){ ticking = true; requestAnimationFrame(update); } }
