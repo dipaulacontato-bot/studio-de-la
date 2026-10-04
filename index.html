@@ -184,7 +184,7 @@
     z-index:1;
   }
   .headline img{
-    height:clamp(3rem, min(33vw, 58vh), 44rem);
+    height:clamp(3rem, min(31.5vw, 58vh), 44rem);
     width:auto;
     max-width:none;
     display:block;
@@ -269,19 +269,15 @@
     width:100vw;
     margin-inline:calc(50% - 50vw);
     padding-inline:var(--gutter);
-  }
-  /* Soft gradient at the seam: black at the content edge fading up to
-     transparent — a gentle shadow, never a hard line. */
-  .after-hero::before{
-    content:'';
-    position:absolute;
-    bottom:100%;
-    left:50%;
-    transform:translateX(-50%);
-    width:100vw;
-    height:clamp(120px,18vh,220px);
-    background:linear-gradient(to top, rgba(4,4,3,1) 0%, rgba(4,4,3,0) 100%);
-    pointer-events:none;
+    /* Layered drop shadow at the seam (ref: decisive-pitch Framer panel),
+       cast upward onto the pinned hero so the content reads as rising over it.
+       Four layers with falling opacity give a soft, natural falloff — not a
+       hard line and not two visible bands. */
+    box-shadow:
+      0 0 14px rgba(0,0,0,0.25),
+      0 -21px 23px rgba(0,0,0,0.22),
+      0 -56px 38px rgba(0,0,0,0.18),
+      0 -99px 56px rgba(0,0,0,0.13);
   }
   .feature-item + .feature-item{
     margin-top:clamp(3rem,7vw,5rem);
