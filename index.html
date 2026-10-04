@@ -160,11 +160,19 @@
     color:var(--fg);
     flex:none;
     opacity:0;
-    animation:fade-in-up 1s ease 0.15s forwards;
+    animation:wm-fade 1s ease 0.15s forwards;
+    transform-origin:center top;
+    will-change:transform;
   }
-  @keyframes fade-in-up{
-    from{opacity:0;transform:translateY(10px);}
-    to{opacity:1;transform:translateY(0);}
+  @keyframes wm-fade{
+    from{opacity:0;}
+    to{opacity:1;}
+  }
+  /* Scroll-driven: ao rolar para baixo o wordmark sobe e encolhe até o topo.
+     A var --wm-rise é atualizada pelo JS (0 → 1). */
+  .wordmark{
+    transform:translateY(calc(var(--wm-rise,0) * var(--wm-travel,0) * -1px))
+              scale(calc(1 - var(--wm-rise,0) * 0.45));
   }
   .wordmark svg{width:100%;height:auto;display:block;padding-top:0;padding-bottom:0;font-size:136px;font-weight:700;}
 
@@ -198,6 +206,7 @@
     padding-left:320px;
     padding-right:0px;
     margin-top:clamp(-2.6rem,-4vh,-1.2rem);
+    margin-bottom:68px;
   }
   @media (max-width:760px){
     .marquee{
@@ -1152,6 +1161,43 @@
     document.documentElement.style.scrollBehavior = prev;
   }
   window.addEventListener('load', function(){ jump(); setTimeout(jump, 300); });
+})();
+</script>
+
+<script>
+// Scroll-driven: o wordmark da hero sobe e encolhe até o topo ao rolar para baixo.
+(function(){
+  var wm = document.querySelector('.wordmark');
+  var tag = document.querySelector('.hero-tagline');
+  var hero = document.querySelector('.hero');
+  if(!wm || !hero) return;
+  if(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  var travel = 0, maxScroll = 1, ticking = false;
+
+  function measure(){
+    var rise = parseFloat(getComputedStyle(wm).getPropertyValue('--wm-rise')) || 0;
+    // transform-origin é center top, então o scale não muda o topo; só desfazemos o translate.
+    var restTop = wm.getBoundingClientRect().top + rise * travel;
+    var topbar = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--topbar-h')) || 44;
+    travel = Math.max(restTop - (topbar + 8), 0);
+    wm.style.setProperty('--wm-travel', travel);
+    maxScroll = Math.max(hero.offsetHeight * 0.6, 1);
+    update();
+  }
+  function update(){
+    ticking = false;
+    var y = window.scrollY || window.pageYOffset || 0;
+    var p = Math.min(Math.max(y / maxScroll, 0), 1);
+    wm.style.setProperty('--wm-rise', p);
+    if(tag) tag.style.opacity = (1 - Math.min(p * 1.4, 1)).toFixed(3);
+  }
+  function onScroll(){ if(!ticking){ ticking = true; requestAnimationFrame(update); } }
+
+  window.addEventListener('scroll', onScroll, { passive:true });
+  window.addEventListener('resize', measure);
+  if(document.readyState === 'complete') measure(); else window.addEventListener('load', measure);
+  setTimeout(measure, 400);
 })();
 </script>
 
