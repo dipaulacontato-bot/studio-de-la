@@ -578,6 +578,16 @@
     color:var(--muted);
   }
 
+
+  /* ---------- POSTS (feed Instagram) ---------- */
+  .posts-grid{list-style:none;margin:clamp(1.6rem,4vw,2.6rem) 0 0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(0.5rem,1.2vw,1rem);}
+  .posts-grid a{display:block;aspect-ratio:4/5;overflow:hidden;background:#111;}
+  .posts-grid img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease;}
+  .posts-grid a:hover img{transform:scale(1.03);}
+  .posts-trio{margin-top:clamp(0.5rem,1.2vw,1rem);}
+  .posts-note{margin-top:1rem;font-family:var(--mono);font-size:0.72rem;color:var(--muted);}
+  @media (max-width:600px){.posts-grid{grid-template-columns:repeat(2,1fr);}.posts-trio{grid-template-columns:repeat(3,1fr);}}
+
   /* ---------- WORK (editorial grid) ---------- */
   .work-lead{
     max-width:32rem;
@@ -1032,6 +1042,30 @@
 
 </section>
 
+<section class="posts" id="posts">
+  <div class="wrap">
+    <p class="section-tag">posts</p>
+    <p class="work-lead">O feed do estúdio: carrossel de 9 posts e o trio que atravessa o grid do perfil. Formato 4:5, na identidade da marca.</p>
+    <ul class="posts-grid">
+      <li><a href="posts/png/post-01.png" target="_blank" rel="noopener"><img src="posts/png/post-01.png" alt="Post 01 — Studio de Lá" loading="lazy"></a></li>
+      <li><a href="posts/png/post-02.png" target="_blank" rel="noopener"><img src="posts/png/post-02.png" alt="Post 02 — Studio de Lá" loading="lazy"></a></li>
+      <li><a href="posts/png/post-03.png" target="_blank" rel="noopener"><img src="posts/png/post-03.png" alt="Post 03 — Studio de Lá" loading="lazy"></a></li>
+      <li><a href="posts/png/post-04.png" target="_blank" rel="noopener"><img src="posts/png/post-04.png" alt="Post 04 — Studio de Lá" loading="lazy"></a></li>
+      <li><a href="posts/png/post-05.png" target="_blank" rel="noopener"><img src="posts/png/post-05.png" alt="Post 05 — Studio de Lá" loading="lazy"></a></li>
+      <li><a href="posts/png/post-06.png" target="_blank" rel="noopener"><img src="posts/png/post-06.png" alt="Post 06 — Studio de Lá" loading="lazy"></a></li>
+      <li><a href="posts/png/post-07.png" target="_blank" rel="noopener"><img src="posts/png/post-07.png" alt="Post 07 — Studio de Lá" loading="lazy"></a></li>
+      <li><a href="posts/png/post-08.png" target="_blank" rel="noopener"><img src="posts/png/post-08.png" alt="Post 08 — Studio de Lá" loading="lazy"></a></li>
+      <li><a href="posts/png/post-09.png" target="_blank" rel="noopener"><img src="posts/png/post-09.png" alt="Post 09 — Studio de Lá" loading="lazy"></a></li>
+    </ul>
+    <ul class="posts-grid posts-trio">
+      <li><a href="posts/png/post-10.png" target="_blank" rel="noopener"><img src="posts/png/post-10.png" alt="Trio do grid 1/3 — Studio de Lá" loading="lazy"></a></li>
+      <li><a href="posts/png/post-11.png" target="_blank" rel="noopener"><img src="posts/png/post-11.png" alt="Trio do grid 2/3 — Studio de Lá" loading="lazy"></a></li>
+      <li><a href="posts/png/post-12.png" target="_blank" rel="noopener"><img src="posts/png/post-12.png" alt="Trio do grid 3/3 — Studio de Lá" loading="lazy"></a></li>
+    </ul>
+    <p class="posts-note">fonte editável: posts/posts.html · PNGs 1080×1350 em posts/png</p>
+  </div>
+</section>
+
 <section class="about" id="about">
   <div class="wrap">
     <p class="section-tag">sobre</p>
@@ -1079,6 +1113,7 @@
         <a href="#top">início</a>
         <a href="#about">sobre</a>
         <a href="#trabalhos">trabalhos</a>
+        <a href="#posts">posts</a>
       </div>
       <div class="footer-menu">
         <span class="footer-menu-label">redes</span>
