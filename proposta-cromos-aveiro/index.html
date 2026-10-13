@@ -1,0 +1,1315 @@
+<!doctype html>
+<html lang="pt-PT"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Proposta · Cromos Tattoo</title>
+<link rel="icon" href="favicon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="favicon.svg"><meta name="robots" content="noindex,nofollow">
+<meta name="description" content="Proposta de site novo para o Cromos Tattoo, preparada pelo Studio de Lá.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@300;400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>:root{--bg:#040403;--ink:#fff;--cream:#ffffff;--mute:rgba(255,255,255,.72);--line:rgba(255,255,255,.26);--gut:clamp(20px,5vw,72px)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:'Archivo','Helvetica Neue',Arial,sans-serif;font-size:18px;line-height:1.5;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+.mono{font-family:'Space Mono',ui-monospace,monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase}
+.wrap{max-width:1440px;margin:0 auto;padding:0 var(--gut)}
+.progress{position:fixed;top:0;left:0;height:3px;width:0;background:var(--cream);z-index:60}
+
+.hero{min-height:100svh;display:flex}
+.hw{display:flex;flex-direction:column;justify-content:space-between;min-height:100svh;width:100%;padding-top:34px}
+.hero .top{display:flex;justify-content:space-between;align-items:center}
+.hero-logo{width:clamp(150px,18vw,230px);height:auto;display:block;color:#fff}
+.hero .mid{padding:60px 0}
+.hero .kicker{color:var(--mute);margin-bottom:22px;display:block}
+.hero h1{font-size:clamp(54px,13vw,210px);line-height:.9;font-weight:800;letter-spacing:-.04em;text-transform:uppercase}
+.hero h1 .w{display:block;overflow:hidden}
+.hero h1 .w i{display:block;font-style:normal;transform:translateY(105%);animation:up 1s cubic-bezier(.2,.8,.2,1) forwards}
+.hero h1 .w:nth-child(2) i{animation-delay:.12s;color:var(--cream)}
+@keyframes up{to{transform:none}}
+.hero .intro{max-width:620px;margin-top:36px;color:var(--mute)}
+.meta{display:flex;gap:44px;flex-wrap:wrap;padding:26px 0 30px;border-top:1px solid var(--line)}
+.meta b{display:block;color:var(--cream);font-weight:400;margin-bottom:4px}
+.ticker{overflow:hidden;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:20px 0}
+.ticker div{display:flex;gap:56px;white-space:nowrap;width:max-content;animation:tick 30s linear infinite;font-size:clamp(20px,2.6vw,34px);font-weight:700;letter-spacing:-.01em;text-transform:uppercase}
+.ticker span{color:var(--mute)}.ticker span:nth-child(even){color:var(--cream)}
+@keyframes tick{to{transform:translateX(-50%)}}
+
+section{padding:110px 0 40px}
+.st{display:flex;align-items:center;gap:22px;font-size:clamp(38px,6vw,92px);font-weight:600;letter-spacing:-.035em;line-height:1;padding-bottom:30px;border-bottom:1px solid var(--line)}
+.dot{flex:none;width:.42em;height:.42em;border-radius:50%;background:var(--cream);animation:pulse 2.6s ease-in-out infinite}
+@keyframes pulse{50%{transform:scale(.7);opacity:.6}}
+.sub{font-size:clamp(26px,3.6vw,52px);line-height:1.1;letter-spacing:-.03em;font-weight:500;color:rgba(255,255,255,.58);margin:70px 0;max-width:20ch}
+.rows{position:relative}
+.row2{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:30px;padding:34px 0 38px;border-top:1px solid var(--line);transition:background .35s}
+.row2::before,.row2::after,.endline::before,.endline::after,details::before,details::after{content:"+";position:absolute;top:-12px;font-family:'Space Mono',monospace;font-size:16px;color:var(--cream);line-height:1;background:var(--bg);padding:0 2px}
+.row2::before,.endline::before,details::before{left:-5px}
+.row2::after,.endline::after,details::after{right:-5px}
+.row2:hover{background:rgba(255,255,255,.04)}
+.lab{color:var(--cream);padding-top:6px}
+.rc h3{font-size:clamp(22px,2.4vw,32px);font-weight:600;letter-spacing:-.02em;line-height:1.15;margin-bottom:12px}
+.rc p{color:var(--mute);font-size:17px;max-width:56ch}
+.small,.rc p.small{font-size:15px;color:var(--mute)}
+.pad{padding:26px 0 8px;border-top:1px solid var(--line);max-width:70ch}
+.pad.top{border-top:0;padding-top:0;margin:-20px 0 34px}
+.endline{position:relative;border-top:1px solid var(--line)}
+.tl{list-style:none;margin-top:6px;display:flex;flex-wrap:wrap;gap:8px 10px}
+.rc p+.tl{margin-top:18px}
+.tl li{font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.06em;text-transform:uppercase;border:1px solid var(--line);padding:7px 12px;color:var(--cream)}
+.bignum b{display:block;font-size:clamp(60px,9vw,140px);font-weight:600;letter-spacing:-.05em;line-height:.95}
+.bignum span{display:block;color:var(--mute);margin-top:10px;font-size:16px}
+.price{font-size:clamp(56px,8vw,120px);font-weight:600;letter-spacing:-.05em;line-height:.95;margin-top:22px}
+.price.s{font-size:clamp(38px,5vw,64px);margin-top:14px}
+.btn{display:inline-block;margin-top:24px;padding:13px 20px;border:1px solid var(--cream);font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--cream);transition:background .25s,color .25s}
+.btn:hover{background:var(--cream);color:var(--bg)}
+.btn.acc{background:var(--cream);color:var(--bg)}.btn.acc:hover{background:#fff}
+.cta{display:flex;gap:12px;flex-wrap:wrap}.cta .btn{margin-top:26px}
+.valid{margin-top:28px;color:var(--cream)}
+
+details{position:relative;border-top:1px solid var(--line);padding:30px 0}
+summary{cursor:pointer;list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:start}
+summary::-webkit-details-marker{display:none}
+.q{font-size:clamp(20px,2.2vw,30px);font-weight:600;letter-spacing:-.02em;position:relative;padding-right:40px}
+.q::after{content:"+";position:absolute;right:0;top:-4px;font-size:34px;font-weight:400;transition:transform .3s}
+details[open] .q::after{transform:rotate(45deg)}
+details p{margin:14px 0 0 calc(50% + 15px);color:var(--mute);max-width:56ch}
+
+footer{padding:110px 0 60px}
+.big-logo{width:100%;height:auto;display:block;margin-bottom:50px;color:#fff}
+footer .meta{border-top:1px solid var(--line);padding-top:26px}
+footer h2{font-size:clamp(30px,5vw,72px);font-weight:600;letter-spacing:-.035em;line-height:1;max-width:16ch}
+
+.float{position:fixed;right:20px;bottom:20px;z-index:50;background:#fff;color:#040403;padding:14px 22px;font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase;border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,.5);transition:transform .25s,background .25s}
+.float:hover{transform:translateY(-3px);background:var(--cream)}
+
+.rv{opacity:0;transform:translateY(30px);transition:opacity .9s cubic-bezier(.2,.8,.2,1),transform .9s cubic-bezier(.2,.8,.2,1)}
+.rv.in{opacity:1;transform:none}
+
+@media(max-width:860px){
+  .row2,summary{grid-template-columns:1fr;gap:12px}
+  details p{margin-left:0}
+  section{padding:80px 0 20px}.sub{margin:44px 0}
+  .float{right:12px;bottom:12px}
+}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}.hero h1 .w i{transform:none}}
+mark{background:#ffe600;color:#040403;padding:0 3px}
+.ev{margin-top:18px;border:1px solid var(--line);font-family:'Space Mono',monospace;font-size:12px}
+.ev div{display:flex;justify-content:space-between;gap:20px;padding:10px 14px;border-bottom:1px solid var(--line)}
+.ev div:last-child{border-bottom:0}
+.ev span{color:var(--mute);text-transform:none}
+.ev b{font-weight:400;color:var(--cream);text-align:right}
+.why{margin-top:18px;padding:16px 18px;border-left:3px solid var(--cream);background:rgba(255,255,255,.06);font-size:16px;color:#fff;max-width:56ch}
+.why .mono{display:block;color:var(--cream);margin-bottom:6px}
+.shots{display:flex;gap:16px;flex-wrap:wrap;margin-top:22px;align-items:flex-start}
+.shot{flex:1 1 280px;margin:0}
+.shot.phone{flex:0 1 190px}
+.shot img{width:100%;height:auto;display:block;border:1px solid var(--line)}
+.shot figcaption{font-size:13px;color:var(--mute);margin-top:8px;line-height:1.35}
+.closing{font-size:clamp(26px,3.6vw,52px);font-weight:600;letter-spacing:-.03em;line-height:1.1;padding:50px 0 30px;border-top:1px solid var(--line)}
+.pause{padding:140px 0;background:#fff;color:#040403;margin-top:100px}
+.pause h2{font-size:clamp(40px,7vw,110px);font-weight:700;letter-spacing:-.04em;line-height:.98;max-width:14ch;margin:20px 0 26px}
+.pause p{color:rgba(255,255,255,.85);max-width:48ch;font-size:20px}
+.pause .btn{border-color:#fff;color:#040403;background:#fff;margin-top:34px}
+.opts{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:10px}
+.opt{border:1px solid var(--line);padding:34px;position:relative}
+.opt.hi{border-color:#fff;background:rgba(255,255,255,.08)}
+.opt h3{font-size:28px;margin:10px 0 0;font-weight:600;letter-spacing:-.02em}
+.opt .price{margin:18px 0 22px}
+.opt ul{list-style:none;display:grid;gap:8px;color:var(--mute);font-size:16px;margin-bottom:26px}
+.opt li::before{content:"✓  ";color:var(--cream)}
+.opt .pay{border-top:1px solid var(--line);padding-top:18px;display:grid;gap:6px;font-size:16px;color:var(--mute)}
+.opt .pay .mono{color:var(--cream);margin-bottom:4px}
+.opt .pay b{color:#fff;font-weight:600}
+@media(max-width:860px){.opts{grid-template-columns:1fr}.shot.phone{flex:0 1 150px}.pause{padding:90px 0}}
+.pause .mono{color:#040403!important}
+.pause h2{color:#040403}
+.pause p{color:rgba(4,4,3,.78)}
+.pause .btn,.pause .btn.acc{background:#040403;color:#fff;border-color:#040403}
+.pause .btn:hover{background:#2a2825;color:#fff}
+.wrap{max-width:none;padding:0 clamp(20px,3.5vw,56px)}
+.row2{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(24px,4vw,72px)}
+.lc{min-width:0}
+.lc .lab{display:block;margin-bottom:0}
+.lc .ev,.lc .shots{margin-top:26px}
+.lc .shot{flex:1 1 240px}
+.lc .shot.phone{flex:0 1 200px}
+.rc{min-width:0}
+.rc p,.rc .why{max-width:62ch}
+details p{margin-left:0}
+@media(max-width:860px){.row2{grid-template-columns:1fr}.lc .shot.phone{flex:0 1 150px}}
+.sr{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+.client-logo{display:block;width:min(540px,64vw);height:auto;opacity:0;transform:translateY(24px);animation:logoin 1.3s cubic-bezier(.2,.8,.2,1) .15s forwards}
+@keyframes logoin{to{opacity:1;transform:none}}
+.hero .mid{padding:40px 0}
+.hero .intro{margin-top:44px}
+/* hero centrado */
+.hero .top{flex-direction:column;gap:12px;align-items:center;text-align:center}
+.hero .mid{text-align:center;display:flex;flex-direction:column;align-items:center}
+.hero .kicker{margin-bottom:34px}
+.client-logo{width:min(760px,80vw);margin:0 auto}
+.hero .intro{margin:46px auto 0;text-align:center}
+.hero .meta{justify-content:center;text-align:center}
+/* mais respiro nas bordas */
+.wrap{padding:0 clamp(28px,7vw,120px)}
+.float{right:clamp(20px,3vw,40px);bottom:clamp(20px,3vw,40px)}
+/* alinhamento: texto ao meio do bloco, imagens com altura uniforme */
+.row2{align-items:center;min-height:150px}
+.lc .lab{padding-top:0}
+.lc .shots{gap:14px}
+.lc .shot{flex:1 1 240px}
+.lc .shot img{width:100%;height:240px;object-fit:cover;object-position:top center;display:block}
+.lc .shot.phone{flex:0 1 150px}
+.lc .shot.phone img{height:270px;object-position:top center}
+.lc .shot figcaption{display:none}
+.lc .ev{margin-top:20px}
+@media(max-width:860px){.lc .shot img{height:200px}.lc .shot.phone img{height:240px}}
+.lc .shot img{object-position:center}.lc .shot.phone img{object-position:top center}
+/* números em destaque: o span do contador herda o tamanho grande */
+.bignum b span{display:inline;margin:0;font-size:inherit;color:inherit;font-weight:inherit;letter-spacing:inherit}
+.bignum{display:block}
+.bignum>span{display:block;color:var(--mute);margin-top:14px;font-size:17px;max-width:44ch}
+.sub{max-width:none}
+/* layout imagem + itens */
+.feature{display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(24px,4vw,72px);align-items:stretch}
+.fimg{margin:0;border-radius:8px;overflow:hidden;min-height:480px;max-height:640px}
+.fimg img{width:100%;height:100%;object-fit:cover;display:block}
+.fside{display:flex;flex-direction:column;justify-content:center}
+.fitem{padding:30px 0}
+.fitem+.fitem{border-top:1px solid var(--line)}
+.fitem .lab{display:block;margin-bottom:14px}
+.fitem h3{font-size:clamp(22px,2.4vw,32px);font-weight:600;letter-spacing:-.02em;line-height:1.15;margin-bottom:10px}
+.fitem p{color:var(--mute);font-size:17px;max-width:46ch}
+.fitem .bignum b{font-size:clamp(56px,7vw,110px)}
+.closing{border-top:0}
+@media(max-width:860px){.feature{grid-template-columns:1fr}.fimg{min-height:300px}}
+/* frases de impacto */
+.stmt{padding:clamp(120px,22vh,240px) 0;text-align:center;border-top:1px solid var(--line)}
+.stmt .mono{display:block;color:var(--cream);margin-bottom:34px}
+.stmt h2{font-size:clamp(38px,7vw,108px);font-weight:500;letter-spacing:-.045em;line-height:1.02;max-width:none;margin:0 auto;text-transform:none}
+.stmt p{color:var(--mute);max-width:56ch;margin:38px auto 0;font-size:clamp(17px,1.5vw,21px)}
+/* fases empilhadas + linha do tempo */
+.tline{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:0 0 40px;position:sticky;top:12px;z-index:5;padding:10px 0;background:linear-gradient(var(--bg) 70%,transparent)}
+.tline div span{display:block;color:var(--mute);margin-bottom:8px;transition:color .3s}
+.tline div i{display:block;height:3px;background:var(--line);position:relative;overflow:hidden}
+.tline div i::after{content:"";position:absolute;inset:0;background:var(--cream);transform:scaleX(var(--p,0));transform-origin:left}
+.tline div.on span{color:#fff}
+.stack{padding-bottom:30px}
+.card-f{position:sticky;top:calc(92px + var(--i)*22px);display:grid;grid-template-columns:1fr 1fr 1fr;gap:24px;min-height:300px;padding:32px 36px;border-radius:12px;margin-bottom:26px;box-shadow:0 -14px 30px rgba(0,0,0,.45)}
+.card-f:nth-child(1){background:#ffffff;color:#040403}
+.card-f:nth-child(2){background:#c4c4c4;color:#040403}
+.card-f:nth-child(3){background:#7d7d7d;color:#fff}
+.card-f:nth-child(4){background:#343434;color:#fff}
+.card-f .fm{display:flex;flex-direction:column;justify-content:space-between;gap:20px}
+.card-f .fm h3{font-size:clamp(30px,3.6vw,52px);font-weight:600;letter-spacing:-.03em;line-height:1}
+.card-f .fr{list-style:none;display:grid;gap:12px;align-content:start}
+.card-f .fr li{font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.06em;text-transform:uppercase;display:flex;gap:10px;align-items:center}
+.card-f .fr li::before{content:"";width:6px;height:6px;border-radius:50%;background:currentColor;flex:none}
+@media(max-width:860px){.card-f{grid-template-columns:1fr;min-height:0;top:calc(70px + var(--i)*14px)}.tline div span{font-size:10px}}
+/* caixa final com imagem pixelada */
+.cta-box{padding:90px 0 20px}
+.cbox{position:relative;border:1px solid var(--line);border-radius:10px;overflow:hidden;min-height:380px;aspect-ratio:2.5/1;background:#050505;display:flex;align-items:center;justify-content:center}
+.cbox canvas{position:absolute;inset:0;width:100%;height:100%;display:block;filter:grayscale(1) brightness(.78) contrast(1.15)}
+.cbox .cover{position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(4,4,3,.82) 0%,rgba(4,4,3,.55) 38%,rgba(4,4,3,.05) 80%)}
+.ctext{position:relative;text-align:center;padding:30px}
+.ctext p{font-size:clamp(26px,3.6vw,52px);font-weight:500;letter-spacing:-.035em;line-height:1.08;color:rgba(255,255,255,.62)}
+.ctext p b{color:#fff;font-weight:500}
+.cbtns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:34px}
+.cbtns .btn{margin-top:0}
+@media(max-width:860px){.cbox{aspect-ratio:auto;min-height:420px}}
+/* caixa final em cores reais da foto, com verde de aprovação */
+.cbox canvas{filter:brightness(.82) saturate(1.05)}
+.cbox .cover{background:radial-gradient(ellipse at center,rgba(4,4,3,.62) 0%,rgba(4,4,3,.38) 40%,rgba(4,4,3,0) 85%)}
+.ctext p{text-shadow:0 2px 24px rgba(0,0,0,.55);color:rgba(255,255,255,.8)}
+.cbtns .btn{background:rgba(4,4,3,.45);color:#fff;border-color:rgba(255,255,255,.8);backdrop-filter:blur(6px)}
+.cbtns .btn:hover{background:#fff;color:#040403}
+.cbtns .btn.acc{background:#7a9b2e;color:#0d1204;border-color:#7a9b2e;backdrop-filter:none}
+.cbtns .btn.acc:hover{background:#93b83a;border-color:#93b83a;color:#0d1204}
+/* escala geral de 80%, com o conteúdo centrado e margens maiores */
+.wrap{max-width:1560px;margin-left:auto;margin-right:auto}
+/* compensa o zoom: a abertura continua a ocupar o ecrã inteiro */
+.stmt{padding:clamp(120px,24vh,260px) 0}
+.hw{padding-top:clamp(56px,9vh,110px)}.hero .top{gap:16px}
+/* textos pequenos mantêm o tamanho original (compensa a escala de 80%) */
+.hw{padding-bottom:clamp(44px,8vh,100px)}
+.hero .meta{padding:30px 0 10px}
+/* conteúdo 20% mais estreito, centrado, com as letras no tamanho original */
+.wrap{width:80%;max-width:1500px;padding:0;margin-left:auto;margin-right:auto}
+@media(max-width:860px){.wrap{width:90%}}
+.cbox{aspect-ratio:auto;width:100%;min-height:clamp(340px,34vw,460px)}
+
+/* barra de abas fixa no topo */
+.progress{display:none}
+.topnav{position:fixed;top:0;left:0;right:0;z-index:70;display:grid;grid-template-columns:repeat(7,1fr);gap:10px;padding:14px 10% 12px;background:linear-gradient(#040403 65%,rgba(4,4,3,0));opacity:0;transform:translateY(-110%);transition:opacity .4s,transform .4s;pointer-events:none}
+.topnav.show{opacity:1;transform:none;pointer-events:auto}
+.topnav a{display:block;color:var(--mute);font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase;transition:color .3s}
+.topnav a span{display:block;margin-bottom:8px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.topnav a i{display:block;height:3px;background:var(--line);position:relative;overflow:hidden}
+.topnav a i::after{content:"";position:absolute;inset:0;background:var(--cream);transform:scaleX(var(--p,0));transform-origin:left}
+.topnav a.on{color:#fff}
+.tline{top:70px}
+.card-f{top:calc(130px + var(--i)*22px)}
+html{scroll-padding-top:70px}
+@media(max-width:860px){.topnav{padding:10px 5% 8px;gap:5px}.topnav a{font-size:9px;letter-spacing:.02em}.card-f{top:calc(110px + var(--i)*14px)}}
+/* diagnóstico compacto */
+.sub.tight{margin:40px 0 40px}
+.dgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:0 clamp(24px,3vw,56px);border-top:1px solid var(--line)}
+.dc{padding:28px 0 30px;border-bottom:1px solid var(--line)}
+.dc .dl{display:block;font-size:clamp(28px,3vw,44px);font-weight:700;letter-spacing:-.035em;color:var(--cream);line-height:1;margin-bottom:16px}
+.dc h3{font-size:clamp(17px,1.5vw,21px);font-weight:600;letter-spacing:-.01em;line-height:1.25;margin-bottom:8px}
+.dc p{color:var(--mute);font-size:15px;max-width:40ch}
+.dc.wide{grid-column:span 2;display:grid;grid-template-columns:1fr auto;column-gap:30px;align-items:center}
+.dc.wide .dl{grid-column:1/-1}
+.dc.wide .btn{margin:0;grid-column:2;grid-row:2/4}
+@media(max-width:860px){.dgrid{grid-template-columns:1fr}.dc.wide{grid-column:auto;grid-template-columns:1fr}.dc.wide .btn{grid-column:1;grid-row:auto;margin-top:16px}}
+/* investimento: três quadrados */
+.opts{grid-template-columns:repeat(3,1fr);gap:16px}
+.opt{padding:28px}
+.opt .price{font-size:clamp(40px,4.6vw,76px);margin:14px 0 18px}
+.opt.man{background:rgba(255,255,255,.04)}
+.opt.man .pay{border-top:1px solid var(--line)}
+@media(max-width:1100px){.opts{grid-template-columns:1fr}}
+/* caixa final só com a validade */
+.ctext{padding:40px}
+
+/* linha do tempo vertical ao lado dos cartões */
+.stackwrap{display:grid;grid-template-columns:190px 1fr;gap:clamp(20px,3vw,48px);align-items:start}
+.vt{position:sticky;top:130px;display:flex;gap:20px;height:min(54vh,380px)}
+.vline{flex:none;width:3px;background:var(--line);position:relative;border-radius:2px}
+.vline i{position:absolute;left:0;top:0;width:100%;height:100%;background:var(--cream);transform:scaleY(var(--p,0));transform-origin:top;border-radius:2px;transition:transform .15s linear}
+.vt ol{list-style:none;display:flex;flex-direction:column;justify-content:space-between;padding:0}
+.vt li{opacity:.38;transition:opacity .4s,color .4s}
+.vt li span{display:block;font-size:12px}
+.vt li b{display:block;font-size:20px;font-weight:600;letter-spacing:-.02em;margin-top:4px;max-height:40px;overflow:hidden;transition:max-height .4s,opacity .4s}
+.vt li.on{opacity:1;color:#fff}
+.vt li.done{opacity:.75;color:var(--cream)}
+.vt li.done b{max-height:0;opacity:0;margin-top:0}
+.vt li.done span::after{content:"  ✓"}
+@media(max-width:860px){.stackwrap{grid-template-columns:1fr}.vt{display:none}}
+/* diagramação mais compacta */
+section{padding:72px 0 28px}
+.st{padding-bottom:22px;gap:0}
+.sub{margin:44px 0 44px}
+.sub.tight{margin:30px 0 30px}
+.row2{padding:24px 0 28px;min-height:110px}
+.stmt{padding:clamp(90px,16vh,170px) 0}
+.pause{padding:100px 0;margin-top:60px}
+.card-f{min-height:240px;padding:26px 30px}
+.fimg{min-height:380px;max-height:520px}
+.fitem{padding:22px 0}
+.dc{padding:22px 0 24px}
+.opt{padding:24px}
+.cta-box{padding:60px 0 10px}
+footer{padding:70px 0 44px}
+.closing{padding:34px 0 20px}
+/* degradês suaves, diferentes a cada seção, que se misturam nas bordas */
+section,.hero,footer{position:relative;isolation:isolate}
+section::before,.hero::before,footer::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background:var(--fx,none);background-size:150% 150%;animation:gdrift 26s ease-in-out infinite alternate;-webkit-mask-image:linear-gradient(180deg,transparent 0,#000 24%,#000 76%,transparent 100%);mask-image:linear-gradient(180deg,transparent 0,#000 24%,#000 76%,transparent 100%)}
+@keyframes gdrift{from{background-position:0% 0%}to{background-position:100% 100%}}
+.hero{--fx:radial-gradient(55% 50% at 50% 28%,rgba(255,255,255,.12),transparent 70%),radial-gradient(45% 45% at 8% 92%,rgba(122,155,46,.14),transparent 70%),radial-gradient(40% 40% at 95% 85%,rgba(194,67,43,.12),transparent 70%)}
+#hoje{--fx:radial-gradient(60% 55% at 12% 15%,rgba(194,67,43,.20),transparent 70%),radial-gradient(50% 45% at 92% 85%,rgba(255,255,255,.08),transparent 70%)}
+#f1{--fx:linear-gradient(135deg,rgba(255,255,255,.10),rgba(194,67,43,.14) 55%,transparent)}
+#tem{--fx:radial-gradient(60% 55% at 90% 20%,rgba(255,255,255,.16),transparent 70%),radial-gradient(45% 45% at 8% 90%,rgba(122,155,46,.14),transparent 70%)}
+#solucoes{--fx:radial-gradient(55% 50% at 8% 12%,rgba(122,155,46,.20),transparent 70%),radial-gradient(50% 50% at 95% 70%,rgba(255,255,255,.08),transparent 70%)}
+#fases{--fx:linear-gradient(160deg,rgba(255,255,255,.10),transparent 45%),radial-gradient(60% 50% at 90% 90%,rgba(194,67,43,.14),transparent 70%)}
+#f2{--fx:linear-gradient(180deg,rgba(122,155,46,.18),rgba(255,255,255,.08) 60%,transparent)}
+#adicionais{--fx:radial-gradient(60% 55% at 92% 10%,rgba(194,67,43,.18),transparent 70%),radial-gradient(50% 45% at 5% 85%,rgba(255,255,255,.10),transparent 70%)}
+#f3{--fx:radial-gradient(70% 70% at 50% 50%,rgba(255,255,255,.18),transparent 70%)}
+#valores{--fx:radial-gradient(60% 50% at 10% 8%,rgba(122,155,46,.20),transparent 70%),radial-gradient(50% 50% at 92% 90%,rgba(255,255,255,.10),transparent 70%)}
+#passos{--fx:radial-gradient(60% 55% at 50% 0%,rgba(122,155,46,.16),transparent 70%),radial-gradient(50% 45% at 90% 95%,rgba(194,67,43,.12),transparent 70%)}
+footer{--fx:radial-gradient(60% 60% at 50% 100%,rgba(255,255,255,.14),transparent 70%),radial-gradient(40% 40% at 10% 20%,rgba(122,155,46,.10),transparent 70%)}
+/* a pausa já é branca: ganha um degradê próprio, de branco para creme */
+.pause::before{display:none}
+.pause{background:linear-gradient(180deg,#ffffff 0%,#ffffff 100%)}
+.card-f{box-shadow:none}
+/* degradês: apenas 3 cores, as da bolsa do Studio de Lá (verde, vermelho e azul do céu) */
+:root{--cg:122,155,46;--cr:194,67,43;--cb:51,104,182}
+.hero{--fx:radial-gradient(60% 55% at 50% 22%,rgba(var(--cb),.22),transparent 70%),radial-gradient(45% 45% at 6% 95%,rgba(var(--cg),.18),transparent 70%),radial-gradient(40% 40% at 96% 88%,rgba(var(--cr),.16),transparent 70%)}
+#hoje{--fx:radial-gradient(60% 55% at 10% 12%,rgba(var(--cr),.22),transparent 70%),radial-gradient(50% 45% at 94% 88%,rgba(var(--cb),.16),transparent 70%)}
+#f1{--fx:linear-gradient(135deg,rgba(var(--cb),.20),rgba(var(--cr),.18) 60%,transparent)}
+#tem{--fx:radial-gradient(60% 55% at 92% 18%,rgba(var(--cb),.20),transparent 70%),radial-gradient(45% 45% at 6% 92%,rgba(var(--cg),.18),transparent 70%)}
+#solucoes{--fx:radial-gradient(55% 50% at 6% 10%,rgba(var(--cg),.22),transparent 70%),radial-gradient(50% 50% at 96% 72%,rgba(var(--cb),.14),transparent 70%)}
+#fases{--fx:linear-gradient(160deg,rgba(var(--cg),.16),transparent 50%),radial-gradient(60% 50% at 92% 92%,rgba(var(--cr),.18),transparent 70%)}
+#f2{--fx:linear-gradient(180deg,rgba(var(--cg),.22),rgba(var(--cb),.14) 65%,transparent)}
+#adicionais{--fx:radial-gradient(60% 55% at 94% 8%,rgba(var(--cr),.20),transparent 70%),radial-gradient(50% 45% at 4% 88%,rgba(var(--cb),.16),transparent 70%)}
+#f3{--fx:radial-gradient(70% 70% at 50% 50%,rgba(var(--cg),.22),transparent 70%)}
+#valores{--fx:radial-gradient(60% 50% at 8% 8%,rgba(var(--cg),.22),transparent 70%),radial-gradient(50% 50% at 94% 92%,rgba(var(--cr),.16),transparent 70%)}
+#passos{--fx:radial-gradient(60% 55% at 50% 0%,rgba(var(--cb),.18),transparent 70%),radial-gradient(50% 45% at 92% 96%,rgba(var(--cg),.16),transparent 70%)}
+footer{--fx:radial-gradient(60% 60% at 50% 100%,rgba(var(--cb),.20),transparent 70%),radial-gradient(40% 40% at 8% 18%,rgba(var(--cg),.14),transparent 70%)}
+/* "O que vocês já têm": tudo numa só tela */
+#tem{min-height:100vh;display:flex;align-items:center;padding:56px 0 20px}
+#tem .st{font-size:clamp(30px,4.4vw,64px);padding-bottom:16px}
+#tem .sub{font-size:clamp(20px,2.4vw,34px);margin:18px 0 22px}
+#tem .feature{height:clamp(300px,calc(100vh - 400px),500px)}
+#tem .fimg{min-height:0;max-height:none;height:100%}
+#tem .fside{justify-content:space-between}
+#tem .fitem{padding:10px 0}
+#tem .fitem .lab{margin-bottom:6px}
+#tem .fitem .bignum b{font-size:clamp(40px,6.2vh,70px)}
+#tem .bignum>span{margin-top:6px;font-size:15px}
+#tem .bignum b span{margin:0;font-size:inherit;display:inline}
+#tem .fitem h3{font-size:clamp(18px,2vw,26px);margin-bottom:6px}
+#tem .fitem p{font-size:15px}
+#tem .closing{font-size:clamp(20px,2.4vw,32px);padding:18px 0 0}
+@media(max-width:860px){#tem{min-height:0;display:block;padding:56px 0 20px}#tem .feature{height:auto}#tem .fimg{height:260px}}
+
+/* soluções em blocos de 4 colunas */
+.sgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;align-items:stretch}
+.sc{border:1px solid var(--line);border-radius:8px;overflow:hidden;display:flex;flex-direction:column;background:rgba(4,4,3,.35);transition:border-color .3s,transform .3s}
+.sc:hover{border-color:var(--cream);transform:translateY(-3px)}
+.sc img{width:100%;height:120px;object-fit:cover;object-position:top center;display:block;border-bottom:1px solid var(--line)}
+.sc .sb{padding:16px 16px 18px}
+.sc .lab{display:block;margin-bottom:10px;padding:0}
+.sc h3{font-size:clamp(16px,1.25vw,19px);font-weight:600;letter-spacing:-.01em;line-height:1.22;margin-bottom:8px}
+.sc p{color:var(--mute);font-size:14px;line-height:1.45}
+@media(max-width:1300px){.sgrid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:860px){.sgrid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.sgrid{grid-template-columns:1fr}}
+
+/* "A definir" no lugar de valores */
+.price.tbd{font-size:clamp(28px,3vw,44px);color:var(--mute);letter-spacing:-.03em}
+/* investimento: dois quadros, o da manutenção em branco */
+.opts.two{grid-template-columns:1fr 1fr}
+.opt.man.white{background:#fff;color:#040403;border-color:#fff}
+.opt.man.white .mono{color:#040403;font-weight:700}
+.opt.man.white h3,.opt.man.white .price{color:#040403}
+.opt.man.white .small,.opt.man.white ul{color:rgba(4,4,3,.72)}
+.opt.man.white li::before{color:#040403}
+.opt.man.white .pay{border-top-color:rgba(4,4,3,.18)}
+@media(max-width:860px){.opts.two{grid-template-columns:1fr}}
+
+/* soluções: imagens a rodar num bloco de 4 quadrados (2x2) */
+.slider{grid-column:1/3;grid-row:1/3;position:relative;border:1px solid var(--line);border-radius:8px;overflow:hidden;background:#000;min-height:320px}
+.slides,.slide{position:absolute;inset:0;margin:0}
+.slide{opacity:0;transition:opacity .9s ease}
+.slide.on{opacity:1}
+.slide img{width:100%;height:100%;object-fit:cover;object-position:top center;display:block}
+.slide figcaption{position:absolute;left:0;right:0;bottom:0;padding:48px 20px 18px;background:linear-gradient(transparent,rgba(0,0,0,.88));font-size:16px;color:#fff;font-weight:500}
+.slide figcaption .mono{display:block;color:var(--cream);margin-bottom:4px}
+.sctl{position:absolute;right:14px;top:12px;display:flex;gap:10px;align-items:center;z-index:3;background:rgba(0,0,0,.6);padding:6px 12px;border-radius:20px}
+.sctl button{background:none;border:0;color:#fff;font-size:16px;cursor:pointer;padding:0 2px}
+.sctl .mono{font-size:12px}
+.sbar{position:absolute;left:0;right:0;bottom:0;height:3px;background:rgba(255,255,255,.15);z-index:3}
+.sbar i{display:block;height:100%;width:0;background:var(--cream)}
+.sc.act{border-color:var(--cream);background:rgba(255,255,255,.07)}
+@media(max-width:1300px){.slider{grid-column:1/-1;grid-row:auto;min-height:0;aspect-ratio:16/8}}
+@media(max-width:560px){.slider{aspect-ratio:4/3}}
+/* degradês: 3 cores padrão, em ordem ao longo da apresentação
+   1) esbranquiçada (início)  2) verde (meio)  3) quente (final) */
+:root{--gw:255,246,235;--gg:122,155,46;--gh:226,88,45}
+/* início: esbranquiçada */
+.hero{--fx:radial-gradient(60% 55% at 50% 22%,rgba(var(--gw),.14),transparent 70%),radial-gradient(45% 45% at 6% 95%,rgba(var(--gw),.08),transparent 70%)}
+#hoje{--fx:radial-gradient(60% 55% at 10% 12%,rgba(var(--gw),.13),transparent 70%),radial-gradient(50% 45% at 94% 88%,rgba(var(--gw),.07),transparent 70%)}
+#f1{--fx:linear-gradient(135deg,rgba(var(--gw),.14),transparent 70%)}
+#tem{--fx:radial-gradient(60% 55% at 92% 18%,rgba(var(--gw),.14),transparent 70%),radial-gradient(45% 45% at 6% 92%,rgba(var(--gw),.07),transparent 70%)}
+/* meio: verde */
+#solucoes{--fx:radial-gradient(55% 50% at 6% 10%,rgba(var(--gg),.22),transparent 70%),radial-gradient(50% 50% at 96% 72%,rgba(var(--gg),.12),transparent 70%)}
+#fases{--fx:linear-gradient(160deg,rgba(var(--gg),.18),transparent 55%),radial-gradient(60% 50% at 92% 92%,rgba(var(--gg),.12),transparent 70%)}
+/* final: quente */
+#f3{--fx:radial-gradient(70% 70% at 50% 50%,rgba(var(--gh),.20),transparent 70%)}
+#valores{--fx:radial-gradient(60% 50% at 8% 8%,rgba(var(--gh),.20),transparent 70%),radial-gradient(50% 50% at 94% 92%,rgba(var(--gh),.12),transparent 70%)}
+#f2{--fx:linear-gradient(180deg,rgba(var(--gh),.20),transparent 70%)}
+#adicionais{--fx:radial-gradient(60% 55% at 94% 8%,rgba(var(--gh),.20),transparent 70%),radial-gradient(50% 45% at 4% 88%,rgba(var(--gh),.12),transparent 70%)}
+#passos{--fx:radial-gradient(60% 55% at 50% 0%,rgba(var(--gh),.22),transparent 70%),radial-gradient(50% 45% at 92% 96%,rgba(var(--gh),.14),transparent 70%)}
+footer{--fx:radial-gradient(60% 60% at 50% 100%,rgba(var(--gh),.26),transparent 70%),radial-gradient(40% 40% at 8% 18%,rgba(var(--gh),.12),transparent 70%)}
+/* abertura: logo mais abaixo e afastada do rótulo; dados do rodapé da abertura mais acima, sem linha, letra um pouco maior */
+.hw{padding-top:clamp(84px,14vh,160px);padding-bottom:clamp(80px,14vh,170px)}
+.hero .top{gap:30px}
+.hero .top .mono,.hero .meta{font-size:14px}
+.hero .meta{border-top:0;padding:0}
+/* início da apresentação: degradê amarelado (dourado suave) */
+:root{--gw:240,196,70}
+.hero{--fx:radial-gradient(60% 55% at 50% 22%,rgba(var(--gw),.20),transparent 70%),radial-gradient(45% 45% at 6% 95%,rgba(var(--gw),.11),transparent 70%)}
+#hoje{--fx:radial-gradient(60% 55% at 10% 12%,rgba(var(--gw),.20),transparent 70%),radial-gradient(50% 45% at 94% 88%,rgba(var(--gw),.11),transparent 70%)}
+#f1{--fx:linear-gradient(135deg,rgba(var(--gw),.20),transparent 70%)}
+#tem{--fx:radial-gradient(60% 55% at 92% 18%,rgba(var(--gw),.20),transparent 70%),radial-gradient(45% 45% at 6% 92%,rgba(var(--gw),.10),transparent 70%)}
+/* botão fixo sem sombra */
+.float{box-shadow:none}
+
+/* soluções: abas laterais + painel com imagem */
+.tabsol{display:grid;grid-template-columns:clamp(220px,22%,300px) 1fr;gap:clamp(16px,2vw,28px);align-items:start}
+.pills{display:flex;flex-direction:column;gap:10px}
+.pill{font:inherit;font-size:15px;text-align:left;cursor:pointer;color:var(--mute);background:rgba(255,255,255,.05);border:1px solid var(--line);border-radius:999px;padding:14px 22px;transition:background .25s,color .25s,border-color .25s,transform .25s}
+.pill:hover{border-color:var(--cream);color:#fff}
+.pill.on{background:var(--cream);color:#040403;border-color:var(--cream);font-weight:600}
+.tpanel{border:1px solid var(--line);border-radius:26px;background:rgba(255,255,255,.04);overflow:hidden;min-height:400px}
+.tp{display:none;grid-template-columns:1.1fr .9fr;gap:clamp(20px,3vw,40px);padding:clamp(20px,2.4vw,34px);align-items:center;min-height:400px}
+.tp.on{display:grid;animation:tpin .5s ease}
+@keyframes tpin{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.tt h3{font-size:clamp(26px,2.5vw,38px);font-weight:600;letter-spacing:-.03em;line-height:1.08;margin-bottom:16px}
+.tt p{color:var(--mute);font-size:16px;line-height:1.55;margin-bottom:12px;max-width:52ch}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+.chips span{border:1px solid var(--line);border-radius:999px;padding:7px 14px;font-size:13px;color:var(--cream)}
+.tim img{width:100%;height:min(340px,42vh);object-fit:cover;object-position:top center;border-radius:20px;display:block;border:1px solid var(--line)}
+@media(max-width:860px){.tabsol{grid-template-columns:1fr}.pills{flex-direction:row;overflow-x:auto;padding-bottom:6px}.pill{white-space:nowrap}.tp{grid-template-columns:1fr}.tp.on{display:flex;flex-direction:column;align-items:stretch}.tim img{height:220px}}
+.tim img[src$="equipa.jpg"]{object-position:center 72%}
+.tim img[src$="og.jpg"]{object-fit:contain;background:#000}
+
+/* fundo líquido: uma única camada fixa, de formas grandes que se esticam e se fundem */
+section::before,.hero::before,footer::before{display:none!important}
+:root{--lc:240,196,70}
+.liquid{position:fixed;inset:0;z-index:-1;overflow:hidden;pointer-events:none;opacity:.55}
+.liquid i{position:absolute;display:block;will-change:transform,border-radius;filter:blur(64px);
+  background:radial-gradient(ellipse at 40% 45%,rgba(var(--lc),.60),rgba(var(--lc),.20) 55%,transparent 72%);
+  border-radius:46% 54% 63% 37% / 41% 52% 48% 59%}
+.liquid i:nth-child(1){width:78vmax;height:56vmax;left:-22vmax;top:-18vmax;animation:lq1 26s ease-in-out infinite alternate}
+.liquid i:nth-child(2){width:70vmax;height:50vmax;right:-24vmax;top:10vh;animation:lq2 32s ease-in-out infinite alternate}
+.liquid i:nth-child(3){width:84vmax;height:48vmax;left:-10vmax;bottom:-30vmax;animation:lq3 38s ease-in-out infinite alternate}
+.liquid i:nth-child(4){width:56vmax;height:42vmax;right:2vw;bottom:-22vmax;opacity:.8;animation:lq4 30s ease-in-out infinite alternate}
+@keyframes lq1{
+  0%{transform:translate3d(0,0,0) rotate(0deg) scale(1);border-radius:46% 54% 63% 37% / 41% 52% 48% 59%}
+  50%{transform:translate3d(20vw,10vh,0) rotate(38deg) scale(1.25,.85);border-radius:62% 38% 41% 59% / 55% 38% 62% 45%}
+  100%{transform:translate3d(8vw,30vh,0) rotate(-22deg) scale(.9,1.2);border-radius:38% 62% 55% 45% / 60% 45% 55% 40%}}
+@keyframes lq2{
+  0%{transform:translate3d(0,0,0) rotate(10deg) scale(1);border-radius:58% 42% 36% 64% / 48% 60% 40% 52%}
+  50%{transform:translate3d(-24vw,16vh,0) rotate(-35deg) scale(1.2,.8);border-radius:40% 60% 64% 36% / 62% 40% 60% 38%}
+  100%{transform:translate3d(-8vw,-8vh,0) rotate(28deg) scale(.85,1.15);border-radius:64% 36% 46% 54% / 40% 56% 44% 60%}}
+@keyframes lq3{
+  0%{transform:translate3d(0,0,0) rotate(-6deg) scale(1);border-radius:40% 60% 52% 48% / 56% 42% 58% 44%}
+  50%{transform:translate3d(24vw,-14vh,0) rotate(30deg) scale(1.15,.9);border-radius:60% 40% 38% 62% / 44% 58% 42% 56%}
+  100%{transform:translate3d(10vw,-26vh,0) rotate(-30deg) scale(.95,1.2);border-radius:48% 52% 64% 36% / 58% 40% 60% 42%}}
+@keyframes lq4{
+  0%{transform:translate3d(0,0,0) rotate(0deg) scale(1);border-radius:52% 48% 42% 58% / 46% 56% 44% 54%}
+  50%{transform:translate3d(-18vw,-18vh,0) rotate(-40deg) scale(1.3,.8);border-radius:36% 64% 58% 42% / 60% 38% 62% 40%}
+  100%{transform:translate3d(-30vw,-6vh,0) rotate(24deg) scale(.9,1.1);border-radius:62% 38% 48% 52% / 42% 60% 40% 58%}}
+
+/* metal líquido (WebGL); as formas em CSS ficam só como reserva */
+.liquid canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+.liquid.gl{opacity:1}
+.liquid.gl i{display:none}
+
+/* fundo: cores da marca (preto, branco, cinza e azul royal no final) */
+:root{--lc:236,238,244}
+/* texto: branco puro e cinza neutro (sem off-white), com azul royal vivo como destaque */
+:root{--cream:#ffffff;--mute:rgba(255,255,255,.74);--line:rgba(255,255,255,.2);--accent:#5c88ff}
+.lab,.dc .dl,.hero .kicker,.hero .meta b,.stmt .mono,.opt .mono,.vt li span{color:var(--accent)}
+.hero .top .mono{color:rgba(255,255,255,.8)}
+.chips span,.tl li{color:#fff}
+/* etiquetas em fonte de código: brancas (só os títulos grandes do diagnóstico ficam em azul) e mais negrito */
+.lab,.hero .kicker,.hero .meta b,.stmt .mono,.opt .mono,.vt li span{color:#fff}
+.hero .kicker{color:rgba(255,255,255,.85)}
+.mono,.lab,.tl li,.ev,.topnav a,.btn,.float,.vt li span,.hero .meta,.hero .top .mono{font-weight:700}
+.dc .dl{color:var(--accent)}
+.pause .mono{color:#040403!important}
+.hero .meta b,.meta b,footer .meta b{font-weight:700}
+/* linha do cronograma: verde fraco que ganha força até ao fim */
+.vline{width:4px;background:rgba(255,255,255,.12)}
+.vline i{transform:none;background:linear-gradient(180deg,rgba(122,155,46,.30) 0%,rgba(122,155,46,.65) 50%,#9be13a 100%);clip-path:inset(0 0 calc((1 - var(--p,0)) * 100%) 0);transition:clip-path .15s linear}
+.vt li.done span{color:#9be13a}
+/* subtítulos das seções (e frases parecidas): fonte bem menor e slim */
+.sub,#tem .sub{font-size:clamp(17px,1.6vw,24px);font-weight:300;letter-spacing:-.005em;line-height:1.4;color:rgba(255,255,255,.74);max-width:60ch;margin:26px 0 32px}
+.sub.tight,#tem .sub{margin:20px 0 26px}
+.closing,#tem .closing{font-size:clamp(17px,1.6vw,24px);font-weight:300;letter-spacing:-.005em;line-height:1.4;color:rgba(255,255,255,.74)}
+.stmt p{font-weight:300}
+/* diagnóstico: títulos em vermelho suave, puxado para o branco (sinaliza o que está errado) */
+.dc .dl{color:#ff8a80}
+#passos .dc .dl{color:var(--accent)}
+#passos .dc .dl{color:#fff}
+/* cronograma: exceção, volta às cores quentes de antes (do bege ao marrom escuro) */
+.card-f:nth-child(1){background:#e8dcd3;color:#040403}
+.card-f:nth-child(2){background:#bcb2a9;color:#040403}
+.card-f:nth-child(3){background:#7a746d;color:#ffffff}
+.card-f:nth-child(4){background:#34322f;color:#ffffff}
+/* "O que vocês já têm": números em dourado (o terceiro item fica branco) */
+#tem .bignum b{color:#e3b95b;background:linear-gradient(180deg,#f6dc8c 0%,#d9a93f 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+#tem .bignum b span{-webkit-text-fill-color:transparent}
+/* pausa: no lugar do branco, a página inicial do site novo com desfoque forte (sem informação legível) */
+.pause{position:relative;overflow:hidden;background:#040403;color:#fff}
+.pause .pbg{position:absolute;inset:-80px;background:url(img/site-fundo.jpg) center/cover no-repeat;filter:blur(46px) saturate(1.15) brightness(.85);transform:scale(1.15)}
+.pause::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(4,4,3,.55),rgba(4,4,3,.35) 50%,rgba(4,4,3,.6));pointer-events:none}
+.pause .wrap{position:relative;z-index:2}
+.pause .mono{color:#fff!important}
+.pause h2{color:#fff}
+.pause p{color:rgba(255,255,255,.85)}
+.pause .btn,.pause .btn.acc{background:#fff;color:#040403;border-color:#fff}
+.pause .btn:hover{background:rgba(255,255,255,.85);color:#040403}
+/* soluções: imagens inteiras (sem recorte), tiradas do próprio site refeito */
+.tp{grid-template-columns:.9fr 1.1fr}
+.tim{display:flex;align-items:center;justify-content:center}
+.tim img{width:100%;height:auto;max-height:min(380px,48vh);object-fit:contain;object-position:center;background:#040403}
+.tim img[src$="sol-movel.jpg"]{width:auto;max-height:min(400px,50vh)}
+.tim img[src$="og.jpg"]{background:#000}
+/* linha do cronograma: verde mais claro, "digital" */
+.vline{filter:drop-shadow(0 0 5px rgba(80,255,160,.40))}
+.vline i{background:linear-gradient(180deg,rgba(70,235,150,.50) 0%,rgba(80,245,160,.80) 55%,#9dffc8 100%)}
+.vt li.done span{color:#6dffb0}
+.tp{grid-template-columns:.8fr 1.2fr}.tim img{max-height:min(430px,54vh)}
+.pause .pbg{filter:blur(46px) saturate(1.3) brightness(1.35)}
+.pause::after{background:linear-gradient(180deg,rgba(4,4,3,.45),rgba(4,4,3,.22) 50%,rgba(4,4,3,.5))}
+/* pausa: prévia do site novo, só um pouco desfocada, à direita; o texto fica à esquerda */
+.pause .pbg{inset:0 0 0 auto;width:68%;transform:none;background:url(img/sol-primeiro.jpg) center/cover no-repeat;filter:blur(5px) saturate(1.1) brightness(1.05);-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 38%);mask-image:linear-gradient(90deg,transparent 0,#000 38%)}
+.pause::after{background:linear-gradient(90deg,rgba(4,4,3,.9) 0%,rgba(4,4,3,.55) 38%,rgba(4,4,3,.08) 70%,rgba(4,4,3,.3) 100%)}
+.pause .ptag{position:absolute;right:clamp(16px,3vw,40px);bottom:clamp(14px,2.4vw,28px);z-index:3;color:#fff;background:rgba(4,4,3,.6);border:1px solid rgba(255,255,255,.35);padding:7px 14px;font-size:12px}
+@media(max-width:860px){.pause .pbg{width:100%;-webkit-mask-image:none;mask-image:none;opacity:.55}.pause::after{background:rgba(4,4,3,.55)}}
+/* números em amarelo-ouro com glow */
+#tem .bignum b{background:linear-gradient(180deg,#fff0a0 0%,#ffd24a 55%,#f2ae22 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;filter:drop-shadow(0 0 10px rgba(255,205,70,.60)) drop-shadow(0 0 30px rgba(255,185,40,.38))}
+/* pausa: prévia mais à direita, para o logo não ficar por baixo do título */
+.pause .pbg{width:56%;-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 30%);mask-image:linear-gradient(90deg,transparent 0,#000 30%)}
+.pause::after{background:linear-gradient(90deg,rgba(4,4,3,.92) 0%,rgba(4,4,3,.6) 42%,rgba(4,4,3,.1) 70%,rgba(4,4,3,.3) 100%)}
+/* diagnóstico: vermelho suave também com glow */
+#hoje .dc .dl{text-shadow:0 0 12px rgba(255,110,100,.60),0 0 32px rgba(255,80,70,.34)}
+.pause .pbg{width:50%;-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 24%);mask-image:linear-gradient(90deg,transparent 0,#000 24%)}
+/* pausa: a prévia vira um cartão do site, levemente desfocado, à direita (sem tapar o título) */
+.pause .pbg{inset:auto;right:clamp(24px,6vw,100px);top:50%;transform:translateY(-50%);width:40%;aspect-ratio:16/9;border-radius:14px;-webkit-mask-image:none;mask-image:none;background:url(img/sol-primeiro.jpg) center/cover no-repeat;filter:blur(5px) saturate(1.1);border:1px solid rgba(255,255,255,.2)}
+.pause::after{background:none}
+.pause .ptag{right:clamp(24px,6vw,100px);bottom:clamp(18px,3vw,36px)}
+@media(max-width:860px){.pause .pbg{position:relative;transform:none;top:auto;right:auto;width:100%;margin-bottom:24px;opacity:1}.pause .ptag{display:none}}
+.pause h2{font-size:clamp(36px,5.2vw,78px);max-width:11ch}
+/* números: cor chapada amarelo-alaranjada (sem degradê), mantendo o glow */
+#tem .bignum b{background:none;-webkit-background-clip:border-box;background-clip:border-box;color:#ffc23a;-webkit-text-fill-color:#ffc23a;filter:drop-shadow(0 0 10px rgba(255,170,40,.60)) drop-shadow(0 0 30px rgba(255,150,30,.36))}
+#tem .bignum b span{-webkit-text-fill-color:#ffc23a;color:#ffc23a}
+
+/* cronograma: do branco (início) ao verde (fim), letras pretas para boa leitura */
+.card-f:nth-child(1){background:#ffffff;color:#040403}
+.card-f:nth-child(2){background:#e3f9ea;color:#040403}
+.card-f:nth-child(3){background:#9bf0bd;color:#040403}
+.card-f:nth-child(4){background:#3fe08c;color:#040403}
+/* lançamento (último cartão): glow verde para marcar o final */
+.card-f:nth-child(4){box-shadow:0 0 26px rgba(63,224,140,.55),0 0 80px rgba(63,224,140,.30)}
+/* cronograma: verde mais discreto e escuro (fecho do projeto), ainda com texto preto */
+.card-f:nth-child(1){background:#ffffff;color:#040403}
+.card-f:nth-child(2){background:#eaf3e8;color:#040403}
+.card-f:nth-child(3){background:#bcd9b8;color:#040403}
+.card-f:nth-child(4){background:#78b487;color:#040403;box-shadow:0 0 22px rgba(120,180,135,.40),0 0 60px rgba(120,180,135,.22)}
+
+/* fundo líquido novo: duas camadas já prontas, movidas só por CSS (nada é redesenhado por quadro) */
+.liquid{display:none!important}
+.lq2{position:fixed;inset:0;z-index:-1;overflow:hidden;pointer-events:none;opacity:0;transition:opacity 1.2s ease}
+.lq2.on.ready{opacity:.17}
+.lq2 i{position:absolute;inset:-35%;display:block;background-color:rgb(236,238,244);-webkit-mask-size:100% 100%;mask-size:100% 100%;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;transition:background-color 1.6s ease;will-change:transform}
+.lq2.blue i{background-color:rgb(64,112,255)}
+.lq2 i:nth-child(1){animation:lqa 70s ease-in-out infinite alternate}
+.lq2 i:nth-child(2){animation:lqb 90s ease-in-out infinite alternate;opacity:.8}
+@keyframes lqa{from{transform:translate3d(-4%,-3%,0) rotate(-10deg) scale(1)}to{transform:translate3d(5%,4%,0) rotate(12deg) scale(1.15)}}
+@keyframes lqb{from{transform:translate3d(4%,3%,0) rotate(14deg) scale(1.1)}to{transform:translate3d(-5%,-4%,0) rotate(-12deg) scale(1)}}
+/* painel das abas com altura fixa: a página não "salta" quando se troca de aba */
+.tpanel{height:clamp(420px,60vh,520px);min-height:0}
+.tp{height:100%;min-height:0}
+.tim img{max-height:min(380px,46vh)}
+.tim img[src$="sol-movel.jpg"]{max-height:min(400px,48vh)}
+@media(max-width:860px){.tpanel{height:auto}.tp{height:auto}}
+/* cronograma: a pilha fica centrada na tela e faz uma pausa, com o Lançamento no meio, antes de a página seguir */
+.card-f{top:max(calc(96px + var(--i) * 22px),calc(50vh - 120px - (3 - var(--i)) * 22px))}
+.stack{padding-bottom:36vh}
+.vt{top:max(96px,calc(50vh - min(27vh,190px)))}
+@media(max-width:860px){.card-f{top:max(calc(86px + var(--i) * 14px),calc(50vh - 120px - (3 - var(--i)) * 14px))}.stack{padding-bottom:22vh}}
+/* pausa real: um espaçador dentro da pilha prolonga o tempo em que os cartões ficam fixos (padding não conta para o "sticky") */
+.stack{padding-bottom:0}
+.stack::after{content:"";display:block;height:36vh}
+@media(max-width:860px){.stack{padding-bottom:0}.stack::after{height:22vh}}
+
+/* ===== mais leve ===== */
+.vline{filter:none}
+.liquid{display:none!important}
+.lq2{position:fixed;inset:0;z-index:-1;overflow:hidden;pointer-events:none;opacity:0;transition:opacity 1.2s ease;contain:strict}
+.lq2.on.ready{opacity:.17}
+.lq2 i{position:absolute;inset:-12%;display:block;background:no-repeat center/100% 100%;background-color:transparent;-webkit-mask-image:none;mask-image:none;will-change:transform}
+.lq2 i:nth-child(1){animation:lqa 80s ease-in-out infinite alternate}
+.lq2 i:nth-child(2){animation:lqb 100s ease-in-out infinite alternate;opacity:.8}
+@keyframes lqa{from{transform:translate3d(-4%,-3%,0) scale(1)}to{transform:translate3d(4%,3%,0) scale(1.12)}}
+@keyframes lqb{from{transform:translate3d(4%,3%,0) scale(1.08)}to{transform:translate3d(-4%,-3%,0) scale(1)}}
+.lq2:not(.on) i{animation-play-state:paused}
+
+/* ===== final em verde: o cartão do Lançamento expande até às bordas e o fundo passa a verde ===== */
+:root{--green:#78b487}
+#gx{position:fixed;inset:0;z-index:2;background:var(--green);pointer-events:none;opacity:0;clip-path:inset(50% 50% 50% 50%)}
+#gx.show{opacity:1}
+.card-f:nth-child(4){z-index:5;transform-origin:center center}
+.card-f:nth-child(4).ex{background:transparent;box-shadow:none}
+.vt{z-index:1}
+.stack::after{height:95vh}
+@media(max-width:860px){.stack::after{height:62vh}}
+/* transição suave: alisa os saltos da roda do rato */
+#gx{transition:clip-path .22s cubic-bezier(.22,.61,.36,1)}
+.card-f:nth-child(4){transition:transform .22s cubic-bezier(.22,.61,.36,1)}
+/* aviso em largura total (de um lado ao outro) */
+.aviso{position:relative;z-index:3;opacity:0;transition:opacity .45s ease;margin-top:56px;padding-top:28px;border-top:1px solid rgba(4,4,3,.3);max-width:none;color:#040403;font-size:clamp(18px,1.8vw,27px);line-height:1.45;font-weight:400}
+.aviso.on{opacity:1}
+/* secções em verde: texto escuro para boa leitura */
+.gr{color:#040403}
+.gr h2,.gr h3,.gr .price,.gr b,.gr .mono,.gr .lab,.gr .st{color:#040403}
+.gr .sub,.gr p,.gr li,.gr .small{color:rgba(4,4,3,.8)}
+.gr .st{border-bottom-color:rgba(4,4,3,.28)}
+.gr.stmt{border-top:1px solid rgba(4,4,3,.2)}
+.gr .opt{border-color:rgba(4,4,3,.4);background:rgba(255,255,255,.16)}
+.gr .opt .mono,.gr .opt .pay .mono{color:#040403}
+.gr .opt li::before{color:#040403}
+.gr .opt .pay{border-top-color:rgba(4,4,3,.3)}
+.gr .opt.man.white{background:#fff;border-color:#fff}
+.gr .opt.man.white li,.gr .opt.man.white .small{color:rgba(4,4,3,.8)}
+.gr .row2,.gr .endline{border-top-color:rgba(4,4,3,.22)}
+.gr .row2::before,.gr .row2::after,.gr .endline::before,.gr .endline::after{background:transparent;color:#040403}
+.gr .row2:hover{background:rgba(4,4,3,.05)}
+.gr .price.tbd{color:rgba(4,4,3,.6)}
+.gr .tl li{color:#040403;border-color:rgba(4,4,3,.35)}
+/* adicionais: fundo branco, com corte direto */
+.wh{background:#fff}
+/* barra de abas sobre o verde */
+.topnav.gz{background:linear-gradient(var(--green) 65%,rgba(120,180,135,0))}
+.topnav.gz a{color:rgba(4,4,3,.55)}
+.topnav.gz a.on{color:#040403}
+.topnav.gz a i{background:rgba(4,4,3,.2)}
+.topnav.gz a i::after{background:#040403}
+/* botão fixo com contorno, para se ver também sobre o branco */
+.float{border:1px solid rgba(4,4,3,.16)}
+#gx{clip-path:inset(0)}
+/* investimento sobre o verde: texto preto em tudo, cantos arredondados e efeito de vidro (glass) */
+.gr .opt,.gr .opt .pay div,.gr .opt .pay b,.gr .opt .pay .mono,.gr .opt h3,.gr .opt .price,.gr .opt li,.gr .opt .small{color:#040403}
+.gr .opt li,.gr .opt .small{color:rgba(4,4,3,.82)}
+.gr .opt{border-radius:26px;background:rgba(255,255,255,.22);border:1px solid rgba(255,255,255,.55);-webkit-backdrop-filter:blur(10px) saturate(1.25);backdrop-filter:blur(10px) saturate(1.25);box-shadow:inset 0 1px 0 rgba(255,255,255,.65),0 10px 30px rgba(4,4,3,.08)}
+.gr .opt.man.white{background:rgba(255,255,255,.86);border-color:rgba(255,255,255,.9)}
+.gr .opt .pay{border-top-color:rgba(4,4,3,.22)}
+/* nota do investimento: ocupa toda a largura, do primeiro ao segundo quadro */
+.nota-val{margin-top:30px;max-width:none;width:100%;font-size:clamp(15px,1.15vw,18px);line-height:1.55}
+/* ===== leveza (parte gráfica) ===== */
+/* o fundo líquido fica parado enquanto se rola e volta a mexer em repouso */
+.lq2.sc i{animation-play-state:paused}
+/* sem desfoque de fundo: sobre o verde liso ele não se vê e custa à placa de vídeo */
+.gr .opt{-webkit-backdrop-filter:none;backdrop-filter:none}
+/* menos camadas isoladas: só a secção do cronograma precisa de contexto próprio (o verde expansivo vive nela) */
+section:not(#fases),.hero,footer{isolation:auto}
+
+/* adicionais: linhas leves, título mais fino, texto no tamanho do resto, "A definir" discreto */
+#adicionais .row2{min-height:0;padding:30px 0 34px;align-items:start}
+#adicionais .rc h3{font-size:clamp(22px,2.4vw,32px);font-weight:500;letter-spacing:-.02em;line-height:1.15;margin-bottom:10px}
+#adicionais .rc p{font-size:17px;max-width:46ch;margin:0}
+#adicionais .price.s.tbd{font-size:clamp(18px,1.8vw,24px);font-weight:500;letter-spacing:-.01em;margin-top:14px}
+
+/* barra de abas sobre a secção branca dos adicionais: fundo branco, texto escuro (sem faixa preta) */
+.topnav.wz{background:linear-gradient(#fff 65%,rgba(255,255,255,0))}
+.topnav.wz a{color:rgba(4,4,3,.55)}
+.topnav.wz a.on{color:#040403}
+.topnav.wz a i{background:rgba(4,4,3,.15)}
+.topnav.wz a i::after{background:#040403}
+.topnav{transition:opacity .4s,transform .4s}
+.topnav.gz,.topnav.wz{transition:opacity .4s,transform .4s}
+
+/* quadradinhos de marcação nos adicionais */
+#adicionais .lc{display:flex;align-items:flex-start;gap:16px}
+#adicionais .lc .lab{padding-top:4px}
+.ck{flex:none;width:26px;height:26px;border:1.5px solid #040403;border-radius:4px;background:transparent;cursor:pointer;position:relative;padding:0}
+.ck::after{content:"";position:absolute;left:7px;top:2px;width:7px;height:13px;border:solid #040403;border-width:0 2.5px 2.5px 0;transform:rotate(45deg) scale(0);transition:transform .12s}
+.ck.on{background:#78b487}
+.ck.on::after{transform:rotate(45deg) scale(1)}
+
+/* agradecimento final, fundo preto */
+footer.thanks{background:#040403;padding:clamp(90px,16vh,160px) 0 clamp(60px,10vh,100px);text-align:center}
+footer.thanks h2{font-size:clamp(34px,5vw,72px);font-weight:600;letter-spacing:-.04em;line-height:1.05;color:#fff;margin-bottom:18px}
+footer.thanks p{color:var(--mute);font-size:18px;max-width:46ch;margin:0 auto}
+footer.thanks .meta{margin-top:70px;justify-content:center;text-align:center}
+footer.thanks h2{max-width:none;text-align:center;margin-left:auto;margin-right:auto}footer.thanks p{text-align:center}
+
+/* dias extra por adicional e resumo que soma o que for marcado */
+#adicionais .price.s.tbd .dd{font-size:.62em;font-weight:500;margin-left:14px;color:rgba(4,4,3,.5)}
+.adsum{position:sticky;bottom:18px;z-index:5;margin:26px 0 0;max-width:min(640px,calc(100% - 150px));padding:16px 20px;border-radius:18px;background:#040403;color:#fff}
+.adsum b{display:block;font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:#fff;margin-bottom:6px}
+.gr .adsum b{color:#78b487}
+.adsum p{margin:0;font-size:14px;line-height:1.45;color:rgba(255,255,255,.78);max-width:none}
+.adsum.has{box-shadow:0 0 0 2px #78b487}
+
+.opt .por-ano{margin:4px 0 0;font-weight:600;letter-spacing:.02em;color:inherit;opacity:.7}
+.opt .price .pm{font-size:.38em;font-weight:500;letter-spacing:0;margin-left:6px;opacity:.7}
+/* modo leve: sem animações contínuas nem filtros caros durante a rolagem */
+section::before,.hero::before,footer::before{display:none!important;animation:none!important}
+.lq2 i{animation:none!important;will-change:auto!important;transform:none!important}
+.vline{filter:none!important}
+#tem .bignum b{filter:none!important;text-shadow:0 0 10px rgba(255,170,40,.55),0 0 28px rgba(255,150,30,.32)}
+.float{transition:none}
+
+/* sem fundo líquido e sem desfoque na Pausa: a imagem é pequena e ampliada, o que já a suaviza */
+.lq2{display:none!important}
+.pause .pbg{filter:none!important}
+.pause .pbg{background-image:url(img/sol-primeiro-suave.jpg)!important}
+
+/* Lançamento: título no meio da tela e maior; "Fase 04" e "Semana" sobem para perto do topo; sem linha por baixo */
+.card-f:nth-child(4) .fl{transform:translateY(calc(var(--ep,0)*var(--dyF,0px)))}
+.card-f:nth-child(4) .fm>span{transform:translateY(calc(var(--ep,0)*var(--dyS,0px)))}
+.card-f:nth-child(4) .fm h3{transform-origin:center;transform:translate(calc(var(--ep,0)*var(--dxH,0px)),calc(var(--ep,0)*var(--dyH,0px))) scale(calc(1 + .7*var(--ep,0)))}
+.aviso{border-top:none;padding-top:0;margin-top:44px;font-size:clamp(14px,1.2vw,18px);line-height:1.5}
+/* Investimento: primeiro só a palavra, no meio da tela; depois tudo aparece junto */
+#valores .vword{min-height:100vh;display:grid;place-items:center}
+#valores .vword .st{border-bottom:none;padding:0;justify-content:center;font-size:clamp(56px,9vw,140px)}
+#valores .vgroup{padding-bottom:20px}
+.card-f:nth-child(4) .fl{align-self:start}
+.aviso{max-width:min(980px,calc(100% - 220px))}
+
+/* resumo dos adicionais: fonte da página, negrito, número um pouco maior */
+.adsum b{font-family:'Archivo',sans-serif;font-weight:700;font-size:19px;letter-spacing:-.01em;text-transform:none;color:#fff;margin-bottom:8px}
+.adsum b .adn-n{font-size:28px;line-height:1;margin-right:4px;color:#78b487}
+.gr .adsum b{color:#fff}
+
+/* logótipo Studio de Lá fixo no canto, à esquerda das abas */
+.navlogo{position:fixed;left:clamp(14px,2vw,32px);top:12px;z-index:71;width:clamp(70px,6.5vw,96px);color:#fff;opacity:0;pointer-events:none;transition:opacity .4s,color .3s}
+.navlogo svg{display:block;width:100%;height:auto}
+.topnav.show+.navlogo{opacity:1;pointer-events:auto}
+.topnav.gz+.navlogo,.topnav.wz+.navlogo{color:#040403}
+footer.thanks .big-logo{width:min(80%,760px);margin:0 auto 60px}
+
+/* telemóvel */
+@media(max-width:860px){
+  .topnav{display:flex;gap:20px;overflow-x:auto;overflow-y:hidden;padding:15px 16px 10px 100px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+  .topnav::-webkit-scrollbar{display:none}
+  .topnav a{flex:none;font-size:10px;letter-spacing:.04em;min-width:max-content}
+  .topnav a i{min-width:48px}
+  .navlogo{left:0;top:0;width:100px;padding:15px 8px 12px 14px;box-sizing:border-box;background:linear-gradient(90deg,#040403 75%,rgba(4,4,3,0))}
+  .topnav.gz+.navlogo{background:linear-gradient(90deg,#78b487 75%,rgba(120,180,135,0))}
+  .topnav.wz+.navlogo{background:linear-gradient(90deg,#fff 75%,rgba(255,255,255,0))}
+  .float{padding:9px 13px;font-size:10px;right:12px;bottom:12px;border-radius:10px}
+  .adsum{max-width:none;bottom:58px;padding:14px 16px}
+  .adsum p{font-size:13px}
+  footer.thanks .big-logo{width:86%}
+}
+/* telemóvel: uma aba de cada vez; quando termina, aparece a seguinte */
+@media(max-width:860px){
+  .topnav{overflow:hidden;padding:15px 16px 10px 100px}
+  .topnav a:not(.on){display:none}
+  .topnav a.on{flex:1;min-width:0}
+  .topnav a.on i{min-width:0}
+}
+
+.card-f:nth-child(4) .fl,.card-f:nth-child(4) .fm>span,.card-f:nth-child(4) .fm h3{width:max-content;max-width:100%}
+.card-f:nth-child(4) .fl{transform:translate(calc(var(--ep,0)*var(--dxF,0px)),calc(var(--ep,0)*var(--dyF,0px)))}
+.card-f:nth-child(4) .fm>span{transform:translate(calc(var(--ep,0)*var(--dxS,0px)),calc(var(--ep,0)*var(--dyS,0px)))}
+@media(max-width:860px){.card-f:nth-child(4) .fm h3{transform:translate(calc(var(--ep,0)*var(--dxH,0px)),calc(var(--ep,0)*var(--dyH,0px))) scale(calc(1 + .45*var(--ep,0)))}}
+@media(max-width:860px){.aviso{max-width:none;font-size:14px}}
+
+/* o botão flutuante some na zona do Investimento */
+.float{transition:opacity .25s}
+.float.off{opacity:0;pointer-events:none}
+.adclose{margin:34px 0 0;display:flex;align-items:center;gap:20px;flex-wrap:wrap}
+.adclose .small{margin:0;max-width:52ch}
+@media(max-width:860px){.adclose{gap:12px}}
+
+/* ligação discreta no fim, para quem apresenta: baixa o documento com o que ficou marcado */
+footer.thanks .dlink{display:block;width:max-content;margin:56px auto 0;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.28);text-decoration:none;border-bottom:1px dotted rgba(255,255,255,.2)}
+footer.thanks .dlink:hover{color:rgba(255,255,255,.7)}
+/* Soluções (computador): o quadro da direita tem exatamente a altura da lista de abas da esquerda */
+@media(min-width:861px){
+  .tabsol{align-items:stretch}
+  .tpanel{height:auto;min-height:0;position:relative}
+  .tp{position:absolute;inset:0;height:auto;min-height:0}
+}
+footer.thanks .dlink{color:rgba(255,255,255,.07);border-bottom:none}footer.thanks .dlink:hover{color:rgba(255,255,255,.45)}
+/* mais respiro nos lados: Diagnóstico até "O que vocês já têm", Pausa, Soluções e Adicionais ficam mais estreitos; o cronograma e o investimento mantêm a largura atual */
+@media(min-width:861px){
+  #hoje .wrap,#tem .wrap,#solucoes .wrap,#adicionais .wrap,#passos .wrap{width:68%;max-width:1200px}
+}
+
+/* Lançamento (computador): "Semana" ao centro, título maior ao centro da tela, lista maior e encostada à direita */
+@media(min-width:861px){
+  .card-f:nth-child(4) .fm h3{transform-origin:center;transform:translate(calc(var(--ep,0)*var(--dxH,0px)),calc(var(--ep,0)*var(--dyH,0px))) scale(calc(1 + (var(--ts,1.7) - 1)*var(--ep,0)))}
+  .card-f:nth-child(4) .fr{transform-origin:right center;transform:translate(calc(var(--ep,0)*var(--dxR,0px)),calc(var(--ep,0)*var(--dyR,0px))) scale(calc(1 + (var(--ls,1.2) - 1)*var(--ep,0)))}
+}
+.card-f:nth-child(4) .fr{align-self:start}
+
+/* A oportunidade: texto bem menor */
+#f1{padding:clamp(80px,14vh,150px) 0}
+#f1 h2{font-size:clamp(26px,3.6vw,54px);line-height:1.1}
+#f1 p{font-size:clamp(15px,1.2vw,18px);margin-top:26px}
+/* Diagnóstico: sem a linha por baixo do título, título e subtítulo cada um numa só linha */
+#hoje .st{border-bottom:none;padding-bottom:0}
+#hoje .sub{margin-top:14px}
+@media(min-width:861px){
+  #hoje .st{font-size:clamp(34px,5.4vw,80px);white-space:nowrap}
+  #hoje .sub{white-space:nowrap;max-width:none}
+}
+#f1 p{max-width:none}
+
+@media(min-width:861px){.card-f:nth-child(4) .fm h3{transform-origin:left center}}
+
+@media(max-width:860px){.card-f:nth-child(4) .fm h3{transform-origin:left center}}
+
+@media(max-width:860px){.card-f:nth-child(4) .fr{transform:translateX(calc(var(--ep,0)*var(--dxR,0px)))}}
+
+#valores .vgroup{opacity:0;will-change:opacity}
+@media(prefers-reduced-motion:reduce){#valores .vgroup{opacity:1!important;transform:none!important}}
+
+/* botão redondo do diagnóstico */
+.btn.round{border-radius:999px;padding:16px 28px}
+/* fade ao entrar e ao sair, em todo o site: a saída é um pouco mais rápida */
+.rv{transition:opacity .7s cubic-bezier(.2,.8,.2,1),transform .7s cubic-bezier(.2,.8,.2,1)}
+.rv:not(.in){transition-duration:.45s}
+
+/* Pausa: fundo branco, sem a etiqueta "Prévia do site novo", como uma quebra entre as partes */
+#pausa{background:#fff!important;color:#040403}
+#pausa::before,#pausa::after{display:none!important}
+#pausa .ptag{display:none!important}
+#pausa h2,#pausa p,#pausa .mono{color:#040403!important}
+#pausa p{opacity:.8}
+#pausa .btn{background:#040403;color:#fff;border-color:#040403}
+#pausa .pbg{box-shadow:0 18px 50px rgba(4,4,3,.22)}
+
+/* cronograma (computador): cartões empilhados deixam ver mais de cada um e o título é maior, do tamanho do bloco de tópicos */
+@media(min-width:861px){
+  .card-f{top:max(calc(96px + var(--i) * 48px),calc(50vh - 120px - (3 - var(--i)) * 48px));min-height:260px}
+  .card-f .fm h3{font-size:clamp(40px,5vw,74px)}
+}
+@media(min-width:861px){
+  .card-f{grid-template-columns:minmax(0,.8fr) minmax(0,1.3fr) minmax(0,1.25fr)}
+  .card-f .fm h3{font-size:clamp(38px,4.4vw,66px)}
+}
+
+/* Próximo passo: sem divisórias, título ao centro e subtítulo numa só linha, em fonte de código */
+#passos .st{justify-content:center;text-align:center;border-bottom:none;padding-bottom:0}
+#passos .sub{font-family:'Space Mono',monospace;font-size:clamp(13px,1.2vw,16px);letter-spacing:.02em;text-align:center;max-width:none;margin:18px 0 44px;color:rgba(255,255,255,.7)}
+#passos .dgrid{border-top:none}
+#passos .dc{border-bottom:none}
+@media(min-width:861px){#passos .sub{white-space:nowrap}}
+
+/* topo fixo: Studio de Lá à esquerda e "Proposta de website" à direita, desde o início e durante toda a apresentação */
+.navlogo{opacity:1!important;pointer-events:auto}
+.navtag{position:fixed;right:clamp(14px,2vw,32px);top:12px;z-index:71;font-size:11px;line-height:1.35;letter-spacing:.08em;text-transform:uppercase;font-weight:700;text-align:right;color:#fff;pointer-events:none;transition:color .3s}
+.topnav.gz~.navtag,.topnav.wz~.navtag{color:#040403}
+.hero .mid{margin-top:0}
+@media(max-width:860px){.navtag{font-size:9px;right:12px;top:14px}.topnav{padding-right:92px}}
+
+/* capa: linha de informações distribuída na largura toda (esquerda, meio, direita) */
+@media(min-width:861px){
+  .hero .meta{display:flex;justify-content:space-between;width:100%;text-align:left}
+  .hero .meta>div:nth-child(2){text-align:center}
+  .hero .meta>div:nth-child(3){text-align:right}
+}
+/* teste: o traçado fino das letras do Cromos, enorme, a cobrir quase todo o fundo da capa */
+.hero{position:relative;overflow:hidden}
+.hero-traco{position:absolute;left:50%;top:50%;width:min(135vw,2000px);height:auto;transform:translate(-50%,-50%);opacity:.22;pointer-events:none;z-index:0}
+.hero .wrap{position:relative;z-index:1}
+
+/* capa: mais espaço entre o texto e a linha de informações */
+.hero .mid{padding-bottom:clamp(60px,12vh,140px)}
+.hero .meta{padding-top:clamp(24px,5vh,56px)}
+/* capa: logo do Cromos e texto sempre centrados na tela, em qualquer largura */
+.hero .mid{text-align:center;display:flex;flex-direction:column;align-items:center}
+.hero .client-logo{margin-left:auto;margin-right:auto}
+.hero .intro{margin-left:auto;margin-right:auto;text-align:center}
+
+/* A oportunidade: mais perto do topo (sob a divisória), só duas linhas e o texto de baixo mais acima */
+#f1{padding:clamp(34px,6vh,64px) 0 clamp(46px,8vh,84px)}
+#f1 .mono{margin-bottom:22px}
+#f1 p{margin-top:18px}
+@media(min-width:861px){#f1 h2{white-space:nowrap}}
+@media(min-width:861px) and (max-width:1250px){.topnav{padding-left:112px;padding-right:112px;gap:8px}.topnav a{font-size:11px;letter-spacing:.05em}}
+/* capa: o logo e a frase ficam centrados na vertical, entre o topo da tela e a linha de informações */
+.hero .hw{display:flex;flex-direction:column;min-height:100svh;padding-top:clamp(56px,8vh,90px);padding-bottom:clamp(24px,5vh,56px)}
+.hero .mid{flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;padding:0}
+.hero .meta{padding-top:0;margin-top:0}
+
+/* "O que vocês já têm": o texto grande fica no topo; a foto e os números seguem a largura dele */
+#f1 h2{font-size:clamp(26px,3.3vw,50px);width:max-content;max-width:100%;margin-left:auto;margin-right:auto}
+#f1 h2{white-space:nowrap}
+@media(max-width:860px){#f1 h2{white-space:normal;width:auto}}
+#tem{min-height:0;padding:10px 0 40px;display:block}
+#tem .feature{height:clamp(300px,calc(100vh - 300px),520px)}
+@media(max-width:860px){#tem{padding:20px 0 20px}#tem .feature{height:auto}}
+#f1{padding-bottom:clamp(14px,3vh,36px)}
+
+/* Próximo passo: três quadrados ligados uns aos outros */
+@media(min-width:861px){
+  #passos .dgrid{gap:0;grid-template-columns:repeat(3,1fr)}
+  #passos .dc{border:1px solid rgba(255,255,255,.4);padding:30px 32px 34px}
+  #passos .dc+.dc{margin-left:-1px}
+}
+@media(max-width:860px){
+  #passos .dc{border:1px solid rgba(255,255,255,.4);padding:22px 22px 26px}
+  #passos .dc+.dc{margin-top:-1px}
+}
+/* despedida: ocupa a tela toda, com o logótipo enorme na largura do bloco de cima */
+footer.thanks{min-height:100svh;display:flex;align-items:center;justify-content:center;padding:clamp(60px,10vh,120px) 0}
+footer.thanks .wrap{width:68%;max-width:1200px}
+footer.thanks .big-logo{width:100%;margin:0 0 clamp(36px,7vh,80px)}
+footer.thanks h2{margin-bottom:22px}
+footer.thanks p{font-weight:400;max-width:none;white-space:nowrap;font-size:clamp(14px,1.5vw,20px)}
+footer.thanks .meta{margin-top:clamp(36px,7vh,80px)}
+@media(max-width:860px){footer.thanks .wrap{width:90%}footer.thanks p{white-space:normal}}
+
+/* Próximo passo: subtítulo em maiúsculas e mais respiro em cima */
+#passos .sub{text-transform:uppercase;letter-spacing:.08em}
+#passos{padding-top:clamp(120px,20vh,220px)}
+/* despedida: o logótipo fica no centro da tela, como o do Cromos na capa; as informações ficam em baixo, espalhadas */
+footer.thanks{display:block;padding:0}
+footer.thanks .fw{display:flex;flex-direction:column;min-height:100svh;padding:clamp(56px,8vh,90px) 0 clamp(28px,5vh,56px)}
+footer.thanks .fmid{flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center}
+footer.thanks .big-logo{margin:0 0 clamp(30px,6vh,64px)}
+footer.thanks .meta{margin-top:0;padding-top:0;border-top:none}
+@media(min-width:861px){
+  footer.thanks .meta{display:flex;justify-content:space-between;width:100%;text-align:left}
+  footer.thanks .meta>div:nth-child(2){text-align:center}
+  footer.thanks .meta>div:nth-child(3){text-align:right}
+}
+
+/* despedida: a linha de informações usa a mesma largura da barra de abas (do Diagnóstico ao Próximo passo), como na capa */
+@media(min-width:861px){
+  footer.thanks .meta{width:min(80vw,1500px);margin-left:calc(50% - min(80vw,1500px)/2);border:none}
+}
+footer.thanks .meta,footer.thanks .fw{border-top:none}
+/* despedida: a linha de informações vai de uma ponta à outra, alinhada com o logótipo do canto e com o "Proposta de website" */
+@media(min-width:861px){
+  footer.thanks .meta{width:calc(100vw - 2*clamp(14px,2vw,32px));margin-left:calc(50% - 50vw + clamp(14px,2vw,32px))}
+}
+
+/* preço riscado ao lado do valor atual, como numa promoção */
+.opt .price s.de{font-size:.42em;font-weight:500;letter-spacing:-.01em;text-decoration:line-through;text-decoration-thickness:.09em;opacity:.55;margin-right:.45em;vertical-align:.35em}
+
+/* adicionais: valor normal riscado e valor com promoção */
+#adicionais .price.s.tbd s.de{font-size:.62em;font-weight:500;text-decoration:line-through;text-decoration-thickness:.08em;opacity:.55;margin-right:.45em}
+
+/* manutenção: opção anual com a poupança */
+.opt .anual{margin:6px 0 4px;font-size:15px;line-height:1.4;color:#040403}
+.opt .anual b{font-weight:700}
+.opt .anual{margin:8px 0 12px}
+</style></head><body>
+<div class="progress" id="bar"></div>
+<nav class="topnav" id="topnav" aria-label="Partes da proposta"></nav><a class="navlogo" href="#topo" aria-label="Studio de Lá, voltar ao início"><svg class="nl" viewBox="0 0 695.87 134.05" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" fill="currentColor">
+      <path d="M56.02,87.84c-4.11-1.71-9.74-3.45-16.92-5.2-.48-.16-1-.28-1.56-.36h-.24c-4.3-1.03-7.61-2.01-9.92-2.93-2.31-.91-4.07-2.05-5.26-3.41-1.2-1.35-1.79-3.15-1.79-5.38,0-3.11,1.2-5.32,3.59-6.63,2.39-1.32,5.66-1.97,9.8-1.97,5.02,0,8.89,1,11.6,2.99,2.71,1.99,4.06,4.74,4.06,8.25h17.1c0-4.94-1.14-9.31-3.41-13.09-2.27-3.79-5.82-6.75-10.64-8.91-4.82-2.15-10.86-3.23-18.11-3.23-9.49,0-17.1,1.91-22.84,5.74-5.74,3.83-8.61,9.53-8.61,17.1,0,5.1,1.12,9.25,3.35,12.44,2.23,3.19,5.3,5.66,9.21,7.41,3.9,1.75,9.13,3.43,15.66,5.02,1.03.32,1.95.56,2.75.72,4.7,1.2,8.29,2.29,10.76,3.29,2.47,1,4.32,2.25,5.56,3.77,1.23,1.51,1.85,3.47,1.85,5.86,0,3.59-1.36,6.26-4.06,8.01-2.71,1.75-6.66,2.63-11.84,2.63-5.66,0-10.16-1.23-13.51-3.71-3.35-2.47-5.02-6.3-5.02-11.48H0c0,9.25,2.97,16.44,8.91,21.58,5.94,5.14,14.77,7.71,26.48,7.71,10.92,0,19.33-2.35,25.23-7.05,5.9-4.7,8.85-11.12,8.85-19.25,0-5.34-1.22-9.56-3.65-12.67-2.43-3.11-5.7-5.52-9.8-7.23Z"/>
+      <polygon points="70.3 64.34 93.86 64.34 93.86 132.85 110.83 132.85 110.83 64.34 134.15 64.34 134.15 49.16 70.3 49.16 70.3 64.34"/>
+      <path d="M193.71,97.34c0,4.46-.56,8.31-1.67,11.54-1.12,3.23-3.01,5.76-5.68,7.59-2.67,1.83-6.32,2.75-10.94,2.75s-8.27-.92-10.94-2.75c-2.67-1.83-4.56-4.36-5.68-7.59-1.12-3.23-1.67-7.07-1.67-11.54v-48.19h-16.98v49.02c0,7.01,1.08,13.15,3.23,18.41,2.15,5.26,5.84,9.49,11.06,12.67,5.22,3.19,12.21,4.78,20.98,4.78s15.76-1.59,20.98-4.78c5.22-3.19,8.91-7.41,11.06-12.67,2.15-5.26,3.23-11.4,3.23-18.41v-49.02h-16.98v48.19Z"/>
+      <path d="M266.12,53.04c-7.37-2.59-15.29-3.89-23.73-3.89h-25.71v83.7h25.71c8.53,0,16.46-1.24,23.79-3.71,7.33-2.47,13.39-6.81,18.17-13.03s7.17-14.63,7.17-25.23-2.39-18.41-7.17-24.63c-4.78-6.22-10.86-10.62-18.23-13.21ZM269.76,107.38c-2.95,3.91-6.58,6.6-10.88,8.07-4.3,1.48-8.85,2.21-13.63,2.21h-11.6v-53.33h11.6c4.7,0,9.21.78,13.51,2.33,4.31,1.56,7.95,4.35,10.94,8.37,2.99,4.03,4.48,9.43,4.48,16.2s-1.48,12.24-4.42,16.14Z"/>
+      <polygon points="297.26 63.62 297.26 118.39 297.26 132.85 314.24 132.85 314.24 118.39 314.24 63.62 314.24 49.16 297.26 49.16 297.26 63.62"/>
+      <path d="M386.43,53.37c-6.5-3.63-14.13-5.44-22.9-5.44s-16.32,1.81-22.9,5.44c-6.58,3.63-11.66,8.69-15.25,15.19-3.59,6.5-5.38,13.93-5.38,22.3s1.79,15.92,5.38,22.42c3.59,6.5,8.67,11.58,15.25,15.25,6.58,3.67,14.21,5.5,22.9,5.5s16.4-1.81,22.9-5.44c6.49-3.63,11.5-8.71,15-15.24,3.51-6.54,5.26-14.03,5.26-22.48s-1.75-15.8-5.26-22.3c-3.51-6.5-8.51-11.56-15-15.19ZM386.25,105.92c-2.07,4.15-5.02,7.28-8.85,9.39-3.83,2.11-8.45,3.17-13.87,3.17s-9.98-1.08-13.93-3.23c-3.95-2.15-6.97-5.28-9.09-9.39-2.11-4.1-3.17-9.03-3.17-14.77s1.06-10.7,3.17-14.89c2.11-4.19,5.14-7.35,9.09-9.51,3.95-2.15,8.59-3.23,13.93-3.23s10.04,1.08,13.87,3.23c3.83,2.15,6.77,5.32,8.85,9.51,2.07,4.18,3.11,9.15,3.11,14.89s-1.04,10.68-3.11,14.83Z"/>
+      <path d="M466.66,82.66h-19.14l-.3,1.37h4.68l-10.78,48.63h-4.68l-.3,1.37h18.1c21.57,0,35.68-12.82,35.7-32.73,0-12.23-7.99-18.63-23.27-18.63ZM454.79,132.65h-7.29l10.78-48.63h7.18c11.59,0,17.45,5.6,17.45,16.32,0,16.97-10.63,32.31-28.12,32.31Z"/>
+      <polygon points="500.79 84.28 505.46 84.28 494.72 132.68 490.06 132.68 489.76 134.04 516.62 134.04 519.38 121.58 518.25 121.58 511.8 132.68 501.07 132.68 506.38 108.75 514.42 108.75 515.23 116.34 516.33 116.34 519.99 99.83 518.86 99.83 514.68 107.39 506.68 107.39 511.8 84.28 521.01 84.28 522.89 94.31 523.99 94.31 526.51 82.92 501.09 82.92 500.79 84.28"/>
+      <polygon points="617.24 105.1 601.22 131.22 581.59 131.22 603.82 30.92 613.86 30.92 614.48 28.11 581.63 28.11 581 30.92 590.66 30.92 568.43 131.22 558.77 131.22 558.14 134.04 613.17 134.04 619.59 105.1 617.24 105.1"/>
+      <path d="M695.87,12.3l-3.95-12.3c-8.69,8.67-17.26,13.77-25.76,18l.48,2.78c9.36-1.3,19.25-3.83,29.24-8.47Z"/>
+      <path d="M681.48,28.72h-13.33l-.03,6.01-42.53,96.5h-5.46l-.62,2.8h20.55l.62-2.8h-11.84l14.62-33.16h24.35l-.16,33.16h-9.23l-.62,2.8h28.16l.62-2.8h-5.51l.41-102.52ZM667.83,95.28h-23.13l23.39-53.05-.26,53.05Z"/>
+    </svg></a><span class="navtag mono">Proposta<br>de website</span>
+<header class="hero" id="topo"><img class="hero-traco" src="img/cromos-traco.png" alt="" aria-hidden="true"><div class="wrap hw">
+  <div class="mid"><h1 class="sr">Cromos Tattoo Aveiro</h1><img class="client-logo" src="img/logo-cromos-word.png" alt="Cromos Tattoo Aveiro">
+  <p class="intro">O que o site atual deixa escapar, o que já fizemos e o que propomos.</p></div>
+  <div class="meta mono"><div><b>Preparado por</b>Studio de Lá</div><div><b>Data</b>11 de outubro de 2026</div><div><b>Válida por</b>15 dias</div></div>
+</div></header>
+<main><section id="hoje"><div class="wrap"><h2 class="st rv">O que vimos no diagnóstico</h2><p class="sub tight rv">Já vimos juntos. Aqui fica só o resumo.</p>
+<div class="dgrid">
+ <div class="dc rv"><span class="dl">WhatsApp</span><h3>Não abre a conversa para quem escreve de fora de Portugal.</h3><p>O botão aponta para um número sem o +351.</p></div>
+ <div class="dc rv"><span class="dl">Marcação</span><h3>Nenhum botão de marcação nas 7 páginas.</h3><p>Só existe um formulário com três campos, na home.</p></div>
+ <div class="dc rv"><span class="dl">Telemóvel</span><h3>Quase 10 segundos até aparecer a primeira imagem.</h3><p>No computador demora 2,0 s. No telemóvel, 9,9 s.</p></div>
+ <div class="dc rv"><span class="dl">Prova</span><h3>O Google tem 311 avaliações. O site mostra uma.</h3><p>A nota 5,0 não está à vista no site.</p></div>
+ <div class="dc wide rv"><span class="dl">E mais</span><h3>Idioma, Google, horário e medição.</h3><p>Também estão no diagnóstico.</p><a class="btn round" href="https://diagnostico-cromos.web.app" target="_blank" rel="noopener">Diagnóstico ↗</a></div>
+</div>
+<details class="more rv"><summary><span class="mono">+ Ver todos os detalhes</span></summary><div class="rows inner"><div class="row2 rv"><div class="lc"><span class="mono lab">( WhatsApp )</span><div class="ev"><div><span>botão WhatsApp, em todas as páginas</span><b>wa.me/932179005</b></div><div><span>o formato que funciona</span><b>wa.me/351932179005</b></div><div><span>link do telefone</span><b>tel:932179005</b></div></div></div><div class="rc"><h3>O botão de WhatsApp não funciona para quem escreve de fora de Portugal.</h3><p>O botão flutuante, presente em todas as páginas, aponta para um número sem o indicativo +351. Sem ele, o WhatsApp não reconhece o número como português. O link de telefone tem o mesmo problema.</p></div></div><div class="row2 rv"><div class="lc"><span class="mono lab">( Marcação )</span><div class="shots"><figure class="shot"><img src="https://diagnostico-cromos.web.app/img/hero-desk.jpg" alt="O primeiro ecrã no computador: uma foto da rua, sem título e sem botão de marcação." loading="lazy"><figcaption>O primeiro ecrã no computador: uma foto da rua, sem título e sem botão de marcação.</figcaption></figure><figure class="shot"><img src="https://diagnostico-cromos.web.app/img/form-desk.jpg" alt="O único formulário do site, na home: três campos e um botão Enviar." loading="lazy"><figcaption>O único formulário do site, na home: três campos e um botão Enviar.</figcaption></figure></div></div><div class="rc"><h3>Não há um botão de marcação em nenhuma das 7 páginas.</h3><p>O único contacto é um formulário a meio da home, com três campos: nome, mensagem e telefone. Não pergunta estilo, zona do corpo, tamanho nem artista.</p></div></div><div class="row2 rv"><div class="lc"><span class="mono lab">( Telemóvel )</span><div class="shots"><figure class="shot phone"><img src="https://diagnostico-cromos.web.app/img/hero-mob.jpg" alt="Primeiro ecrã no telemóvel: logótipo e vídeo." loading="lazy"><figcaption>Primeiro ecrã no telemóvel: logótipo e vídeo.</figcaption></figure><figure class="shot phone"><img src="https://diagnostico-cromos.web.app/img/hero-mob-2.jpg" alt="Segundo ecrã: só aqui aparece a primeira tatuagem." loading="lazy"><figcaption>Segundo ecrã: só aqui aparece a primeira tatuagem.</figcaption></figure></div></div><div class="rc"><h3>No telemóvel, o trabalho só aparece no segundo ecrã.</h3><p>Quem chega pelo telemóvel vê o logótipo e um vídeo do YouTube. A primeira tatuagem só surge depois, sem título a dizer o que vocês fazem e sem botão de marcação à vista.</p></div></div><div class="row2 rv"><div class="lc"><span class="mono lab">( Velocidade )</span><div class="ev"><div><span>primeira imagem no telemóvel</span><b>9,9 s</b></div><div><span>primeira imagem no computador</span><b>2,0 s</b></div><div><span>peso total da home</span><b>4,2 MB</b></div><div><span>foto da rua no topo</span><b>914 KB</b></div><div><span>scripts do vídeo do YouTube</span><b>813 KB</b></div><div><span>desempenho no telemóvel (Google, 0 a 100)</span><b>66</b></div></div></div><div class="rc"><h3>Quase 10 segundos até aparecer a primeira imagem no telemóvel.</h3><p>No computador a página abre em 2,0 s, mas no telemóvel demora 9,9 s. A home pesa 4,2 MB, e o telemóvel descarrega tudo isso antes de mostrar o essencial.</p></div></div><div class="row2 rv"><div class="lc"><span class="mono lab">( Projetos )</span><div class="shots"><figure class="shot"><img src="https://diagnostico-cromos.web.app/img/projetos-desk.jpg" alt="Dois braços fechados prontos, à espera de um botão de reserva." loading="lazy"><figcaption>Dois braços fechados prontos, à espera de um botão de reserva.</figcaption></figure></div></div><div class="rc"><h3>Os desenhos prontos a tatuar não se podem reservar.</h3><p>A página Projetos mostra braços fechados já desenhados, com a vossa marca, mas sem valor de referência e sem botão de reserva.</p></div></div><div class="row2 rv"><div class="lc"><span class="mono lab">( Prova )</span><div class="shots"><figure class="shot"><img src="https://diagnostico-cromos.web.app/img/depoimentos-desk.jpg" alt="A página Depoimentos: um texto, um nome." loading="lazy"><figcaption>A página Depoimentos: um texto, um nome.</figcaption></figure></div></div><div class="rc"><h3>A reputação do Google quase não aparece no site.</h3><p>O Google mostra nota 5,0 com 311 avaliações. No site há um único depoimento, o da Joana Amaral.</p></div></div><div class="row2 rv"><div class="lc"><span class="mono lab">( Artistas )</span><div class="shots"><figure class="shot"><img src="https://diagnostico-cromos.web.app/img/artistas-desk.jpg" alt="Boa foto e biografia, mas os trabalhos do próprio artista não estão ao lado." loading="lazy"><figcaption>Boa foto e biografia, mas os trabalhos do próprio artista não estão ao lado.</figcaption></figure></div></div><div class="rc"><h3>Cada artista não tem o seu portfólio.</h3><p>A página Artistas tem foto e uma biografia longa de cada um, mas sem galeria própria e sem botão para marcar diretamente com o artista.</p></div></div><div class="row2 rv"><div class="lc"><span class="mono lab">( Língua )</span><div class="ev"><div><span>idioma declarado nas 7 páginas</span><b>lang="en"</b></div><div><span>idioma real do texto</span><b>português do Brasil</b></div><div><span>línguas no seletor</span><b>1</b></div></div></div><div class="rc"><h3>O site fala português do Brasil e só tem um idioma.</h3><p>O texto usa "você", "Contato" e "Agende". As 7 páginas declaram o idioma como inglês no código, o título da home está em inglês e o seletor só oferece Português.</p></div></div><div class="row2 rv"><div class="lc"><span class="mono lab">( Google )</span><div class="ev"><div><span>título da página /artistas</span><b>"Artist section SEO title for Portuguese site, no HTML tags | Cromos Tattoo Aveiro"</b></div><div><span>título principal (H1) na home</span><b>0</b></div><div><span>imagem de partilha (og:image)</span><b>vazia</b></div><div><span>imagens sem descrição, na home</span><b>36 de 38</b></div></div></div><div class="rc"><h3>O Google lê mal as páginas.</h3><p>A página Artistas tem como título um texto técnico em inglês que ficou do processo de criação. A home não tem título principal, a imagem de partilha está vazia e quase nenhuma foto tem descrição. O menu tem "Portifolio" e "Localizacao" sem acentos.</p></div></div><div class="row2 rv"><div class="lc"><span class="mono lab">( Pequenos desencontros )</span></div><div class="rc"><h3>O horário não é igual em todo o lado.</h3><p>O site diz segunda a sexta, das 10h30 às 18h30. O Google mostrava, numa quarta-feira, das 10h00 às 18h00.</p></div></div><div class="row2 rv"><div class="lc"><span class="mono lab">( Medição )</span></div><div class="rc"><h3>Nenhum pedido de marcação é contado.</h3><p>O site tem o Google Analytics e o Tag Manager instalados, mas nenhum evento de conversão. Não há maneira de saber quantas pessoas pediram marcação por causa do site.</p></div></div><p class="small rv pad ">Todos os números foram medidos no site no ar, em 23 de setembro de 2026 (leitura direta do código, do sitemap e dos links das 7 páginas, e teste do Google em telemóvel e computador).</p></div></details></div></section>
+<section id="f1" class="stmt"><div class="wrap"><span class="mono rv">Cromos Tattoo</span><h2 class="rv">O que vocês já têm<br>Uma reputação que muitos estúdios queriam ter.</h2><p class="rv">O trabalho convence. O caminho até à marcação é que ainda perde pedidos.</p></div></section>
+<section id="tem"><div class="wrap">
+<div class="feature"><figure class="fimg rv"><img src="img/estudio.jpg" alt="O estúdio Cromos Tattoo, em Aveiro"></figure>
+<div class="fside">
+ <div class="fitem rv"><span class="mono lab">( Google )</span><div class="bignum"><b><span data-n="5" data-d="1">0</span></b><span>nota no Google, o máximo possível</span></div></div>
+ <div class="fitem rv"><span class="mono lab">( Avaliações )</span><div class="bignum"><b><span data-n="311" data-d="0">0</span></b><span>pessoas que já comentaram o vosso trabalho</span></div></div>
+ <div class="fitem rv"><span class="mono lab">( O trabalho )</span><h3>Realismo, fineline e piercings.</h3><p>Seis anos de cadeira.</p></div>
+</div></div>
+<p class="closing rv">O vosso trabalho já fala por si.<br>Falta o site contar isso.</p></div></section>
+<section id="pausa" class="pause"><div class="pbg" aria-hidden="true"></div><div class="wrap"><span class="mono rv" style="color:var(--cream)">Pausa</span><h2 class="rv">Vamos ver o site novo, juntos.</h2><p class="rv">Abrimos o site refeito para vocês e navegamos por ele, no computador e no telemóvel.</p><a class="btn acc rv" href="https://cromos-recriacao.web.app" target="_blank" rel="noopener">Abrir o site novo ↗</a></div></section>
+<section id="solucoes"><div class="wrap"><h2 class="st rv">Soluções</h2><p class="sub tight rv">O que já fizemos no site,<br>e o que mudou.</p>
+<div class="tabsol rv" id="ts"><div class="pills" role="tablist"><button type="button" class="pill on" role="tab" data-i="0">Marcação e WhatsApp</button><button type="button" class="pill" role="tab" data-i="1">Primeiro ecrã</button><button type="button" class="pill" role="tab" data-i="2">O que procura?</button><button type="button" class="pill" role="tab" data-i="3">Portfólio</button><button type="button" class="pill" role="tab" data-i="4">Prova do Google</button><button type="button" class="pill" role="tab" data-i="5">Flash de Aveiro</button><button type="button" class="pill" role="tab" data-i="6">Projetos e artistas</button><button type="button" class="pill" role="tab" data-i="7">Telemóvel e línguas</button><button type="button" class="pill" role="tab" data-i="8">Google e medição</button></div><div class="tpanel"><article class="tp on" data-i="0" role="tabpanel"><div class="tt"><h3>Marcar num toque, de qualquer país.</h3><p>Botão "Marcar" sempre à vista e pedido por passos: tatuagem ou piercing, estilo, zona, tamanho e artista.</p><p>O pedido chega pronto ao WhatsApp, com +351 e a mensagem já escrita, e abre a conversa a partir de qualquer país.</p><div class="chips"><span>Pedido por passos</span><span>WhatsApp +351</span><span>Mensagem pronta</span></div></div><div class="tim"><img src="img/sol-marcacao.jpg" alt="O pedido de marcação, por passos" loading="lazy"></div></article><article class="tp" data-i="1" role="tabpanel"><div class="tt"><h3>O vosso trabalho logo à entrada.</h3><p>O logótipo dourado desenha-se ao abrir, com os vossos flashes à volta e o botão "Marcar" sempre à vista.</p><p>No telemóvel, o início da secção seguinte já aparece, sem esconder o trabalho.</p><div class="chips"><span>Logótipo animado</span><span>Flashes</span><span>Botão Marcar</span></div></div><div class="tim"><img src="img/sol-primeiro.jpg" alt="O primeiro ecrã do site novo" loading="lazy"></div></article><article class="tp" data-i="2" role="tabpanel"><div class="tt"><h3>Tatuagens e piercings lado a lado.</h3><p>Quem chega percebe em segundos o que vocês fazem, e escolhe o caminho.</p><p>A galeria abre por baixo, sem sair da página.</p><div class="chips"><span>Tatuagens</span><span>Piercings</span><span>Galeria</span></div></div><div class="tim"><img src="img/sol-procura.jpg" alt="A secção "O que procura?"" loading="lazy"></div></article><article class="tp" data-i="3" role="tabpanel"><div class="tt"><h3>Filtrado por estilo.</h3><p>Realismo, fineline e cor, em faixas verticais.</p><p>Quem procura um estilo vai direto ao que quer.</p><div class="chips"><span>Realismo</span><span>Fineline</span><span>Cor</span></div></div><div class="tim"><img src="img/sol-portfolio.jpg" alt="A galeria de tatuagens" loading="lazy"></div></article><article class="tp" data-i="4" role="tabpanel"><div class="tt"><h3>Nota 5,0 e 311 avaliações à vista.</h3><p>A reputação aparece no site, com depoimentos num carrossel pronto a receber as avaliações que escolherem.</p><p>Quem decide tatuar vê a prova antes de marcar.</p><div class="chips"><span>Nota 5,0</span><span>311 avaliações</span><span>Depoimentos</span></div></div><div class="tim"><img src="img/sol-prova.jpg" alt="A prova do Google em destaque" loading="lazy"></div></article><article class="tp" data-i="5" role="tabpanel"><div class="tt"><h3>A promoção do mês, que se revela ao passar o dedo.</h3><p>Os vossos desenhos com azulejo, galo, sardinhas e farol, com ligação direta ao pedido.</p><p>Uma forma leve de levar o visitante à marcação.</p><div class="chips"><span>Promoção</span><span>Azulejo e galo</span><span>Ligação ao pedido</span></div></div><div class="tim"><img src="img/sol-flash.jpg" alt="A promoção Flash de Aveiro" loading="lazy"></div></article><article class="tp" data-i="6" role="tabpanel"><div class="tt"><h3>Projetos e artistas apresentados.</h3><p>Projetos personalizados e Flash lado a lado, e cada artista com estilos, biografia e Instagram (@cromostattoo e @cromospiercing).</p><p>O pedido fica ligado a cada artista.</p><div class="chips"><span>Projetos personalizados</span><span>Flash Tattoo</span><span>Instagram</span></div></div><div class="tim"><img src="img/sol-artistas.jpg" alt="Os artistas do Cromos" loading="lazy"></div></article><article class="tp" data-i="7" role="tabpanel"><div class="tt"><h3>Rápido no telemóvel e em três línguas.</h3><p>Imagens otimizadas, vídeo e mapa só quando pedidos. A meta é a primeira imagem abaixo de 2,5 s, no mesmo teste do Google que hoje marca 9,9 s.</p><p>Português de Portugal, inglês e espanhol, já feitos, para o turista e o estudante de fora.</p><div class="chips"><span>Menos de 2,5 s</span><span>PT · EN · ES</span><span>Telemóvel primeiro</span></div></div><div class="tim"><img src="img/sol-movel.jpg" alt="O site novo no telemóvel" loading="lazy"></div></article><article class="tp" data-i="8" role="tabpanel"><div class="tt"><h3>Encontrados no Google, e cada pedido contado.</h3><p>Títulos e descrições escritos à mão, imagem de partilha, texto em cada foto, menu corrigido, e um só horário.</p><p>Cada pedido de marcação e cada clique no WhatsApp ficam registados.</p><div class="chips"><span>Imagem de partilha</span><span>Um só horário</span><span>Pedidos contados</span></div></div><div class="tim"><img src="img/og.jpg" alt="A imagem que aparece ao partilhar o link" loading="lazy"></div></article></div></div>
+<p class="small rv pad" style="max-width:80ch;margin-top:26px">Falta só confirmarmos convosco o horário, o texto da promoção e os depoimentos a destacar. Nenhum preço foi inventado: os valores continuam a ser dados pelo tatuador.</p></div></section>
+<section id="fases"><div id="gx" aria-hidden="true"></div><div class="wrap"><h2 class="st rv">25 a 30 dias até ao ar</h2><p class="sub rv">Do que já está feito<br>até ao site no ar.</p>
+<div class="stackwrap"><aside class="vt rv" id="vt" aria-label="Linha do tempo"><div class="vline"><i></i></div><ol><li><span class="mono">Semana 1</span><b>Alinhamento</b></li><li><span class="mono">Semana 2</span><b>Ajustes</b></li><li><span class="mono">Semana 3</span><b>Finalização</b></li><li><span class="mono">Semana 4</span><b>Lançamento</b></li></ol></aside>
+<div class="stack">
+<article class="card-f" style="--i:0"><span class="mono fl">Fase 01</span><div class="fm"><span class="mono">( Semana 1 )</span><h3>Alinhamento</h3></div><ul class="fr"><li>Confirmar horário e textos</li><li>As vossas fotos</li></ul></article>
+<article class="card-f" style="--i:1"><span class="mono fl">Fase 02</span><div class="fm"><span class="mono">( Semana 1–2 )</span><h3>Ajustes</h3></div><ul class="fr"><li>Português, inglês e espanhol</li><li>Pedido de marcação</li><li>CMS para editarem o site</li><li>Primeira versão para aprovação</li></ul></article>
+<article class="card-f" style="--i:2"><span class="mono fl">Fase 03</span><div class="fm"><span class="mono">( Semana 2–3 )</span><h3>Finalização</h3></div><ul class="fr"><li>Rondas de alterações</li><li>Testes no telemóvel</li><li>Velocidade e SEO</li><li>Google Analytics</li><li>Aprovação final</li></ul></article>
+<article class="card-f" style="--i:3"><span class="mono fl">Fase 04</span><div class="fm"><span class="mono">( Semana 3–4 )</span><h3>Lançamento</h3></div><ul class="fr"><li>O vosso domínio (.com ou .pt)</li><li>Entrega dos ficheiros</li><li>Formação rápida</li><li>Suporte de 30 dias</li></ul></article>
+</div></div>
+<p class="aviso">Como o site novo já está feito, o tempo vai sobretudo para ajustar, confirmar e publicar. Há reuniões opcionais, no máximo a cada 15 dias, para falarmos do projeto. Qualquer dúvida ou ideia que queiram acrescentar pode ser enviada diretamente por mensagem. Os prazos contam a partir do sinal e dependem de vocês responderem em cerca de 5 dias úteis.</p></div></section>
+<section id="valores" class="gr"><div class="wrap"><div class="vword"><h2 class="st rv">Investimento</h2></div><div class="vgroup"><p class="sub tight">Um valor fechado<br>para o site.</p>
+<div class="opts two">
+ <div class="opt"><span class="mono">O site</span><h3>Design, desenvolvimento e lançamento</h3><div class="price"><s class="de">€ 1.490</s>€ 1.260</div><ul><li>Tudo o que está em Soluções</li><li>CMS: vocês editam fotos e textos</li><li>SEO: o site é encontrado no Google</li><li>1.º ano de alojamento incluído</li><li>Português, inglês e espanhol</li><li>Lançamento no vosso domínio</li><li>30 dias de suporte</li></ul>
+  <div class="pay"><span class="mono">Pagamento</span><div><b>€ 504</b> na assinatura</div><div><b>€ 378</b> na entrega</div><div><b>€ 378</b> no fim, depois das alterações</div></div></div>
+ <div class="opt man white"><span class="mono">Serviço opcional · pago à parte</span><h3>Manutenção</h3><p class="small por-ano">Por um ano</p><div class="price">€ 30<span class="pm">/mês</span></div><p class="anual"><b>ou € 180 por ano</b>, de uma só vez. Poupam € 180, metade do preço.</p><p class="small" style="margin:-10px 0 18px">além do valor do site, se quiserem que cuidemos dele</p><ul><li>Os 3 primeiros meses são grátis</li><li>Cobrada a partir de <mark>[fevereiro de 2027]</mark></li><li>Domínio, alojamento (a partir do 2.º ano), correções e cópia de segurança</li><li>Pequenos ajustes, se preferirem não usar o CMS</li></ul>
+  <div class="pay"><p class="small">Trabalhos novos, como uma página nova, são orçamentados à parte.</p></div></div>
+</div>
+<p class="small nota-val">Valores em euros, por transferência bancária (SEPA). O trabalho começa com a assinatura do contrato e o pagamento do sinal. Estão incluídas 2 rondas de alterações por etapa. A manutenção é opcional: só é cobrada se quiserem esse serviço.</p></div></div></section>
+<section id="adicionais" class="gr wh"><div class="wrap"><h2 class="st rv">Adicionais</h2><p class="sub rv">Ideias para crescerem,<br>à vossa escolha.</p><div class="rows"><p class="small rv pad top">Estas ideias não fazem parte do site base. Cada uma pode ser escolhida à parte, e quanto mais escolherem, maior é o desconto: 5% de desconto com 1 adicional, 10% com 2, 15% com 3 e 20% com 4 ou mais.</p><div class="row2 rv"><div class="lc"><button type="button" class="ck" data-v="200" data-k="ck0" role="checkbox" aria-checked="false" aria-label="Marcar: Lembretes"></button><span class="mono lab">( Lembretes )</span></div><div class="rc"><h3>Mensagens automáticas por WhatsApp</h3><p>Uma mensagem a lembrar o dia da marcação e, no dia seguinte à tatuagem ou ao piercing, outra com os cuidados a ter. O sistema lê o vosso calendário e envia sozinho. As mensagens são pagas à parte, diretamente à Meta, e custam cerca de € 1 a € 5 por mês.</p><div class="price s tbd">€ 200</div></div></div><div class="row2 rv"><div class="lc"><button type="button" class="ck" data-v="305" data-k="ck1" role="checkbox" aria-checked="false" aria-label="Marcar: Calendário"></button><span class="mono lab">( Calendário )</span></div><div class="rc"><h3>Flash e marcação online, com o vosso calendário</h3><p>Os vossos flashes disponíveis no site e um calendário próprio de marcações. Os clientes escolhem o dia e a hora diretamente no site, vendo só os horários livres, e vocês também podem adicionar ali quem chega pelo WhatsApp. Tudo fica registado num só sítio.</p><div class="price s tbd">€ 305</div></div></div><div class="row2 rv"><div class="lc"><button type="button" class="ck" data-v="100" data-k="ck2" role="checkbox" aria-checked="false" aria-label="Marcar: Portfólio por artista"></button><span class="mono lab">( Portfólio por artista )</span></div><div class="rc"><h3>Um portfólio para cada artista</h3><p>Cada artista com a sua própria página, para poderem enviar o link certo a cada cliente.</p><div class="price s tbd">€ 100</div></div></div><div class="row2 rv"><div class="lc"><button type="button" class="ck" data-v="120" data-k="ck3" role="checkbox" aria-checked="false" aria-label="Marcar: Joias"></button><span class="mono lab">( Joias )</span></div><div class="rc"><h3>Catálogo de joias de piercing</h3><p>As joias no site, com foto e preço. Quem gostar de uma peça pede pelo WhatsApp, com a joia já escolhida.</p><div class="price s tbd">€ 120</div></div></div><div class="row2 rv"><div class="lc"><span class="mono lab">( Ideias vossas )</span></div><div class="rc"><h3>Têm outras ideias?</h3><p>Ideias adicionais que vocês queiram trazer também são bem-vindas. Contem-nos, e avaliamos juntos o que faz sentido e o valor.</p></div></div><div class="adsum" id="adsum" aria-live="polite"><b id="adn"></b><p id="adt"></p></div><div class="endline"></div></div></div></section>
+<section id="passos"><div class="wrap"><h2 class="st rv">Próximo passo</h2><p class="sub tight rv">Se faz sentido, começamos assim.</p>
+<div class="dgrid">
+ <div class="dc rv"><span class="dl">Início</span><h3>O projeto começa a partir do pagamento do sinal.</h3><p>Depois do vosso OK, enviamos o contrato para assinatura eletrónica. Com o sinal pago, marcamos a reunião de arranque.</p></div>
+ <div class="dc rv"><span class="dl">Prazo</span><h3>25 a 30 dias, a contar do pagamento do sinal.</h3><p>São as quatro fases do cronograma, até o site estar no ar.</p></div>
+ <div class="dc rv"><span class="dl">Validade</span><h3>Esta proposta é válida até 26 de outubro de 2026.</h3><p>Ou seja, 15 dias a partir de hoje.</p></div>
+</div></div></section></main>
+<footer class="thanks"><div class="wrap fw"><div class="fmid"><svg class="big-logo" viewBox="0 0 695.87 134.05" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" fill="currentColor">
+      <path d="M56.02,87.84c-4.11-1.71-9.74-3.45-16.92-5.2-.48-.16-1-.28-1.56-.36h-.24c-4.3-1.03-7.61-2.01-9.92-2.93-2.31-.91-4.07-2.05-5.26-3.41-1.2-1.35-1.79-3.15-1.79-5.38,0-3.11,1.2-5.32,3.59-6.63,2.39-1.32,5.66-1.97,9.8-1.97,5.02,0,8.89,1,11.6,2.99,2.71,1.99,4.06,4.74,4.06,8.25h17.1c0-4.94-1.14-9.31-3.41-13.09-2.27-3.79-5.82-6.75-10.64-8.91-4.82-2.15-10.86-3.23-18.11-3.23-9.49,0-17.1,1.91-22.84,5.74-5.74,3.83-8.61,9.53-8.61,17.1,0,5.1,1.12,9.25,3.35,12.44,2.23,3.19,5.3,5.66,9.21,7.41,3.9,1.75,9.13,3.43,15.66,5.02,1.03.32,1.95.56,2.75.72,4.7,1.2,8.29,2.29,10.76,3.29,2.47,1,4.32,2.25,5.56,3.77,1.23,1.51,1.85,3.47,1.85,5.86,0,3.59-1.36,6.26-4.06,8.01-2.71,1.75-6.66,2.63-11.84,2.63-5.66,0-10.16-1.23-13.51-3.71-3.35-2.47-5.02-6.3-5.02-11.48H0c0,9.25,2.97,16.44,8.91,21.58,5.94,5.14,14.77,7.71,26.48,7.71,10.92,0,19.33-2.35,25.23-7.05,5.9-4.7,8.85-11.12,8.85-19.25,0-5.34-1.22-9.56-3.65-12.67-2.43-3.11-5.7-5.52-9.8-7.23Z"/>
+      <polygon points="70.3 64.34 93.86 64.34 93.86 132.85 110.83 132.85 110.83 64.34 134.15 64.34 134.15 49.16 70.3 49.16 70.3 64.34"/>
+      <path d="M193.71,97.34c0,4.46-.56,8.31-1.67,11.54-1.12,3.23-3.01,5.76-5.68,7.59-2.67,1.83-6.32,2.75-10.94,2.75s-8.27-.92-10.94-2.75c-2.67-1.83-4.56-4.36-5.68-7.59-1.12-3.23-1.67-7.07-1.67-11.54v-48.19h-16.98v49.02c0,7.01,1.08,13.15,3.23,18.41,2.15,5.26,5.84,9.49,11.06,12.67,5.22,3.19,12.21,4.78,20.98,4.78s15.76-1.59,20.98-4.78c5.22-3.19,8.91-7.41,11.06-12.67,2.15-5.26,3.23-11.4,3.23-18.41v-49.02h-16.98v48.19Z"/>
+      <path d="M266.12,53.04c-7.37-2.59-15.29-3.89-23.73-3.89h-25.71v83.7h25.71c8.53,0,16.46-1.24,23.79-3.71,7.33-2.47,13.39-6.81,18.17-13.03s7.17-14.63,7.17-25.23-2.39-18.41-7.17-24.63c-4.78-6.22-10.86-10.62-18.23-13.21ZM269.76,107.38c-2.95,3.91-6.58,6.6-10.88,8.07-4.3,1.48-8.85,2.21-13.63,2.21h-11.6v-53.33h11.6c4.7,0,9.21.78,13.51,2.33,4.31,1.56,7.95,4.35,10.94,8.37,2.99,4.03,4.48,9.43,4.48,16.2s-1.48,12.24-4.42,16.14Z"/>
+      <polygon points="297.26 63.62 297.26 118.39 297.26 132.85 314.24 132.85 314.24 118.39 314.24 63.62 314.24 49.16 297.26 49.16 297.26 63.62"/>
+      <path d="M386.43,53.37c-6.5-3.63-14.13-5.44-22.9-5.44s-16.32,1.81-22.9,5.44c-6.58,3.63-11.66,8.69-15.25,15.19-3.59,6.5-5.38,13.93-5.38,22.3s1.79,15.92,5.38,22.42c3.59,6.5,8.67,11.58,15.25,15.25,6.58,3.67,14.21,5.5,22.9,5.5s16.4-1.81,22.9-5.44c6.49-3.63,11.5-8.71,15-15.24,3.51-6.54,5.26-14.03,5.26-22.48s-1.75-15.8-5.26-22.3c-3.51-6.5-8.51-11.56-15-15.19ZM386.25,105.92c-2.07,4.15-5.02,7.28-8.85,9.39-3.83,2.11-8.45,3.17-13.87,3.17s-9.98-1.08-13.93-3.23c-3.95-2.15-6.97-5.28-9.09-9.39-2.11-4.1-3.17-9.03-3.17-14.77s1.06-10.7,3.17-14.89c2.11-4.19,5.14-7.35,9.09-9.51,3.95-2.15,8.59-3.23,13.93-3.23s10.04,1.08,13.87,3.23c3.83,2.15,6.77,5.32,8.85,9.51,2.07,4.18,3.11,9.15,3.11,14.89s-1.04,10.68-3.11,14.83Z"/>
+      <path d="M466.66,82.66h-19.14l-.3,1.37h4.68l-10.78,48.63h-4.68l-.3,1.37h18.1c21.57,0,35.68-12.82,35.7-32.73,0-12.23-7.99-18.63-23.27-18.63ZM454.79,132.65h-7.29l10.78-48.63h7.18c11.59,0,17.45,5.6,17.45,16.32,0,16.97-10.63,32.31-28.12,32.31Z"/>
+      <polygon points="500.79 84.28 505.46 84.28 494.72 132.68 490.06 132.68 489.76 134.04 516.62 134.04 519.38 121.58 518.25 121.58 511.8 132.68 501.07 132.68 506.38 108.75 514.42 108.75 515.23 116.34 516.33 116.34 519.99 99.83 518.86 99.83 514.68 107.39 506.68 107.39 511.8 84.28 521.01 84.28 522.89 94.31 523.99 94.31 526.51 82.92 501.09 82.92 500.79 84.28"/>
+      <polygon points="617.24 105.1 601.22 131.22 581.59 131.22 603.82 30.92 613.86 30.92 614.48 28.11 581.63 28.11 581 30.92 590.66 30.92 568.43 131.22 558.77 131.22 558.14 134.04 613.17 134.04 619.59 105.1 617.24 105.1"/>
+      <path d="M695.87,12.3l-3.95-12.3c-8.69,8.67-17.26,13.77-25.76,18l.48,2.78c9.36-1.3,19.25-3.83,29.24-8.47Z"/>
+      <path d="M681.48,28.72h-13.33l-.03,6.01-42.53,96.5h-5.46l-.62,2.8h20.55l.62-2.8h-11.84l14.62-33.16h24.35l-.16,33.16h-9.23l-.62,2.8h28.16l.62-2.8h-5.51l.41-102.52ZM667.83,95.28h-23.13l23.39-53.05-.26,53.05Z"/>
+    </svg><h2 class="rv">Obrigado pela vossa atenção.</h2><p class="rv">Foi um prazer apresentar esta proposta. Ficamos à vossa disposição para qualquer dúvida.</p></div><div class="meta mono"><div><b>Preparado por</b>Studio de Lá · Leví de Paula</div><div><b>Data</b>11 de outubro de 2026</div><div><b>Válida até</b>26 de outubro de 2026</div></div></div></footer>
+<a class="float" href="#valores">Ver investimento</a>
+<script>const $=(s,r=document)=>r.querySelector(s),$$=(s,r=document)=>[...r.querySelectorAll(s)];
+const io=new IntersectionObserver(es=>es.forEach(e=>e.target.classList.toggle('in',e.isIntersecting)),{threshold:0,rootMargin:'-8% 0px -8% 0px'});
+$$('.rv').forEach(el=>io.observe(el));
+const cio=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return;cio.unobserve(e.target);
+  const el=e.target,n=parseFloat(el.dataset.n),d=+(el.dataset.d||0),t0=performance.now();
+  (function f(t){const p=Math.min((t-t0)/1500,1),v=n*(1-Math.pow(1-p,3));el.textContent=v.toFixed(d).replace('.',',');if(p<1)requestAnimationFrame(f)})(t0);
+}),{threshold:.6});
+$$('[data-n]').forEach(el=>cio.observe(el));
+$$('details').forEach(d=>d.addEventListener('toggle',()=>{if(d.open)$$('details').forEach(o=>{if(o!==d)o.open=false})}));
+// imagem pixelada que ganha nitidez ao entrar no ecrã
+(function(){
+  const cv=document.getElementById('cv');if(!cv)return;const ctx=cv.getContext('2d');
+  const img=new Image();img.src='img/studio-totebag.jpg';
+  const draw=(p)=>{
+    const W=cv.width,H=cv.height;if(!img.naturalWidth)return;
+    const sx=0,sw=img.naturalWidth,sh=sw*H/W,sy=Math.max(0,img.naturalHeight*0.56-sh/2);
+    if(p<=1){ctx.imageSmoothingEnabled=true;ctx.drawImage(img,sx,sy,sw,sh,0,0,W,H);return}
+    const sm=document.createElement('canvas');sm.width=Math.max(1,Math.ceil(W/p));sm.height=Math.max(1,Math.ceil(H/p));
+    sm.getContext('2d').drawImage(img,sx,sy,sw,sh,0,0,sm.width,sm.height);
+    ctx.imageSmoothingEnabled=false;ctx.clearRect(0,0,W,H);ctx.drawImage(sm,0,0,sm.width,sm.height,0,0,sm.width*p,sm.height*p);
+  };
+  const size=()=>{cv.width=Math.max(300,cv.clientWidth||300);cv.height=Math.max(200,cv.clientHeight||200)};
+  let cur=44,done=false;
+  const run=()=>{if(done)return;done=true;
+    if(matchMedia('(prefers-reduced-motion: reduce)').matches){draw(1);return}
+    const t0=performance.now();size();(function f(t){const k=Math.min((t-t0)/1800,1),p=Math.max(1,Math.round(44*Math.pow(1-k,2.2)));cur=p;draw(p);if(k<1)requestAnimationFrame(f);else{size();draw(1)}})(t0)};
+  const start=()=>{size();draw(44);new IntersectionObserver((es,o)=>{if(es[0].isIntersecting){o.disconnect();run()}},{threshold:.35}).observe(cv)};
+  img.onload=start;addEventListener('resize',()=>{if(done){size();draw(1)}else{size();draw(44)}});
+})();
+
+// ----------------------------------------------------------------
+// UMA única rotina de rolagem: primeiro LÊ toda a geometria, depois ESCREVE (sem refazer o layout a cada passo).
+(function(){
+  const root=document.documentElement;
+  const $id=(i)=>document.getElementById(i);
+  const nav=$id('topnav'),lq=document.querySelector('.lq2'),gx=$id('gx');
+  const tabs=[['Diagnóstico','hoje'],['Cromos Tattoo','f1'],['Site novo','pausa'],['Soluções','solucoes'],['Proposta','valores'],['Adicionais','adicionais'],['Próximo passo','passos']];
+  nav.innerHTML=tabs.map(t=>'<a href="#'+t[1]+'"><span>'+t[0]+'</span><i></i></a>').join('');
+  const links=[...nav.querySelectorAll('a')],fills=links.map(a=>a.querySelector('i')),starts=tabs.map(t=>$id(t[1]));
+  const f1=$id('f1'),adi=$id('adicionais'),pas=$id('passos'),aviso=document.querySelector('.aviso');
+  const stack=document.querySelector('.stack');
+  const vt=$id('vt'),cards=[...document.querySelectorAll('.card-f')],items=vt?[...vt.querySelectorAll('li')]:[],line=vt?vt.querySelector('.vline'):null;
+  const last4=cards[cards.length-1];
+  const ease=(t)=>t*t*(3-2*t);
+  let sticky=[],geo={off3:0,h:0,after:0,tops:[],f1T:0,stackTop:0,stackL:0,stackW:0,adiT:0,pasT:0,nat:[],dh:0};
+  const calcGeo=()=>{
+    sticky=cards.map(c=>parseFloat(getComputedStyle(c).top)||0);
+    let off=0;for(let i=0;i<cards.length-1;i++){off+=cards[i].offsetHeight+(parseFloat(getComputedStyle(cards[i]).marginBottom)||0)}
+    geo.off3=off;geo.h=last4.offsetHeight;geo.after=parseFloat(getComputedStyle(stack,'::after').height)||0;
+    // posições absolutas guardadas: durante a rolagem não se lê nenhuma geometria (sem refazer o layout a cada quadro)
+    const sy0=scrollY,abs=(e)=>e.getBoundingClientRect().top+sy0;
+    geo.tops=starts.map(abs);geo.f1T=abs(f1);const ft=document.querySelector('footer.thanks');geo.footT=ft?abs(ft):1e9;const pau=$id('pausa');geo.pauT=abs(pau);geo.pauB=geo.pauT+pau.offsetHeight;const val=$id('valores');geo.valT=abs(val);geo.valB=geo.valT+val.offsetHeight;const vg=document.querySelector('#valores .vgroup');geo.vgT=vg?abs(vg):0;geo.vgH=vg?vg.offsetHeight:0;geo.adiT=abs(adi);geo.pasT=abs(pas);geo.dh=root.scrollHeight;
+    const sr0=stack.getBoundingClientRect();geo.stackTop=sr0.top+sy0;geo.stackL=sr0.left;geo.stackW=sr0.width;
+    // posições do cartão do Lançamento: título no meio da tela, "Fase 04" e "Semana" junto ao topo
+    // "O que vocês já têm": a foto e os números ocupam a largura do texto de cima, alinhados à esquerda dele
+    const ah=document.querySelector('#f1 h2'),tw=document.querySelector('#tem .wrap');
+    if(ah&&tw){
+      if(innerWidth>860){const r=ah.getBoundingClientRect();tw.style.width=r.width+'px';tw.style.marginLeft=r.left+'px';tw.style.marginRight='0'}
+      else{tw.style.width='';tw.style.marginLeft='';tw.style.marginRight=''}
+    }
+    last4.style.setProperty('--ep','0');
+    const cr=last4.getBoundingClientRect(),c4=(s)=>{const e=last4.querySelector(s);if(!e)return null;const r=e.getBoundingClientRect();return{x:r.left+r.width/2,y:r.top+r.height/2-cr.top,l:r.left,r:r.right,w:r.width,h:r.height}};
+    const f4=c4('.fl'),s4=c4('.fm>span'),h4=c4('.fm h3'),r4=c4('.fr');
+    if(f4&&s4&&h4){
+      const vh0=innerHeight,cw0=root.clientWidth,tp=sticky[3],topY=104,mob=innerWidth<=860;
+      const av=aviso?aviso.getBoundingClientRect():null;
+      const ws=document.querySelector('#fases .wrap').getBoundingClientRect();
+      const left=av?av.left:ws.left,right=ws.right;
+      const st=(k,v)=>last4.style.setProperty(k,v.toFixed(1)+'px');
+      st('--dyF',topY-(tp+f4.y));
+      st('--dyS',topY+(mob?26:0)-(tp+s4.y));
+      // telemóvel: "Fase" e "Semana" centrados; computador: "Fase 04" alinhada com o texto de baixo e "Semana" no centro
+      st('--dxF',left-f4.l);
+      st('--dxS',mob?left-s4.l:cw0/2-s4.x);   // telemóvel: tudo alinhado à esquerda
+      st('--dyH',vh0/2-(tp+h4.y));
+      st('--dxH',left-h4.l);   // computador: título encostado à esquerda, alinhado com "Fase 04" e o texto de baixo
+      if(r4&&mob)st('--dxR',left-r4.l);   // telemóvel: a lista também alinha à esquerda
+      if(r4&&!mob){
+        const ls=1.2;                       // a lista fica um pouco maior e encostada à direita
+        st('--dxR',right-r4.r);
+        st('--dyR',vh0/2-(tp+r4.y));
+        last4.style.setProperty('--ls',String(ls));
+        const listLeft=right-r4.w*ls;
+        const fs0=parseFloat(getComputedStyle(last4.querySelector('.fm h3')).fontSize)||48;
+        const want=(r4.h*ls)/fs0*1.05;                 // o título fica com a altura do bloco de tópicos
+        const maxW=(listLeft-48-left)/h4.w;            // e nunca bate na lista
+        const ts=Math.max(1.15,Math.min(3.2,want,maxW));
+        last4.style.setProperty('--ts',ts.toFixed(2));
+      }
+    }
+    last4.style.setProperty('--ep',String(lastEp));
+    let acc=geo.stackTop;geo.nat=cards.map(c=>{const t=acc;acc+=c.offsetHeight+(parseFloat(getComputedStyle(c).marginBottom)||0);return t});
+  };
+  const last={};
+  const setFill=(el,v)=>{const s=v.toFixed(3);if(last[el.__k]===s)return;last[el.__k]=s;el.style.setProperty('--p',s)};
+  fills.forEach((e,i)=>{e.__k='n'+i});if(line)line.__k='vl';
+  const trEl=document.querySelector('.hero-traco'),flt=document.querySelector('.float'),vgEl=document.querySelector('#valores .vgroup');
+  let lastVg='',lastTr='';
+  let lastClip='',gxOn=false,lastTf='',lastVt='',lastEp=0,actIdx=-1;
+
+  let queued=false;
+  const run=()=>{
+    queued=false;
+    // ---- só números guardados + a posição da rolagem ----
+    const sy=scrollY,vh=innerHeight,cw=root.clientWidth,dh=geo.dh;
+    const tops=geo.tops,f1T=geo.f1T;
+    const ct=geo.nat.map(n=>n-sy);
+    const sr={top:geo.stackTop-sy,left:geo.stackL,width:geo.stackW},adiTop=geo.adiT-sy,pasTop=geo.pasT-sy;
+    // ---- calcular ----
+    const pinStart=sr.top+sy+geo.off3-sticky[3];
+    const L=(geo.after*0.55)||1;
+    const p=Math.min(Math.max((sy-pinStart)/L,0),1);       // expansão do verde: 0 -> 1
+    const green=p>0&&adiTop>0;                               // zona verde: do Lançamento até aos adicionais (brancos)
+    // ---- ESCREVER ----
+    // Investimento: os preços entram em fade ao descer e voltam a desaparecer em fade quando saem
+    if(vgEl){
+      const t=geo.vgT-sy,b=t+geo.vgH,cl=(x)=>Math.min(Math.max(x,0),1);
+      const o=Math.min(cl((vh*0.95-t)/(vh*0.32)),cl((b-vh*0.1)/(vh*0.32)));
+      const ty=(1-o)*(t<vh*0.5?-18:28);
+      const key=o.toFixed(2);
+      if(key!==lastVg){lastVg=key;vgEl.style.opacity=key;vgEl.style.transform='translate3d(0,'+ty.toFixed(1)+'px,0)'}
+    }
+    // o traçado do logótipo na capa desaparece aos poucos ao descer e só existe no topo da página
+    if(trEl){const k=Math.min(Math.max(1-sy/(vh*0.75),0),1).toFixed(2);if(k!==lastTr){lastTr=k;trEl.style.opacity=(0.22*k).toFixed(3)}}
+    if(flt)flt.classList.toggle('off',(sy+vh*0.5>=geo.valT&&sy+vh*0.5<=geo.valB)||sy<vh*0.45||sy+vh*0.6>=geo.footT);
+    nav.classList.toggle('show',sy>vh*0.6);
+    nav.classList.toggle('gz',green&&adiTop>70);
+    nav.classList.toggle('wz',(adiTop<=70&&pasTop>70)||(geo.pauT-sy<=70&&geo.pauB-sy>70));
+    const y=sy+vh*0.4;
+    links.forEach((a,i)=>{
+      const s=tops[i],e=i<links.length-1?tops[i+1]:dh,pp=Math.min(Math.max((y-s)/(e-s),0),1);
+      setFill(fills[i],pp);const on=y>=s&&y<e;a.classList.toggle('on',on);if(on&&actIdx!==i){actIdx=i;if(innerWidth<=860&&nav.scrollTo)nav.scrollTo({left:Math.max(0,a.offsetLeft-100),behavior:'smooth'})}
+    });
+    // fundo líquido: preto até "A oportunidade"; desligado na zona verde
+    if(lq)lq.classList.toggle('on',(sy+vh*0.5)>f1T-vh*0.2&&!green);
+    // linha do tempo vertical
+    if(line){
+      let k=0;cards.forEach((c,i)=>{if(ct[i]<=sticky[i]+3)k++});
+      let partial=0;if(k<cards.length){partial=Math.min(Math.max(1-(ct[k]-sticky[k])/(vh*0.5),0),1)}
+      setFill(line,Math.min((k+partial)/cards.length,1));
+      items.forEach((li,i)=>{li.classList.toggle('done',i<k-1);li.classList.toggle('on',i===k-1)});
+    }
+    // o cartão do Lançamento expande até às bordas da tela (verde)
+    if(gx){
+      if(green){
+        const e=ease(p),t=sticky[3]*(1-e),l=sr.left*(1-e),r=(cw-(sr.left+sr.width))*(1-e),b=(vh-(sticky[3]+geo.h))*(1-e),rad=14*(1-e);
+        const v='inset('+t.toFixed(1)+'px '+r.toFixed(1)+'px '+b.toFixed(1)+'px '+l.toFixed(1)+'px round '+rad.toFixed(1)+'px)';
+        if(!gxOn){gx.style.transition='none';gx.style.clipPath=v;lastClip=v;void gx.offsetWidth;gx.style.transition='';gx.classList.add('show');gxOn=true}
+        else if(v!==lastClip){gx.style.clipPath=v;lastClip=v}
+      }else if(gxOn){gx.classList.remove('show');gxOn=false}
+      last4.classList.toggle('ex',green);
+      const ep=green?+ease(p).toFixed(3):0;
+      if(ep!==lastEp){last4.style.setProperty('--ep',String(ep));lastEp=ep}
+      if(vt){const o=green?(1-ease(p)).toFixed(2):'1';if(o!==lastVt){vt.style.opacity=o;lastVt=o}}
+      if(aviso)aviso.classList.toggle('on',p>=0.98&&adiTop>0);
+    }
+  };
+  const queue=()=>{if(!queued){queued=true;requestAnimationFrame(run)}};
+  let tmScroll=0;
+  const onScroll=()=>{queue()};
+  addEventListener('scroll',onScroll,{passive:true});
+  addEventListener('resize',()=>{calcGeo();queue()});
+  addEventListener('load',()=>{calcGeo();queue()});
+  if(window.ResizeObserver)new ResizeObserver(()=>{calcGeo();queue()}).observe(document.body);
+  if(document.fonts&&document.fonts.ready)document.fonts.ready.then(()=>{calcGeo();queue()});
+  calcGeo();run();
+})();
+
+// soluções: abas laterais (só mudam quando o cliente clica; sem troca automática, para a página não saltar)
+(function(){
+  const ts=document.getElementById('ts');if(!ts)return;
+  const pills=[...ts.querySelectorAll('.pill')],panels=[...ts.querySelectorAll('.tp')];
+  const show=(n)=>{pills.forEach((p,k)=>p.classList.toggle('on',k===n));panels.forEach((p,k)=>p.classList.toggle('on',k===n))};
+  pills.forEach((p,k)=>p.addEventListener('click',()=>show(k)));
+})();
+
+// fundo líquido: duas imagens (já com cor e transparência) geradas UMA vez e deslocadas por CSS.
+// Não há máscaras nem desenho por quadro: o navegador só move duas camadas prontas.
+(function(){
+  const lq=document.querySelector('.lq2');if(!lq)return;
+  const layers=[...lq.children];
+  const sstep=(a,b,x)=>{const t=Math.min(Math.max((x-a)/(b-a),0),1);return t*t*(3-2*t)};
+  const make=(tt)=>{
+    const N=200,c=document.createElement('canvas');c.width=c.height=N;
+    const x=c.getContext('2d'),im=x.createImageData(N,N),d=im.data;
+    for(let jy=0;jy<N;jy++){for(let ix=0;ix<N;ix++){
+      let px=(ix/N-.5)*2.2,py=(jy/N-.5)*2.2;
+      const qx=px+.38*Math.sin(py*1.9+tt*5),qy=py+.38*Math.sin(px*1.6-tt*4);px=qx;py=qy;
+      const wx=px+.22*Math.sin(py*3.3-tt*7+1.3),wy=py+.22*Math.sin(px*2.9+tt*6);px=wx;py=wy;
+      const s=Math.sin(px*2.4+Math.sin(py*2.0+tt*5)*1.6)+.9*Math.sin(py*2.8-px*1.2+tt*4)+.6*Math.sin((px+py)*1.5+tt*6);
+      const l=sstep(-1.3,1.9,s),k=(jy*N+ix)*4;
+      d[k]=236;d[k+1]=238;d[k+2]=244;d[k+3]=Math.round(255*Math.pow(l,1.15));
+    }}
+    x.putImageData(im,0,0);return c.toDataURL('image/png');
+  };
+  const go=()=>{
+    const times=[1.4,4.6];
+    layers.forEach((el,i)=>{el.style.backgroundImage='url('+make(times[i%times.length])+')'});
+    lq.classList.add('ready');
+  };
+  (window.requestIdleCallback||((f)=>setTimeout(f,250)))(go);
+})();
+
+// adicionais: quadradinhos para marcar durante a conversa (o estado fica guardado neste navegador)
+(function(){
+  const bs=[...document.querySelectorAll('.ck')];
+  const get=(k)=>{try{return localStorage.getItem('cromos-'+k)==='1'}catch(e){return false}};
+  const set=(k,v)=>{try{localStorage.setItem('cromos-'+k,v?'1':'0')}catch(e){}};
+  bs.forEach((b)=>{
+    const on=(v)=>{b.classList.toggle('on',v);b.setAttribute('aria-checked',v?'true':'false')};
+    on(get(b.dataset.k));
+    b.addEventListener('click',()=>{const v=!b.classList.contains('on');on(v);set(b.dataset.k,v);sum()});
+  });
+  const n=document.getElementById('adn'),t=document.getElementById('adt'),box=document.getElementById('adsum');
+  const BASE=1260,DESC=[0,5,10,15,20];
+  const fm=(v)=>'€ '+String(v).replace(/\B(?=(\d{3})+(?!\d))/g,'.');
+  const prices=bs.map(b=>b.closest('.row2').querySelector('.price'));
+  const orig=prices.map(p=>p?p.innerHTML:'');
+  const sum=()=>{if(!box)return;
+    const on=bs.filter(b=>b.classList.contains('on')),k=on.length,d=DESC[Math.min(k,4)];
+    const list=on.reduce((s,b)=>s+(b.dataset.v?+b.dataset.v:0),0);
+    const promo=on.reduce((s,b)=>s+(b.dataset.v?Math.round(+b.dataset.v*(1-d/100)):0),0);
+    const pend=on.filter(b=>!b.dataset.v).length;
+    // em cada adicional marcado aparece o valor normal riscado e o valor com promoção
+    bs.forEach((b,i)=>{const p=prices[i];if(!p||!b.dataset.v)return;
+      if(b.classList.contains('on')&&d>0){p.innerHTML='<s class="de">'+fm(+b.dataset.v)+'</s>'+fm(Math.round(+b.dataset.v*(1-d/100)))}
+      else p.innerHTML=orig[i]});
+    box.classList.toggle('has',k>0);
+    if(!k){n.textContent='Entrega base · 25 a 30 dias';t.textContent='O site base, com '+fm(BASE)+', está completo e é entregue em 25 a 30 dias, como combinado. Quanto mais adicionais escolherem, maior é o desconto.'}
+    else{
+      n.innerHTML='<span class="adn-n">'+k+'</span> '+(k>1?'adicionais marcados':'adicional marcado')+' · Total '+fm(BASE+promo)+(pend?' + '+pend+' a definir':'');
+      t.textContent='Site base '+fm(BASE)+' + adicionais '+(d?fm(promo)+' (de '+fm(list)+', desconto de '+d+'%)':fm(promo))+(pend?' + '+pend+' por definir':'')+'. '+(k<4?'Com mais adicionais o desconto sobe. ':'')+'O site base é entregue em 25 a 30 dias; com os adicionais, a entrega final fica entre 45 e 50 dias, no máximo.';
+    }};
+  sum();
+})();
+
+// fechar orçamento: cria um documento Word (editável) com o que está fechado e o que falta fechar
+(function(){
+  const btn=document.getElementById('fechar');
+  const esc=(s)=>String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  const tx=(el)=>el?el.textContent.replace(/\s+/g,' ').trim():'';
+  const strip=(s)=>s.replace(/^\(\s*/,'').replace(/\s*\)$/,'');
+  const adds=()=>[...document.querySelectorAll('#adicionais .row2')].map(r=>{
+    const ck=r.querySelector('.ck');if(!ck)return null;
+    return {on:ck.classList.contains('on'),v:ck.dataset.v||'',t:tx(r.querySelector('h3')),b:tx(r.querySelector('.rc p'))};
+  }).filter(Boolean);
+  const DESCD=[0,5,10,15,20];
+  const tabela=(l,d)=>l.length?'<table><tr><th>Adicional</th><th>O que inclui</th><th>Valor (€)</th></tr>'+l.map(a=>'<tr><td><b>'+esc(a.t)+'</b></td><td>'+esc(a.b)+'</td><td>'+(a.v?(d?'€ '+Math.round(+a.v*(1-d/100))+' <s>€ '+a.v+'</s> (−'+d+'%)':'€ '+a.v):'A definir')+'</td></tr>').join('')+'</table>':'<p><i>Nenhum.</i></p>';
+  const build=()=>{
+    const A=adds(),on=A.filter(a=>a.on),off=A.filter(a=>!a.on);
+    const dd=DESCD[Math.min(on.length,4)];
+    const lista=on.reduce((s,a)=>s+(a.v?+a.v:0),0),val=on.reduce((s,a)=>s+(a.v?Math.round(+a.v*(1-dd/100)):0),0),pend=on.filter(a=>!a.v).length;
+    const sol=[...document.querySelectorAll('#ts .pill')].map(p=>'<li>'+esc(tx(p))+'</li>').join('');
+    const fases=[...document.querySelectorAll('.card-f')].map(c=>{
+      const t=tx(c.querySelector('.fm h3')),s=strip(tx(c.querySelector('.fm span'))),it=[...c.querySelectorAll('.fr li')].map(l=>esc(tx(l))).join('; ');
+      return '<tr><td><b>'+esc(t)+'</b><br>'+esc(s)+'</td><td>'+it+'</td></tr>';
+    }).join('');
+    const data=new Date().toLocaleDateString('pt-PT',{day:'numeric',month:'long',year:'numeric'});
+    const css='body{font-family:Calibri,Arial,sans-serif;font-size:11pt;color:#111}h1{font-size:22pt;margin:0 0 4pt}h2{font-size:14pt;margin:18pt 0 6pt;border-bottom:1px solid #999}table{border-collapse:collapse;width:100%}td,th{border:1px solid #999;padding:5pt;vertical-align:top;text-align:left}th{background:#eee}.k{color:#555}';
+    return '<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w="urn:schemas-microsoft-com:office:word" xmlns="http://www.w3.org/TR/REC-html40"><head><meta charset="utf-8"><title>Orçamento Cromos Tattoo</title><style>'+css+'</style></head><body>'
+    +'<h1>Orçamento · Cromos Tattoo Aveiro</h1><p class="k">Studio de Lá · '+esc(data)+' · Proposta válida até 26 de outubro de 2026</p>'
+    +'<h2>1. Site base (fechado)</h2><table><tr><td>Design, desenvolvimento e lançamento</td><td><b>€ 1.260</b> (preço normal € 1.490)</td></tr><tr><td>Prazo</td><td>Entrega base em 25 a 30 dias, a contar do pagamento do sinal</td></tr><tr><td>Idiomas</td><td>Português, inglês e espanhol</td></tr><tr><td>Pagamento</td><td>€ 504 na assinatura · € 378 na entrega · € 378 no fim, depois das alterações</td></tr><tr><td>Incluído</td><td>2 rondas de alterações por etapa · CMS para editarem fotos e textos · SEO · 1.º ano de alojamento · 30 dias de suporte · lançamento no domínio dos clientes</td></tr></table>'
+    +'<p><b>O que o site base inclui (Soluções):</b></p><ul>'+sol+'</ul>'
+    +'<p><b>Cronograma:</b></p><table>'+fases+'</table>'
+    +'<h2>2. Adicionais fechados (marcados)</h2>'+tabela(on,dd)
+    +'<h2>3. Adicionais por fechar</h2>'+tabela(off,0)
+    +'<h2>4. Manutenção (opcional)</h2><table><tr><td>Valor</td><td>€ 30 por mês, ou € 180 por ano de uma só vez (poupam € 180)</td></tr><tr><td>Condições</td><td>Os 3 primeiros meses são grátis · cobrada a partir de [data a confirmar] · domínio, alojamento (a partir do 2.º ano), correções e cópia de segurança · pequenos ajustes, se preferirem não usar o CMS</td></tr></table>'
+    +'<h2>5. Resumo</h2><table><tr><td>Site base</td><td>€ 1.260</td></tr><tr><td>Adicionais fechados ('+on.length+')</td><td>'+(val?'€ '+val+(dd?' (de € '+lista+', desconto de '+dd+'%)':''):'A definir')+(pend?' (+ '+pend+' a definir)':'')+'</td></tr><tr><td>Manutenção</td><td>Opcional: € 30 por mês ou € 180 por ano</td></tr><tr><td><b>Total a fechar</b></td><td><b>€ '+(1260+val)+(pend?' + '+pend+' a definir':'')+'</b></td></tr><tr><td>Prazo</td><td>Base em 25 a 30 dias · entrega final com adicionais, entre 45 e 50 dias, no máximo</td></tr></table>'
+    +'<h2>6. O que falta fechar</h2><ul><li>Valor de cada adicional marcado'+(off.length?' e dos '+off.length+' por decidir':'')+'.</li><li>Data de início da cobrança da manutenção.</li><li>Horário de funcionamento (incluindo feriados) e textos finais.</li><li>Fotos e materiais dos clientes.</li><li>Ideias adicionais dos clientes: ______________________________</li></ul>'
+    +'<h2>7. Notas da reunião</h2><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p></body></html>';
+  };
+  const baixar=()=>{
+    const blob=new Blob(['﻿',build()],{type:'application/msword'});
+    const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='Orcamento-Cromos-Tattoo.doc';document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(a.href),4000);
+  };
+  if(btn)btn.addEventListener('click',(e)=>{e.preventDefault();baixar()});
+  // atalho escondido para quem apresenta: Ctrl + Alt + O baixa o documento com o que ficou marcado
+  addEventListener('keydown',(e)=>{if(e.ctrlKey&&e.altKey&&(e.key==='o'||e.key==='O')){e.preventDefault();baixar()}});
+})();
+</script></body></html>
