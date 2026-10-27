@@ -1,6 +1,13 @@
 <!doctype html>
+<html lang="pt">
 <meta charset="utf-8">
 <title>Studio de Lá</title>
+<meta name="description" content="Studio de Lá: estúdio de design remoto para marcas com história. Identidade visual, branding e landing pages.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Studio de Lá">
+<meta property="og:description" content="Estúdio de design remoto para marcas com história. Identidade visual, branding e landing pages.">
+<meta property="og:url" content="https://studio-de-la.web.app/">
+<meta name="theme-color" content="#040403">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="favicon.svg">
@@ -38,7 +45,7 @@
     pointer-events:none;
     display:block;
   }
-  body > *:not(#bgTrail):not(.topbar):not(#imgZoom):not(.hero){
+  body > *:not(#bgTrail):not(.topbar):not(#imgZoom):not(.hero):not(.wa-float){
     position:relative;
     z-index:1;
   }
@@ -123,7 +130,10 @@
   .topbar-cta:hover{text-decoration:underline;text-underline-offset:0.15em;}
   @media (max-width:760px){
     .topbar-col-mid{display:none;}
+    /* no celular o logo docado vai para a esquerda, para não ficar por cima de Instagram / WhatsApp / Contato */
+    .topbar-logo{left:var(--gutter);transform:translateY(-50%);width:84px;}
   }
+  @media (max-width:360px){ .topbar-logo{width:64px;} }
 
   .section-tag{
     font-family:var(--sans);
@@ -225,17 +235,19 @@
      space, pulling the info up and letting the featured project peek in. */
   @media (max-width:600px){
     .hero{
-      min-height:72svh;
-      justify-content:flex-end;
-      padding-block:clamp(1.5rem,7vw,2.5rem) 0;
+      /* altura = conteúdo: em telas altas (navegador do Instagram) não sobra um vazio preto em cima do logo */
+      min-height:0;
+      justify-content:flex-start;
+      padding-block:clamp(2.2rem,9vw,3rem) 0;
     }
     .wordmark{margin-top:0;}
     .wordmark svg{padding-top:0;padding-bottom:0;}
     .hero-tagline{margin-bottom:0;}
+    .marquee{margin-bottom:36px;} /* Landing Pages · Branding · About Us mais perto de "Projeto em destaque" */
     .headline{
       width:100vw;
       margin-inline:calc(50% - 50vw);
-      margin-top:clamp(0.8rem,4vw,1.4rem);
+      margin-top:calc(clamp(0.8rem,4vw,1.4rem) + 2rem); /* um pouco mais abaixo do texto de cima */
       margin-bottom:0;
       padding-top:0;
       column-gap:0.12rem;
@@ -898,6 +910,61 @@
     .work-expand{width:42px;height:42px;}
     .work-expand svg{width:18px;height:18px;}
   }
+
+  /* ---------- BOTÃO FLUTUANTE DO WHATSAPP ----------
+     wa.me abre a conversa direto com o estúdio, com mensagem pronta. */
+  .wa-float{
+    position:fixed;
+    right:clamp(16px,3vw,28px);
+    bottom:clamp(16px,3vw,28px);
+    z-index:90;
+    display:flex;
+    align-items:center;
+    height:56px;
+    width:56px;
+    border-radius:999px;
+    background:#25d366;
+    color:#07140c;
+    box-shadow:0 10px 26px rgba(0,0,0,0.38), 0 2px 6px rgba(0,0,0,0.3);
+    overflow:hidden;
+    text-decoration:none;
+    white-space:nowrap;
+    transition:width .35s cubic-bezier(.2,.8,.2,1), transform .2s ease, box-shadow .2s ease;
+  }
+  .wa-float svg{width:30px;height:30px;flex:none;margin:0 13px;fill:currentColor;}
+  .wa-float .wa-label{
+    font-family:var(--mono);
+    font-size:0.78rem;
+    font-weight:700;
+    letter-spacing:0.02em;
+    padding-right:20px;
+    opacity:0;
+    transition:opacity .25s ease;
+  }
+  .wa-float:focus-visible{outline:2px solid #fff;outline-offset:3px;}
+  /* anel de pulso sutil para chamar atenção */
+  .wa-float::after{
+    content:'';
+    position:absolute;
+    inset:0;
+    border-radius:999px;
+    animation:wa-pulse 2.6s ease-out infinite;
+    pointer-events:none;
+  }
+  @keyframes wa-pulse{
+    0%{box-shadow:0 0 0 0 rgba(37,211,102,0.5);}
+    70%{box-shadow:0 0 0 16px rgba(37,211,102,0);}
+    100%{box-shadow:0 0 0 0 rgba(37,211,102,0);}
+  }
+  @media (hover:hover){
+    .wa-float:hover{width:206px;transform:translateY(-2px);box-shadow:0 14px 32px rgba(0,0,0,0.48);}
+    .wa-float:hover .wa-label{opacity:1;}
+  }
+  @media (prefers-reduced-motion:reduce){
+    .wa-float{transition:none;}
+    .wa-float .wa-label{transition:none;}
+    .wa-float::after{animation:none;}
+  }
 </style>
 
 <a id="top"></a>
@@ -928,6 +995,11 @@
     </svg>
   </a>
 </div>
+
+<a class="wa-float" href="https://wa.me/5511910892122?text=Ol%C3%A1!%20Vim%20pelo%20site%20do%20Studio%20de%20L%C3%A1%20e%20gostaria%20de%20fazer%20um%20projeto." target="_blank" rel="noopener" aria-label="Falar no WhatsApp">
+  <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16.004 0h-.008C7.164 0 0 7.163 0 16c0 3.49 1.126 6.73 3.04 9.36L1.05 31.3l6.15-1.966A15.9 15.9 0 0 0 16.004 32C24.84 32 32 24.837 32 16S24.84 0 16.004 0zm9.31 22.6c-.386 1.09-1.92 1.994-3.142 2.258-.836.178-1.928.32-5.604-1.204-4.7-1.948-7.726-6.724-7.962-7.034-.226-.31-1.9-2.53-1.9-4.826 0-2.296 1.206-3.424 1.68-3.91.39-.398.86-.576 1.146-.576.286 0 .573.002.823.015.264.013.618-.1.966.737.356.86 1.212 2.976 1.318 3.192.106.216.177.47.035.78-.142.31-.213.504-.42.776-.206.272-.434.608-.62.816-.206.228-.42.476-.18.888.24.412 1.07 1.764 2.296 2.858 1.578 1.408 2.91 1.844 3.322 2.05.412.206.65.172.89-.104.24-.276 1.03-1.2 1.304-1.612.274-.412.55-.344.926-.206.376.138 2.388 1.126 2.8 1.332.412.206.686.31.79.482.102.172.102 1.01-.284 2.1z"/></svg>
+  <span class="wa-label">Fale no WhatsApp</span>
+</a>
 
 <header class="hero">
   <p class="wordmark" role="img" aria-label="Studio de Lá">
@@ -1012,9 +1084,9 @@
       </li>
       <li>
         <span class="num">03</span>
-        <span class="service-thumb"><img src="assets/amago-website.jpg" alt="Site Âmago Clothing" loading="lazy" style="object-position:top"></span>
-        <span class="service-name">Landing Pages</span>
-        <span class="service-desc">Páginas desenhadas para converter sem abrir mão da personalidade da marca.</span>
+        <span class="service-thumb"><img src="assets/work/amago-gallery/amago-site-preview.jpg" alt="Site Âmago Clothing" loading="lazy" style="object-position:top"></span>
+        <span class="service-name">Sites e Landing Pages</span>
+        <span class="service-desc">Sites, lojas online e landing pages desenhados para converter sem abrir mão da personalidade da marca.</span>
         <a class="service-cta" href="#contato">Fazer um projeto</a>
       </li>
     </ol>
@@ -1160,7 +1232,9 @@
       + '<a class="feature-open" href="projeto/' + f.slug + '" aria-label="Ver projeto ' + esc(fp.name) + '"></a>'
       + '<img src="' + esc(f.media || fp.tile) + '" alt="' + esc(fp.name + ' — ' + fp.cat) + '" loading="lazy">'
       + pills(fp)
-      + '<a class="feature-cta" href="#contato">Pedir orçamento</a>'
+      + (fp.site
+          ? '<a class="feature-cta" href="' + esc(fp.site) + '" target="_blank" rel="noopener">Ver site</a>'
+          : '<a class="feature-cta" href="#contato">Pedir orçamento</a>')
       + '</div>';
   }
 })();
